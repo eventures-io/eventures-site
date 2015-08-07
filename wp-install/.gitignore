@@ -1,0 +1,33 @@
+# ignore YeoPress configuration file since it contains password information
+.yeopress
+.idea
+
+
+# Ignore automatically generated cruft
+*.log
+
+# Ignore config
+local-config.php
+
+# Operating system files
+.Spotlight-V100
+.Trashes
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db
+
+
+# WordPress + popular plugin generated — adapted from:
+# https://github.com/github/gitignore/blob/master/WordPress.gitignore
+sitemap.xml
+sitemap.xml.gz
+content/advanced-cache.php
+content/backup-db/
+content/backups/
+content/blogs.dir/
+content/cache/
+content/uploads/
+content/upgrade/
+content/wp-cache-config.php
+

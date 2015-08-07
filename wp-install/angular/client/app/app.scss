@@ -1,0 +1,129 @@
+@import "main/fontello";
+@import "main/print";
+@import "post/post";
+
+/* Variables ----*/
+$menu-overlay: rgba(29, 29, 29, 0.9);
+$menu-color: #F5F5F5;
+
+
+/* Global styles ---*/
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Varela Round', sans-serif;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+.full-size {
+  height: 100%;
+  width: 100%;
+}
+
+.content-container {
+  //@extend .container;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/* Navigation ----*/
+
+.navbar {
+  position: fixed;
+  top: 0;
+  height: 40px;
+  padding: 15px;
+
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: -60vw;
+  width: 60vw;
+  color: $menu-color;
+  background: $menu-overlay;
+  height: 100vh;
+  display: block;
+  border-right: #525252 1px solid;
+  transition: all 0.5s ease-out;
+  z-index: 9999;
+}
+
+.menu-open {
+  left: 0;
+}
+
+.menu-icon {
+  cursor: pointer;
+}
+
+.menu-bottom-mask {
+  @extend .full-size;
+  background: $menu-overlay;
+}
+
+.menu-image-wrap {
+  @extend .full-size;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.menu-link-container {
+  //padding-top: $menu-padding-top;
+}
+
+.close-icon {
+  cursor: pointer;
+  float: right;
+  width: 20px;
+  height: 20px;
+  font-size: xx-large;
+}
+
+.nav-close {
+  padding: 15px;
+  background: $menu-overlay;
+  height: 40px;
+}
+
+.post-link {
+  padding: 20px;
+}
+
+.post-link-wrap {
+  cursor: pointer;
+  border-top: 1px solid #808080;
+  background-size: cover;
+}
+
+.post-link-mask {
+  @extend .full-size;
+  background: $menu-overlay;
+  transition: background 0.2s;
+}
+
+.post-link-mask:hover {
+  background: rgba(72, 72, 72, 0.5);
+  //padding: 25px 20px 25px 20px;
+}
+
+.post-link:last-of-type {
+  border-bottom: 1px solid #808080;
+}
+
+

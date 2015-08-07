@@ -1,0 +1,26 @@
+<nav class="navbar">
+    <div class="menu-icon" ng-click="openMenu()">
+        <img src="assets/images/menu-btn.svg">
+    </div>
+</nav>
+<div class="menu">
+    <div class="menu-image-wrap">
+        <nav class="nav-close">
+            <div ng-click="closeMenu()" class="close-icon">
+                <i class="font-icon icon-cancel"></i>
+            </div>
+        </nav>
+        <div class="menu-link-container">
+            <div data-ng-repeat="post in posts" ng-click="showPost(post)" class="post-link-wrap" ng-style="{'backgroundImage': 'url(' + post.featured_image.source + ')'}">
+                <div class="post-link-mask">
+                    <div class="post-link">
+                    <h3 ng-bind-html="post.title | HtmlFilter"></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu-bottom-mask">
+
+        </div>
+    </div>
+</div>
