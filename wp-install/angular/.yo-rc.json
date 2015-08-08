@@ -13,10 +13,14 @@
       "html": true,
       "sass": true,
       "uirouter": true,
-      "bootstrap": false,
+      "bootstrap": true,
       "uibootstrap": false,
       "mongoose": true,
-      "auth": true
+      "auth": true,
+      "oauth": true,
+      "googleAuth": true,
+      "facebookAuth": true,
+      "twitterAuth": true
     }
   },
   "generator-ng-component": {
