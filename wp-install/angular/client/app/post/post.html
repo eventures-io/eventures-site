@@ -1,20 +1,19 @@
 <navbar></navbar>
 <div ng-click="closeMenu()">
-    <header class="container post-header">
+    <header class="post-header">
         <div class="post-title">
             <h2 ng-bind-html="post.title | HtmlFilter"></h2>
-
             <p>________________</p>
         </div>
-        <div class="post-header-bg">
-            <img class="post-image" src="{{post.featured_image.guid}}">
 
-            <div class="post-summary">
-                <div ng-bind-html="post.excerpt | HtmlFilter"></div>
+        <div class="post-image" ng-style="getBackgroundStyle(post)">
+        </div>
+        <div class="post-summary">
+            <div class="excerpt" ng-bind-html="post.excerpt | HtmlFilter">
             </div>
         </div>
     </header>
-    <article class="container">
+    <article class="post-content">
         <div ng-bind-html="post.content | HtmlFilter"></div>
     </article>
     <footer>

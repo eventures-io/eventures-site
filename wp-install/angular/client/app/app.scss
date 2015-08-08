@@ -19,6 +19,18 @@ $menu-color: #F5F5F5;
     padding: 0.2em 0;
 }
 
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Raleway', sans-serif;
+}
+
 .full-size {
   height: 100%;
   width: 100%;
@@ -26,8 +38,7 @@ $menu-color: #F5F5F5;
 
 // Component styles are injected through grunt
 // injector
-@import 'main/fontello.scss';
-@import 'main/print.scss';
+@import 'fontello.scss';
 @import 'post/post.scss';
 @import 'navbar/navbar.scss';
 // endinjector

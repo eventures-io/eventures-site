@@ -5,7 +5,7 @@
   top: 0;
   height: 40px;
   padding: 15px;
-
+  background-color: transparent;
 }
 
 .menu {
@@ -28,6 +28,7 @@
 
 .menu-icon {
   cursor: pointer;
+  background-color: transparent;
 }
 
 .menu-bottom-mask {
@@ -46,19 +47,23 @@
   //padding-top: $menu-padding-top;
 }
 
+.nav-close {
+  //padding: 15px;
+  background: $menu-overlay;
+  height: 50px;
+  padding-right: 25px;
+}
+
 .close-icon {
   cursor: pointer;
   float: right;
   width: 20px;
   height: 20px;
-  font-size: xx-large;
+  padding: 10px;
+  font-size: x-large;
 }
 
-.nav-close {
-  padding: 15px;
-  background: $menu-overlay;
-  height: 40px;
-}
+
 
 .post-link {
   padding: 20px;
@@ -68,6 +73,7 @@
   cursor: pointer;
   border-top: 1px solid #808080;
   background-size: cover;
+  background-position: center;
 }
 
 .post-link-mask {

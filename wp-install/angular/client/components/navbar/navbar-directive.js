@@ -31,6 +31,9 @@ angular.module('evtrs-site').directive('navbar', function(BlogResource, $state, 
                 }, 700);
             };
 
+            $scope.getBackgroundStyle =  function(post) {
+                return {'background-image':'url(' + post.featured_image.source + ')'}
+            }
 
 
         }
