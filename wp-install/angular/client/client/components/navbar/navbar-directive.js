@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bfSite').directive('navbar', function(BlogResource, $state, $timeout) {
+angular.module('evtrs-site').directive('navbar', function(BlogResource, $state, $timeout) {
     return {
         restrict : 'E',
         templateUrl: 'components/navbar/navbar.html',

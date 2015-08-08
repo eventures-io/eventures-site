@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bfSite')
+angular.module('evtrs-site')
     .controller('HomeController', function ($scope, BlogResource, $state) {
 
         BlogResource.getPosts().then(function(response){

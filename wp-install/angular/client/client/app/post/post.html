@@ -3,13 +3,15 @@
     <header class="container post-header">
         <div class="post-title">
             <h2 ng-bind-html="post.title | HtmlFilter"></h2>
+
             <p>________________</p>
         </div>
-        <div class="post-image-wrap">
+        <div class="post-header-bg">
             <img class="post-image" src="{{post.featured_image.guid}}">
-        </div>
-        <div class="post-summary">
-            <div ng-bind-html="post.excerpt | HtmlFilter"></div>
+
+            <div class="post-summary">
+                <div ng-bind-html="post.excerpt | HtmlFilter"></div>
+            </div>
         </div>
     </header>
     <article class="container">

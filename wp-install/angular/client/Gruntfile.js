@@ -1,4 +1,4 @@
-// Generated on 2015-08-06 using generator-angular-fullstack 2.0.13
+// Generated on 2015-08-08 using generator-angular-fullstack 2.0.13
 'use strict';
 
 module.exports = function (grunt) {
@@ -223,7 +223,7 @@ module.exports = function (grunt) {
       target: {
         src: '<%= yeoman.client %>/index.html',
         ignorePath: '<%= yeoman.client %>/',
-        exclude: ['/json3/', '/es5-shim/', 'normalize.css', 'purecss']
+        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/', /bootstrap.css/, /font-awesome.css/ ]
       }
     },
 
@@ -235,7 +235,7 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/public/{,*/}*.js',
             '<%= yeoman.dist %>/public/{,*/}*.css',
             '<%= yeoman.dist %>/public/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= yeoman.dist %>/public/assets/fonts/*'
+            //'<%= yeoman.dist %>/public/assets/fonts/*'
           ]
         }
       }
@@ -310,7 +310,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       options: {
         // This should be the name of your apps angular module
-        module: 'tempApp',
+        module: 'evtrs-site',
         htmlmin: {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,
@@ -404,10 +404,10 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'sass',
+        'sass'
       ],
       test: [
-        'sass',
+        'sass'
       ],
       debug: {
         tasks: [
@@ -541,7 +541,7 @@ module.exports = function (grunt) {
           ]
         }
       }
-    },
+    }
   });
 
   // Used for delaying livereload until after server has restarted

@@ -4,15 +4,13 @@
  *
  */
 angular
-    .module('bfSite', [
+    .module('evtrs-site', [
         'ngAnimate',
         'ngSanitize',
         'ui.router',
-        //'restangular',
         'config'
         //'ngTouch'
     ]).config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
-       // RestangularProvider.setBaseUrl(CONF.wpUrl);
 
         $locationProvider.html5Mode(true);
 

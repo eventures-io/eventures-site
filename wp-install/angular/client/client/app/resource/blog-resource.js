@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bfSite').factory('BlogResource', function ($http, conf, $log) {
+angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log) {
     var baseUrl = conf.WP_URL.concat('/posts');
 
     var postsPreviewUrl = baseUrl.concat('?fields=ID,title,featured_image');
