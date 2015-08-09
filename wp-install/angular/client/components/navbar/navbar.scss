@@ -11,8 +11,8 @@
 .menu {
   position: fixed;
   top: 0;
-  left: -60vw;
-  width: 60vw;
+  left: -100vw;
+  width: 100vw;
   color: $menu-color;
   background: $menu-overlay;
   height: 100vh;
@@ -22,6 +22,14 @@
   z-index: 9999;
 }
 
+@media (min-width: $screen-sm) {
+  .menu {
+    left: -60vw;
+    width: 60vw;
+  }
+}
+
+
 .menu-open {
   left: 0;
 }
@@ -29,6 +37,14 @@
 .menu-icon {
   cursor: pointer;
   background-color: transparent;
+  .icon {
+    height: 25px;
+    width: 29px;
+    opacity: 0.7;
+  }
+  .icon:hover {
+    opacity: 1;
+  }
 }
 
 .menu-bottom-mask {
@@ -63,9 +79,8 @@
   font-size: x-large;
 }
 
-
-
 .post-link {
+  word-wrap: break-word;
   padding: 20px;
 }
 
@@ -84,7 +99,6 @@
 
 .post-link-mask:hover {
   background: rgba(72, 72, 72, 0.5);
-  //padding: 25px 20px 25px 20px;
 }
 
 .post-link:last-of-type {

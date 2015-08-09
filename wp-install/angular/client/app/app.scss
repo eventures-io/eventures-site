@@ -1,9 +1,6 @@
-$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
-$fa-font-path: "/bower_components/font-awesome/fonts";
-
+@import url(https://fonts.googleapis.com/css?family=Lato|Raleway|Share);
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
-@import 'font-awesome/scss/font-awesome';
-
+@import "hint.css/src/hint.scss";
 /**
  * App-wide Styles
  */
@@ -11,6 +8,7 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
  /* Variables ----*/
 $menu-overlay: rgba(29, 29, 29, 0.9);
 $menu-color: #F5F5F5;
+
 
 .browsehappy {
     margin: 0.2em 0;

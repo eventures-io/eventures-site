@@ -3,7 +3,8 @@
     <header class="post-header">
         <div class="post-title">
             <h2 ng-bind-html="post.title | HtmlFilter"></h2>
-            <p>________________</p>
+
+            <p class="title-line">_____________&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;_____________</p>
         </div>
 
         <div class="post-image" ng-style="getBackgroundStyle(post)">
@@ -17,7 +18,16 @@
         <div ng-bind-html="post.content | HtmlFilter"></div>
     </article>
     <footer>
-        <!--social buttons here -->
-
+        <div class="social-icons">
+         <span class="hint--top hint--rounded" data-hint="Share">
+            <img class="social-icon" src="assets/images/share.svg" alt="share">
+         </span>
+          <span class="hint--top hint--rounded" data-hint="Recommend">
+            <img class="social-icon" src="assets/images/star.svg" alt="recommend">
+          </span>
+          <span class="hint--top hint--rounded" data-hint="Bookmark" ng-click="bookmarkArticle(post.title)">
+            <img class="social-icon" src="assets/images/bookmark.svg" alt="bookmark">
+          </span>
+        </div>
     </footer>
 </div>

@@ -35,6 +35,23 @@ angular.module('evtrs-site').directive('navbar', function(BlogResource, $state, 
                 return {'background-image':'url(' + post.featured_image.source + ')'}
             }
 
+            $scope.bookmarkArticle = function(title) {
+                var url = window.location.href;
+                if(document.all) { // ie
+                        $window.external.AddFavorite(url, title);
+                    }
+                    else if(window.sidebar) { // firefox
+                        window.sidebar.addPanel(title, url, "");
+                    }
+                    else if(window.opera && window.print) { // opera
+                        var elem = document.createElement('a');
+                        elem.setAttribute('href',url);
+                        elem.setAttribute('title',title);
+                        elem.setAttribute('rel','sidebar');
+                        elem.click(); // this.title=$document.title;
+                    }
+                }
+
 
         }
     }
