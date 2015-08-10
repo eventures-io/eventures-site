@@ -17,6 +17,13 @@
     <article class="post-content">
         <div ng-bind-html="post.content | HtmlFilter"></div>
     </article>
+    <div class="comments">
+        <dir-disqus disqus-shortname="eventures-io"
+                    disqus-identifier="{{ post.ID }}"
+                    disqus-url="{{ post.url }}"
+                    ready-to-bind="{{ contentLoaded }}">
+        </dir-disqus>
+    </div>
     <footer>
         <div class="social-icons">
          <span class="hint--top hint--rounded" data-hint="Share">

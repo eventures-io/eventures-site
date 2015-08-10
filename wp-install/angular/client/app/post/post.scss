@@ -59,4 +59,9 @@ footer {
 }
 
 
+.comments {
+  @extend .container;
+  padding: 40px;
+}
+
 

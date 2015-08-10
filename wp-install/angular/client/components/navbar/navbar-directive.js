@@ -8,10 +8,11 @@ angular.module('evtrs-site').directive('navbar', function(BlogResource, $state, 
 
             var menuElement = document.querySelector('.menu');
 
-            BlogResource.getPosts().then(function(response){
-                //TODO load only once
-                $scope.posts = response.data;
-                $scope.postImages = BlogResource.preloadImages(response.data);
+            BlogResource.getPosts().then(function(posts){
+                //TODO load only once, move to service
+                $scope.posts = posts;
+                //TODO preload images if not on mobile, move to service, not resource
+                $scope.postImages = BlogResource.preloadImages(posts);
             });
 
             $scope.openMenu = function() {
@@ -27,7 +28,7 @@ angular.module('evtrs-site').directive('navbar', function(BlogResource, $state, 
                 $scope.closeMenu();
                 //TODO listen for animation end event
                 $timeout(function(){
-                    return   $state.go('post', {postId:post.ID, postTitle: post.title});
+                    return   $state.go('post', {postId:post.ID, postTitle: post.titleUrl});
                 }, 700);
             };
 
@@ -35,22 +36,38 @@ angular.module('evtrs-site').directive('navbar', function(BlogResource, $state, 
                 return {'background-image':'url(' + post.featured_image.source + ')'}
             }
 
+            //TODO move to service
             $scope.bookmarkArticle = function(title) {
-                var url = window.location.href;
-                if(document.all) { // ie
-                        $window.external.AddFavorite(url, title);
-                    }
-                    else if(window.sidebar) { // firefox
-                        window.sidebar.addPanel(title, url, "");
-                    }
-                    else if(window.opera && window.print) { // opera
-                        var elem = document.createElement('a');
-                        elem.setAttribute('href',url);
-                        elem.setAttribute('title',title);
-                        elem.setAttribute('rel','sidebar');
-                        elem.click(); // this.title=$document.title;
-                    }
+                var bookmarkURL = window.location.href;
+                var bookmarkTitle = title;
+                var triggerDefault = false;
+
+                if (window.sidebar && window.sidebar.addPanel) {
+                    // Firefox version < 23
+                    window.sidebar.addPanel(bookmarkTitle, bookmarkURL, '');
+                } else if ((window.sidebar && (navigator.userAgent.toLowerCase().indexOf('firefox') > -1)) || (window.opera && window.print)) {
+                    // Firefox version >= 23 and Opera Hotlist
+                    var $this = $(this);
+                    $this.attr('href', bookmarkURL);
+                    $this.attr('title', bookmarkTitle);
+                    $this.attr('rel', 'sidebar');
+                    $this.off(e);
+                    triggerDefault = true;
+                } else if (window.external && ('AddFavorite' in window.external)) {
+                    // IE Favorite
+                    window.external.AddFavorite(bookmarkURL, bookmarkTitle);
+                } else {
+                    // WebKit - Safari/Chrome
+//                   var tooltipText = 'Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Cmd' : 'Ctrl') + '+D to bookmark this page.';
+//                    document.querySelector('span[data-hint="Bookmark"]').innerHtml = tooltipText;
                 }
+
+                return triggerDefault;
+            }
+
+
+
+
 
 
         }

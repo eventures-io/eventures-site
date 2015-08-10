@@ -5,6 +5,9 @@ angular.module('evtrs-site')
 
         BlogResource.getPost($stateParams.postId).then(function(response){
             $scope.post = response.data;
+            //TODO use repeat end
+            $scope.contentLoaded = true;
+            window.document.title = $scope.post.title;
+            $scope.post.url = window.location.href;
         });
-
     });

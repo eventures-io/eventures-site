@@ -8,7 +8,8 @@ angular
         'ngAnimate',
         'ngSanitize',
         'ui.router',
-        'config'
+        'config',
+        'angularUtils.directives.dirDisqus'
         //'ngTouch'
     ]).config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
 
@@ -26,11 +27,27 @@ angular
                 url: '/post/:postId/:postTitle',
                 templateUrl: 'app/post/post.html',
                 controller: 'PostController'
-            })
+            });
 
     } )
     .filter('HtmlFilter', ['$sce', function ($sce) {
     return function (text) {
         return $sce.trustAsHtml(text);
     };
+      //TODO add http interceptor for error handling end time outs
 }]);
+
+//TODO
+//$stateProvider
+//    .state('home', {
+//        url: '/',
+//        template: '',
+//        controller: 'HomeController',
+//        title: 'Home'
+//    })
+//
+//.run(['$rootScope', function($rootScope) {
+//    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+//        window.document.title = current.$$route.title;
+//    });
+//}]);

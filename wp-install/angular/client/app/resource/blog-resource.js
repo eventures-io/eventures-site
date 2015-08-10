@@ -1,12 +1,23 @@
 'use strict';
 
-angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log) {
+angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log, $q) {
     var baseUrl = conf.WP_URL.concat('/posts');
 
     var postsPreviewUrl = baseUrl.concat('?fields=ID,title,featured_image');
 
     var getPostList = function () {
-        return  $http.get(postsPreviewUrl);
+        var deferred = $q.defer();
+
+        $http.get(postsPreviewUrl).then(function(response){
+            var posts = response.data;
+            _(posts).forEach(function(post) {
+               var title = post.title;
+               post.titleUrl = title.replace(/ /g,"-");
+            }).value();
+            deferred.resolve(posts);
+        });
+
+        return deferred.promise;
     }
 
     var getPost = function (postId) {
