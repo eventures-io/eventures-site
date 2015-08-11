@@ -7,6 +7,10 @@
     min-height: 15vh;
     text-align: center;
     padding-bottom: 20px;
+    h2 {
+      font-family: 'Metrophobic', sans-serif;
+      font-weight: bolder;
+    }
   }
 
   .title-line {
@@ -58,6 +62,14 @@ footer {
 
 }
 
+pre {
+  background-color: #d6d6d6;
+  margin: 20px;
+  padding: 20px;
+  width: 80%;
+  border-radius: 3px;
+
+}
 
 .comments {
   @extend .container;

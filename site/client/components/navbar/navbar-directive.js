@@ -1,43 +1,43 @@
 'use strict';
 
-angular.module('evtrs-site').directive('navbar', function(BlogResource, $state, $timeout) {
+angular.module('evtrs-site').directive('navbar', function (BlogResource, $state, $timeout) {
     return {
-        restrict : 'E',
+        restrict: 'E',
         templateUrl: 'components/navbar/navbar.html',
-        controller: function($element, $scope){
+        controller: function ($element, $scope) {
 
             var menuElement = document.querySelector('.menu');
 
-            BlogResource.getPosts().then(function(posts){
+            BlogResource.getPosts().then(function (posts) {
                 //TODO load only once, move to service
                 $scope.posts = posts;
                 //TODO preload images if not on mobile, move to service, not resource
                 $scope.postImages = BlogResource.preloadImages(posts);
             });
 
-            $scope.openMenu = function() {
+            $scope.openMenu = function () {
                 menuElement.classList.add('menu-open');
             };
 
-            $scope.closeMenu = function() {
+            $scope.closeMenu = function () {
                 menuElement.classList.remove('menu-open');
-                menuElement.style.backgroundImage='';
+                menuElement.style.backgroundImage = '';
             };
 
-            $scope.showPost = function(post){
+            $scope.showPost = function (post) {
                 $scope.closeMenu();
                 //TODO listen for animation end event
-                $timeout(function(){
-                    return   $state.go('post', {postId:post.ID, postTitle: post.titleUrl});
+                $timeout(function () {
+                    return   $state.go('post', {postId: post.ID, postTitle: post.titleUrl});
                 }, 700);
             };
 
-            $scope.getBackgroundStyle =  function(post) {
-                return {'background-image':'url(' + post.featured_image.source + ')'}
+            $scope.getBackgroundStyle = function (post) {
+                return {'background-image': 'url(' + post.featured_image.source + ')'}
             }
 
-            //TODO move to service
-            $scope.bookmarkArticle = function(title) {
+            //TODO move social icons to separate directive
+            $scope.bookmarkArticle = function (title) {
                 var bookmarkURL = window.location.href;
                 var bookmarkTitle = title;
                 var triggerDefault = false;
@@ -58,16 +58,13 @@ angular.module('evtrs-site').directive('navbar', function(BlogResource, $state, 
                     window.external.AddFavorite(bookmarkURL, bookmarkTitle);
                 } else {
                     // WebKit - Safari/Chrome
-//                   var tooltipText = 'Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Cmd' : 'Ctrl') + '+D to bookmark this page.';
-//                    document.querySelector('span[data-hint="Bookmark"]').innerHtml = tooltipText;
+                    var tooltipText = 'Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Cmd' : 'Ctrl') + '+D to bookmark.';
+                    var tooltip = document.querySelector('span[data-hint="Bookmark"]');
+                    tooltip.setAttribute('data-hint', tooltipText);
                 }
 
                 return triggerDefault;
             }
-
-
-
-
 
 
         }

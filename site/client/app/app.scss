@@ -1,22 +1,22 @@
-@import url(https://fonts.googleapis.com/css?family=Lato|Raleway|Share);
+@import url(https://fonts.googleapis.com/css?family=Lato|Raleway|Share|Metrophobic);
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
-@import "hint.css/src/hint.scss";
+@import "hint.css/src/hint";
+@import "prism/themes/prism-coy";
+
 /**
  * App-wide Styles
  */
 
- /* Variables ----*/
+/* Variables ----*/
 $menu-overlay: rgba(29, 29, 29, 0.9);
 $menu-color: #F5F5F5;
 
-
 .browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
-
 
 body {
   font-family: 'Lato', sans-serif;

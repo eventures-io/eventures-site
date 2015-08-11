@@ -21,23 +21,18 @@
 if (file_exists(dirname(__FILE__) . '/local-config.php')) {
 	include(dirname(__FILE__) . '/local-config.php');
 }
-
 // Global DB config
-if (!defined('DB_NAME')) {
-	define('DB_NAME', 'cdws');
-}
-if (!defined('DB_USER')) {
-	define('DB_USER', 'cdws');
-}
-if (!defined('DB_PASSWORD')) {
-	define('DB_PASSWORD', 'cdws');
-}
 if (ENVIRONMENT == 'production'){
-	$mysql_host = getenv('WPDB_TCP_ADDR');
-	error_log('Connecting to db host : ' + $mysql_host);
-    define('DB_HOST', $mysql_host);
+//	$mysql_host = getenv('WPDB_TCP_ADDR');
+		define('DB_NAME', 'wp_eventures');
+		define('DB_USER', 'eventures');
+	    define('DB_PASSWORD', 'msnet763*');
+        define('DB_HOST', 'wp_db');
 }else{
 	error_log('Connecting to local db');
+	define('DB_NAME', 'cdws');
+	define('DB_USER', 'cdws');
+	define('DB_PASSWORD', 'cdws');
     define('DB_HOST', 'localhost');
 }
 /** Database Charset to use in creating database tables. */
