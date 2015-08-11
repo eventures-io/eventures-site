@@ -15,20 +15,21 @@
  */
  
  define('ENVIRONMENT', getenv('WP_ENV'));
- define('WP_DEBUG', true);
 
-// Include local configuration
-if (file_exists(dirname(__FILE__) . '/local-config.php')) {
-	include(dirname(__FILE__) . '/local-config.php');
-}
+
 // Global DB config
 if (ENVIRONMENT == 'production'){
 //	$mysql_host = getenv('WPDB_TCP_ADDR');
 		define('DB_NAME', 'wp_eventures');
-		define('DB_USER', 'eventures');
-	    define('DB_PASSWORD', 'msnet763*');
+		define('DB_USER', 'wp-evtrs');
+	    define('DB_PASSWORD', 'mSnet763*.');
         define('DB_HOST', 'wp_db');
 }else{
+	// Include local configuration
+	if (file_exists(dirname(__FILE__) . '/local-config.php')) {
+	include(dirname(__FILE__) . '/local-config.php');
+	}
+	define('WP_DEBUG', true);
 	error_log('Connecting to local db');
 	define('DB_NAME', 'cdws');
 	define('DB_USER', 'cdws');
@@ -54,14 +55,14 @@ if (!defined('DB_COLLATE')) {
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'N@n<V+4N BFWO%=4N! /R;({(kJ]QAizxtx>ig|oh3U|,u$/BC75V.3qr+0myDz&');
-define('SECURE_AUTH_KEY',  ',V+&Z?7_m):$c,VXm5;@&)$]ZByLl8&=DamL=sqiB 66I-:)IaWct|KPZ_/{*;h<');
-define('LOGGED_IN_KEY',    'n![ubGk(<-1bPgOlY+-46[ebQ[@UsD%<=/##QT!uMRzPnS&6A=>/S:Cp?T$+reH`');
-define('NONCE_KEY',        ')iqQ&II+w%)(qvCXG~:Trw3JP-/@R2!=,> z]t)+W VkR}D#1S^rw?+Uf6C7;I@p');
-define('AUTH_SALT',        '|Z,eUa~2T|kVBjDw7U~I)/ -AT0bw|>%`BiWa/qn#{H!$pgIR.#=V}TJX|d1JM 6');
-define('SECURE_AUTH_SALT', 'Z*<I2^`,3N?g&7qf+/U[|O9E1S~<{KtL*OE4HtO;+oEQTU/`7oF,o9ey7b4.jX~e');
-define('LOGGED_IN_SALT',   'Py;,L5!9b[dU0W=w1ei/qd4g%!bUrdUVbB veeF78~hKq@|p-{xbm2A|$`tY^),E');
-define('NONCE_SALT',       'b 6G@]fupM+:pczNv]J?|TzeJP lh29+gch=R$~6eHE4+ow27!wQUr<j|yW-i*|}');
+define('AUTH_KEY',         '~@8a4n8[q+;beAHA&M5R%d|NR#I~qgBr3<M0gA<|?z`gDOnr|3=mS{&zeEi`~-]W');
+define('SECURE_AUTH_KEY',  ']]h}tNdUAH@o)xuzIzzzc-Cij(1w/pG8d^+t.:i>JvJ|GD_5V7QGa=asD)(ah]8H');
+define('LOGGED_IN_KEY',    'dM+v{=aN(y4-cHK)DE0T77$7uU#1&i|JdL<|OO:T5#f9`k;iZ1~f|U!]$~(f763+');
+define('NONCE_KEY',        '&h8D!c^[a@6xNzOI!}XZxS/~2P=NBpQ=%U:Y/u%,8dueIgqbP}7>bzxn,A/D&Wc?');
+define('AUTH_SALT',        'bs=P6Z/|m>~eHR,kgtGb%).@:).hW{#/2<U{GX>i !1TPzc?s>Mzanu9MX. &U4;');
+define('SECURE_AUTH_SALT', 'a`D_RD[G]f/9-tN o^j4[T7U2/ECY3.qeM8]J7a3S# =E^%pcF>OpIuiLM!%*.z|');
+define('LOGGED_IN_SALT',   'a}0RX&O+sQlPR=H#l`045#=+e{-F )ur6En[0ec}M$qLB|!&=[g}5wf3+53xQ)zM');
+define('NONCE_SALT',       '+wXMDnV(z51/^(f-n2mYhz]U_.DM{uO9.vN2Tk$[r+?YFCe|7C2/E!YDRYVRi9s?');
 
 /**#@-*/
 
