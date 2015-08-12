@@ -28,7 +28,7 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 EXPOSE 80
  
 # Copy site into place.
-ADD ./wp-install /var/www/site/
+COPY ./wp-install /var/www/site/
  
 # Update the default apache site with the config we created.
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf

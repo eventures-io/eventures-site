@@ -17,7 +17,8 @@ module.exports = function (grunt) {
         cdnify: 'grunt-google-cdn',
         protractor: 'grunt-protractor-runner',
         injector: 'grunt-asset-injector',
-        buildcontrol: 'grunt-build-control'
+        buildcontrol: 'grunt-build-control',
+        ngconstant: 'grunt-ng-constant'
     });
 
     // Time how long tasks take. Can help when optimizing build times
@@ -560,7 +561,7 @@ module.exports = function (grunt) {
                 space: '  ',
                 wrap: '"use strict";\n\n {%= __ngModule %}',
                 name: 'config',
-                dest: '<%= yeoman.app %>/main/config.js'
+                dest: '<%= yeoman.client %>/app/main/config.js'
             },
             development: {
                 constants: {
@@ -680,10 +681,10 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        'ngconstant:production',
         'injector:sass',
         'concurrent:dist',
         'injector',
+        'ngconstant:production',
         'wiredep',
         'useminPrepare',
         'autoprefixer',
