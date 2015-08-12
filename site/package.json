@@ -1,6 +1,6 @@
 {
-  "name": "temp",
-  "version": "0.0.0",
+  "name": "evtrs-site",
+  "version": "0.0.1",
   "main": "server/app.js",
   "dependencies": {
     "express": "~4.0.0",
