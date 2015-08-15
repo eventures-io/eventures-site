@@ -33,8 +33,8 @@ angular.module('evtrs-site').directive('navbar', function (BlogResource, $state,
             };
 
             $scope.getBackgroundStyle = function (post) {
-                return {'background-image': 'url(' + post.featured_image.source + ')'}
-            }
+                return {'background-image': 'url(' + post.featured_image.source + ')'};
+            };
 
             //TODO move social icons to separate directive
             $scope.bookmarkArticle = function (title) {
@@ -45,26 +45,28 @@ angular.module('evtrs-site').directive('navbar', function (BlogResource, $state,
                 if (window.sidebar && window.sidebar.addPanel) {
                     // Firefox version < 23
                     window.sidebar.addPanel(bookmarkTitle, bookmarkURL, '');
-                } else if ((window.sidebar && (navigator.userAgent.toLowerCase().indexOf('firefox') > -1)) || (window.opera && window.print)) {
-                    // Firefox version >= 23 and Opera Hotlist
-                    var $this = $(this);
-                    $this.attr('href', bookmarkURL);
-                    $this.attr('title', bookmarkTitle);
-                    $this.attr('rel', 'sidebar');
-                    $this.off(e);
-                    triggerDefault = true;
-                } else if (window.external && ('AddFavorite' in window.external)) {
+                }
+//                else if ((window.sidebar && (navigator.userAgent.toLowerCase().indexOf('firefox') > -1)) || (window.opera && window.print)) {
+//                    // Firefox version >= 23 and Opera Hotlist
+//                    var $this = $(this);
+//                    $this.attr('href', bookmarkURL);
+//                    $this.attr('title', bookmarkTitle);
+//                    $this.attr('rel', 'sidebar');
+//                    //$this.off(e);
+//                    triggerDefault = true;
+//                }
+                else if (window.external && ('AddFavorite' in window.external)) {
                     // IE Favorite
                     window.external.AddFavorite(bookmarkURL, bookmarkTitle);
                 } else {
                     // WebKit - Safari/Chrome
-                    var tooltipText = 'Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Cmd' : 'Ctrl') + '+D to bookmark.';
+                    var tooltipText = 'Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') !== -1 ? 'Cmd' : 'Ctrl') + '+D to bookmark.';
                     var tooltip = document.querySelector('span[data-hint="Bookmark"]');
                     tooltip.setAttribute('data-hint', tooltipText);
                 }
 
                 return triggerDefault;
-            }
+            };
 
 
         }

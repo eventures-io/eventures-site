@@ -12,17 +12,17 @@ angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log
             var posts = response.data;
             _(posts).forEach(function(post) {
                var title = post.title;
-               post.titleUrl = title.replace(/ /g,"-");
+               post.titleUrl = title.replace(/ /g,'-');
             }).value();
             deferred.resolve(posts);
         });
 
         return deferred.promise;
-    }
+    };
 
     var getPost = function (postId) {
         return $http.get(baseUrl.concat('/').concat(postId));
-    }
+    };
 
     var preloadImages = function (posts) {
         var images = [];
@@ -38,7 +38,7 @@ angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log
         }).value();
 
       return images;
-    }
+    };
 
 
     return {

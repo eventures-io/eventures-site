@@ -380,7 +380,9 @@ module.exports = function (grunt) {
                         dest: '<%= yeoman.dist %>',
                         src: [
                             'package.json',
-                            'server/**/*'
+                            'server/**/*',
+                            'Procfile',
+                            '.env'
                         ]
                     }
                 ]
@@ -403,7 +405,7 @@ module.exports = function (grunt) {
             },
             heroku: {
                 options: {
-                    remote: 'heroku',
+                    remote: 'git@heroku.com:eventures.git',
                     branch: 'master'
                 }
             },
@@ -575,7 +577,8 @@ module.exports = function (grunt) {
                 constants: {
                     conf: {
                         name: 'production',
-                        WP_URL: 'http://wp-evtrs/wp-json'
+                        //WP_URL: 'http://ec2-52-17-227-41.eu-west-1.compute.amazonaws.com/wp-json'
+                        WP_URL: 'http://localhost/wp-json'
                     }
                 }
             }
@@ -619,6 +622,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'env:all',
+            'ngconstant:development',
             'injector:sass',
             'concurrent:server',
             'injector',
@@ -649,7 +653,6 @@ module.exports = function (grunt) {
             return grunt.task.run([
                 'clean:server',
                 'env:all',
-                'ngconstant:development',
                 'injector:sass',
                 'concurrent:test',
                 'injector',
@@ -701,7 +704,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'newer:jshint',
-        'test',
+        //'test',
         'build'
     ]);
 };
