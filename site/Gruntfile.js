@@ -577,8 +577,7 @@ module.exports = function (grunt) {
                 constants: {
                     conf: {
                         name: 'production',
-                        //WP_URL: 'http://ec2-52-17-227-41.eu-west-1.compute.amazonaws.com/wp-json'
-                        WP_URL: 'http://localhost/wp-json'
+                        WP_URL: 'http://ec2-52-17-227-41.eu-west-1.compute.amazonaws.com/wp-json'
                     }
                 }
             }

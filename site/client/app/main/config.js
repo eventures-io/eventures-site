@@ -2,6 +2,6 @@
 
  angular.module('config', [])
 
-.constant('conf', {name:'production',WP_URL:'http://wp-evtrs/wp-json'})
+.constant('conf', {name:'development',WP_URL:'http://localhost/wp-json'})
 
 ;

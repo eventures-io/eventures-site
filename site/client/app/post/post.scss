@@ -22,13 +22,20 @@
     min-height: 55vh;
     background-size: cover;
     background-position: center;
+    transition: all 1s;
+    filter: contrast(100%);
   }
+
+ .post-image:hover {
+   filter: contrast(80%);
+
+ }
 
   .post-summary {
     min-height: 25vh;
     color: $menu-color;
     background-color: #3a3a3a;
-    background-image: radial-gradient(circle farthest-side, #2d2d2d, #1b1b1b);
+    background-image: radial-gradient(circle farthest-side, #454545, #1b1b1b);
     text-align: center;
   }
 
