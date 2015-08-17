@@ -14,8 +14,19 @@
             </div>
         </div>
     </header>
+
     <article class="post-content">
-        <div ng-bind-html="post.content | HtmlFilter"></div>
+        <div class="row">
+            <div class="date-horizontal">
+                <span class="pipe"> | </span>
+                <span class="date-day" >{{post.publDate | date:'dd'}}</span>
+                <span class="date-month" >{{post.publDate | date:'MMM'}}</span>
+                <span class="date-year" >{{post.publDate | date:'yyyy'}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-bind-html="post.content | HtmlFilter"></div>
+        </div>
     </article>
     <div class="comments">
         <dir-disqus disqus-shortname="eventures-io"

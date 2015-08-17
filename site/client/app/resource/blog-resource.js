@@ -21,7 +21,14 @@ angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log
     };
 
     var getPost = function (postId) {
-        return $http.get(baseUrl.concat('/').concat(postId));
+        var deferred = $q.defer();
+
+        $http.get(baseUrl.concat('/').concat(postId)).then(function(response){
+            var post = response.data;
+            post.publDate = new Date(post.date);
+            deferred.resolve(post);
+        });
+        return deferred.promise;
     };
 
     var preloadImages = function (posts) {
