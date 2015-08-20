@@ -23,8 +23,8 @@ angular
                 url: '/',
                 template: '',
                 controller: 'HomeController'
-            }).state('post', {
-                url: '/post/:postId/:postTitle',
+            }).state('blog', {
+                url: '/blog/:postId/:postTitle',
                 templateUrl: 'app/post/post.html',
                 controller: 'PostController'
             });

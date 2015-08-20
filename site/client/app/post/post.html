@@ -1,5 +1,5 @@
 <navbar></navbar>
-<div ng-click="closeMenu()">
+<article ng-click="closeMenu()">
     <header class="post-header">
         <div class="post-title">
             <h2 ng-bind-html="post.title | HtmlFilter"></h2>
@@ -15,7 +15,7 @@
         </div>
     </header>
 
-    <article class="post-content">
+    <section class="post-content">
         <div class="row">
             <div class="date-horizontal">
                 <span class="pipe"> | </span>
@@ -27,14 +27,14 @@
         <div class="row">
             <div ng-bind-html="post.content | HtmlFilter"></div>
         </div>
-    </article>
-    <div class="comments">
+    </section>
+    <section class="comments">
         <dir-disqus disqus-shortname="eventures-io"
                     disqus-identifier="{{ post.ID }}"
                     disqus-url="{{ post.url }}"
                     ready-to-bind="{{ contentLoaded }}">
         </dir-disqus>
-    </div>
+    </section>
     <footer>
         <div class="social-icons">
          <span class="hint--top hint--rounded" data-hint="Bookmark" ng-click="bookmarkArticle(post.title)">
@@ -48,4 +48,4 @@
          </span>
         </div>
     </footer>
-</div>
+</article>

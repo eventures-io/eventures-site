@@ -5,7 +5,7 @@ angular.module('evtrs-site')
 
         BlogResource.getPosts().then(function(response){
             var post = response[0];
-            $state.go('post', {postId: post.ID, postTitle: post.titleUrl});
+            $state.go('blog', {postId: post.ID, postTitle: post.titleUrl});
         });
 
     });

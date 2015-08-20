@@ -28,12 +28,15 @@ angular.module('evtrs-site').directive('navbar', function (BlogResource, $state,
                 $scope.closeMenu();
                 //TODO listen for animation end event
                 $timeout(function () {
-                    return   $state.go('post', {postId: post.ID, postTitle: post.titleUrl});
+                    return   $state.go('blog', {postId: post.ID, postTitle: post.titleUrl});
                 }, 700);
             };
 
             $scope.getBackgroundStyle = function (post) {
-                return {'background-image': 'url(' + post.featured_image.source + ')'};
+                if(post){
+                    return {'background-image': 'url(' + post.featured_image.source + ')'};
+                }
+                return null;
             };
 
             //TODO move social icons to separate directive
