@@ -10,6 +10,7 @@
 /* Variables ----*/
 $menu-overlay: rgba(29, 29, 29, 0.9);
 $menu-color: #F5F5F5;
+$body-color: #666666;
 
 .browsehappy {
   margin: 0.2em 0;
@@ -21,7 +22,7 @@ $menu-color: #F5F5F5;
 body {
   margin: 0;
   font-family: "Roboto", serif;
-  color: #666666;
+  color: $body-color;
   font-weight: 300;
   background: #f9f9f9;
   font-size: 16px;
@@ -45,4 +46,5 @@ h4 {
 @import 'animations.scss';
 @import 'post/post.scss';
 @import 'navbar/navbar.scss';
+@import 'social/social.scss';
 // endinjector

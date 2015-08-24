@@ -10,7 +10,8 @@ angular
         'ui.router',
         'config',
         'angularUtils.directives.dirDisqus',
-        'ngCookies'
+        'ngCookies',
+        '720kb.socialshare'
         //'ngTouch'
     ]).config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
 

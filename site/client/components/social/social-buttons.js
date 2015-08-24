@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('evtrs-site').directive('socialButtons', function (BlogResource, $cookies) {
+angular.module('evtrs-site').directive('socialButtons', function (BlogResource, $cookies, $timeout, $window) {
 
     return {
         restrict: 'E',
@@ -13,11 +13,18 @@ angular.module('evtrs-site').directive('socialButtons', function (BlogResource, 
 
         },
         controller: function ($element, $scope) {
-            //TODO select from $element instead of document
-            $scope.showSocialIcons = function () {
-            //    var shareBtn = $element[0].querySelector('span[data-hint="Share"]');
-             //   shareBtn.style.visibility = 'hidden';
 
+            $scope.currentUrl = $window.location.href;
+
+            //TODO select from $element instead of document
+            $scope.toggleSocialIcons = function () {
+                var socialIcons = $element[0].querySelector('.social-icons');
+                socialIcons.style.opacity = socialIcons.style.opacity === '0' ? '1' : '0';
+                if(socialIcons.style.opacity === '1') {
+                    $timeout(function(){
+                        return $scope.toggleSocialIcons();
+                    }, 8000);
+                }
             };
 
             $scope.recommend = function (postId) {
