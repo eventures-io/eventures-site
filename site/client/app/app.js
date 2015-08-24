@@ -9,7 +9,8 @@ angular
         'ngSanitize',
         'ui.router',
         'config',
-        'angularUtils.directives.dirDisqus'
+        'angularUtils.directives.dirDisqus',
+        'ngCookies'
         //'ngTouch'
     ]).config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
 

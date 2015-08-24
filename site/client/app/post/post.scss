@@ -1,3 +1,4 @@
+/* Header ------*/
 .post-header {
   @extend .container-fluid;
   padding: 20px 0 0 0;
@@ -37,7 +38,7 @@
     color: $menu-color;
     background-color: #3a3a3a;
     background-image: radial-gradient(circle farthest-side, #3c3c3c, #1b1b1b);
-    text-align: center;
+
   }
 
   .excerpt {
@@ -45,15 +46,18 @@
     padding: 2em 4em 2em 4em;
     font-size: x-large;
     font-family: 'Share', cursive;
+    text-align: center;
   }
 }
+
+/* Content ------*/
 
 .post-content {
   @extend .container;
   margin-top: 30px;
   margin-bottom: 30px;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 15%;
+  padding-right: 15%;
 
   header {
     font-size: larger;
@@ -65,7 +69,8 @@
     font-size: 16px;
     font-style: italic;
     margin-left: 40px;
-    border-left: 3px gray dotted;
+    padding-left: 15px;
+    border-left: 3px gray solid;
   }
 
   ul {
@@ -73,24 +78,32 @@
   }
 
   li {
-    padding-left: 5px;
+   // padding-left: 2px;
     margin-bottom: 15px;
   }
   a {
     color: #3d3d3d;
     font-style: italic;
   }
+  pre {
+    background-color: #d6d6d6;
+    margin: 10px 0 10px 0;
+    padding-left: 20px;
+    width: 100%;
+    border-radius: 3px;
+    overflow-x: scroll;
+    code {
+      margin: 0;
+      padding: 10px;
+
+    }
+
+  }
 
 }
 
-//@media (min-width: $screen-sm) {
-//  .date-horizontal {
-//    display: block;
-//    float: right;
-//    padding-right: 10%;
-//
-//  }
-//}
+
+/* Date -------*/
 
 .date-horizontal {
   display: block;
@@ -99,10 +112,6 @@
   margin-bottom: 20px;
 
 }
-
-//span[class^='date-'] {
-//  font-weight: bolder;
-//}
 
 .pipe {
   font-size: 160%;
@@ -123,39 +132,36 @@
   color: gray;
 }
 
+
+/* Footer ------*/
+
 footer {
   border-top: 1px solid #808080;
 }
 
-.social-icons {
-  float: right;
-  padding: 5px 50px 5px 0;
 
-}
-
-.social-icon {
-  padding-left: 15px;
-  cursor: pointer;
-
-}
-
-pre {
-  background-color: #d6d6d6;
-  margin: 10px 0 10px 0;
-  padding-left: 20px;
-  width: 80%;
-  border-radius: 3px;
-  code {
-    margin: 0;
-    padding: 10;
-  }
-
-}
-
+/* Comments ------*/
 .comments {
   @extend .container;
   padding: 40px;
 
 }
+
+/* Media queries ------*/
+
+@media (max-width: $screen-sm) {
+  .post-content {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .post-header {
+    .excerpt {
+      text-align: left;
+      padding: 13%;
+    }
+  }
+}
+
+
 
 

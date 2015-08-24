@@ -1,0 +1,12 @@
+.social-icons {
+    float: right;
+    padding: 5px 50px 5px 0;
+
+}
+
+.social-icon {
+    padding-left: 15px;
+    cursor: pointer;
+    transition: all 0.5s;
+
+}

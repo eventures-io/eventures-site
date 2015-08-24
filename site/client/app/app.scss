@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato|Raleway|Share|Metrophobic);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300|Raleway|Share|Metrophobic);
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import "hint.css/src/hint";
 @import "prism/themes/prism-coy";
@@ -19,8 +19,13 @@ $menu-color: #F5F5F5;
 }
 
 body {
-  font-family: 'Lato', sans-serif;
-  font-size: initial;
+  margin: 0;
+  font-family: "Roboto", serif;
+  color: #666666;
+  font-weight: 300;
+  background: #f9f9f9;
+  font-size: 16px;
+  line-height: 1.7em;
 }
 
 h1,

@@ -12,24 +12,29 @@
 .menu {
   position: fixed;
   top: 0;
-  left: -100vw;
-  width: 100vw;
   color: $menu-color;
   background: $menu-overlay;
   height: 100vh;
   display: block;
-  border-right: #525252 1px solid;
-  transition: all 0.5s ease-out;
+  border-right: #1e1e1e 1px solid;
   z-index: 9999;
+}
+
+@media (max-width: $screen-sm) {
+  .menu {
+    left: -100vw;
+    width: 100vw;
+    transition: all 0.7s;
+  }
 }
 
 @media (min-width: $screen-sm) {
   .menu {
     left: -60vw;
     width: 60vw;
+    transition: all 0.5s ease-out;
   }
 }
-
 
 .menu-open {
   left: 0;
