@@ -42,15 +42,12 @@
 
 .menu-icon {
   cursor: pointer;
-  background-color: transparent;
-  .icon {
-    height: 25px;
-    width: 29px;
-    opacity: 0.7;
-  }
-  .icon:hover {
-    opacity: 1;
-  }
+  font-size: 2em;
+  color: #000000;
+  opacity: 0.6;
+}
+.menu-icon:hover {
+  opacity: 0.9;
 }
 
 .menu-bottom-mask {

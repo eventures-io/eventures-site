@@ -12,7 +12,7 @@ angular.module('evtrs-site').directive('navbar', function (BlogResource, $state,
                 //TODO load only once, move to service
                 $scope.posts = posts;
                 //TODO preload images if not on mobile, move to service, not resource
-                $scope.postImages = BlogResource.preloadImages(posts);
+               // $scope.postImages = BlogResource.preloadImages(posts);
             });
 
             $scope.openMenu = function () {
