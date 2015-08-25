@@ -5,26 +5,19 @@ angular.module('evtrs-site').directive('socialButtons', function (BlogResource, 
     return {
         restrict: 'E',
         templateUrl: 'components/social/social-buttons.html',
-        scope: {
-
-        },
-        link: function (element, scope, attrs) {
-
-
-        },
         controller: function ($element, $scope) {
 
-            $scope.currentUrl = $window.location.href;
 
-            //TODO select from $element instead of document
-            $scope.toggleSocialIcons = function () {
+
+            $scope.showSocialIcons = function () {
                 var socialIcons = $element[0].querySelector('.social-icons');
-                socialIcons.style.opacity = socialIcons.style.opacity === '0' ? '1' : '0';
-                if(socialIcons.style.opacity === '1') {
-                    $timeout(function(){
-                        return $scope.toggleSocialIcons();
-                    }, 8000);
-                }
+                socialIcons.style.opacity = '1';
+                    $timeout(function () {
+                    return socialIcons.style.opacity = '0';
+                }, 8000);
+                $scope.currentUrl = $window.location.href;
+                $scope.twitterVia = 'eventures-io';
+                $scope.shareText =  BlogResource.getCurrentPost().title;
             };
 
             $scope.recommend = function (postId) {
@@ -60,6 +53,7 @@ angular.module('evtrs-site').directive('socialButtons', function (BlogResource, 
                     window.external.AddFavorite(bookmarkURL, bookmarkTitle);
                 } else {
                     // WebKit - Safari/Chrome
+                    //TODO need to detect mobile browsers
                     var tooltipText = 'Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') !== -1 ? 'Cmd' : 'Ctrl') + '+D to bookmark.';
                     var bookmarkBtn = document.querySelector('span[data-hint="Bookmark"]');
                     bookmarkBtn.setAttribute('data-hint', tooltipText);

@@ -4,6 +4,7 @@ angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log
     var baseUrl = conf.WP_URL.concat('/posts');
 
     var postsPreviewUrl = baseUrl.concat('?fields=ID,title,featured_image');
+    var currentPost = {};
 
     var getPostList = function () {
         var deferred = $q.defer();
@@ -27,7 +28,9 @@ angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log
             var post = response.data;
             post.publDate = new Date(post.date);
             deferred.resolve(post);
+            currentPost = post;
         });
+
         return deferred.promise;
     };
 
@@ -44,14 +47,20 @@ angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log
             }
         }).value();
 
+
       return images;
+    };
+
+    var getCurrentPost = function() {
+        return currentPost;
     };
 
 
     return {
         getPosts: getPostList,
         preloadImages: preloadImages,
-        getPost: getPost
+        getPost: getPost,
+        getCurrentPost : getCurrentPost
     }
 });
 
