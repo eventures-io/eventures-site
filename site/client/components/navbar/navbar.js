@@ -9,7 +9,7 @@ angular.module('evtrs-site').directive('navbar', function (BlogResource, $state,
             var menuElement = $element[0].querySelector('.menu');
 
             var loadBookmarks = function () {
-                var bookmarks = $cookies.getObject('bookmarks');
+                var bookmarks = $cookies.getObject('bookmarks') || [];
                 $scope.bookmarks = [];
                 if (bookmarks.length > 0) {
                     $scope.bookmarks[0] = bookmarks[0];
