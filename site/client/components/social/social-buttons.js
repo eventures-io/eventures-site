@@ -1,68 +1,48 @@
 'use strict'
 
-angular.module('evtrs-site').directive('socialButtons', function (BlogResource, $cookies, $timeout, $window) {
+angular.module('evtrs-site').directive('socialButtons', function (BlogResource, $cookies, $timeout, $rootScope, $window) {
 
     return {
         restrict: 'E',
         templateUrl: 'components/social/social-buttons.html',
         controller: function ($element, $scope) {
 
-
-
+            $scope.social = {};
             $scope.showSocialIcons = function () {
                 var socialIcons = $element[0].querySelector('.social-icons');
                 socialIcons.style.opacity = '1';
-                    $timeout(function () {
+                $timeout(function () {
                     return socialIcons.style.opacity = '0';
                 }, 8000);
-                $scope.currentUrl = $window.location.href;
-                $scope.twitterVia = 'eventures-io';
-                $scope.shareText =  BlogResource.getCurrentPost().title;
+                $scope.social.twitterVia = 'eventures-io';
+                $scope.social.shortUrl = BlogResource.getCurrentPost().shortUrl;
+                $scope.social.shareText = BlogResource.getCurrentPost().title;
             };
 
             $scope.recommend = function (postId) {
                 if (!$cookies.get('liked')) {
-                    BlogResource.incrementRecommends().then(function () {
+                     BlogResource.incrementRecommends().then(function () {
                         $cookies.set('liked', true);
-                        //set tooltiptext to 'you already liked'
-                    });
+                    })
+                }
+            }
+
+            $scope.bookmarkArticle = function () {
+                var tooltip = document.querySelector('span[data-hint="Read Later"]');
+                var url = $window.location.href;
+                var bookmarks = $cookies.getObject('bookmarks') || [];
+                if (bookmarks.indexOf(url) === -1) {
+                    bookmarks.unshift({url : url, title : BlogResource.getCurrentPost().title});
+                    $cookies.putObject('bookmarks', bookmarks);
 
                 }
+                $scope.$broadcast('BOOKMARKED');
+                if(tooltip){
+                    tooltip.setAttribute('data-hint', 'Bookmarked');
+                }
+
             };
 
-            $scope.bookmarkArticle = function (title) {
-                var bookmarkURL = window.location.href;
-                var bookmarkTitle = title;
-                var triggerDefault = false;
-
-                if (window.sidebar && window.sidebar.addPanel) {
-                    // Firefox version < 23
-                    window.sidebar.addPanel(bookmarkTitle, bookmarkURL, '');
-                }
-//                else if ((window.sidebar && (navigator.userAgent.toLowerCase().indexOf('firefox') > -1)) || (window.opera && window.print)) {
-//                    // Firefox version >= 23 and Opera Hotlist
-//                    var $this = $(this);
-//                    $this.attr('href', bookmarkURL);
-//                    $this.attr('title', bookmarkTitle);
-//                    $this.attr('rel', 'sidebar');
-//                    //$this.off(e);
-//                    triggerDefault = true;
-//                }
-                else if (window.external && ('AddFavorite' in window.external)) {
-                    // IE Favorite
-                    window.external.AddFavorite(bookmarkURL, bookmarkTitle);
-                } else {
-                    // WebKit - Safari/Chrome
-                    //TODO need to detect mobile browsers
-                    var tooltipText = 'Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') !== -1 ? 'Cmd' : 'Ctrl') + '+D to bookmark.';
-                    var bookmarkBtn = document.querySelector('span[data-hint="Bookmark"]');
-                    bookmarkBtn.setAttribute('data-hint', tooltipText);
-                }
-
-                return triggerDefault;
-            };
         }
-    };
-
-
+    }
 });

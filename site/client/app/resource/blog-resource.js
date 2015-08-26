@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log, $q) {
+angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log, $q, $location) {
     var baseUrl = conf.WP_URL.concat('/posts');
 
     var postsPreviewUrl = baseUrl.concat('?fields=ID,title,featured_image');
@@ -14,6 +14,7 @@ angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log
             _(posts).forEach(function(post) {
                var title = post.title;
                post.titleUrl = title.replace(/ /g,'-');
+
             }).value();
             deferred.resolve(posts);
         });
@@ -27,8 +28,9 @@ angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log
         $http.get(baseUrl.concat('/').concat(postId)).then(function(response){
             var post = response.data;
             post.publDate = new Date(post.date);
-            deferred.resolve(post);
+            post.shortUrl = 'http//wwww.' + $location.host() + '/blog/' + post.ID;
             currentPost = post;
+            deferred.resolve(post);
         });
 
         return deferred.promise;

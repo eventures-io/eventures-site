@@ -1,20 +1,21 @@
-<div class="share-icons">
-    <div class="social-icons">
-        <!-- TODO replace span with ul/li -->
+    <div class="share-icons">
+        <div class="social-icons">
+            <!-- TODO replace span with ul/li -->
          <span>
             <a href="#"
                socialshare
                socialshare-provider="google+"
-               socialshare-url="{{currentUrl}}">
+               socialshare-url="{{social.shortUrl}}">
                 <i class="font-icon icon-google-plus-rect"></i></a>
          </span>
          <span>
              <a href="#"
                 socialshare
                 socialshare-provider="twitter"
-                socialshare-text="{{shareText}}"
-                socialshare-via="{{twitterVia}}"
-                socialshare-hashtags="{{twitterTags}}">
+                socialshare-url="{{social.shortUrl}}"
+                socialshare-text="{{social.shareText}} {{social.shortUrl}}"
+                socialshare-via="{{social.twitterVia}}"
+                socialshare-hashtags="{{social.twitterTags}}">
                  <i class="font-icon icon-twitter-bird"></i>
              </a>
          </span>
@@ -22,8 +23,8 @@
              <a href="http://www.github.com/eventures-io" target="_self"><i
                      class="font-icon icon-github-square"></i></a>
          </span>
-    </div>
-         <span class="hint--top hint--rounded" data-hint="Bookmark" ng-click="bookmarkArticle(post.title)">
+        </div>
+         <span class="hint--top hint--rounded" data-hint="Read Later" ng-click="bookmarkArticle()">
              <i class="font-icon icon-bookmark"></i>
          </span>
          <span ng-mouseenter='showSocialIcons()'>
@@ -32,4 +33,4 @@
          <span class="hint--top hint--rounded" data-hint="Recommend">
              <i class="font-icon icon-like"></i>
          </span>
-</div>
+    </div>

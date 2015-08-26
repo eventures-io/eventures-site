@@ -136,7 +136,7 @@
                             }
 
                             //default to the current page if a URL isn't specified
-                            urlString += '&url=' + encodeURIComponent(data.url || $location.absUrl());
+                            urlString += '&url=' + (data.url || $location.absUrl());
 
                             $window.open(
                                 urlString,

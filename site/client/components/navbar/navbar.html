@@ -1,20 +1,29 @@
+<nav class="bookmarks" data-ng-class="{'bookmarks-show' : bookmarks.length > 0}">
+    <ul>
+        <li data-ng-repeat="bookmark in bookmarks">Bookmarked: <a href="{{bookmark.url}}">{{bookmark.title}}</a>
+        <div data-ng-click="removeBookmark(bookmark)" class="remove-icon">
+            <i class="font-icon icon-cancel"></i>
+        </div>
+        </li>
+    </ul>
+</nav>
 <nav class="navbar">
-    <div class="menu-icon" ng-click="openMenu()">
+    <div class="menu-icon" data-ng-click="openMenu()">
         <i class="font-icon icon-menu"></i>
     </div>
 </nav>
 <div class="menu">
     <div class="menu-image-wrap">
         <nav class="nav-close">
-            <div ng-click="closeMenu()" class="close-icon">
+            <div data-ng-click="closeMenu()" class="close-icon">
                 <i class="font-icon icon-cancel"></i>
             </div>
         </nav>
         <div class="menu-link-container">
-            <div data-ng-repeat="post in posts" ng-click="showPost(post)" class="post-link-wrap" ng-style="{'backgroundImage': 'url(' + post.featured_image.source + ')'}">
+            <div data-ng-repeat="post in posts" ng-click="showPost(post)" class="post-link-wrap" data-ng-style="{'backgroundImage': 'url(' + post.featured_image.source + ')'}">
                 <div class="post-link-mask">
                     <div class="post-link">
-                    <h3 ng-bind-html="post.title | HtmlFilter"></h3>
+                    <h3 data-ng-bind-html="post.title | HtmlFilter"></h3>
                     </div>
                 </div>
             </div>

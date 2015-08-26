@@ -1,7 +1,7 @@
 /* Header ------*/
 .post-header {
   @extend .container-fluid;
-  padding: 20px 0 0 0;
+  padding: 0;
 
   .post-title {
     padding-top: 30px;
@@ -43,7 +43,7 @@
 
   .excerpt {
     @extend .container;
-    padding: 2em 4em 2em 4em;
+    padding: 0.5em 1em 0.5em 1em;
     font-size: x-large;
     font-family: 'Share', cursive;
     text-align: center;
@@ -61,8 +61,6 @@
 
   header {
     font-size: larger;
-    padding-bottom: 30px;
-
   }
 
   blockquote {
@@ -95,9 +93,7 @@
     code {
       margin: 0;
       padding: 10px;
-
     }
-
   }
 
 }
