@@ -13,8 +13,9 @@ angular
         'ngCookies',
         '720kb.socialshare'
         //'ngTouch'
-    ]).config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
+    ]).config(function ($httpProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
 
+        $httpProvider.interceptors.push('HttpRequestInterceptor');
         $locationProvider.html5Mode(true);
 
         $urlRouterProvider

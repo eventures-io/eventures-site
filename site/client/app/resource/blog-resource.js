@@ -57,12 +57,27 @@ angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log
         return currentPost;
     };
 
+    var incrementLikes = function(postId) {
+
+        $http.get('/api/wp/getLikes').then(function(response){
+
+        })
+    };
+
+    var getLikes =  function(postId){
+        $http.get('/api/wp/getLikes').then(function(response){
+
+        })
+    };
+
 
     return {
         getPosts: getPostList,
         preloadImages: preloadImages,
         getPost: getPost,
-        getCurrentPost : getCurrentPost
+        getCurrentPost : getCurrentPost,
+        incrementLikes: incrementLikes,
+        getLikes: getLikes
     }
 });
 

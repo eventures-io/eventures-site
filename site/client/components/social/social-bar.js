@@ -4,7 +4,7 @@ angular.module('evtrs-site').directive('socialButtons', function (BlogResource, 
 
     return {
         restrict: 'E',
-        templateUrl: 'components/social/social-buttons.html',
+        templateUrl: 'components/social/social-bar.html',
         controller: function ($element, $scope) {
 
             $scope.social = {};
@@ -19,13 +19,16 @@ angular.module('evtrs-site').directive('socialButtons', function (BlogResource, 
                 $scope.social.shareText = BlogResource.getCurrentPost().title;
             };
 
-            $scope.recommend = function (postId) {
-                if (!$cookies.get('liked')) {
-                     BlogResource.incrementRecommends().then(function () {
-                        $cookies.set('liked', true);
-                    })
+            $scope.recommend = function () {
+                var likes = $cookies.get('blog-likes') || [];
+                var title = BlogResource.getCurrentPost().title;
+                if (likes.indexOf(title)== -1) {
+                     BlogResource.incrementLikes(BlogResource.getCurrentPost().ID).then(function () {
+                        likes.push(title);
+                        $cookies.setObject('blog-likes', likes);
+                    });
                 }
-            }
+            };
 
             $scope.bookmarkArticle = function () {
                 var tooltip = document.querySelector('span[data-hint="Read Later"]');
@@ -34,13 +37,11 @@ angular.module('evtrs-site').directive('socialButtons', function (BlogResource, 
                 if (bookmarks.indexOf(url) === -1) {
                     bookmarks.unshift({url : url, title : BlogResource.getCurrentPost().title});
                     $cookies.putObject('bookmarks', bookmarks);
-
+                    $scope.$broadcast('BOOKMARKED');
                 }
-                $scope.$broadcast('BOOKMARKED');
                 if(tooltip){
                     tooltip.setAttribute('data-hint', 'Bookmarked');
                 }
-
             };
 
         }
