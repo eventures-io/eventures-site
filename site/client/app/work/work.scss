@@ -1,0 +1,75 @@
+.portfolio {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: row;
+}
+
+@media (min-width: $screen-sm) {
+  .portfolio > div {
+    flex: 1 1 auto;
+    width: 30px; // To make the transition work nicely.
+    transform: skewX(-15deg);
+    transition: width 0.5s ease-in;
+  }
+
+  .portfolio > div:hover {
+    width: 300px;
+  }
+}
+
+/* colors */
+.portfolio > div:nth-child(1) {
+  background: #009246;
+}
+
+.portfolio > div:nth-child(2) {
+  background: #F1F2F1;
+}
+
+.portfolio > div:nth-child(3) {
+  background: #CE2B37;
+}
+
+.portfolio > div:nth-child(4) {
+  background: #0f9274;
+}
+
+.portfolio > div:nth-child(5) {
+  background: #44edf2;
+}
+
+.portfolio > div:nth-child(6) {
+  background: #3a79ce;
+}
+
+@media (max-width: $screen-sm) {
+
+  .portfolio {
+    position: absolute;
+    left: -10vw;
+    width: 110vw;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .portfolio > div {
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+
+    width: 110vw;
+    height: 30px;
+
+    transform: skewY(-5deg);
+    transition: height 0.5s ease-in;
+  }
+
+  .portfolio > div:hover {
+    height: 200px;
+  }
+
+}
+
+
+

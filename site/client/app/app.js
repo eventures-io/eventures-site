@@ -24,7 +24,7 @@ angular
         $stateProvider
             .state('home', {
                 url: '/',
-                template: '',
+                templateUrl: 'app/work/work.html',
                 controller: 'HomeController'
             }).state('blog', {
                 url: '/blog/:postId/:postTitle',
@@ -34,10 +34,9 @@ angular
 
     } )
     .filter('HtmlFilter', ['$sce', function ($sce) {
-    return function (text) {
+       return function (text) {
         return $sce.trustAsHtml(text);
     };
-      //TODO add http interceptor for error handling end time outs
 }]);
 
 //TODO
