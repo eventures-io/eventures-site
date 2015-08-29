@@ -1,75 +1,88 @@
 .portfolio {
+  position: relative;
   width: 100vw;
   height: 100vh;
-
   display: flex;
-  flex-direction: row;
+
+  .flex-sub {
+     border-left: 1px solid gray;
+     border-right: 1px solid gray;
+  }
 }
+
+
 
 @media (min-width: $screen-sm) {
-  .portfolio > div {
-    flex: 1 1 auto;
-    width: 30px; // To make the transition work nicely.
-    transform: skewX(-15deg);
-    transition: width 0.5s ease-in;
-  }
-
-  .portfolio > div:hover {
-    width: 300px;
-  }
-}
-
-/* colors */
-.portfolio > div:nth-child(1) {
-  background: #009246;
-}
-
-.portfolio > div:nth-child(2) {
-  background: #F1F2F1;
-}
-
-.portfolio > div:nth-child(3) {
-  background: #CE2B37;
-}
-
-.portfolio > div:nth-child(4) {
-  background: #0f9274;
-}
-
-.portfolio > div:nth-child(5) {
-  background: #44edf2;
-}
-
-.portfolio > div:nth-child(6) {
-  background: #3a79ce;
-}
-
-@media (max-width: $screen-sm) {
 
   .portfolio {
-    position: absolute;
-    left: -10vw;
-    width: 110vw;
-    flex-direction: column;
-    overflow-x: hidden;
+    .flex-sub {
+      flex: 1 1 auto;
+      flex-direction: row;
+      height: 100%;
+      width: 30px; // Needed to make the transition work nicely.
+      overflow: visible;
+      transform: skewX(-16deg);
+      transition: width 0.5s ease-in, transform 2s ease-in;
+    }
+
+    .flex-sub:hover {
+      width: 300px;
+    }
+
   }
-
-  .portfolio > div {
-    -webkit-flex: 1 1 auto;
-    flex: 1 1 auto;
-
-    width: 110vw;
-    height: 30px;
-
-    transform: skewY(-5deg);
-    transition: height 0.5s ease-in;
-  }
-
-  .portfolio > div:hover {
-    height: 200px;
-  }
-
 }
+
+  /* colors */
+  .portfolio > div:nth-child(1) {
+    background: #62ca45;
+  }
+
+  .portfolio > div:nth-child(2) {
+    background: #a2f28d;
+  }
+
+  .portfolio > div:nth-child(3) {
+    background: #c2ce15;
+  }
+
+  .portfolio > div:nth-child(4) {
+    background: #0f9274;
+  }
+
+  .portfolio > div:nth-child(5) {
+    background: #44edf2;
+  }
+
+  .portfolio > div:nth-child(6) {
+    background: #3a79ce;
+  }
+
+  @media (max-width: $screen-sm) {
+
+    .portfolio {
+      position: absolute;
+      left: -10vw;
+      width: 110vw;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    .flex-sub {
+      flex: 1 1 auto;
+      width: 110vw;
+      height: 30px;
+      transform: skewY(-25deg);
+      transition: height 0.5s ease-in, transform 1s ease-in;
+    }
+
+    .flex-sub:hover {
+      height: 200px;
+    }
+
+  }
+
+
+
 
 
 

@@ -27,12 +27,16 @@ angular
                 templateUrl: 'app/work/work.html',
                 controller: 'HomeController'
             }).state('blog', {
+                url: '/blog',
+                template: '',
+                controller: 'PostController'
+            }).state('post', {
                 url: '/blog/:postId/:postTitle',
                 templateUrl: 'app/post/post.html',
                 controller: 'PostController'
-            });
+            })
 
-    } )
+    })
     .filter('HtmlFilter', ['$sce', function ($sce) {
        return function (text) {
         return $sce.trustAsHtml(text);
