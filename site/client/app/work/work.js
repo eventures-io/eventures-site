@@ -7,6 +7,8 @@ angular.module('evtrs-site')
         $scope.expand = function () {
 
             var sub = document.querySelector('.sub-1');
+            sub.addEventListener("transitionend", openProjectEventListener, true);
+
             sub.style.width = '300px';
             var subInner = sub.querySelector('.sub-inner');
             var img = sub.querySelector('img');
@@ -20,8 +22,8 @@ angular.module('evtrs-site')
             projectImg.width = bounding.width;
             projectImg.height = bounding.height;
             overlay.style.display = 'block';
+            //use visibility...
             subInner.style.opacity = '0';
-
             sub.style.transform = 'scale(5,1)';
             sub.style.zIndex = '1';
             $state.go('work.project1');
@@ -32,10 +34,23 @@ angular.module('evtrs-site')
             var sub = document.querySelector('.sub-1');
             var subInner = sub.querySelector('.sub-inner');
 
-            overlay.style.opacity = '1';
+            //overlay.style.opacity = '1';
             sub.addEventListener("transitionend", closeProjectEventListener, true);
             sub.style.transform = 'skewX(-16deg) scale(1,1)';
+            $state.go('work');
 
+        }
+
+        var openProjectEventListener =  function(event) {
+
+            var projectNav = document.querySelector('.project-nav');
+            projectNav.width = '200px';
+
+            var projectContent = document.querySelector('.project-content');
+            projectNav.width = '300px';
+
+            var sub = document.querySelector('.sub-1');
+            sub.removeEventListener("transitionend", openProjectEventListener, true);
         }
 
 
