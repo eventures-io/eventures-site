@@ -19,12 +19,12 @@ angular
         $locationProvider.html5Mode(true);
 
         $urlRouterProvider
-            .otherwise('/');
+            .otherwise('/work');
 
         $stateProvider
             .state('home', {
-                url: '/',
-                templateUrl: 'app/work/work.html',
+                url: '/nowhere',
+                templateUrl: '',
                 controller: 'HomeController'
             }).state('blog', {
                 url: '/blog',
@@ -34,14 +34,27 @@ angular
                 url: '/blog/:postId/:postTitle',
                 templateUrl: 'app/post/post.html',
                 controller: 'PostController'
+            }).state('work', {
+                url: '/work',
+                templateUrl: 'app/work/work.html',
+                controller: 'WorkController'
+            }).state('work.project1', {
+                url: '/project1',
+                views: {
+                    project1: {
+                        templateUrl: 'app/work/projects/project1.html',
+                        controller: 'WorkController'
+                    }
+                }
             })
 
     })
-    .filter('HtmlFilter', ['$sce', function ($sce) {
-       return function (text) {
-        return $sce.trustAsHtml(text);
-    };
-}]);
+    .
+    filter('HtmlFilter', ['$sce', function ($sce) {
+        return function (text) {
+            return $sce.trustAsHtml(text);
+        };
+    }]);
 
 //TODO
 //$stateProvider

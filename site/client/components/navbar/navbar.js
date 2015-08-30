@@ -49,7 +49,7 @@ angular.module('evtrs-site').directive('navbar', function (BlogResource, $state,
                 $scope.closeMenu();
                 //TODO listen for animation end event
                 $timeout(function () {
-                    return $state.go('blog', {postId: post.ID, postTitle: post.titleUrl});
+                    return $state.go('post', {postId: post.ID, postTitle: post.titleUrl});
                 }, 700);
             };
 

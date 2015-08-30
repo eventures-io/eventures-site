@@ -5,82 +5,113 @@
   display: flex;
 
   .flex-sub {
-     border-left: 1px solid gray;
-     border-right: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
   }
 }
 
-
-
 @media (min-width: $screen-sm) {
-
   .portfolio {
     .flex-sub {
       flex: 1 1 auto;
       flex-direction: row;
       height: 100%;
       width: 30px; // Needed to make the transition work nicely.
-      overflow: visible;
+      overflow: hidden;
       transform: skewX(-16deg);
-      transition: width 0.5s ease-in, transform 2s ease-in;
+      //transition: width 0.3s ease-in, transform 1.3s ease-out;
+      transition: transform 0.7s, width 0.7s;
+
+      .sub-inner {
+        transform: skewX(10deg);
+        transition: transform 0.5s;
+        img {
+          width: 400px;
+          height: 700px;
+          transition: transform 0.5s;
+        }
+      }
+
     }
 
     .flex-sub:hover {
       width: 300px;
+      z-index: 1;
+      .sub-inner {
+        transform: translateX(60px) skewX(16deg);
+        img {
+          transform: scale(1.2);
+        }
+      }
     }
 
   }
 }
 
-  /* colors */
-  .portfolio > div:nth-child(1) {
-    background: #62ca45;
+/* colors */
+.portfolio > div:nth-child(1) {
+  background: #62ca45;
+}
+
+.portfolio > div:nth-child(2) {
+  background: #a2f28d;
+}
+
+.portfolio > div:nth-child(3) {
+  background: #c2ce15;
+}
+
+.portfolio > div:nth-child(4) {
+  background: #0f9274;
+}
+
+.portfolio > div:nth-child(5) {
+  background: #44edf2;
+}
+
+.portfolio > div:nth-child(6) {
+  background: #3a79ce;
+}
+
+@media (max-width: $screen-sm) {
+
+  .portfolio {
+    position: absolute;
+    left: -10vw;
+    width: 110vw;
+    flex-direction: column;
+    overflow-x: hidden;
   }
 
-  .portfolio > div:nth-child(2) {
-    background: #a2f28d;
+  .flex-sub {
+    flex: 1 1 auto;
+    width: 110vw;
+    height: 30px;
+    transform: skewY(-25deg);
+    transition: height 0.5s ease-in, transform 1s ease-in;
   }
 
-  .portfolio > div:nth-child(3) {
-    background: #c2ce15;
+  .flex-sub:hover {
+    height: 200px;
   }
 
-  .portfolio > div:nth-child(4) {
-    background: #0f9274;
+}
+
+.project-overlay {
+  position: absolute;
+  top:0;
+  left:0;
+  //opacity: 0;
+  transition: opacity 0.2s;
+//  //TODO create mixin for vw/vh fallback
+//  width: 100%;
+//  height: 100%;
+  z-index: 20;
+  .project-img {
+    position: relative;
   }
 
-  .portfolio > div:nth-child(5) {
-    background: #44edf2;
-  }
-
-  .portfolio > div:nth-child(6) {
-    background: #3a79ce;
-  }
-
-  @media (max-width: $screen-sm) {
-
-    .portfolio {
-      position: absolute;
-      left: -10vw;
-      width: 110vw;
-      flex-direction: column;
-      overflow-x: hidden;
-    }
-
-    .flex-sub {
-      flex: 1 1 auto;
-      width: 110vw;
-      height: 30px;
-      transform: skewY(-25deg);
-      transition: height 0.5s ease-in, transform 1s ease-in;
-    }
-
-    .flex-sub:hover {
-      height: 200px;
-    }
-
-  }
-
+}
 
 
 
