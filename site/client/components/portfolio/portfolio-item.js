@@ -20,7 +20,7 @@ angular.module('evtrs-site').directive('portfolioItem', function($state) {
 
 
             $scope.expand = function () {
-                element.addEventListener("transitionend", openProjectEventListener, true);
+                subInner.addEventListener("transitionend", openProjectEventListener, true);
 
                 var bounding = previewImg.getBoundingClientRect();
                 projectImg.src = previewImg.src;
@@ -32,9 +32,12 @@ angular.module('evtrs-site').directive('portfolioItem', function($state) {
                 //set/unset properties with add/remove class
                 overlay.style.visibility='visible';
                 //cannot use visibility, breaks animation
-                subInner.style.opacity = '0';
-                //element.style.width='3000px';
-                element.style.transform = 'skewX(-16deg) scale(5,1)';
+                //subInner.style.opacity = '0';
+                subInner.style.width= '240vw';
+                subInner.style.transform = 'translateX(-500px)';
+                subInner.style.zIndex = '10';
+                previewImg.style.display='none';
+                //element.style.transform = 'skewX(-16deg) scale(5,1)';
                 //
                 element.style.zIndex = '1';
                 $state.go('work.project1');
@@ -42,12 +45,7 @@ angular.module('evtrs-site').directive('portfolioItem', function($state) {
 
 
             var openProjectEventListener = function (event) {
-                //set background color to overlay
-                overlay.style.backgroundColor = '#a2f28d';
-                //and reset flex container to initial state
-                element.style.transform = 'skewX(-16deg) scale(1,1)';
-                subInner.style.opacity = '1';
-                element.style.zIndex = '0';
+
                 //Move project image into place
                 //use keyframes to scale in, move and scale out
                 projectImg.style.transform = 'scale(0.7) translateX(-200px)';
@@ -57,6 +55,9 @@ angular.module('evtrs-site').directive('portfolioItem', function($state) {
 
 
             $scope.closeProject = function() {
+                subInner.style.width= '100%';
+                subInner.style.transform = 'translateX(0px)';
+                subInner.style.zIndex = '1';
                 //overlay.style.opacity= "0";
                 //todo wait for opacity transition end
                 overlay.style.visibility = 'hidden';
