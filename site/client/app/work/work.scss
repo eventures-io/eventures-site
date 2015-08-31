@@ -79,6 +79,10 @@
   display: none;
   transition: opacity 0.2s;
 
+  .project-img {
+    position: absolute;
+    transition: all 1s;
+  }
 }
 
 .project-view {
@@ -87,28 +91,21 @@
   flex-direction: row;
 
   .project-nav {
-    visibility: hidden;
+     width: 20vw;
   }
 
-  .project-visual {
-    .project-img {
-      position: relative;
-    }
-    width: 100vw;
-    border: 3px solid;
-  }
   .project-content {
-    visibility: hidden;
-  }
-
-  [ui-view] {
-    display: none;
+    width: 80vw;
+    [ui-view] {
+      display: relative;
+      left: 80vw;
+    }
   }
 
 }
 
 .project-view > div {
-  //flex: 1 1 auto;
+  flex: 1 1 auto;
   height: 100vh;
 }
 

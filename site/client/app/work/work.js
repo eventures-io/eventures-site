@@ -36,20 +36,16 @@ angular.module('evtrs-site')
 
             //overlay.style.opacity = '1';
             sub.addEventListener("transitionend", closeProjectEventListener, true);
-            sub.style.transform = 'skewX(-16deg) scale(1,1)';
+            sub.style.transform = 'skewX(-16deg) scale(1)';
             $state.go('work');
 
         }
 
         var openProjectEventListener =  function(event) {
-
-            var projectNav = document.querySelector('.project-nav');
-            projectNav.width = '200px';
-
-            var projectContent = document.querySelector('.project-content');
-            projectNav.width = '300px';
-
-            var sub = document.querySelector('.sub-1');
+            var projectImg = document.querySelector('.project-img');
+            //use keyframes to scale in, move and scale out
+            projectImg.style.transform = 'scale(0.7) translateX(-200px)';
+            projectImg.style.opacity= '0.9';
             sub.removeEventListener("transitionend", openProjectEventListener, true);
         }
 
