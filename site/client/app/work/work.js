@@ -2,7 +2,7 @@
 
 angular.module('evtrs-site')
     .controller('WorkController', function ($scope, $state) {
-
+        var overlay = document.querySelector('.project-overlay');
 
         $scope.expand = function () {
 
@@ -13,7 +13,7 @@ angular.module('evtrs-site')
             var subInner = sub.querySelector('.sub-inner');
             var img = sub.querySelector('img');
             var bounding = img.getBoundingClientRect();
-            var overlay = document.querySelector('.project-overlay');
+
             var projectImg = overlay.querySelector('.project-img');
 
             projectImg.src = img.src;
@@ -21,34 +21,37 @@ angular.module('evtrs-site')
             projectImg.style.top = bounding.top + 'px';
             projectImg.width = bounding.width;
             projectImg.height = bounding.height;
+
+            //use visibility?
             overlay.style.display = 'block';
             //use visibility...
             subInner.style.opacity = '0';
             sub.style.transform = 'scale(5,1)';
             sub.style.zIndex = '1';
             $state.go('work.project1');
-        }
+        };
 
-        $scope.retract = function() {
-            var overlay = document.querySelector('.project-overlay');
+
+        var openProjectEventListener = function (event) {
             var sub = document.querySelector('.sub-1');
             var subInner = sub.querySelector('.sub-inner');
-
-            //overlay.style.opacity = '1';
-            sub.addEventListener("transitionend", closeProjectEventListener, true);
+            overlay.style.backgroundColor = '#a2f28d';
             sub.style.transform = 'skewX(-16deg) scale(1)';
-            $state.go('work');
-
-        }
-
-        var openProjectEventListener =  function(event) {
+            sub.style.width = '30px';
+            subInner.style.opacity = '1';
             var projectImg = document.querySelector('.project-img');
             //use keyframes to scale in, move and scale out
             projectImg.style.transform = 'scale(0.7) translateX(-200px)';
-            projectImg.style.opacity= '0.9';
+            projectImg.style.opacity = '0.9';
             sub.removeEventListener("transitionend", openProjectEventListener, true);
-        }
+        };
 
+
+        $scope.closeProject = function() {
+            overlay.style.display= "none";
+            $state.go('work');
+
+        }
 
         var closeProjectEventListener =  function(event) {
             var overlay = document.querySelector('.project-overlay');
@@ -59,6 +62,7 @@ angular.module('evtrs-site')
             subInner.style.opacity = '1';
             sub.removeEventListener("transitionend", closeProjectEventListener, true);
         }
+
 
 
     });

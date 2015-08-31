@@ -1,3 +1,11 @@
+//todo review
+.project-close {
+  height: 50px;
+  padding-right: 25px;
+  color: white;
+}
+
+
 .portfolio {
   position: relative;
   width: 100vw;
@@ -97,8 +105,7 @@
   .project-content {
     width: 80vw;
     [ui-view] {
-      display: relative;
-      left: 80vw;
+      visibility: none;
     }
   }
 
@@ -111,27 +118,27 @@
 
 /* colors */
 .portfolio > div:nth-child(1) {
-  background: #62ca45;
+  background-color: #62ca45;
 }
 
 .portfolio > div:nth-child(2) {
-  background: #a2f28d;
+  background-color: #a2f28d;
 }
 
 .portfolio > div:nth-child(3) {
-  background: #c2ce15;
+  background-color: #c2ce15;
 }
 
 .portfolio > div:nth-child(4) {
-  background: #0f9274;
+  background-color: #0f9274;
 }
 
 .portfolio > div:nth-child(5) {
-  background: #44edf2;
+  background-color: #44edf2;
 }
 
 .portfolio > div:nth-child(6) {
-  background: #3a79ce;
+  background-color: #3a79ce;
 }
 
 
