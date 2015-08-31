@@ -11,6 +11,7 @@
   width: 100vw;
   height: 100vh;
   display: flex;
+  overflow: hidden;
 
   .flex-sub {
     border-left: 1px solid gray;
@@ -27,11 +28,10 @@
       width: 30px; // Needed to make the transition work nicely.
       overflow: hidden;
       transform: skewX(-16deg);
-      //transition: width 0.3s ease-in, transform 1.3s ease-out;
       transition: transform 0.7s, width 0.7s;
 
       .sub-inner {
-        transform: skewX(10deg);
+        transform: skewX(16deg);
         transition: transform 0.5s;
         img {
           width: 400px;
@@ -84,8 +84,9 @@
   top: 0;
   left: 0;
   z-index: 2;
-  display: none;
-  transition: opacity 0.2s;
+  visibility: hidden;
+  overflow: hidden;
+  transition: opacity 0.4s;
 
   .project-img {
     position: absolute;
