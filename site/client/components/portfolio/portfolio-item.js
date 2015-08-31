@@ -17,10 +17,11 @@ angular.module('evtrs-site').directive('portfolioItem', function($state) {
             var overlay = document.querySelector('.project-overlay');
             var projectImg = overlay.querySelector('.project-img');
             var previewImg = element.querySelector('.preview-img');
+            var portfolio = document.querySelector('.portfolio');
 
 
             $scope.expand = function () {
-                subInner.addEventListener("transitionend", openProjectEventListener, true);
+                element.addEventListener("transitionend", openProjectEventListener, true);
 
                 var bounding = previewImg.getBoundingClientRect();
                 projectImg.src = previewImg.src;
@@ -30,14 +31,13 @@ angular.module('evtrs-site').directive('portfolioItem', function($state) {
                 projectImg.height = bounding.height;
 
                 //set/unset properties with add/remove class
-                overlay.style.visibility='visible';
                 //cannot use visibility, breaks animation
                 //subInner.style.opacity = '0';
-                subInner.style.width= '240vw';
-                subInner.style.transform = 'translateX(-500px)';
-                subInner.style.zIndex = '10';
+//                element.style.width= '240vw';
+//                element.style.transform = 'translateX(-100vw)';
+//                element.style.zIndex = '10';
                 previewImg.style.display='none';
-                //element.style.transform = 'skewX(-16deg) scale(5,1)';
+                element.style.transform = 'skewX(-16deg) scale(5,1)';
                 //
                 element.style.zIndex = '1';
                 $state.go('work.project1');
@@ -45,7 +45,11 @@ angular.module('evtrs-site').directive('portfolioItem', function($state) {
 
 
             var openProjectEventListener = function (event) {
-
+                portfolio.style.visibility = 'hidden';
+//                element.style.width= '100%';
+//                element.style.transform = 'translateX(0px)';
+//                element.style.zIndex = '0';
+                element.style.transform = 'skewX(-16deg) scale(1,1)';
                 //Move project image into place
                 //use keyframes to scale in, move and scale out
                 projectImg.style.transform = 'scale(0.7) translateX(-200px)';
@@ -55,12 +59,11 @@ angular.module('evtrs-site').directive('portfolioItem', function($state) {
 
 
             $scope.closeProject = function() {
-                subInner.style.width= '100%';
-                subInner.style.transform = 'translateX(0px)';
-                subInner.style.zIndex = '1';
+                previewImg.style.display='block';
+                portfolio.style.visibility = 'visible';
                 //overlay.style.opacity= "0";
                 //todo wait for opacity transition end
-                overlay.style.visibility = 'hidden';
+                //overlay.style.visibility = 'hidden';
                 //projectImg.style.transform = 'scale(1) translateX(200px)';
                // projectImg.style.visibility = 'hidden';
                 $state.go('work');
