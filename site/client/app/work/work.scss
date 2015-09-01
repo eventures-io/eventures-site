@@ -5,7 +5,6 @@
   color: white;
 }
 
-
 .portfolio {
   position: relative;
   width: 100vw;
@@ -27,16 +26,13 @@
       flex-direction: row;
       height: 100%;
       width: 30px; // Needed to make the hover transition work nicely.
-      overflow: visible;
       transform: skewX(-16deg);
       transition: transform 0.7s, width 0.7s;
 
       .sub-inner {
         height: 100%;
-        //transform: skewX(-16deg);
         width: 100%;
         transition: transform 1s, width 1s;
-        background-color: lightgray;
         overflow: hidden;
         img {
           width: 400px;
@@ -50,7 +46,7 @@
       width: 300px;
       z-index: 2;
       .sub-inner {
-       // transform: translateX(60px) skewX(16deg);
+        // transform: translateX(60px) skewX(16deg);
         img {
           //transform: scale(1.2);
         }
@@ -105,7 +101,7 @@
   flex-direction: row;
 
   .project-nav {
-     width: 20vw;
+    width: 20vw;
   }
 
   .project-content {
