@@ -1,7 +1,7 @@
 'use strict'
 
 
-angular.module('evtrs-site').directive('portfolioItem', function ($state) {
+angular.module('evtrs-site').directive('portfolioItem', function ($state, PROJECT_CONSTANTS) {
 
     return {
         templateUrl: 'components/portfolio/portfolio-item.html',
@@ -11,7 +11,10 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state) {
         link: function (scope, element, attrs) {
             //adding class here causes skew transition to trigger
             //element.addClass('flex-sub');
-            scope.project = attrs.project;
+            scope.project = {};
+            scope.project.name =  attrs.portfolioItem;
+            element[0].style.backgroundColor = PROJECT_CONSTANTS[attrs.portfolioItem].bgColor;
+            scope.project.image = PROJECT_CONSTANTS[attrs.portfolioItem].image;
 
         },
         controller: function ($scope, $element) {
@@ -26,18 +29,17 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state) {
 
             $scope.expand = function () {
                 element.addEventListener("transitionend", openProjectEventListener, true);
-
-                overlay.style.backgroundColor = '#a2f28d';
+                overlay.style.backgroundColor = element.style.backgroundColor;
                 var bounding = previewImg.getBoundingClientRect();
                 projectImg =  new Image();
                 projectImg.classList.add('project-img');
                 projectImg.src = previewImg.src;
-                projectImg.style.left = bounding.left+40 + 'px';
+                //TODO find correct position
+                projectImg.style.left = bounding.left+50 + 'px';
                 projectImg.style.top = bounding.top + 'px';
                 projectImg.width = previewImg.width;
                 projectImg.height = previewImg.height;
                 document.body.appendChild(projectImg);
-
 
                 //set/unset properties with add/remove class
                 //cannot use visibility, breaks animation
