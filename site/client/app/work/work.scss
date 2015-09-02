@@ -140,19 +140,11 @@
   height: 100vh;
 }
 
-/* colors */
-.portfolio > div:nth-child(1) {
-  border-left: none;
-}
 
-
+/* borders -------*/
 
 .portfolio > div:first-child {
-  background-color: #606060;
-}
-
-.portfolio > div:nth-child(4) {
-  background-color: #dcdcdc;
+  border-left: none;
 }
 
 .portfolio > div:last-child {
