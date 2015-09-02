@@ -1,21 +1,17 @@
 'use strict';
 
 angular.module('evtrs-site')
-    .controller('WorkController', function ($scope, $state) {
+    .controller('WorkController', function ($scope, $rootScope) {
 
-        $scope.activeProject;
+        var activeProject;
 
         $scope.$on('LOAD_PROJECT', function (event, projectName) {
-            $scope.activeProject = projectName;
+            activeProject = projectName;
         });
 
         $scope.closeProject = function () {
             //move to directive
-            var portfolio = document.querySelector('.portfolio');
-            portfolio.style.visibility = 'visible';
-            var projectImg = document.querySelector('.project-img');
-            document.body.removeChild(projectImg);
-            $state.go('work');
+            $rootScope.$broadcast('CLOSE_PROJECT', activeProject);
         };
 
     });

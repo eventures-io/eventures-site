@@ -12,6 +12,17 @@
   display: flex;
   overflow: hidden;
   z-index: 1;
+  background-color: #62ca45;
+  background-image:
+    linear-gradient(
+        to right,
+        #62ca45,
+        #62ca45 30%,
+        #62ca45 30%,
+        #3a79ce 100%,
+        #3a79ce 100%
+    );
+   transition: opacity 0.3s;
 
   .flex-sub {
     border-left: 1px solid gray;
@@ -32,24 +43,26 @@
       .sub-inner {
         height: 100%;
         width: 100%;
+        padding-top: 30%;
        // transform: skewX(0deg);
         overflow: hidden;
         transition: transform 1s, width 1s;
         img {
-          width: 400px;
-          height: 700px;
-          transition: transform 0.5s;
+          width: 300px;
+          height: auto;
+          transition: all 0.5s;
         }
       }
     }
 
     .flex-sub:hover {
       width: 300px;
+
       z-index: 2;
       .sub-inner {
-        // transform: translateX(60px) skewX(16deg);
         img {
-          //transform: scale(1.2);
+          width: 100%;
+          height: auto;
         }
       }
     }
@@ -125,6 +138,7 @@
 /* colors */
 .portfolio > div:nth-child(1) {
   background-color: #62ca45;
+  border-left: none;
 }
 
 .portfolio > div:nth-child(2) {
@@ -145,6 +159,7 @@
 
 .portfolio > div:nth-child(6) {
   background-color: #3a79ce;
+  border-right: none;
 }
 
 

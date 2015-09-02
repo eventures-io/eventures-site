@@ -1,7 +1,7 @@
 'use strict'
 
 
-angular.module('evtrs-site').directive('portfolioItem', function ($state, PROJECT_CONSTANTS) {
+angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootScope, PROJECT_CONSTANTS) {
 
     return {
         templateUrl: 'components/portfolio/portfolio-item.html',
@@ -12,9 +12,12 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, PROJEC
             //adding class here causes skew transition to trigger
             //element.addClass('flex-sub');
             scope.project = {};
-            scope.project.name =  attrs.portfolioItem;
+            scope.project.name = attrs.portfolioItem;
             element[0].style.backgroundColor = PROJECT_CONSTANTS[attrs.portfolioItem].bgColor;
-            scope.project.image = PROJECT_CONSTANTS[attrs.portfolioItem].image;
+            scope.project.image = PROJECT_CONSTANTS[attrs.portfolioItem].image.src;
+            var previewImg =  element[0].querySelector('.preview-img');
+           previewImg.height = PROJECT_CONSTANTS[attrs.portfolioItem].image.height;
+           previewImg.width = PROJECT_CONSTANTS[attrs.portfolioItem].image.width;
 
         },
         controller: function ($scope, $element) {
@@ -27,15 +30,16 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, PROJEC
             var portfolio = document.querySelector('.portfolio');
 
 
-            $scope.expand = function () {
+            $scope.loadProject = function () {
+                $scope.$emit('LOAD_PROJECT', $scope.project.name);
                 element.addEventListener("transitionend", openProjectEventListener, true);
                 overlay.style.backgroundColor = element.style.backgroundColor;
                 var bounding = previewImg.getBoundingClientRect();
-                projectImg =  new Image();
+                projectImg = new Image();
                 projectImg.classList.add('project-img');
                 projectImg.src = previewImg.src;
                 //TODO find correct position
-                projectImg.style.left = bounding.left+50 + 'px';
+                projectImg.style.left = bounding.left + 50 + 'px';
                 projectImg.style.top = bounding.top + 'px';
                 projectImg.width = previewImg.width;
                 projectImg.height = previewImg.height;
@@ -51,6 +55,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, PROJEC
 
             var openProjectEventListener = function (event) {
                 portfolio.style.visibility = 'hidden';
+                portfolio.style.opacity = '0';
                 //reset
                 subInner.style.opacity = '1';
                 element.style.transform = 'skewX(-16deg) scale(1,1)';
@@ -62,27 +67,17 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, PROJEC
             };
 
 
-            $scope.closeProject = function (projectName) {
-                if ($scope.project === projectName) {
+            $scope.$on('CLOSE_PROJECT', function (event) {
+                if (event.currentScope.project.name === $scope.project.name) {
+                    document.body.removeChild(projectImg);
                     portfolio.style.visibility = 'visible';
-                    //overlay.style.opacity= "0";
-                    //todo wait for opacity transition end
-                    //overlay.style.visibility = 'hidden';
-                    //projectImg.style.transform = 'scale(1) translateX(200px)';
-                    // projectImg.style.visibility = 'hidden';
+                    portfolio.style.opacity = '1';
                     $state.go('work');
                 }
-
-            }
-
-//            var closeProjectEventListener =  function(event) {
-//                overlay.style.display= "none";
-//                subInner.style.opacity = '1';
-//                element.removeEventListener("transitionend", closeProjectEventListener, true);
-//            }
+            });
 
         }
-    };
+    }
 
 
 });
