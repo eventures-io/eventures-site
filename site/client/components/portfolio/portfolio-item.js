@@ -15,9 +15,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
             scope.project.name = attrs.portfolioItem;
             element[0].style.backgroundColor = PROJECT_CONSTANTS[attrs.portfolioItem].bgColor;
             scope.project.image = PROJECT_CONSTANTS[attrs.portfolioItem].image.src;
-            var previewImg =  element[0].querySelector('.preview-img');
-           previewImg.height = PROJECT_CONSTANTS[attrs.portfolioItem].image.height;
-           previewImg.width = PROJECT_CONSTANTS[attrs.portfolioItem].image.width;
+            var subInner = element[0].querySelector('.sub-inner');
+            subInner.style.paddingTop = PROJECT_CONSTANTS[attrs.portfolioItem].image.paddingTop;
 
         },
         controller: function ($scope, $element) {
@@ -61,8 +60,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                 element.style.transform = 'skewX(-16deg) scale(1,1)';
                 element.style.zIndex = '0';
                 //Move project image into place
-                projectImg.style.transform = 'scale(0.7) translateX(-200px)';
-                projectImg.style.opacity = '0.9';
+                projectImg.style.transform = 'scale(1.1) translateX(300px)';
+                //projectImg.style.opacity = '0.9';
                 element.removeEventListener("transitionend", openProjectEventListener, true);
             };
 

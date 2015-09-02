@@ -16,11 +16,11 @@
   background-image:
     linear-gradient(
         to right,
-        #62ca45,
-        #62ca45 30%,
-        #62ca45 30%,
-        #3a79ce 100%,
-        #3a79ce 100%
+        #c8c8c8,
+        #c8c8c8 30%,
+        #c8c8c8 30%,
+        #a8a8a8 100%,
+        #a8a8a8 100%
     );
    transition: opacity 0.3s;
 
@@ -35,21 +35,25 @@
     .flex-sub {
       flex: 1 1 auto;
       flex-direction: row;
+      padding-top: 10%;
       height: 100%;
       width: 30px; // Needed to make the hover transition work nicely.
       transform: skewX(-16deg);
-      transition: transform 0.7s, width 0.7s;
+      transition: transform 0.7s, width 0.7s, padding 0.7s;
 
       .sub-inner {
         height: 100%;
         width: 100%;
-        padding-top: 30%;
+        padding-left: 10px;
+
        // transform: skewX(0deg);
         overflow: hidden;
-        transition: transform 1s, width 1s;
+        transition: padding 0.7s;
         img {
           width: 300px;
           height: auto;
+          //border-radius: 3px;
+          //box-shadow: 3px 3px 5px 6px #595959;
           transition: all 0.5s;
         }
       }
@@ -57,9 +61,10 @@
 
     .flex-sub:hover {
       width: 300px;
-
+      padding-top: 5%;
       z-index: 2;
       .sub-inner {
+
         img {
           width: 100%;
           height: auto;
@@ -137,28 +142,20 @@
 
 /* colors */
 .portfolio > div:nth-child(1) {
-  background-color: #62ca45;
   border-left: none;
 }
 
-.portfolio > div:nth-child(2) {
-  //background-color: #a2f28d;
-}
 
-.portfolio > div:nth-child(3) {
-  background-color: #c2ce15;
+
+.portfolio > div:first-child {
+  background-color: #606060;
 }
 
 .portfolio > div:nth-child(4) {
-  //background-color: #0f9274;
+  background-color: #dcdcdc;
 }
 
-.portfolio > div:nth-child(5) {
-  background-color: #44edf2;
-}
-
-.portfolio > div:nth-child(6) {
-  background-color: #3a79ce;
+.portfolio > div:last-child {
   border-right: none;
 }
 
