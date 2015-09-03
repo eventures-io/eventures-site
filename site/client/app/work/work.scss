@@ -12,17 +12,8 @@
   display: flex;
   overflow: hidden;
   z-index: 1;
-  background-color: #62ca45;
-  background-image:
-    linear-gradient(
-        to right,
-        #c8c8c8,
-        #c8c8c8 30%,
-        #c8c8c8 30%,
-        #a8a8a8 100%,
-        #a8a8a8 100%
-    );
-   transition: opacity 0.3s;
+  background-color: #efefef;
+  transition: opacity 0.3s;
 
   .flex-sub {
     border-left: 1px solid gray;
@@ -41,30 +32,19 @@
       transform: skewX(-16deg);
       transition: transform 0.7s, width 0.7s, padding 0.7s;
 
-      .button-overlay {
-        position: absolute;
-        left:0;
-        top:0;
-        height: 0px;
-        width: 100%;
-        background: rgba(84, 84, 84, 0.70);
-//        background-color: #b0b0b0;
-        transition: height 0.4s 1s ease-out;
-      }
-
       .sub-inner {
         height: 100%;
         width: 100%;
         padding-left: 10px;
+        padding-right: 10px;
 
-       // transform: skewX(0deg);
+        // transform: skewX(0deg);
         overflow: hidden;
         transition: padding 0.7s;
         img {
           width: 300px;
           height: auto;
-          //border-radius: 3px;
-          //box-shadow: 3px 3px 5px 6px #595959;
+          border-radius: 3px;
           transition: all 0.5s;
         }
       }
@@ -74,9 +54,6 @@
       width: 300px;
       padding-top: 5%;
       z-index: 2;
-      .button-overlay{
-        height: 35%;
-      }
 
       .sub-inner {
 
@@ -121,16 +98,14 @@
   z-index: 0;
   overflow: hidden;
   transition: opacity 0.4s;
-  background-color: #0000ff;
-
 }
+
 .project-img {
   position: absolute;
   transform: skewX(-16deg);
   z-index: 3;
   transition: all 1s;
 }
-
 
 .project-view {
   display: flex;
@@ -154,7 +129,6 @@
   flex: 1 1 auto;
   height: 100vh;
 }
-
 
 /* borders -------*/
 .portfolio > div:first-child {
