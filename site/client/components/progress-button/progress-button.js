@@ -1,37 +1,42 @@
 'use strict'
 
-angular.module('evtrs-site').directive('progressButton', function(){
+angular.module('evtrs-site').directive('progressButton', function () {
 
-      return {
+    return {
 
-          restrict: 'E',
-          templateUrl: 'components/progress-button/progress-button.html',
-          scope:{
+        restrict: 'E',
+        templateUrl: 'components/progress-button/progress-button.html',
+        scope: {
 
-          },
-          controller: function($scope, $element){
+        },
+        controller: function ($scope, $element) {
 
-               $scope.updateProgress =   function(percentage){
+            $scope.updateProgress = function (percentage) {
 
-                  var percent = percentage;
-                  var circle = $element[0].querySelector('#svg #bar');
+                var percent = percentage;
+                var circle = $element[0].querySelector('.circle-progress');
+                var val= 100;
 
-                  if (isNaN(percentage)) {
-                      percent = 100;
-                  }
-                  else{
-                      var r = circle.getAttribute('r');
-                      var c = Math.PI*(r*2);
+                if (isNaN(percentage)) {
+                    percent = 100;
+                }
 
-                      if (val < 0) { val = 0;}
-                      if (val > 100) { val = 100;}
+                var r = circle.getAttribute('r');
+                var c = Math.PI * (r * 2);
 
-                      var pct = ((100-val)/100)*c;
+                if (val < 0) {
+                    val = 0;
+                }
+                if (val > 100) {
+                    val = 100;
+                }
 
-                      circle.style.strokeDashoffset= pct;
-                  }
-              }
-          }
-      };
+                var pct = ((100 - val) / 100) * c;
+
+                circle.style.strokeDashoffset = pct;
+
+            }
+        }
+    };
 
 });

@@ -1,9 +1,25 @@
 
-#svg circle {
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 1s linear;
-  stroke-width: 4px;
-}
-#svg #bar {
-  stroke: #FF9F1E;
+.button-svg {
+  width:200px;
+  height:200px;
+  cursor: pointer;
+
+  .circle-inner {
+    fill: #ececec;
+    fill-opacity: 0.8;
+  }
+
+  .circle-progress{
+    fill-opacity: 0.6;
+    stroke-dashoffset: 615;
+    transition: stroke-dashoffset 1s linear;
+    stroke-width: 4px;
+    fill: #ececec;
+    stroke: #FF9F1E;
+  }
+
+  .progress-active {
+    stroke: #FF9F1E;
+  }
+
 }
