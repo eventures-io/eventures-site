@@ -30,7 +30,9 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
 
 
             $scope.loadProject = function () {
+                if($scope.project){
                 $scope.$emit('LOAD_PROJECT', $scope.project.name);
+                }
                 element.addEventListener("transitionend", openProjectEventListener, true);
                 overlay.style.backgroundColor = element.style.backgroundColor;
                 var bounding = previewImg.getBoundingClientRect();
@@ -74,6 +76,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                     $state.go('work');
                 }
             });
+
+
 
         }
     }
