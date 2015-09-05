@@ -6,34 +6,47 @@ angular.module('evtrs-site').directive('progressButton', function () {
 
         restrict: 'E',
         templateUrl: 'components/progress-button/progress-button.html',
-        scope: {
+//        scope: {
+//
+//        },
+        controller: function ($scope, $element, $attrs) {
+//            var project = $attrs.project;
+            var circle = $element[0].querySelector('.circle-progress');
 
-        },
-        controller: function ($scope, $element) {
 
-            $scope.updateProgress = function (percentage) {
+            $scope.loadProject = function() {
+                circle.addEventListener("transitionend", loadButtonEventListener, true);
+                $scope.updateProgress(100);
+            }
 
-                var percent = percentage;
-                var circle = $element[0].querySelector('.circle-progress');
-                var val= 100;
+            $scope.updateProgress = function (progress) {
 
-                if (isNaN(percentage)) {
-                    percent = 100;
+                var val = progress;
+                if (isNaN(val)) {
+                    val = 100;
                 }
 
-                var r = circle.getAttribute('r');
-                var c = Math.PI * (r * 2);
+                var rValue = window.getComputedStyle(circle, null).getPropertyValue('r');
+                var r = parseInt(rValue, 10);
+                var c = 615 //Math.PI * (r * 2);
 
                 if (val < 0) {
                     val = 0;
                 }
-                if (val > 100) {
+                else if (val > 100) {
                     val = 100;
                 }
 
                 var pct = ((100 - val) / 100) * c;
 
                 circle.style.strokeDashoffset = pct;
+
+            }
+
+            var loadButtonEventListener = function(event) {
+                circle.removeEventListener("transitionend", loadButtonEventListener, true);
+                $scope.$emit('LOAD_PROJECT', $scope.project.name);
+                circle.style.strokeDashoffset = 615;
 
             }
         }

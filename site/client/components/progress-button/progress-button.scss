@@ -5,17 +5,20 @@
   cursor: pointer;
 
   .circle-inner {
+    r:45;
     fill: #ececec;
     fill-opacity: 0.8;
+    transition: all 0.1s ease-out;
   }
 
   .circle-progress{
-    fill-opacity: 0.6;
-    stroke-dashoffset: 615;
-    transition: stroke-dashoffset 1s linear;
-    stroke-width: 4px;
+    r:80;
     fill: #ececec;
+    fill-opacity: 0.6;
     stroke: #FF9F1E;
+    stroke-width: 4px;
+    stroke-dashoffset: 615;
+    transition: r 0.1s ease-out, stroke-dashoffset 1s linear;
   }
 
   .progress-active {
@@ -23,3 +26,15 @@
   }
 
 }
+
+
+.button-svg:hover {
+  .circle-progress{
+   r:85;
+
+  }
+  .circle-inner {
+    r:55;
+  }
+}
+

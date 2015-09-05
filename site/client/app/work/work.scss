@@ -32,23 +32,27 @@
       padding-top: 50px;
       height: 100%;
       width: 100px; // Needed to make the hover transition work nicely.
-      overflow:hidden;
+      overflow: hidden;
       transform: skewX(-16deg);
       transition: transform 0.7s, width 0.7s, padding 0.7s;
 
-      .sub-inner {
+      .sub-outer {
         height: 100%;
         width: 100%;
-        padding-left: 10px;
-        padding-right: 10px;
-        transform: skewX(16deg);
-        //overflow: hidden;
-        transition: translate 0.4s;
-        img {
-          width: 300px;
-          height: auto;
-          border-radius: 3px;
-          transition: all 0.5s;
+        .sub-inner {
+          height: 100%;
+          width: 100%;
+          padding-left: 10px;
+          padding-right: 10px;
+          transform: skewX(16deg);
+          //overflow: hidden;
+          transition: translate 0.4s;
+          img {
+            width: 300px;
+            height: auto;
+            border-radius: 3px;
+            transition: all 0.5s;
+          }
         }
       }
       .progress-button {
