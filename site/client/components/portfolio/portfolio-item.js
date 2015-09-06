@@ -33,7 +33,9 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
 
             $scope.$on('LOAD_PROJECT', function (event, projectName) {
                 if (projectName === $scope.project.name) {
+                    element.style.zIndex = '2';
                     element.addEventListener("transitionend", openProjectEventListener, true);
+                    overlay.style.backgroundColor = element.style.backgroundColor;
                     var bounding = previewImg.getBoundingClientRect();
                     projectImg = new Image();
                     projectImg.classList.add('project-img');
@@ -43,15 +45,12 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                     projectImg.style.top = bounding.top + 'px';
                     projectImg.width = previewImg.width;
                     projectImg.height = previewImg.height;
-                    //document.body.appendChild(projectImg);
+                    document.body.appendChild(projectImg);
                     //set/unset properties with add/remove class
-                    //cannot use visibility, breaks animation
-                    subInner.style.opacity = '0';
-                    progressButton.visibility = 'hidden';
-                    //toggleVisibility(subOuter);
-                    element.style.zIndex = '2';
+                    subOuter.style.opacity= '0';
+                    progressButton.display = 'none';
                     element.style.transform = 'skewX(-16deg) scale(5,1)';
-                    $state.go('work.project1');
+                    //$state.go('work.project1');
                 }
 
             });
@@ -59,15 +58,15 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
 
             var openProjectEventListener = function () {
                 element.removeEventListener("transitionend", openProjectEventListener, true);
-                portfolio.style.visibility = 'hidden';
                 portfolio.style.opacity = '0';
-                //reset the view
+                overlay.style.zIndex= '3';
+//                //reset the view
                 element.style.transform = 'skewX(-16deg) scale(1,1)';
                 element.style.zIndex = '1';
-                //toggleVisibility(subOuter);
-                //Move project image into place (calculate to center left)
-                projectImg.style.transform = 'scale(1.1) translateX(300px)';
-                projectImg.style.opacity = '0.9';
+                subOuter.style.opacity= '1';
+//                //Move project image into place (calculate to center left)
+//                projectImg.style.transform = 'scale(1.1) translateX(300px)';
+//                projectImg.style.opacity = '0.9';
 
             };
 
@@ -75,24 +74,13 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
             $scope.$on('CLOSE_PROJECT', function (event, project) {
                 if (project === $scope.project.name) {
                     document.body.removeChild(projectImg);
-                    //portfolio.style.display = 'initial';
+                    overlay.style.zIndex = '0';
                     portfolio.style.opacity = '1';
                     $state.go('work');
                 }
             });
 
-            var toggleVisibility = function (element) {
-                var visibility = element.style.visibility;
-                visibility = visibility === 'visible' ? 'visible' : 'hidden';
-                element.style.visibility = visibility;
-                element.style.opacity = '0';
-                _.each(element.children, function (el) {
-                    el.style.visibility = visibility;
-                    el.style.opacity = '0';
-                });
 
-
-            }
         }
     }
 

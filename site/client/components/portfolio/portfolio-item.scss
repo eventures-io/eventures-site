@@ -1,27 +1,30 @@
+$transition-pf-lg: 0.4s;
 @media (min-width: $screen-sm) {
+  //TODO rename to portfolio-item
   .flex-sub {
     flex: 1 1 auto;
     flex-direction: row;
     padding-top: 50px;
     height: 100%;
     width: 100px; // Needed to make the hover transition work nicely.
-    overflow: hidden;
+
     transform: skewX(-16deg);
-    transition: transform 0.7s, width 0.7s, padding 0.7s;
+    transition: transform 0.7s, width 0.9s, padding 0.7s;
 
     .sub-outer {
       height: 100%;
       width: 100%;
+      overflow: hidden;
       .sub-inner {
         height: 100%;
         width: 100%;
         transform: skewX(16deg) translateX(30px);
-        transition: translateX 0.3s;
+        transition: translateX $transition-pf-lg;
         .preview-img {
           width: 300px;
           height: auto;
           border-radius: 3px;
-          transition: all 0.5s;
+          transition: all $transition-pf-lg;
         }
       }
     }
@@ -31,8 +34,8 @@
       left: calc(50% - 100px);
       transform: skewX(16deg);
       visibility: hidden;
-      transition: opacity 0.3s 0.6s;
-
+      opacity: 0;
+      transition: opacity 0.3s;
     }
   }
 
@@ -48,6 +51,7 @@
     }
     .progress-button {
       visibility: visible;
+      opacity: 1;
     }
   }
 
