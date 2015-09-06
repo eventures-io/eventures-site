@@ -16,14 +16,14 @@
   background-color: #efefef;
   transition: opacity 0.7s;
 
-  div:last-child {
-    border-right: none;
-  }
+}
+
+.portfolio > div:first-child {
+  border-left: 1px solid gray;
 }
 
 .portfolio > div {
     border-right: 1px solid gray;
-
 }
 
 /* Project view -----------*/
