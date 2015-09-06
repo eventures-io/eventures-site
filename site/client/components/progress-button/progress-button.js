@@ -3,16 +3,10 @@
 angular.module('evtrs-site').directive('progressButton', function () {
 
     return {
-
-        restrict: 'E',
         templateUrl: 'components/progress-button/progress-button.html',
-//        scope: {
-//
-//        },
-        controller: function ($scope, $element, $attrs) {
-//            var project = $attrs.project;
-            var circle = $element[0].querySelector('.circle-progress');
+        controller: function ($scope, $element) {
 
+            var circle = $element[0].querySelector('.circle-progress');
 
             $scope.loadProject = function() {
                 circle.addEventListener("transitionend", loadButtonEventListener, true);
