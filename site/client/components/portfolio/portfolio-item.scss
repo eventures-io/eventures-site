@@ -1,13 +1,36 @@
-$transition-pf-lg: 0.4s;
+$transition-pf-lg: 0.7s;
+
+
+/* Portfolio flex container ---------*/
+.portfolio {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  z-index: 1;
+  background-color: #efefef;
+  transition: opacity 0.7s;
+
+}
+
+
 @media (min-width: $screen-sm) {
-  //TODO rename to portfolio-item
+
+  .portfolio > div:first-child {
+    border-left: 1px solid gray;
+  }
+
+  .portfolio > div {
+    border-right: 1px solid gray;
+  }
+
   .flex-sub {
     flex: 1 1 auto;
     flex-direction: row;
     padding-top: 50px;
     height: 100%;
     width: 100px; // Needed to make the hover transition work nicely.
-
     transform: skewX(-16deg);
     transition: transform 1.3s, width 0.9s, padding 0.7s;
 
@@ -18,11 +41,11 @@ $transition-pf-lg: 0.4s;
       .sub-inner {
         height: 100%;
         width: 100%;
-        transform: skewX(16deg) translateX(30px);
-        transition: translateX $transition-pf-lg;
+        transform: skewX(0deg); //translateX(30px);
+        transition: all $transition-pf-lg;
         .preview-img {
-          width: 300px;
-          height: auto;
+          width: auto;
+          height: 100%;
           border-radius: 3px;
           //filter: grayscale(100%);
           transition: all $transition-pf-lg;
@@ -42,12 +65,12 @@ $transition-pf-lg: 0.4s;
 
   .flex-sub:hover {
     width: 400px;
-    padding-top: 5%;
+    //padding-top: 5%;
     .sub-inner {
-      transform: skewX(16deg) translateX(110px);
+      transform: skewX(0deg) translateX(50px);
       .preview-img {
-        width: 65%;
-        height: auto;
+        width: auto;
+        height: 100%;
       }
     }
     .progress-button {
@@ -58,26 +81,55 @@ $transition-pf-lg: 0.4s;
 
 }
 
-//@media (max-width: $screen-sm) {
-//
-//  .portfolio {
-//    position: absolute;
-//    left: -10vw;
-//    width: 110vw;
-//    flex-direction: column;
-//    overflow-x: hidden;
-//  }
-//
-//  .flex-sub {
-//    flex: 1 1 auto;
-//    width: 110vw;
-//    height: 30px;
-//    transform: skewY(-25deg);
-//    transition: height 0.5s ease-in, transform 1s ease-in;
-//  }
-//
-//  .flex-sub:hover {
-//    height: 200px;
-//  }
-//
-//}
+@media (max-width: $screen-sm) {
+
+  .portfolio {
+    position: absolute;
+    left: -10vw;
+    width: 110vw;
+    flex-direction: column;
+    overflow-x: hidden;
+    //justify-content:center;
+  }
+
+  .flex-sub {
+    flex: 1 1 auto;
+    width: 110vw;
+    height: 100px;
+    //margin: auto;  /* Magic! */
+    border-top: 1px solid gray;
+    transform: skewY(-5deg);
+    transition: height 0.5s ease-in, transform 1s ease-in;
+
+    .sub-outer {
+      height: 100%;
+      width: 100%;
+      padding-top:15px;
+      //overflow: hidden;
+      .sub-inner {
+        height: 100%;
+        width: 100%;
+        transform: skewX(-5deg); //translateX(30px);
+        transition: all $transition-pf-lg;
+        padding-left: 10%;
+        .preview-img {
+          width: 100%;
+          height: auto;
+          min-height: 80px;
+          border-radius: 3px;
+          //filter: grayscale(100%);
+          transition: all $transition-pf-lg;
+        }
+      }
+    }
+  }
+
+  .flex-sub:hover {
+    height: 70%;
+    .progress-button {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+}

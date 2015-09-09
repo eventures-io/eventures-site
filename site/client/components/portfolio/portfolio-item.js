@@ -41,7 +41,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                     projectImg.classList.add('project-img');
                     projectImg.src = previewImg.src;
                     //TODO find correct position
-                    projectImg.style.left = bounding.left + 'px';
+                    projectImg.style.left = bounding.left + 100 + 'px';
                     projectImg.style.top = bounding.top + 'px';
                     projectImg.width = previewImg.width;
                     projectImg.height = previewImg.height;
@@ -65,8 +65,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                 element.style.zIndex = '1';
                 subOuter.style.opacity= '1';
 //                //Move project image into place (calculate to center left)
-//                projectImg.style.transform = 'scale(1.1) translateX(300px)';
-//                projectImg.style.opacity = '0.9';
+                projectImg.style.transform = ' scale(1.1) translateX(300px)';
+                projectImg.style.opacity = '0.9';
 
             };
 
@@ -79,7 +79,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                     $state.go('work');
                 }
             });
-
 
         }
     }

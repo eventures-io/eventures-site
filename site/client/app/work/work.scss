@@ -5,26 +5,9 @@
   color: white;
 }
 
-/* Portfolio flex container ---------*/
-.portfolio {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  overflow: hidden;
-  z-index: 1;
-  background-color: #efefef;
-  transition: opacity 0.7s;
 
-}
 
-.portfolio > div:first-child {
-  border-left: 1px solid gray;
-}
 
-.portfolio > div {
-    border-right: 1px solid gray;
-}
 
 /* Project view -----------*/
 .project-overlay {
@@ -41,10 +24,11 @@
 
 .project-img {
   position: absolute;
-  //transform: skewX(-16deg);
+  transform: skewX(-16deg);
   z-index: 4;
   transition: all 1s;
 }
+
 
 //.project-view {
 //  display: flex;
