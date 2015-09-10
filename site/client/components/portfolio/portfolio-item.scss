@@ -46,9 +46,9 @@ $transition-pf-lg: 0.7s;
     flex-direction: row;
     padding-top: 50px;
     height: 100%;
-    width: 100px; // Needed to make the hover transition work nicely.
+    width: 100px;
     transform: skewX(-16deg);
-    transition: transform 1.3s, width 0.9s, padding 0.7s;
+    transition: width 0.9s;
 
     .sub-outer {
       height: 100%;
@@ -59,13 +59,10 @@ $transition-pf-lg: 0.7s;
         height: 100%;
         width: 100%;
         transform: skewX(0deg); //translateX(30px);
-        transition: all $transition-pf-lg;
+        //transition: all $transition-pf-lg;
         .preview-img {
           width: auto;
           height: 100%;
-          border-radius: 3px;
-          //filter: grayscale(100%);
-          transition: all $transition-pf-lg;
         }
       }
     }
@@ -86,8 +83,8 @@ $transition-pf-lg: 0.7s;
       }
     }
     .progress-button {
-      visibility: visible;
-      opacity: 1;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
   }
 
@@ -113,7 +110,7 @@ $transition-pf-lg: 0.7s;
     padding-right: 5%;
     border-top: 1px solid gray;
     //transform: skewY(-5deg);
-    transition: height 0.5s ease-in, transform 1s ease-in;
+    //transition: height 0.5s ease-in, transform 1s ease-in;
 
     .sub-outer {
       height: 100%;
@@ -126,14 +123,14 @@ $transition-pf-lg: 0.7s;
         height: 100%;
         width: 100%;
         //transform: skewX(-5deg);
-        transition: all $transition-pf-lg;
+        //transition: all $transition-pf-lg;
         //padding-left: 10%;
         .preview-img {
           width: 100%;
           height: auto;
           min-height: 80px;
           border-radius: 3px;
-          transition: all $transition-pf-lg;
+          //transition: all $transition-pf-lg;
         }
       }
     }
@@ -146,8 +143,8 @@ $transition-pf-lg: 0.7s;
     }
 
     .progress-button {
-      visibility: visible;
-      opacity: 1;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
 
   }

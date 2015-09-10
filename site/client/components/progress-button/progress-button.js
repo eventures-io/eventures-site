@@ -1,26 +1,30 @@
 'use strict'
 
-angular.module('evtrs-site').directive('progressButton', function () {
+angular.module('evtrs-site').directive('progressButton', function ($timeout) {
 
     return {
         templateUrl: 'components/progress-button/progress-button.html',
         controller: function ($scope, $element) {
 
-            var circle = $element[0].querySelector('.circle-progress');
+            var progressButton = $element[0].querySelector('.progress-button');
+            var circleProgress = progressButton.querySelector('.circle-progress');
+            var circleInner = progressButton.querySelector('.circle-inner');
 
             $scope.loadProject = function() {
-                circle.addEventListener("transitionend", loadButtonEventListener, true);
+                circleProgress.addEventListener("transitionend", loadButtonEventListener, true);
                 $scope.updateProgress(100);
             }
 
             $scope.updateProgress = function (progress) {
+                progressButton.style.visibility = 'visible';
+                progressButton.style.opacity = '1';
 
                 var val = progress;
                 if (isNaN(val)) {
                     val = 100;
                 }
 
-                var rValue = window.getComputedStyle(circle, null).getPropertyValue('r');
+                var rValue = window.getComputedStyle(circleProgress, null).getPropertyValue('r');
                 var r = parseInt(rValue, 10);
                 var c = 615 //Math.PI * (r * 2);
 
@@ -33,15 +37,20 @@ angular.module('evtrs-site').directive('progressButton', function () {
 
                 var pct = ((100 - val) / 100) * c;
 
-                circle.style.strokeDashoffset = pct;
+                circleProgress.style.strokeDashoffset = pct;
 
             }
 
             var loadButtonEventListener = function(event) {
-                circle.removeEventListener("transitionend", loadButtonEventListener, true);
-                $scope.$emit('LOAD_PROJECT', $scope.project.name);
-                circle.style.strokeDashoffset = 615;
-
+                circleProgress.removeEventListener("transitionend", loadButtonEventListener, true);
+                circleProgress.style.r = 75;
+                circleInner.style.r= 45;
+                $timeout(function(){
+                    $scope.$emit('LOAD_PROJECT', $scope.project.name);
+                    progressButton.style.visibility = 'hidden';
+                    progressButton.style.opacity = '0';
+                    circleProgress.style.strokeDashoffset = 615;
+                }, 200);
             }
         }
     };

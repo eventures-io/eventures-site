@@ -5,10 +5,6 @@
   color: white;
 }
 
-
-
-
-
 /* Project view -----------*/
 .project-overlay {
   position: absolute;
@@ -19,14 +15,13 @@
   //Or make one pager for the project?
   overflow: hidden;
   z-index: 0;
-
 }
 
 .project-img {
   position: absolute;
   transform: skewX(-16deg);
   z-index: 4;
-  transition: all 1s;
+
 }
 
 
