@@ -38,11 +38,13 @@ angular
                 url: '/work',
                 templateUrl: 'app/work/work.html',
                 controller: 'WorkController'
-            }).state('work.project1', {
-                url: '/project1',
+            }).state('work.project', {
+                url: '/:project',
                 views: {
-                    project1: {
-                        templateUrl: 'app/work/projects/project1.html',
+                    project: {
+                        templateUrl: function (stateParams) {
+                            return 'app/work/projects/' + stateParams.project + '.html';
+                        },
                         controller: 'WorkController'
                     }
                 }

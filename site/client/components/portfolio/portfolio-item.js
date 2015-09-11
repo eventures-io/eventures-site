@@ -34,20 +34,28 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                 var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction');
                 if (projectName === $scope.project.name) {
 
-                        //TODO set width of element to hover state width
-                        element.style.zIndex = '2';
-                        // element.addEventListener("transitionend", openProjectEventListener, true);
-                        overlay.style.backgroundColor = element.style.backgroundColor;
-                        var bounding = previewImg.getBoundingClientRect();
-                        projectImg = new Image();
-                        projectImg.classList.add('project-img');
-                        projectImg.src = previewImg.src;
-                        projectImg.style.top = bounding.top + 'px';
-                        projectImg.width = previewImg.width;
-                        projectImg.height = previewImg.height;
-                        //set/unset properties with add/remove class
-                        subOuter.style.opacity = '0';
-                        progressButton.display = 'none';
+                    //TODO set width of element to hover state width
+                    element.style.zIndex = '2';
+                    // element.addEventListener("transitionend", openProjectEventListener, true);
+                    overlay.style.backgroundColor = element.style.backgroundColor;
+                    var bounding = previewImg.getBoundingClientRect();
+                    projectImg = new Image();
+                    projectImg.classList.add('project-img');
+                    projectImg.src = previewImg.src;
+                    projectImg.style.top = bounding.top + 'px';
+                    projectImg.width = previewImg.width;
+                    projectImg.height = previewImg.height;
+                    //set/unset properties with add/remove class
+                    subOuter.style.opacity = '0';
+                    progressButton.display = 'none';
+
+                    var repositionImage = function () {
+                        var projectVisual = document.querySelector('.project-visual-img');
+                        projectVisual.appendChild(projectImg);
+                        projectImg.style.position = 'relative';
+
+                    };
+
                     if (flexDirection === 'row') {
                         projectImg.style.transform = 'skewX(-16deg)';
                         //TODO use padding instead of translate-X to move the image on hover
@@ -61,26 +69,27 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                             subOuter.style.opacity = '1';
                         }
 
-                        TweenLite.to(element, 0.9, {css: {transform: 'scale(5,1) skewX(-1deg)'}, ease: Power1.easeIn});
+
+                        TweenLite.to(element, 0.9, {css: {transform: 'scale(5,1) skewX(-1deg)'}, ease: Power1.easeIn, onComplete: resetRowView });
                         TweenLite.to(projectImg, 0.2, {css: {
-                            transform: 'skewX(0deg) scale(1.3)'
+                            transform: 'skewX(0deg)'
                         }, delay: 0.2});
 
                         TweenLite.to(projectImg, 0.5, {css: {
                             // transform: 'skewX(0deg)',
-                            transform: 'scale(1)',
+                            //transform: 'scale(1)',
+                            top: 30,
                             left: 100,
                             height: '70%',
                             width: 'auto'
                         },
                             ease: Power0.easeIn,
-                            onComplete: resetRowView,
+                            onComplete: repositionImage,
                             delay: 0.5
                         });
-
-                        $state.go('work.project1');
                     } else {
                         var resetColumnView = function () {
+                            repositionImage();
                             element.style.zIndex = '1';
                             subOuter.style.opacity = '1';
                         }
@@ -91,19 +100,20 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                         TweenLite.to(projectImg, 0.5, {css: {
                             top: '10%',
                             left: '10%',
-                            height: '70%',
-                            width: 'auto'
+                            height: 'auto',
+                            width: '80%'
                         },
                             ease: Power0.easeIn,
                             onComplete: resetColumnView
                         });
                     }
+                    $state.go('work.project', {project: projectName});
                 }
             });
 
             $scope.$on('CLOSE_PROJECT', function (event, project) {
                 if (project === $scope.project.name) {
-                    document.body.removeChild(projectImg);
+                    //document.body.removeChild(projectImg);
                     overlay.style.zIndex = '0';
                     portfolio.style.opacity = '1';
                     $state.go('work');
