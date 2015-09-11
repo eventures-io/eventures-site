@@ -23,7 +23,7 @@
   overflow: hidden;
   ul,
   li {
-    padding:0;
+    padding: 0;
     margin: 0;
     width: 100%;
     text-align: center;
@@ -37,7 +37,7 @@
   .remove-icon {
     position: absolute;
     right: 5px;
-    top:0;
+    top: 0;
     cursor: pointer;
     font-size: 17px;
   }
@@ -46,9 +46,6 @@
 .bookmarks-show {
   height: 25px;
 }
-
-
-
 
 .menu {
   position: fixed;
@@ -114,15 +111,17 @@
   background: $menu-overlay;
   height: 50px;
   padding-right: 25px;
-}
+  display: flex;
+  justify-content: space-between;
 
-.close-icon {
-  cursor: pointer;
-  float: right;
-  width: 20px;
-  height: 20px;
-  padding: 10px;
-  font-size: x-large;
+  .blog-menu-icon {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    font-size: x-large;
+  }
+
 }
 
 .post-link {

@@ -8,16 +8,19 @@
     </ul>
 </nav>
 <nav class="navbar">
-    <div class="menu-icon" data-ng-click="openMenu()">
+    <span class="menu-icon" data-ng-click="openMenu()">
         <i class="font-icon icon-menu"></i>
-    </div>
+    </span>
 </nav>
 <div class="menu">
     <div class="menu-image-wrap">
         <nav class="nav-close">
-            <div data-ng-click="closeMenu()" class="close-icon">
-                <i class="font-icon icon-cancel"></i>
-            </div>
+             <span data-ng-click="goHome()" class="blog-menu-icon">
+                <i class="font-icon icon-home-2"></i>
+            </span>
+            <span data-ng-click="closeMenu()" class="blog-menu-icon">
+                <i class="font-icon icon-close"></i>
+            </span>
         </nav>
         <div class="menu-link-container">
             <div data-ng-repeat="post in posts" ng-click="showPost(post)" class="post-link-wrap" data-ng-style="{'backgroundImage': 'url(' + post.featured_image.source + ')'}">
