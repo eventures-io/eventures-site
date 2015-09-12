@@ -8,17 +8,23 @@
   border-width: 0px;
   border-style: solid;
   border-color: #333;
+
   background-color: rgba(0,0,0,0);
   z-index: 9997;
+  //TODO switch to GSAP bounce animation
   transition: border-width 0.3s, background-color 0.3s, height 0s 0.3s;
 
 }
 
 .nav-menu-open {
   height: 100%;
-  border-width: 20px 20px 20px 90px;
+  border-width: 20px 20px 20px 110px;
+  color: #ffffff;
   background-color: rgba(0,0,0,0.3);
   transition: border-width 0.3s, background-color 0.3s;
+  .font-icon {
+    padding-right: 10px;
+  }
 
 }
 
@@ -40,6 +46,7 @@
   display: block;
   width: 50px;
   height: 50px;
+  font-size: xx-large;
   cursor: pointer;
   z-index: 9999;
 }
@@ -51,7 +58,7 @@
   left: 0;
   margin: 0;
   padding: 0;
-  width: 90px;
+  width: 110px;
   list-style: none;
   backface-visibility: hidden;
 }
@@ -60,16 +67,19 @@
 .nav-menu ul li a {
   display: block;
   width: 100%;
-  text-align: center;
 }
 
 .nav-menu ul li {
-  padding: 16px 0;
+  margin-bottom: 10px;
+  padding: 5px 0 5px 8px;
   opacity: 0;
+  cursor: pointer;
   visibility: hidden;
   transition: transform 0.3s, opacity 0.2s, visibility 0s 0.3s;
 }
-
+.nav-menu ul li:hover {
+  font-weight: bold;
+}
 
 .nav-menu ul li:first-child {
   transform: translate3d(-100%,200%,0);
@@ -91,7 +101,6 @@
   transform: translate3d(-100%,-200%,0);
 }
 
-
 .nav-menu.nav-menu-open ul li {
   visibility: visible;
   opacity: 1;
@@ -99,21 +108,21 @@
   transform: translate3d(0,0,0);
 }
 
-.nav-menu ul li a {
-  display: block;
-  outline: none;
-  color: transparent;
-  text-decoration: none;
-  font-size: 0px;
-}
-
-.nav-menu ul li a:before {
-  color: #04a466;
-  font-size: 48px;
-  transition: color 0.2s;
-}
-
-.nav-menu ul li a:hover:before,
-.nav-menu ul li a:focus:before  {
-  color: #fff;
-}
+//.nav-menu ul li a {
+//  display: block;
+//  outline: none;
+//  color: transparent;
+//  text-decoration: none;
+//  font-size: 0px;
+//}
+//
+//.nav-menu ul li a:before {
+//  color: #04a466;
+//  font-size: 48px;
+//  transition: color 0.2s;
+//}
+//
+//.nav-menu ul li a:hover:before,
+//.nav-menu ul li a:focus:before  {
+//  color: #fff;
+//}

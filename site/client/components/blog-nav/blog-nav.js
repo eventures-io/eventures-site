@@ -3,7 +3,7 @@
 angular.module('evtrs-site').directive('navbar', function (BlogResource, $state, $timeout, $cookies) {
     return {
         restrict: 'E',
-        templateUrl: 'components/navbar/navbar.html',
+        templateUrl: 'components/blog-nav/blog-nav.html',
         controller: function ($element, $scope) {
 
             var menuElement = $element[0].querySelector('.menu');
@@ -14,6 +14,13 @@ angular.module('evtrs-site').directive('navbar', function (BlogResource, $state,
                 if (bookmarks.length > 0) {
                     $scope.bookmarks[0] = bookmarks[0];
                 }
+            }
+
+            $scope.goHome = function() {
+                $scope.closeMenu();
+                $timeout(function () {
+                    return $state.go('home');
+                }, 700);
             }
 
             $scope.removeBookmark = function(bookmark) {

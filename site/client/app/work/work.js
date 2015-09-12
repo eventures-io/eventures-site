@@ -10,9 +10,7 @@ angular.module('evtrs-site')
         });
 
         $scope.closeProject = function () {
-            //move to directive
             $rootScope.$broadcast('CLOSE_PROJECT', activeProject);
         };
-
     });
 

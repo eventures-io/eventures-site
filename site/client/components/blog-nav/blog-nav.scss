@@ -84,7 +84,7 @@
   cursor: pointer;
   font-size: 2em;
   color: #000000;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .menu-icon:hover {
@@ -121,6 +121,20 @@
     padding: 10px;
     font-size: x-large;
   }
+
+  .home-icon {
+    width: 200px !important;
+    transition: all 0.3s ease-out;
+  }
+  .home-icon:hover {
+    transform: translateX(10px);
+  }
+
+  .home-icon:hover:before {
+    content: '<';
+  }
+
+
 
 }
 

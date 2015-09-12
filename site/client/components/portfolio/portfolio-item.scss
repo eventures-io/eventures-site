@@ -1,7 +1,7 @@
 $transition-pf-lg: 0.7s;
 
 /* Portfolio flex container ---------*/
-.portfolio {
+.portfolio-section {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -33,16 +33,16 @@ $transition-pf-lg: 0.7s;
 /* Desktop view -----*/
 @media (min-width: $screen-sm) {
 
-  .portfolio {
+  .portfolio-section{
     flex-direction: row;
 
   }
 
-  .portfolio > div:first-child {
+  .portfolio-section> div:first-child {
     border-left: 1px solid gray;
   }
 
-  .portfolio > div {
+  .portfolio-section> div {
     border-right: 1px solid gray;
   }
 
@@ -94,7 +94,7 @@ $transition-pf-lg: 0.7s;
 /* Mobile view ------*/
 @media (max-width: $screen-sm) {
 
-  .portfolio {
+  .portfolio-section {
     position: absolute;
     height: 100vh;
     width: 100vw;

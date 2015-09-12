@@ -1,5 +1,5 @@
 <nav-menu></nav-menu>
-<section class="portfolio">
+<section class="portfolio-section">
     <div data-portfolio-item="oceanfeedr" class="flex-sub">
     </div>
     <div data-portfolio-item="polaroiz" class="flex-sub">
@@ -11,15 +11,13 @@
     <div data-portfolio-item="dribble" class="flex-sub">
     </div>
 </section>
-<div class="project-overlay">
-    <div class="project-view">
-        <nav class="project-close">
-            <div data-ng-click="closeProject()" class="close-icon">
-                <i class="font-icon icon-cancel"></i>
-            </div>
-        </nav>
-        <div ui-view="project"></div>
-    </div>
+<div class="project-view">
+    <nav class="project-close">
+        <div data-ng-click="closeProject()" class="close-icon">
+            <i class="font-icon icon-close"></i>
+        </div>
+    </nav>
+    <div ui-view="project"></div>
 </div>
 
 
