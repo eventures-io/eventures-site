@@ -124,13 +124,14 @@
 
   .home-icon {
     width: 200px !important;
-    transition: all 0.3s ease-out;
+    transition: all 0.5s ease-in;
   }
   .home-icon:hover {
     transform: translateX(10px);
   }
 
   .home-icon:hover:before {
+    font-size: smaller;
     content: '<';
   }
 

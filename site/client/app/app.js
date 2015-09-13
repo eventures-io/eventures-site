@@ -16,10 +16,11 @@ angular
     ]).config(function ($httpProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
 
         $httpProvider.interceptors.push('HttpRequestInterceptor');
+        $locationProvider.hashPrefix('!');
         $locationProvider.html5Mode(true);
 
         $urlRouterProvider
-            .otherwise('/work');
+            .otherwise('/home');
 
         $stateProvider
             .state('home', {

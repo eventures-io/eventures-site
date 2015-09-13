@@ -1,0 +1,30 @@
+//TODO load this as separate css file?
+.loading-pane {
+  position: absolute;
+  top:0;
+  left:0;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #292929;
+  z-index: 9999;
+}
+
+
+.loader{
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/*
+  Set the color of the icon
+*/
+svg path,
+svg rect{
+  fill: #FF6700;
+}

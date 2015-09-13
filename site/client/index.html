@@ -11,8 +11,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/">
-    <title></title>
-    <meta name="description" content="">
+    <title>Eventures</title>
+    <meta name="description" content="Eventures website">
+    <meta name="fragment" content="!">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
@@ -24,14 +25,38 @@
     <!-- endinjector -->
     <!-- endbuild -->
 </head>
-<body ng-app="evtrs-site">
+<body ng-app="evtrs-site" init>
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
+<div class="loading-pane">
+    <div class="loader" title="4">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+    <rect x="0" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="10" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="20" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml"
+        attributeName="transform" type="translate"
+        values="0 0; 0 20; 0 0"
+        begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+  </svg>
+    </div>
 
+</div>
 <div ui-view="" class="animate-main"></div>
-
 
 <!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -61,10 +86,12 @@
 <script src="app/home/angular-socialshare.js"></script>
 <script src="app/home/config.js"></script>
 <script src="app/home/home.js"></script>
+<script src="app/main/config.js"></script>
 <script src="app/post/post-controller.js"></script>
 <script src="app/work/project-constants.js"></script>
 <script src="app/work/work.js"></script>
 <script src="components/blog-nav/blog-nav.js"></script>
+<script src="components/init/init.js"></script>
 <script src="components/interceptor/http-interceptor.js"></script>
 <script src="components/nav-menu/nav-menu.js"></script>
 <script src="components/portfolio/portfolio-item.js"></script>
