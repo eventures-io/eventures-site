@@ -23,12 +23,13 @@
     min-height: 55vh;
     background-size: cover;
     background-position: center;
-    transition: all 1s;
+    transition: all 7s;
     filter: contrast(100%);
     z-index: 0;
   }
 
   .post-image:hover {
+    transform: scale(1.029);
     filter: contrast(80%);
 
   }
