@@ -18,7 +18,7 @@ angular.module('evtrs-site')
                             }
                         }
                    return throttle();
-                }, 1000);
+                }, 5000);
 
                 var listener = $scope.$watch(function () {
                     clearTimeout(to);
@@ -41,12 +41,24 @@ angular.module('evtrs-site')
                 });
 
                 var runLoadTransition = function(){
+                    var main = $element[0].querySelector('.animate-main');
                     var loadingPane = $element[0].querySelector('.loading-pane');
-                    TweenLite.to(loadingPane, 1, {css: {
-                        top: '-120vh'
+                    loadingPane.style.zIndex = '0';
+                    main.style.position= 'absolute';
+                    main.style.zIndex = '2';
+
+                    TweenLite.fromTo(main, 1.7, {css: {
+                        top: '100vh'
+                    }}, {css: {
+                        top: '0'
                     },
-                        ease: Power0.easeIn
-                        //onComplete: repositionImage,
+                        ease: Expo.easeOut,
+                        onComplete: function() {
+                            main.style.position= 'initial';
+                            loadingPane.style.display = 'none';
+                            main.style.zIndex = '0';
+
+                        }
                     });
 
                 }

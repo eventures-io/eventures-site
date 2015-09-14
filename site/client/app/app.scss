@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300|Raleway|Share|Metrophobic);
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import "hint.css/src/hint";
+//TODO investigate
 @import "prism/themes/prism-coy";
 
 /**
@@ -35,6 +36,11 @@ h4 {
   font-family: 'Raleway', sans-serif;
 }
 
+.animate-main {
+  height: 100vh;
+  width: 100vw;
+}
+//TODO remove
 .full-size {
   height: 100%;
   width: 100%;
@@ -43,6 +49,7 @@ h4 {
 // Component styles are injected through grunt
 // injector
 @import 'animations.scss';
+@import 'home/home.scss';
 @import 'post/post.scss';
 @import 'work/work.scss';
 @import 'blog-nav/blog-nav.scss';

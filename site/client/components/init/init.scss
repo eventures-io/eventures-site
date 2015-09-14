@@ -5,26 +5,117 @@
   left:0;
   min-height: 100vh;
   min-width: 100vw;
-  background-color: #292929;
+  background-color: whitesmoke;
   z-index: 9999;
 }
 
 
-.loader{
-  margin: 0 0 2em;
-  height: 100px;
-  width: 20%;
-  text-align: center;
-  padding: 1em;
-  margin: 0 auto 1em;
-  display: inline-block;
-  vertical-align: top;
+.loader {
+  position: relative;
+  margin: 20%;
 }
 
-/*
-  Set the color of the icon
-*/
-svg path,
-svg rect{
-  fill: #FF6700;
+.loader-text {
+  font-weight: bolder;
+  font-size: 36px;
 }
+
+.loader-period {
+  color: orange;
+  font-size: 90px;
+}
+$dark-color: #606060;
+$light-color: rgba(220, 220, 220, 0.62);
+
+@for $i from 1 through 6 {
+  @keyframes preload-show-#{$i}{
+    from{
+      transform: rotateZ(60* $i + deg) rotateY(-90deg) rotateX(0deg);
+      border-left-color: $dark-color;
+    }
+  }
+  @keyframes preload-hide-#{$i}{
+    to{
+      transform: rotateZ(60* $i + deg) rotateY(-90deg) rotateX(0deg);
+      border-left-color: $dark-color;
+    }
+  }
+
+  @keyframes preload-cycle-#{$i}{
+
+    $startIndex: $i*5;
+    $reverseIndex: (80 - $i*5);
+
+    #{$startIndex * 1%}{
+      transform: rotateZ(60* $i + deg) rotateY(90deg) rotateX(0deg);
+      border-left-color: $dark-color;
+    }
+    #{$startIndex + 5%},
+    #{$reverseIndex * 1%}{
+      transform: rotateZ(60* $i + deg) rotateY(0) rotateX(0deg);
+      border-left-color: $light-color;
+    }
+
+    #{$reverseIndex + 5%},
+    100%{
+      transform: rotateZ(60* $i + deg) rotateY(90deg) rotateX(0deg);
+      border-left-color: $dark-color;
+    }
+  }
+}
+
+@keyframes preload-flip{
+  0%{
+    transform: rotateY(0deg) rotateZ(-60deg);
+  }
+  100%{
+    transform: rotateY(360deg) rotateZ(-60deg);
+  }
+}
+
+
+.preloader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 40px;
+  display: block;
+  width: 3.75em;
+  height: 4.25em;
+  margin-left: -1.875em;
+  margin-top: -2.125em;
+  transform-origin: center center;
+  transform: rotateY(180deg) rotateZ(-60deg);
+
+  .slice{
+    border-top: 1.125em solid transparent;
+    border-right: none;
+    border-bottom: 1em solid transparent;
+    border-left: 1.875em solid $light-color;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform-origin: left bottom;
+    border-radius: 3px 3px 0 0;
+  }
+
+  @for $i from 1 through 6 {
+    .slice:nth-child(#{$i}) {
+      transform: rotateZ(60* $i + deg) rotateY(0deg) rotateX(0);
+      animation: .15s linear .9 - $i*.08s preload-hide-#{$i} both 1;
+    }
+  }
+
+
+  &.loading{
+    animation: 2s preload-flip steps(2) infinite both;
+    @for $i from 1 through 6 {
+      .slice:nth-child(#{$i}) {
+        transform: rotateZ(60* $i + deg) rotateY(90deg) rotateX(0);
+        animation: 2s preload-cycle-#{$i} linear infinite both;
+      }
+    }
+  }
+
+}
+
