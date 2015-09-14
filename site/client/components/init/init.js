@@ -9,6 +9,7 @@ angular.module('evtrs-site')
                 var timedOut = false;
                 var loaded =  false;
 
+                //TODO Listen to animation end instead
                 setTimeout(function(){
                         var throttle =  function() {
                             console.log('timed out');
@@ -18,7 +19,7 @@ angular.module('evtrs-site')
                             }
                         }
                    return throttle();
-                }, 5000);
+                }, 1000);
 
                 var listener = $scope.$watch(function () {
                     clearTimeout(to);

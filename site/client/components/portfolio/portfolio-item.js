@@ -63,7 +63,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                         var resetRowView = function () {
                             portfolio.style.opacity = '0';
                             projectView.style.zIndex = '3';
-                            TweenLite.to(element, 0, {css: {transform: 'scale(1) skewX(-16deg)'}});
+                            TweenLite.to(element, 0, {css: {transform: 'skewX(-16deg)'}});
                             element.style.zIndex = '1';
                             subOuter.style.opacity = '1';
                         }
@@ -75,9 +75,9 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                         }, delay: 0.2});
 
                         TweenLite.to(projectImg, 0.5, {css: {
-                            top: 30,
-                            left: 100,
-                            height: '70%',
+                            top: 50,
+                            left: 30,
+                            maxHeight: '90vh',
                             width: 'auto'
                         },
                             ease: Power0.easeIn,
@@ -95,10 +95,9 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                         projectImg.style.left = bounding.left + 'px';
                         document.body.appendChild(projectImg);
                         TweenLite.to(projectImg, 0.5, {css: {
-                            top: '10%',
-                            left: '10%',
-                            height: 'auto',
-                            width: '80%'
+                            top: '60px',
+                            width: 'auto',
+                            maxHeight: '90vh'
                         },
                             ease: Power0.easeIn,
                             onComplete: resetColumnView
