@@ -57,25 +57,26 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
 
                     if (flexDirection === 'row') {
                         projectImg.style.transform = 'skewX(-16deg)';
-                        //TODO use padding instead of translate-X to move the image on hover
+                        //TODO center image
                         projectImg.style.left = bounding.left + 100 + 'px';
                         document.body.appendChild(projectImg);
                         var resetRowView = function () {
                             portfolio.style.opacity = '0';
                             projectView.style.zIndex = '3';
-                            TweenLite.to(element, 0, {css: {transform: 'skewX(-16deg)'}});
+                            TweenLite.to(element, 0, {css: {transform: 'scale(1) skewX(-16deg)'}});
                             element.style.zIndex = '1';
                             subOuter.style.opacity = '1';
                         }
 
-
+                        //TODO improve transition, use timeline
                         TweenLite.to(element, 0.9, {css: {transform: 'scale(5,1) skewX(-1deg)'}, ease: Power1.easeIn, onComplete: resetRowView });
-                        TweenLite.to(projectImg, 0.2, {css: {
-                            transform: 'skewX(0deg)'
+                        TweenLite.to(projectImg, 0.4, {css: {
+                            transform: 'scale(1.4) skewX(0deg)'
                         }, delay: 0.2});
 
                         TweenLite.to(projectImg, 0.5, {css: {
-                            top: 50,
+                            transform: 'scale(1)',
+                            top: 45,
                             left: 30,
                             maxHeight: '90vh',
                             width: 'auto'

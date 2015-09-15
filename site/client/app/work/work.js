@@ -12,5 +12,13 @@ angular.module('evtrs-site')
         $scope.closeProject = function () {
             $rootScope.$broadcast('CLOSE_PROJECT', activeProject);
         };
+
+        $scope.openSite = function() {
+
+        }
+
+        $scope.openNext = function() {
+
+        }
     });
 

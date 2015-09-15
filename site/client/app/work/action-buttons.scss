@@ -1,0 +1,68 @@
+.action-buttons {
+  position: relative;
+  padding-top: 60px;
+  margin: 0 auto;
+  height: 80px;
+  width: 100px;
+
+  .button {
+    height: 40px;
+    width: 40px;
+    cursor: pointer
+  }
+
+  .button:hover {
+    color: #943c0f;
+  }
+  .button:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    width: 100%;
+    margin-left: 30px;
+    padding-left: 10px;
+    font-size: small;
+    border-radius: 3px;
+    background-color: #943c0f;
+    opacity: 0.8;
+    color: white;
+  }
+
+  //border: 1px solid;
+  .view-button {
+    @extend .button;
+    font-size: xx-large;
+  }
+
+  .view-button:hover::after {
+    left: -42px;
+    top: 20px;
+    width: 70px;
+  }
+
+  .next-button {
+    @extend .button;
+    margin-left: 50px;
+  }
+
+  .next-button:hover::after {
+    left: 60px;
+    top: 100px;
+    width: 90px;
+  }
+
+}
+
+.action-buttons::before {
+  content: "";
+  position: absolute;
+  width: 0px;
+  margin-right: 90px;
+  border-left: 1px solid;
+  height: 70px;
+  top: 57px;
+  left: 45px;
+  z-index: -1;
+  transform: rotate(45deg);
+}
