@@ -4,41 +4,46 @@
   margin: 0 auto;
   height: 80px;
   width: 100px;
+  color: inherit;
 
   .button {
     height: 40px;
     width: 40px;
-    cursor: pointer
+    cursor: pointer;
+    transition: color 0.5s;
   }
 
   .button:hover {
-    color: #943c0f;
-  }
-  .button:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    left: 40px;
-    top: 40px;
-    width: 100%;
-    margin-left: 30px;
-    padding-left: 10px;
-    font-size: small;
-    border-radius: 3px;
-    background-color: #943c0f;
-    opacity: 0.8;
     color: white;
   }
 
-  //border: 1px solid;
+  .button::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    white-space: nowrap;
+    margin-left: 30px;
+    padding: 0px 10px;
+    font-size: small;
+    border-radius: 3px;
+    background-color: #ffffff;
+    opacity: 0;
+    color: #808080;
+    transition: opacity 0.5s ease;
+
+  }
+
   .view-button {
     @extend .button;
     font-size: xx-large;
   }
 
+  .view-button::after {
+    left: -115px;
+    top: 57px;
+  }
+
   .view-button:hover::after {
-    left: -42px;
-    top: 20px;
-    width: 70px;
+    opacity: 0.7;
   }
 
   .next-button {
@@ -46,10 +51,13 @@
     margin-left: 50px;
   }
 
-  .next-button:hover::after {
+  .next-button::after{
     left: 60px;
     top: 100px;
-    width: 90px;
+  }
+
+  .next-button:hover::after {
+    opacity: 0.6;
   }
 
 }
