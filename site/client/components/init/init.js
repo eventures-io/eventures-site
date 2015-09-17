@@ -12,7 +12,7 @@ angular.module('evtrs-site')
                 //TODO Listen to animation end instead
                 setTimeout(function(){
                         var throttle =  function() {
-                            console.log('timed out');
+                            //console.log('timed out');
                             timedOut = true;
                             if(loaded) {
                                 $rootScope.$broadcast('APP_LOADED');
@@ -24,7 +24,7 @@ angular.module('evtrs-site')
                 var listener = $scope.$watch(function () {
                     clearTimeout(to);
                     to = setTimeout(function () {
-                        console.log('initialised');
+                        //console.log('initialised');
                         listener();
                         loaded = true;
                         if(timedOut){
@@ -37,7 +37,7 @@ angular.module('evtrs-site')
             controller: function($scope, $element) {
 
                 $scope.$on('APP_LOADED', function() {
-                    console.log('app loaded');
+                    //console.log('app loaded');
                     runLoadTransition();
                 });
 

@@ -45,15 +45,28 @@ angular
                     project: {
                         templateUrl: function (stateParams) {
                             return 'app/work/projects/' + stateParams.project + '.html';
-                        },
-                        controller: 'WorkController'
+                        }
+                    }
+                }
+            }).state('work.project.site', {
+                url: '/site',
+                views: {
+                    site: {
+                        templateUrl: 'app/work/site-view.html'
                     }
                 }
             })
 
-    })
-    .
-    filter('HtmlFilter', ['$sce', function ($sce) {
+    }).run(function($http, PROJECT_CONSTANTS) {
+        //Ping heroku apps to wake up the dynos
+        _.forIn(PROJECT_CONSTANTS, function(project, key) {
+            //console.log(key, project);
+            if(project.hasOwnProperty('siteUrl')){
+                $http.get(project.siteUrl);
+            }
+        });
+
+    }).filter('HtmlFilter', ['$sce', function ($sce) {
         return function (text) {
             return $sce.trustAsHtml(text);
         };
