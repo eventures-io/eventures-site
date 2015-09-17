@@ -1,7 +1,7 @@
 'use strict'
 
 
-angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootScope, PROJECT_CONSTANTS) {
+angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PROJECT_CONSTANTS) {
 
     return {
         templateUrl: 'components/portfolio/portfolio-item.html',
@@ -32,7 +32,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                 var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction');
                 if (projectName === $scope.project.name) {
 
-                    //TODO set width of element to hover state width
                     //TODO center sub-inner div
                     element.style.zIndex = '2';
                     // element.addEventListener("transitionend", openProjectEventListener, true);
@@ -52,12 +51,10 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                         var projectVisual = document.querySelector('.project-visual-img');
                         projectVisual.appendChild(projectImg);
                         projectImg.style.position = 'relative';
-
                     };
 
                     if (flexDirection === 'row') {
                         projectImg.style.transform = 'skewX(-16deg)';
-                        //TODO center image
                         projectImg.style.left = bounding.left + 100 + 'px';
                         document.body.appendChild(projectImg);
                         var resetRowView = function () {
@@ -104,7 +101,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                             onComplete: resetColumnView
                         });
                     }
-                    $state.go('work.project', {project: projectName});
+
                 }
             });
 
@@ -112,7 +109,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($state, $rootS
                 if (project === $scope.project.name) {
                     projectView.style.zIndex = '0';
                     portfolio.style.opacity = '1';
-                    $state.go('work');
+
                 }
             });
 

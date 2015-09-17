@@ -8,6 +8,7 @@ angular.module('evtrs-site').directive('navMenu', function ($state) {
 
             var menu = $element[0].querySelector('.nav-menu');
             var ul = menu.querySelector('ul');
+            var menuButton = menu.querySelector('.menu-btn');
 
             $scope.toggleMenu = function () {
                 menu.classList.toggle('nav-menu-open');
@@ -19,11 +20,15 @@ angular.module('evtrs-site').directive('navMenu', function ($state) {
                 var state =  event.srcElement.id;
                 $scope.toggleMenu();
                 $state.go(state);
-
-
             };
 
+            $scope.$on('HIDE_MENU_BTN', function() {
+                 menuButton.classList.add('menu-btn-hidden');
+            })
 
+            $scope.$on('SHOW_MENU_BTN', function() {
+                menuButton.classList.remove('menu-btn-hidden');
+            })
 
         }
     }

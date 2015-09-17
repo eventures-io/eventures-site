@@ -57,20 +57,26 @@ angular
                 }
             })
 
-    }).run(function($http, PROJECT_CONSTANTS) {
+    }).run(function ($http, PROJECT_CONSTANTS) {
         //Ping heroku apps to wake up the dynos
-        _.forIn(PROJECT_CONSTANTS, function(project, key) {
-            //console.log(key, project);
-            if(project.hasOwnProperty('siteUrl')){
-                $http.get(project.siteUrl);
-            }
-        });
+//        _.forIn(PROJECT_CONSTANTS, function(project, key) {
+//            //console.log(key, project);
+//            if(project.hasOwnProperty('siteUrl')){
+//                $http.get(project.siteUrl);
+//            }
+//        });
 
     }).filter('HtmlFilter', ['$sce', function ($sce) {
         return function (text) {
             return $sce.trustAsHtml(text);
         };
+    }
+    ]).filter('URLFilter', ['$sce', function ($sce) {
+        return function (url) {
+            return $sce.trustAsResourceUrl(url);
+        };
     }]);
+
 
 //TODO
 //$stateProvider

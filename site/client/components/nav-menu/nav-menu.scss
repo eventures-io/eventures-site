@@ -1,5 +1,5 @@
+//
 .nav-menu {
-
   position: fixed;
   top: 0;
   left: 0;
@@ -8,12 +8,10 @@
   border-width: 0px;
   border-style: solid;
   border-color: #333;
-
   background-color: rgba(0,0,0,0);
-  z-index: 9997;
-  //TODO switch to GSAP bounce animation
+  z-index: 9998;
+  //TODO add bounce effect
   transition: border-width 0.3s, background-color 0.3s, height 0s 0.3s;
-
 }
 
 .nav-menu-open {
@@ -25,7 +23,6 @@
   .font-icon {
     padding-right: 10px;
   }
-
 }
 
 .nav-menu-open.nav-overlay {
@@ -46,9 +43,13 @@
   display: block;
   width: 50px;
   height: 50px;
-  font-size: xx-large;
+  font-size: smaller;
   cursor: pointer;
-  z-index: 9998;
+  transition: all 1s;
+}
+
+.menu-btn-hidden {
+  left: -100px
 }
 
 
@@ -108,21 +109,3 @@
   transform: translate3d(0,0,0);
 }
 
-//.nav-menu ul li a {
-//  display: block;
-//  outline: none;
-//  color: transparent;
-//  text-decoration: none;
-//  font-size: 0px;
-//}
-//
-//.nav-menu ul li a:before {
-//  color: #04a466;
-//  font-size: 48px;
-//  transition: color 0.2s;
-//}
-//
-//.nav-menu ul li a:hover:before,
-//.nav-menu ul li a:focus:before  {
-//  color: #fff;
-//}

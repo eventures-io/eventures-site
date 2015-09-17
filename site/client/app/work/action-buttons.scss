@@ -1,8 +1,7 @@
 .action-buttons {
   position: relative;
-  padding-top: 60px;
-  margin: 0 auto;
-  height: 80px;
+  margin: 50px auto;
+  height: 120px;
   width: 100px;
   color: inherit;
 
@@ -25,11 +24,11 @@
     margin-left: 30px;
     padding: 0px 10px;
     font-size: small;
-    border-radius: 3px;
-    background-color: #ffffff;
+    border-radius: 15px;
+    border:1px solid #313131;
     opacity: 0;
-    color: #808080;
-    transition: opacity 0.5s ease;
+    color: #313131;
+    transition: opacity 0.8s ease;
 
   }
 
@@ -39,12 +38,12 @@
   }
 
   .view-button::after {
-    left: -115px;
-    top: 57px;
+    left: -110px;
+    top: -3px;
   }
 
   .view-button:hover::after {
-    opacity: 0.7;
+    opacity: 1;
   }
 
   .next-button {
@@ -54,11 +53,11 @@
 
   .next-button::after{
     left: 60px;
-    top: 100px;
+    top: 40px;
   }
 
   .next-button:hover::after {
-    opacity: 0.6;
+    opacity: 1;
   }
 
 }
@@ -70,7 +69,7 @@
   margin-right: 90px;
   border-left: 1px solid;
   height: 70px;
-  top: 57px;
+  top: 3px;
   left: 45px;
   z-index: -1;
   transform: rotate(45deg);

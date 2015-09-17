@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300|Raleway|Share|Metrophobic|Allerta+Stencil);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300|Raleway|Share|Metrophobic|Allerta+Stencil|Sarina|Doppio+One);
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import "hint.css/src/hint";
 //TODO investigate
@@ -52,7 +52,7 @@ h4 {
 @import 'home/home.scss';
 @import 'post/post.scss';
 @import 'work/action-buttons.scss';
-@import 'work/projects/polaroiz.scss';
+@import 'work/projects/projects.scss';
 @import 'work/work.scss';
 @import 'blog-nav/blog-nav.scss';
 @import 'init/init.scss';

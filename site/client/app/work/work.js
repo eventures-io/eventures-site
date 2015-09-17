@@ -1,30 +1,38 @@
 'use strict';
 
 angular.module('evtrs-site')
-    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state, $sce) {
+    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state, $stateParams, $sce) {
 
-        var activeProject
+        var activeProject;
         var siteActive = false;
         $scope.displaySite = false;
 
+        if($stateParams.projectId){
+            console.log('project');
+        }
+
         $scope.$on('LOAD_PROJECT', function (event, projectName) {
             activeProject = projectName;
+            $state.go('work.project', {project: projectName});
         });
 
         $scope.closeProject = function () {
-            if(siteActive){
-                $state.go('work.project', {project: activeProject})
-            } else {
                 $rootScope.$broadcast('CLOSE_PROJECT', activeProject);
-            }
+                $state.go('work');
+
         };
 
         $scope.openSite = function () {
-            siteActive = true;
+            $rootScope.$broadcast('HIDE_MENU_BTN');
+            //$scope.siteUrl = PROJECT_CONSTANTS[activeProject].siteUrl;
             $state.go('work.project.site', {project: activeProject});
-            var url = $sce.trustAsResourceUrl(PROJECT_CONSTANTS[activeProject].siteUrl);
-            $scope.siteUrl = url;
         }
+
+        $scope.closeSite = function() {
+            $rootScope.$broadcast('SHOW_MENU_BTN');
+            $state.go('work.project', {project: activeProject});
+        }
+
 
         $scope.openNext = function () {
 
