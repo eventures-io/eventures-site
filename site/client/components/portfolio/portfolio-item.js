@@ -5,9 +5,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
     return {
         templateUrl: 'components/portfolio/portfolio-item.html',
-        scope: {
-
-        },
+        scope: {},
         link: function (scope, element, attrs) {
             scope.project = {};
             scope.project.name = attrs.portfolioItem;
@@ -27,7 +25,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             var previewImg = element.querySelector('.preview-img');
             var portfolio = document.querySelector('.portfolio-section');
 
-
             $scope.$on('LOAD_PROJECT', function (event, projectName) {
                 var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction');
                 if (projectName === $scope.project.name) {
@@ -43,7 +40,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     projectImg.style.top = bounding.top + 'px';
                     projectImg.width = previewImg.width;
                     projectImg.height = previewImg.height;
-                    //set/unset properties with add/remove class
+                    //TODO used class based styling
                     subOuter.style.opacity = '0';
                     progressButton.display = 'none';
 

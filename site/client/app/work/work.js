@@ -1,41 +1,44 @@
 'use strict';
 
 angular.module('evtrs-site')
-    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state, $stateParams, $sce) {
+    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state) {
 
-        var activeProject;
-        var siteActive = false;
         $scope.displaySite = false;
 
-        if($stateParams.projectId){
-            console.log('project');
-        }
-
         $scope.$on('LOAD_PROJECT', function (event, projectName) {
-            activeProject = projectName;
+            $scope.activeProject = projectName;
             $state.go('work.project', {project: projectName});
         });
 
         $scope.closeProject = function () {
-                $rootScope.$broadcast('CLOSE_PROJECT', activeProject);
-                $state.go('work');
-
+            $rootScope.$broadcast('CLOSE_PROJECT', $scope.activeProject);
+            $state.go('work');
         };
 
         $scope.openSite = function () {
             $rootScope.$broadcast('HIDE_MENU_BTN');
-            //$scope.siteUrl = PROJECT_CONSTANTS[activeProject].siteUrl;
-            $state.go('work.project.site', {project: activeProject});
-        }
+            $scope.siteUrl = PROJECT_CONSTANTS[$scope.activeProject].siteUrl;
+            $state.go('work.project.site', {project: $scope.activeProject});
+        };
 
-        $scope.closeSite = function() {
+        $scope.closeSite = function () {
             $rootScope.$broadcast('SHOW_MENU_BTN');
-            $state.go('work.project', {project: activeProject});
-        }
-
+            $state.go('work.project', {project: $scope.activeProject});
+        };
 
         $scope.openNext = function () {
+            var next = false;
+            _.forIn(PROJECT_CONSTANTS, function (project, key) {
 
-        }
+                if (key === $scope.activeProject) {
+                    next = true;
+                } else if (next) {
+                    $rootScope.$broadcast('LOAD_PROJECT', key);
+                    next = false;
+                };
+            });
+        };
+
     });
+
 

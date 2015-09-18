@@ -3,6 +3,7 @@
 angular.module('evtrs-site').directive('navMenu', function ($state) {
     return {
         restrict: 'E',
+        scope: {},
         templateUrl: 'components/nav-menu/nav-menu.html',
         controller: function ($scope, $element) {
 

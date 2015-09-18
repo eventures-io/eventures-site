@@ -48,7 +48,9 @@ angular.module('evtrs-site')
                     main.style.position= 'absolute';
                     main.style.zIndex = '2';
 
-                    TweenLite.fromTo(main, 1.7, {css: {
+                    //TODO hide menu button
+
+                    TweenLite.fromTo(main, 0.7, {css: {
                         top: '100vh'
                     }}, {css: {
                         top: '0'
@@ -58,9 +60,11 @@ angular.module('evtrs-site')
                             main.style.position= 'initial';
                             loadingPane.style.display = 'none';
                             main.style.zIndex = '0';
-
+                            //TODO show menu button
                         }
                     });
+
+
 
                 }
             }

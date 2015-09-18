@@ -59,7 +59,7 @@
     .project-summary {
       width: 60%;
       padding: 0 15px;
-      margin-top: 30px;
+      margin: 30px;
       height: 100vh;
       background-color: inherit;
       overflow-y: scroll;
@@ -71,7 +71,6 @@
         margin-bottom: 1.5em;
       }
       .summary-text {
-        height: 100%;
         max-width: 600px;
         background-color: inherit;
         overflow-y: scroll;
@@ -99,6 +98,7 @@
 .site-view {
   position: absolute;
   background-color: #1b1b1b;
+  background-image: radial-gradient(circle closest-side, #3b3b3b, #1b1b1b);
   top: 0;
   height: 100vh;
   width: 100vw;
@@ -131,16 +131,16 @@
 
   .dyno-loader {
     position: fixed;
-    top: 100px;
+    top: 150px;
     color: black;
     font-weight: bolder;
     font-size: x-large;
-    left: calc(50vw - 100px);
+    font-family: Arial Black, sans-serif;
+    left: calc(50vw - 200px);
     text-align: center;
-    width: 200px;
+    width: 400px;
     z-index: -1;
-
-    img{
+    img {
       animation: pulse 2s ease-in infinite;
     }
 
@@ -153,7 +153,7 @@
     transform: scale(1);
   }
   70% {
-    transform: scale(1.04);
+    transform: scale(1.09);
   }
   100% {
     transform: scale(1);

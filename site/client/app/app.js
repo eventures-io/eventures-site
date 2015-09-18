@@ -45,7 +45,8 @@ angular
                     project: {
                         templateUrl: function (stateParams) {
                             return 'app/work/projects/' + stateParams.project + '.html';
-                        }
+                        },
+                        controller: 'ProjectController'
                     }
                 }
             }).state('work.project.site', {
