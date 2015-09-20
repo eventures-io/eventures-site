@@ -1,35 +1,64 @@
-/*MAIN-VIEW -----------*/
-.animate-main.ng-enter, .animate-main.ng-leave {
-  //transition: all 1.3s ease-in-out;
+/*MAIN-VIEW ---------*/
+.animate-main.ng-enter-active {
+  z-index: 99;
+  position: absolute;
+  top: 100vh;
 }
 
 .animate-main.ng-enter {
-  opacity: 0;
-}
-
-.animate-main.ng-enter-active {
-  opacity: 1;
-}
-
-.animate-main.ng-leave {
-  opacity: 0;
+  animation: moveToTop .4s .1s ease;
 }
 
 .animate-main.ng-leave-active {
-  opacity: 1;
+  z-index: 98;
 }
 
-/*ARTICLE-VIEW --------*/
-
-.animate-article.ng-enter {
-  animation : article-slide-in 0.9s ease-out;
+.animate-main.ng-leave {
+   animation: fadeOut 5s;
 }
 
-@keyframes article-slide-in {
+/*ARTICLE-VIEW -------*/
+
+//.ng-enter-active
+//
+//.animate-article.ng-enter {
+  //animation : article-slide-in 0.9s ease-out;
+//}
+
+
+/*SITE_VIEW -------*/
+
+//.animate-site.ng-enter {
+//  animation: fadeIn .4s;
+//}
+//
+//.animate-site.ng-enter {
+//  animation: fadeOut .4s;
+//}
+
+/* KEYFRAMES -------*/
+@keyframes moveToTop {
   from {
-     transform : translateX(-90px);
   }
   to {
-    transform : translateX(0px);
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

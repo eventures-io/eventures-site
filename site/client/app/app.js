@@ -66,9 +66,9 @@ angular
                     }
                 }
             })
-}).
-run(function ($http, PROJECT_CONSTANTS, $rootScope) {
-    //Ping heroku apps to wake up the dynos
+    }).
+    run(function ($http, PROJECT_CONSTANTS, $rootScope) {
+        //Ping heroku apps to wake up the dynos
 //        _.forIn(PROJECT_CONSTANTS, function(project, key) {
 //            //console.log(key, project);
 //            if(project.hasOwnProperty('siteUrl')){
@@ -76,16 +76,21 @@ run(function ($http, PROJECT_CONSTANTS, $rootScope) {
 //            }
 //        });
 
-    $rootScope.$on('$stateChangeSuccess', function (event, current, previous) {
-        window.document.title = current.data.title;
+        $rootScope.$on('$stateChangeSuccess', function (event, current, previous) {
+            if (current.data) {
+                window.document.title = current.data.title;
+            }
+
+
     });
 
-}).filter('HtmlFilter', ['$sce', function ($sce) {
-        return function (text) {
-            return $sce.trustAsHtml(text);
-        };
-    }
-    ]).filter('URLFilter', ['$sce', function ($sce) {
+}).
+filter('HtmlFilter', ['$sce', function ($sce) {
+    return function (text) {
+        return $sce.trustAsHtml(text);
+    };
+}
+]).filter('URLFilter', ['$sce', function ($sce) {
         return function (url) {
             return $sce.trustAsResourceUrl(url);
         };

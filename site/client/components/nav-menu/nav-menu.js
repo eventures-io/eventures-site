@@ -1,22 +1,30 @@
 'use strict';
 
-angular.module('evtrs-site').directive('navMenu', function ($state) {
+angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
     return {
-        restrict: 'E',
+        restrict: 'A',
         scope: {},
         templateUrl: 'components/nav-menu/nav-menu.html',
         controller: function ($scope, $element) {
 
-            var menu = $element[0].querySelector('.nav-menu');
+            var element = $element[0];
+            var menu = element.querySelector('.nav-menu');
             var ul = menu.querySelector('ul');
-            var lis = menu.querySelector('li');
             var menuButton = menu.querySelector('.menu-btn');
 
-
             $scope.toggleMenu = function () {
+                element.addEventListener("transitionend", menuTransitionEnd, true);
                 menu.classList.toggle('nav-menu-open');
                 menu.classList.toggle('nav-menu-close');
                 //TODO scale/unscale content
+            };
+
+            ul.onclick= function(event) {
+                $scope.state =  event.srcElement.id;
+                $scope.toggleMenu();
+                $timeout(function() {
+                        return $state.go($scope.state);
+                }, 400);
             };
 
             $scope.$on('HIDE_MENU_BTN', function() {
@@ -27,11 +35,10 @@ angular.module('evtrs-site').directive('navMenu', function ($state) {
                 menuButton.classList.remove('menu-btn-hidden');
             });
 
-            $scope.$on('STATE_CHANGE', function(event){
-                //get el by id
-                setActiveMenuItem(menuItem);
+            var menuTransitionEnd =  function(event){
+                element.removeEventListener("transitionend", menuTransitionEnd, true);
 
-            });
+            }
 
         }
     }

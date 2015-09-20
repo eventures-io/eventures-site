@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('evtrs-site').directive('navbar', function (BlogResource, $state, $timeout, $cookies) {
+angular.module('evtrs-site').directive('navbar', function ($rootScope, BlogResource, $state, $timeout, $cookies) {
     return {
         restrict: 'E',
         templateUrl: 'components/blog-nav/blog-nav.html',
@@ -19,6 +19,7 @@ angular.module('evtrs-site').directive('navbar', function (BlogResource, $state,
             $scope.goHome = function() {
                 $scope.closeMenu();
                 $timeout(function () {
+                    $rootScope.$broadcast('SHOW_MENU_BTN');
                     return $state.go('home');
                 }, 700);
             }

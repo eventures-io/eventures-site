@@ -1,31 +1,23 @@
 <nav class="nav-menu">
     <div class="nav-overlay"></div>
-    <span class="menu-btn" data-ng-click="toggleMenu()"><i class="font-icon icon-hamburger"></i></span>
+    <span class="menu-btn" data-ng-click="toggleMenu()">
+        <i class="font-icon icon-hamburger"></i>
+    </span>
     <ul data-ng-click="navigate()">
-        <li  ui-sref-active="state-active">
-            <a ui-sref="home">
-                <i class="font-icon icon-home-2"></i>Home
-            </a>
+        <li id="home">
+            <i class="font-icon icon-home-2"></i>Home
         </li>
-        <li ui-sref-active="state-active">
-            <a ui-sref="work">
-                <i class="font-icon icon-work"></i>Work
-            </a>
+        <li id="work">
+            <i class="font-icon icon-work"></i>Work
         </li>
-        <li ui-sref-active="state-active">
-            <a ui-sref="blog">
-                <i class="font-icon icon-blog"></i>Blog
-            </a>
+        <li id="blog">
+            <i class="font-icon icon-blog"></i>Blog
         </li>
-        <li ui-sref-active="state-active">
-            <a ui-sref="about">
-                <i class="font-icon icon-about"></i>About
-            </a>
+        <li id="about">
+            <i class="font-icon icon-about"></i>About
         </li>
-        <li ui-sref-active="state-active">
-            <a ui-sref="contact">
-                <i class="font-icon icon-contact5"></i>Contact
-            </a>
+        <li id="contact">
+            <i class="font-icon icon-contact4"></i>Contact
         </li>
     </ul>
 </nav>
