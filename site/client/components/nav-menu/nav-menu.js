@@ -9,7 +9,9 @@ angular.module('evtrs-site').directive('navMenu', function ($state) {
 
             var menu = $element[0].querySelector('.nav-menu');
             var ul = menu.querySelector('ul');
+            var lis = menu.querySelector('li');
             var menuButton = menu.querySelector('.menu-btn');
+
 
             $scope.toggleMenu = function () {
                 menu.classList.toggle('nav-menu-open');
@@ -17,19 +19,19 @@ angular.module('evtrs-site').directive('navMenu', function ($state) {
                 //TODO scale/unscale content
             };
 
-            ul.onclick= function(event) {
-                var state =  event.srcElement.id;
-                $scope.toggleMenu();
-                $state.go(state);
-            };
-
             $scope.$on('HIDE_MENU_BTN', function() {
                  menuButton.classList.add('menu-btn-hidden');
-            })
+            });
 
             $scope.$on('SHOW_MENU_BTN', function() {
                 menuButton.classList.remove('menu-btn-hidden');
-            })
+            });
+
+            $scope.$on('STATE_CHANGE', function(event){
+                //get el by id
+                setActiveMenuItem(menuItem);
+
+            });
 
         }
     }

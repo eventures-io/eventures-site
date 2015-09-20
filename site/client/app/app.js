@@ -26,19 +26,28 @@ angular
             .state('home', {
                 url: '/home',
                 templateUrl: 'app/home/home.html',
-                controller: 'HomeController'
+                controller: 'HomeController',
+                data: {
+                    title: 'Eventures'
+                }
+
             }).state('blog', {
                 url: '/blog',
                 template: '',
-                controller: 'PostController'
+                controller: 'PostController',
+                data: {title: 'Notes'}
             }).state('post', {
                 url: '/blog/:postId/:postTitle',
                 templateUrl: 'app/post/post.html',
                 controller: 'PostController'
-            }).state('work', {
+            })
+            .state('work', {
                 url: '/work',
                 templateUrl: 'app/work/work.html',
-                controller: 'WorkController'
+                controller: 'WorkController',
+                data: {
+                    title: 'Eventures: Work'
+                }
             }).state('work.project', {
                 url: '/:project',
                 views: {
@@ -57,9 +66,9 @@ angular
                     }
                 }
             })
-
-    }).run(function ($http, PROJECT_CONSTANTS) {
-        //Ping heroku apps to wake up the dynos
+}).
+run(function ($http, PROJECT_CONSTANTS, $rootScope) {
+    //Ping heroku apps to wake up the dynos
 //        _.forIn(PROJECT_CONSTANTS, function(project, key) {
 //            //console.log(key, project);
 //            if(project.hasOwnProperty('siteUrl')){
@@ -67,7 +76,11 @@ angular
 //            }
 //        });
 
-    }).filter('HtmlFilter', ['$sce', function ($sce) {
+    $rootScope.$on('$stateChangeSuccess', function (event, current, previous) {
+        window.document.title = current.data.title;
+    });
+
+}).filter('HtmlFilter', ['$sce', function ($sce) {
         return function (text) {
             return $sce.trustAsHtml(text);
         };
@@ -78,18 +91,3 @@ angular
         };
     }]);
 
-
-//TODO
-//$stateProvider
-//    .state('home', {
-//        url: '/',
-//        template: '',
-//        controller: 'HomeController',
-//        title: 'Home'
-//    })
-//
-//.run(['$rootScope', function($rootScope) {
-//    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-//        window.document.title = current.$$route.title;
-//    });
-//}]);

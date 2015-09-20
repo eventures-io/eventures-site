@@ -63,9 +63,6 @@ angular.module('evtrs-site')
                             //TODO show menu button
                         }
                     });
-
-
-
                 }
             }
         };
