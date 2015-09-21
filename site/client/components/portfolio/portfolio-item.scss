@@ -101,7 +101,6 @@ $transition-pf-lg: 0.7s;
     flex-direction: column;
     padding-top: 50px;
     overflow: hidden;
-    //justify-content:center;
   }
 
   .flex-sub {
@@ -111,7 +110,6 @@ $transition-pf-lg: 0.7s;
     padding-left: 5%;
     padding-right: 5%;
     border-top: 1px solid gray;
-    //transform: skewY(-5deg);
     transition: height 0.5s ease-in;
 
     .sub-outer {
@@ -124,15 +122,11 @@ $transition-pf-lg: 0.7s;
       .sub-inner {
         height: 100%;
         width: 100%;
-        //transform: skewX(-5deg);
-        //transition: all $transition-pf-lg;
-        //padding-left: 10%;
         .preview-img {
           width: 100%;
           height: auto;
           min-height: 80px;
           border-radius: 3px;
-          //transition: all $transition-pf-lg;
         }
       }
     }

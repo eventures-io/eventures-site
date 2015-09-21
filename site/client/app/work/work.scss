@@ -81,83 +81,22 @@
 }
 
 @media (max-width: $screen-sm) {
+  .project-view{
+    overflow-y: visible;
+  }
   .project-view-header {
     flex-direction: column;
+    overflow: visible;
 
     .project-visual {
-      min-height: 100vh;
+      //TODO take height from child
+      height: 90vh;
     }
 
     .project-summary {
-
+     padding: 0 15px;
     }
   }
 
 }
-
-.site-view {
-  position: absolute;
-  background-color: #1b1b1b;
-  background-image: radial-gradient(circle closest-side, #343434, #1b1b1b);
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  z-index: 9999;
-
-  .frame {
-    height: 100vh;
-    width: 100vw;
-    z-index: 9999;
-  }
-
-  .close-button {
-    position: fixed;
-    top: 0;
-    left: calc(50% - 15px);
-    width: 40px;
-    height: 40px;
-    border-radius: 0 0 4Px 4Px;
-    padding: 10px;
-    background-color: #3e3e3e;
-    color: #eeeeee;
-    cursor: pointer;
-    transition: all 0.5s;
-  }
-
-  .close-button:hover {
-    padding-top: 15px;
-    height: 45px;
-  }
-
-  .dyno-loader {
-    position: fixed;
-    top: 150px;
-    color: black;
-    font-weight: bolder;
-    font-size: x-large;
-    font-family: Arial Black, sans-serif;
-    left: calc(50vw - 200px);
-    text-align: center;
-    width: 400px;
-    z-index: -1;
-    img {
-      animation: pulse 2s ease-in infinite;
-    }
-  }
-}
-
-@keyframes pulse {
-
-  0% {
-    transform: scale(1);
-  }
-  70% {
-    transform: scale(1.09);
-  }
-  100% {
-    transform: scale(1);
-  }
-
-}
-
 

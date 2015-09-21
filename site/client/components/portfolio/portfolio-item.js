@@ -1,6 +1,5 @@
 'use strict'
 
-
 angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PROJECT_CONSTANTS) {
 
     return {
@@ -54,8 +53,10 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         projectImg.style.transform = 'skewX(-16deg)';
                         projectImg.style.left = bounding.left + 100 + 'px';
                         document.body.appendChild(projectImg);
+                        //TODO use class-based styling
                         var resetRowView = function () {
                             portfolio.style.opacity = '0';
+                            projectView.style.opacity = '1';
                             projectView.style.zIndex = '3';
                             TweenLite.to(element, 0, {css: {transform: 'scale(1) skewX(-16deg)'}});
                             element.style.zIndex = '1';
@@ -82,6 +83,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     } else {
                         var resetColumnView = function () {
                             repositionImage();
+                            projectView.style.opacity = '1';
                             element.style.zIndex = '1';
                             subOuter.style.opacity = '1';
                         }
@@ -104,7 +106,16 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
             $scope.$on('CLOSE_PROJECT', function (event, project) {
                 if (project === $scope.project.name) {
-                    projectView.style.zIndex = '0';
+                    projectView.style.transition = 'opacity .4s';
+                    TweenLite.to(projectView, 0.4, {css: {
+                        opacity: '0'
+                    },
+                        ease: Power4.easeOut,
+                        onComplete: function() {
+                            projectView.style.zIndex = '0';
+                        }
+                    });
+                    projectView.style.transition = '';
                     portfolio.style.opacity = '1';
 
                 }

@@ -6,7 +6,7 @@
 }
 
 .animate-main.ng-enter {
-  animation: moveToTop .4s .1s ease;
+  animation: slideUp .4s .4s ease;
 }
 
 .animate-main.ng-leave-active {
@@ -14,36 +14,28 @@
 }
 
 .animate-main.ng-leave {
-   animation: fadeOut 5s;
+   animation: scaleDown 1s;
 }
 
-/*ARTICLE-VIEW -------*/
-
-//.ng-enter-active
-//
-//.animate-article.ng-enter {
-  //animation : article-slide-in 0.9s ease-out;
-//}
-
-
-/*SITE_VIEW -------*/
-
-//.animate-site.ng-enter {
-//  animation: fadeIn .4s;
-//}
-//
-//.animate-site.ng-enter {
-//  animation: fadeOut .4s;
-//}
 
 /* KEYFRAMES -------*/
-@keyframes moveToTop {
+@keyframes slideUp {
   from {
   }
   to {
     transform: translateY(-100%);
   }
 }
+
+
+@keyframes scaleDown {
+  from {
+  }
+  to {
+    transform: scale(0.99);
+  }
+}
+
 
 @keyframes fadeIn {
   0% {
