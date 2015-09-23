@@ -5,7 +5,7 @@ angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
         restrict: 'A',
         scope: {},
         templateUrl: 'components/nav-menu/nav-menu.html',
-        controller: function ($scope, $element) {
+        controller: function ($scope, $rootScope, $element) {
 
             var element = $element[0];
             var menu = element.querySelector('.nav-menu');
@@ -20,10 +20,11 @@ angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
             };
 
             ul.onclick= function(event) {
+                $rootScope.$broadcast('CLOSE_ACTIVE_PROJECT');
                 $scope.state =  event.srcElement.id;
                 $scope.toggleMenu();
                 $timeout(function() {
-                        return $state.go($scope.state);
+                    return $state.go($scope.state);
                 }, 400);
             };
 

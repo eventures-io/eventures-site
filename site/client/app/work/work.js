@@ -10,6 +10,10 @@ angular.module('evtrs-site')
             $state.go('work.project', {project: projectName});
         });
 
+        $scope.$on('CLOSE_ACTIVE_PROJECT', function() {
+            $rootScope.$broadcast('CLOSE_PROJECT', $scope.activeProject);
+        })
+
         $scope.closeProject = function () {
             $rootScope.$broadcast('CLOSE_PROJECT', $scope.activeProject);
             $state.go('work');

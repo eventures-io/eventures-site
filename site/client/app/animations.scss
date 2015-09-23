@@ -6,7 +6,7 @@
 }
 
 .animate-main.ng-enter {
-  animation: slideUp .4s .4s ease;
+  animation: slideUp .4s ease;
 }
 
 .animate-main.ng-leave-active {
@@ -14,7 +14,7 @@
 }
 
 .animate-main.ng-leave {
-   animation: scaleDown 1s;
+   animation: fadeOut 15s;
 }
 
 

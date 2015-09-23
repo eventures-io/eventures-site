@@ -62,7 +62,7 @@ angular
                 url: '/site',
                 views: {
                     site: {
-                        templateUrl: 'app/work/site-view.html'
+                        templateUrl: 'app/work/site-view/site-view.html'
                     }
                 }
             })

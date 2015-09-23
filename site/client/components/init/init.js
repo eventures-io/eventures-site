@@ -4,48 +4,60 @@ angular.module('evtrs-site')
     .directive('init', ['$rootScope', function ($rootScope) {
         return {
             restrict: 'A',
-            link: function ($scope) {
+            link: function (scope, element) {
                 var to;
                 var timedOut = false;
-                var loaded =  false;
+                var loaded = false;
 
-                //TODO Listen to animation end instead
-                setTimeout(function(){
-                        var throttle =  function() {
-                            //console.log('timed out');
-                            timedOut = true;
-                            if(loaded) {
-                                $rootScope.$broadcast('APP_LOADED');
-                            }
+                var loaderSvg = element[0].querySelector('.loader-svg');
+                var loaderPeriod = element[0].querySelector('.loader-period');
+
+                var broadCast = function() {
+                    setTimeout(function () {
+                        var throttle = function () {
+                            $rootScope.$broadcast('APP_LOADED');
                         }
-                   return throttle();
-                }, 1000);
+                        return throttle();
+                    }, 1000);
+                }
 
-                var listener = $scope.$watch(function () {
+                loaderSvg.addEventListener('animationend', function (event) {
+
+                    timedOut = true;
+                    if (loaded) {
+                       loaderPeriod.style.opacity = '1';
+                       broadCast();
+                    }
+                }, true);
+
+                var listener = scope.$watch(function () {
                     clearTimeout(to);
                     to = setTimeout(function () {
                         //console.log('initialised');
                         listener();
                         loaded = true;
-                        if(timedOut){
-                            $rootScope.$broadcast('APP_LOADED');
+                        if (timedOut) {
+                            loaderPeriod.style.opacity = '1';
+                            broadCast();
                         }
 
                     }, 50);
                 });
             },
-            controller: function($scope, $element) {
+            controller: function ($scope, $element) {
 
-                $scope.$on('APP_LOADED', function() {
+                $scope.$on('APP_LOADED', function () {
+                    var loader = $element[0].querySelector('.loader');
+                    //loader.style.display='none';
                     //console.log('app loaded');
                     runLoadTransition();
                 });
 
-                var runLoadTransition = function(){
+                var runLoadTransition = function () {
                     var main = $element[0].querySelector('.animate-main');
                     var loadingPane = $element[0].querySelector('.loading-pane');
                     loadingPane.style.zIndex = '0';
-                    main.style.position= 'absolute';
+                    main.style.position = 'absolute';
                     main.style.zIndex = '2';
 
                     //TODO hide menu button
@@ -56,8 +68,8 @@ angular.module('evtrs-site')
                         top: '0'
                     },
                         ease: Expo.easeOut,
-                        onComplete: function() {
-                            main.style.position= 'initial';
+                        onComplete: function () {
+                            main.style.position = 'initial';
                             loadingPane.style.display = 'none';
                             main.style.zIndex = '0';
                             //TODO show menu button

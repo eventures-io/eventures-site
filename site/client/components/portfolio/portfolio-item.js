@@ -111,7 +111,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         opacity: '0'
                     },
                         ease: Power4.easeOut,
-                        onComplete: function() {
+                        onComplete: function () {
                             projectView.style.zIndex = '0';
                         }
                     });
