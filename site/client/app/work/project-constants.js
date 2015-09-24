@@ -7,5 +7,5 @@ angular.module('evtrs-site')
         polaroiz: {bgColor: '#efefef', image: {src: 'assets/images/polaroiz.png', paddingTop: '0px'}, siteUrl: 'http://polaroiz.herokuapp.com' },
         plantzrmob: {bgColor: '#efefef', image: {src: 'assets/images/plantzr-mobile.png', paddingTop: '0px' }},
         plantzr: {bgColor: '#efefef', image: {src: 'assets/images/plantzr.png', paddingTop: '0px'}, siteUrl: 'http://plantzr.herokuapp.com'},
-        dribble: {bgColor: '#efefef', image: {src: 'assets/images/logo1.png' , paddingTop: '0px'}}
+        dribble: {bgColor: '#efefef', image: {src: 'assets/images/hash.svg' , paddingTop: '0px'}}
     });

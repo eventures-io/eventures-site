@@ -52,7 +52,7 @@ $transition-pf-lg: 0.7s;
     height: 100%;
     width: 100px;
     transform: skewX(-16deg);
-    transition: width 0.9s;
+    transition: width .5s linear;
 
     .sub-outer {
       height: 100%;
@@ -78,10 +78,6 @@ $transition-pf-lg: 0.7s;
     width: 400px;
     .sub-inner {
       transform: skewX(0deg) translateX(50px);
-      .preview-img {
-        width: auto;
-        height: 100%;
-      }
     }
     .progress-button {
       visibility: visible !important;

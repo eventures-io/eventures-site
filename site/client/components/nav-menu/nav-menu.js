@@ -17,11 +17,13 @@ angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
                 menu.classList.toggle('nav-menu-open');
                 menu.classList.toggle('nav-menu-close');
                 //TODO scale/unscale content
+
             };
 
             ul.onclick= function(event) {
                 $rootScope.$broadcast('CLOSE_ACTIVE_PROJECT');
-                $scope.state =  event.srcElement.id;
+                var target = event.target || event.srcElement;
+                $scope.state =  target.id;
                 $scope.toggleMenu();
                 $timeout(function() {
                     return $state.go($scope.state);

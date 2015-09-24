@@ -4,19 +4,35 @@
     font-family: 'Allerta Stencil', sans-serif;
     font-size: 42px;
   }
-
 }
 
-.plantzr {
+.plantzr, .plantzr-mobile {
   h1 {
     font-family: 'Sarina', sans-serif;
     font-size: 42px;
+    color: #000000;
   }
 }
 
 .ocean-feedr {
   h1 {
-    font-family: 'Dopio One', sans-serif;
+    font-family: 'Aldrich', sans-serif;
     font-size: 42px;
+  }
+}
+
+.plantzr-mobile {
+  h1 {
+    margin-bottom: 0 !important;
+  }
+  h3 {
+    position: relative;
+    left: 55%;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: #000000;
+    margin-top: 0;
+    //float: right;
   }
 }

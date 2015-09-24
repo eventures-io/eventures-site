@@ -1,15 +1,53 @@
-<section>
+<section class="plantzr-mobile">
     <header class="project-view-header">
         <div class="project-visual">
             <div class="project-visual-img">
-
             </div>
         </div>
         <div class="project-summary">
-            <h2>Plantzr Mobile app</h2>
-            <p>
-               An accompanying mobile app for the Plantzr web application.
-            </p>
+            <div class="summary-text">
+                <div><h1>Plantzr</h1>
+                     <h3>Mobile</h3>
+                </div>
+                <p>
+                    An accompanying mobile app for the Plantzr web application.
+                </p>
+
+                <p>
+                    Plant descriptive cards can be created with a picture inserted from the device’s camera.
+                    </br>
+                    The cards are automatically tagged with the GPS coordinates of the shooting location.
+                </p>
+
+                <p>
+                    Created with the Ionic framework, it has both an Android and IOS version.
+                </p>
+            </div>
         </div>
     </header>
+    <div class="project-description">
+        <div class="project-summary">
+            <div class="summary-text">
+                <p>
+                    In order to be able to post or edit a card,
+                    the user must be authenticated.
+                </p>
+
+                <p>
+                    If authentication was successfull, the
+                    oauth token is stored in local storage.
+                    As this information is persisted on disk,
+                    the user needs to authenticate only once
+                    after installing the app.
+                </p>
+                <div class="next-button" data-ng-click="openNext()" data-tooltip="Next project">
+                    <i class="font-icon icon-next"></i>
+                </div>
+            </div>
+        </div>
+        <div class="project-visual">
+            <img src="../assets/images/plantzr-nexus.png">
+        </div>
+    </div>
 </section>
+

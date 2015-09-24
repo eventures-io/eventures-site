@@ -622,7 +622,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'env:all',
-            'ngconstant:production',
+            'ngconstant:development',
             'injector:sass',
             'concurrent:server',
             'injector',
