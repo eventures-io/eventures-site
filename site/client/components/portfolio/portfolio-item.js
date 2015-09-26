@@ -44,7 +44,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     progressButton.display = 'none';
 
                     var repositionImage = function () {
-                        var projectVisual = document.querySelector('.project-visual-img');
+                        var projectVisual = document.querySelector('.project-visual');
                         projectVisual.appendChild(projectImg);
                         projectImg.style.position = 'relative';
                     };
@@ -72,7 +72,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         TweenLite.to(projectImg, 0.5, {css: {
                             transform: 'scale(1)',
                             top: 45,
-                            left: 30,
+                            //TODO center in div. Calulate percentage
+                            left: '120',
                             maxHeight: '90vh',
                             width: 'auto'
                         },

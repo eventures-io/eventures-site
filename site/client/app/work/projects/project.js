@@ -11,8 +11,8 @@ angular.module('evtrs-site')
                         $rootScope.$broadcast('LOAD_PROJECT', $state.params.project);
                     }
                     return broadcast();
-                }, 1500);
-
+                    //TODO is it possible to listen to an event intead of this timer?
+                }, 1000);
             });
         }
     });
