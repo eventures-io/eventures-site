@@ -20,7 +20,7 @@ angular
         $locationProvider.html5Mode(true);
 
         $urlRouterProvider
-            .otherwise('/home');
+            .otherwise('/work/home');
 
         $stateProvider
             .state('home', {
@@ -48,7 +48,19 @@ angular
                 data: {
                     title: 'Eventures: Work'
                 }
-            }).state('work.project', {
+            })
+            .state('work.home', {
+                url: '/home',
+                views: {
+                    home: {
+                        templateUrl: 'app/home/home.html'
+                    }
+                },
+                data: {
+                    title: 'Eventures: Home'
+                }
+            })
+            .state('work.project', {
                 url: '/:project',
                 views: {
                     project: {

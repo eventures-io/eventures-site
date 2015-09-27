@@ -564,7 +564,7 @@ module.exports = function (grunt) {
                 space: '  ',
                 wrap: '"use strict";\n\n {%= __ngModule %}',
                 name: 'config',
-                dest: '<%= yeoman.client %>/app/main/config.js'
+                dest: '<%= yeoman.client %>/app/config.js'
             },
             development: {
                 constants: {

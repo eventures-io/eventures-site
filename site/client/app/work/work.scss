@@ -65,6 +65,7 @@
 
   .project-description {
     padding: 0 5%;
+    text-align: center;
     .project-visual {
         img {
           max-width: 90vw;
@@ -112,6 +113,10 @@
 
     .project-summary {
       padding: 0 15px;
+    }
+
+    .scroll-button {
+      display: none;
     }
   }
 

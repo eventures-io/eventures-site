@@ -16,7 +16,6 @@ angular.module('evtrs-site').animation('.animate-site', function () {
             },
                 ease: Power2.easeOut
             });
-
         },
         leave: function ($element, done) {
 
