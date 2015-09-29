@@ -14,15 +14,15 @@ angular.module('evtrs-site').directive('navbar', function ($rootScope, BlogResou
                 if (bookmarks.length > 0) {
                     $scope.bookmarks[0] = bookmarks[0];
                 }
-            }
+            };
 
             $scope.goHome = function() {
                 $scope.closeMenu();
                 $timeout(function () {
                     $rootScope.$broadcast('SHOW_MENU_BTN');
-                    return $state.go('home');
+                    return $state.go('work.home');
                 }, 700);
-            }
+            };
 
             $scope.removeBookmark = function(bookmark) {
                 var bookmarks = $cookies.getObject('bookmarks');
@@ -31,7 +31,7 @@ angular.module('evtrs-site').directive('navbar', function ($rootScope, BlogResou
                 });
                 $cookies.putObject('bookmarks', bookmarks);
                 loadBookmarks();
-            }
+            };
 
             var init = function () {
                 BlogResource.getPosts().then(function (posts) {
@@ -41,7 +41,7 @@ angular.module('evtrs-site').directive('navbar', function ($rootScope, BlogResou
                     // $scope.postImages = BlogResource.preloadImages(posts);
                 });
                 loadBookmarks();
-            }
+            };
 
 
             $scope.openMenu = function () {

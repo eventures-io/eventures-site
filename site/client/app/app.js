@@ -23,15 +23,24 @@ angular
             .otherwise('/work/home');
 
         $stateProvider
-            .state('home', {
-                url: '/home',
-                templateUrl: 'app/home/home.html',
-                controller: 'HomeController',
+//            .state('home', {
+//                url: '/home',
+//                templateUrl: 'app/home/home.html',
+//                controller: 'HomeController',
+//                data: {
+//                    title: 'Eventures'
+//                }
+//
+//            })
+            .state('contact', {
+                url: '/contact',
+                templateUrl: 'app/contact/contact.html',
+                //controller: 'ContactController',
                 data: {
-                    title: 'Eventures'
+                    title: 'Eventures: Contact'
                 }
-
-            }).state('blog', {
+            })
+          .state('blog', {
                 url: '/blog',
                 template: '',
                 controller: 'PostController',

@@ -1,25 +1,21 @@
 /*MAIN-VIEW ---------*/
-//.animate-main.ng-enter-active {
-//  z-index: 99;
-//  position: absolute;
-//  top: 100vh;
-//}
-//
-//.animate-main.ng-enter {
-//  animation: slideUp .3s ease-in;
-//}
-//
-//.animate-main.ng-leave-active {
-//  z-index: 98;
-//}
-//
-//.animate-main.ng-leave {
-//   animation: fadeOut 3s;
-//}
+.animate-main.ng-enter-active {
+  z-index: 99;
+  position: absolute;
+  top: 100vh;
+}
 
-//.animate-home.ng-leave {
-//  animation:slideOutUp .4s;
-//}
+.animate-main.ng-enter {
+  animation: slideUp .3s ease-in;
+}
+
+.animate-main.ng-leave-active {
+  z-index: 98;
+}
+
+.animate-main.ng-leave {
+   animation: fadeOut 3s;
+}
 
 /* KEYFRAMES -------*/
 @keyframes slideUp {

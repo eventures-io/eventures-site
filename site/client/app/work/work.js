@@ -38,7 +38,9 @@ angular.module('evtrs-site')
                     next = true;
                 } else if (next) {
                     $rootScope.$broadcast('LOAD_PROJECT', key);
-                    next = false;
+                    return false;
+                    //next = false;
+
                 };
             });
         };

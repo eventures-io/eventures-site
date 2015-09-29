@@ -1,0 +1,55 @@
+.contact-section {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 45px;
+  letter-spacing: 8px;
+  line-height: 1.5em;
+  background-color: $main-bg-color;
+  background-image: url(../assets/images/flyer.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+  //avoid margin collaps
+  overflow: auto; //or display: inline-block;
+  .contact-wrapper {
+     margin: 0 auto;
+    //padding-top: 100px;
+    width: 60%;
+    max-width: 760px;
+
+    .contact-target {
+      padding: 0 0 0 6px;
+      border-bottom: 1px dashed #000000;
+      border-right: 1px solid transparent;
+      border-left: 1px solid transparent;
+      border-top: 1px solid transparent;
+      cursor: pointer;
+      transition: all .3s;
+      a {
+        color: inherit;
+        padding: 0;
+        margin: 0;
+      }
+
+      a:link,
+      a:hover,
+      a:active,
+      a:visited {
+        text-decoration: none;
+      }
+    }
+
+    .contact-target:hover {
+      border: 1px dashed #000000;
+      border-radius: 3px;
+      background-color: rgba(31, 72, 128, 0.40);
+    }
+
+  }
+
+  header {
+     margin: 100px 0px 50px 0px;
+  }
+
+}

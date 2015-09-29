@@ -20,25 +20,39 @@ angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
 
             };
 
-            ul.onclick= function(event) {
+            ul.onclick = function (event) {
                 $rootScope.$broadcast('CLOSE_ACTIVE_PROJECT');
                 var target = event.target || event.srcElement;
-                $scope.state =  target.id;
+                if (target == 'blog') {
+                    hideMenuButton();
+                } else {
+                    showMenuButton();
+                }
+                $scope.state = target.id;
                 $scope.toggleMenu();
-                $timeout(function() {
+                $timeout(function () {
                     return $state.go($scope.state);
                 }, 400);
             };
 
-            $scope.$on('HIDE_MENU_BTN', function() {
-                 menuButton.classList.add('menu-btn-hidden');
+            $scope.$on('HIDE_MENU_BTN', function () {
+
+                hideMenuButton();
             });
 
-            $scope.$on('SHOW_MENU_BTN', function() {
+            $scope.$on('SHOW_MENU_BTN', function () {
+                showMenuButton();
+            });
+
+            var hideMenuButton = function () {
+                menuButton.classList.add('menu-btn-hidden');
+            }
+
+            var showMenuButton = function () {
                 menuButton.classList.remove('menu-btn-hidden');
-            });
+            }
 
-            var menuTransitionEnd =  function(event){
+            var menuTransitionEnd = function (event) {
                 element.removeEventListener("transitionend", menuTransitionEnd, true);
 
             }
