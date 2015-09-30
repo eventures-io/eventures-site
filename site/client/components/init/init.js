@@ -12,7 +12,7 @@ angular.module('evtrs-site')
                 var loaderSvg = element[0].querySelector('.loader-svg');
                 var loaderPeriod = element[0].querySelector('.loader-period');
 
-                var broadCast = function() {
+                var broadCast = function () {
                     setTimeout(function () {
                         var throttle = function () {
                             $rootScope.$broadcast('APP_LOADED');
@@ -21,14 +21,16 @@ angular.module('evtrs-site')
                     }, 1000);
                 }
 
-                loaderSvg.addEventListener('animationend', function (event) {
+                if (loaderSvg) {
+                    loaderSvg.addEventListener('animationend', function (event) {
 
-                    timedOut = true;
-                    if (loaded) {
-                       loaderPeriod.style.opacity = '1';
-                       broadCast();
-                    }
-                }, true);
+                        timedOut = true;
+                        if (loaded) {
+                            loaderPeriod.style.opacity = '1';
+                            broadCast();
+                        }
+                    }, true);
+                }
 
                 var listener = scope.$watch(function () {
                     clearTimeout(to);

@@ -7,35 +7,10 @@ angular.module('evtrs-site').directive('contactForm', function () {
         restrict: 'A',
         scope: {},
         templateUrl: 'components/contact-form/contact-form.html',
-        link: function(scope,element){
+        controller: function ($scope, $element) {
 
-            var transEndEventNames = {
-                    'WebkitTransition': 'webkitTransitionEnd',
-                    'MozTransition': 'transitionend',
-                    'OTransition': 'oTransitionEnd',
-                    'msTransition': 'MSTransitionEnd',
-                    'transition': 'transitionend'
-                },
-                transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
-                support = { transitions : Modernizr.csstransitions };
+            var element = $element[0];
 
-            function extend( a, b ) {
-                for( var key in b ) {
-                    if( b.hasOwnProperty( key ) ) {
-                        a[key] = b[key];
-                    }
-                }
-                return a;
-            }
-
-            function stepsForm( el, options ) {
-                this.el = el;
-                this.options = extend( {}, this.options );
-                extend( this.options, options );
-                this._init();
-            }
-
-            // generates a unique id
             function randomID() {
                 var id = Math.random().toString(36).substr(2, 9);
                 if (document.getElementById(id)) {
@@ -44,211 +19,200 @@ angular.module('evtrs-site').directive('contactForm', function () {
                 return id;
             }
 
-            stepsForm.prototype.options = {
-                onSubmit : function() { return false; }
+           var contactForm = element.querySelector('.contact-form');
+            // current step
+            var current = 0;
+            // steps
+            var steps = [].slice.call(element.querySelectorAll('ol.steps > li'));
+            // total steps
+            var stepsCount = steps.length;
+            // show first step
+            steps[0].classList.add('current');
+
+            var nextstepNum;
+            // next step control
+            var ctrlNext = element.querySelector('button.next');
+            ctrlNext.setAttribute('aria-label', 'Next');
+
+            // progress bar
+            var progress = element.querySelector('div.progress');
+            // set progressbar attributes
+            progress.setAttribute('role', 'progressbar');
+            progress.setAttribute('aria-readonly', 'true');
+            progress.setAttribute('aria-valuemin', '0');
+            progress.setAttribute('aria-valuemax', '100');
+            progress.setAttribute('aria-valuenow', '0');
+
+            // step number status
+            var stepStatus = element.querySelector('span.number');
+            // give the steps status an id
+            stepStatus.id = stepStatus.id || randomID();
+            // associate "x / y" with the input via aria-describedby
+            for (var i = steps.length - 1; i >= 0; i--) {
+                var formElement = steps[i].querySelector('input, textarea, select');
+                formElement.setAttribute('aria-describedby', stepStatus.id);
             };
+            // current step placeholder
+            var currentNum = stepStatus.querySelector('span.number-current');
+            currentNum.innerHTML = Number(current + 1);
+            // total steps placeholder
+            var totalstepNum = stepStatus.querySelector('span.number-total');
+            totalstepNum.innerHTML = stepsCount;
 
-            stepsForm.prototype._init = function() {
-                // current question
-                this.current = 0;
+            // error message
+            var error = element.querySelector('span.error-message');
 
-                // questions
-                this.questions = [].slice.call( this.el.querySelectorAll( 'ol.questions > li' ) );
-                // total questions
-                this.questionsCount = this.questions.length;
-                // show first question
-                classie.addClass( this.questions[0], 'current' );
+            // checks for HTML5 Form Validation support
+            // a cleaner solution might be to add form validation to the custom Modernizr script
+            var supportsHTML5Forms = typeof document.createElement("input").checkValidity === 'function';
 
-                // next question control
-                this.ctrlNext = this.el.querySelector( 'button.next' );
-                this.ctrlNext.setAttribute( 'aria-label', 'Next' );
+            // first input
+            var firstElInput = steps[current].querySelector('input, textarea, select');
+            firstElInput.focus();
+            var controls = element.querySelector('.controls');
 
-                // progress bar
-                this.progress = this.el.querySelector( 'div.progress' );
-                // set progressbar attributes
-                this.progress.setAttribute( 'role', 'progressbar' );
-                this.progress.setAttribute( 'aria-readonly', 'true' );
-                this.progress.setAttribute( 'aria-valuemin', '0' );
-                this.progress.setAttribute( 'aria-valuemax', '100' );
-                this.progress.setAttribute( 'aria-valuenow', '0' );
+            var inputEventHandler =  function(event){
+                firstElInput.removeEventListener('input', inputEventHandler);
+                controls.style.opacity = 1;
+                ctrlNext.classList.add('show');
+            }
 
-                // question number status
-                this.questionStatus = this.el.querySelector( 'span.number' );
-                // give the questions status an id
-                this.questionStatus.id = this.questionStatus.id || randomID();
-                // associate "x / y" with the input via aria-describedby
-                for (var i = this.questions.length - 1; i >= 0; i--) {
-                    var formElement = this.questions[i].querySelector( 'input, textarea, select' );
-                    formElement.setAttribute( 'aria-describedby', this.questionStatus.id );
+            firstElInput.addEventListener('input', inputEventHandler);
+
+            // show next step
+            ctrlNext.addEventListener('click', function (ev) {
+                ev.preventDefault();
+                nextstep();
+            });
+
+            // pressing enter will jump to next step
+            element.addEventListener('keydown', function (event) {
+                var keyCode = event.keyCode || event.which;
+                // enter
+                if (keyCode === 13) {
+                    event.preventDefault();
+                    nextstep();
                 };
-                // current question placeholder
-                this.currentNum = this.questionStatus.querySelector( 'span.number-current' );
-                this.currentNum.innerHTML = Number( this.current + 1 );
-                // total questions placeholder
-                this.totalQuestionNum = this.questionStatus.querySelector( 'span.number-total' );
-                this.totalQuestionNum.innerHTML = this.questionsCount;
+            });
 
-                // error message
-                this.error = this.el.querySelector( 'span.error-message' );
 
-                // checks for HTML5 Form Validation support
-                // a cleaner solution might be to add form validation to the custom Modernizr script
-                this.supportsHTML5Forms = typeof document.createElement("input").checkValidity === 'function';
-
-                // init events
-                this._initEvents();
-            };
-
-            stepsForm.prototype._initEvents = function() {
-                var self = this,
-                // first input
-                    firstElInput = this.questions[ this.current ].querySelector( 'input, textarea, select' ),
-                // focus
-                    onFocusStartFn = function() {
-                        firstElInput.removeEventListener( 'focus', onFocusStartFn );
-                        classie.addClass( self.ctrlNext, 'show' );
-                    };
-
-                // show the next question control first time the input gets focused
-                firstElInput.addEventListener( 'focus', onFocusStartFn );
-
-                // show next question
-                this.ctrlNext.addEventListener( 'click', function( ev ) {
-                    ev.preventDefault();
-                    self._nextQuestion();
-                } );
-
-                // pressing enter will jump to next question
-                document.addEventListener( 'keydown', function( ev ) {
-                    var keyCode = ev.keyCode || ev.which;
-                    // enter
-                    if( keyCode === 13 ) {
-                        ev.preventDefault();
-                        self._nextQuestion();
-                    }
-                } );
-            };
-
-            stepsForm.prototype._nextQuestion = function() {
-                if( !this._validate() ) {
+            var nextstep = function () {
+                if (!validate()) {
                     return false;
                 }
 
+                var isCompleted = false;
                 // checks HTML5 validation
-                if ( this.supportsHTML5Forms ) {
-                    var input = this.questions[ this.current ].querySelector( 'input, textarea, select' );
+                if (supportsHTML5Forms) {
+                    var input = steps[current ].querySelector('input, textarea, select');
                     // clear any previous error messages
-                    input.setCustomValidity( '' );
+                    input.setCustomValidity('');
 
                     // checks input against the validation constraint
-                    if ( !input.checkValidity() ) {
+                    if (!input.checkValidity()) {
                         // Optionally, set a custom HTML5 valiation message
                         // comment or remove this line to use the browser default message
-                        input.setCustomValidity( 'Whoops, that\'s not an email address!' );
+                        input.setCustomValidity('Whoops, that\'s not an email address!');
                         // display the HTML5 error message
-                        this._showError( input.validationMessage );
-                        // prevent the question from changing
+                        showError(input.validationMessage);
+                        // prevent the step from changing
                         return false;
                     }
                 }
 
                 // check if form is filled
-                if( this.current === this.questionsCount - 1 ) {
-                    this.isFilled = true;
+                if (current === stepsCount - 1) {
+                    isCompleted = true;
                 }
 
                 // clear any previous error messages
-                this._clearError();
+                clearError();
 
-                // current question
-                var currentQuestion = this.questions[ this.current ];
+                // current step
+                var currentstep = steps[current];
 
-                // increment current question iterator
-                ++this.current;
+                // increment current step iterator
+                ++current;
 
                 // update progress bar
-                this._progress();
+                updateProgress();
 
-                if( !this.isFilled ) {
-                    // change the current question number/status
-                    this._updateQuestionNumber();
+                if (!isCompleted) {
+                    // change the current step number/status
+                    updatestepNumber();
 
                     // add class "show-next" to form element (start animations)
-                    classie.addClass( this.el, 'show-next' );
+                    contactForm.classList.add('show-next');
 
-                    // remove class "current" from current question and add it to the next one
-                    // current question
-                    var nextQuestion = this.questions[ this.current ];
-                    classie.removeClass( currentQuestion, 'current' );
-                    classie.addClass( nextQuestion, 'current' );
+                    // remove class "current" from current step and add it to the next one
+                    // current step
+                    var nextstep = steps[current ];
+                    currentstep.classList.remove('current');
+                    nextstep.classList.add('current');
                 }
 
-                // after animation ends, remove class "show-next" from form element and change current question placeholder
-                var self = this,
-                    onEndTransitionFn = function( ev ) {
-                        if( support.transitions ) {
-                            this.removeEventListener( transEndEventName, onEndTransitionFn );
-                        }
-                        if( self.isFilled ) {
-                            self._submit();
-                        }
-                        else {
-                            classie.removeClass( self.el, 'show-next' );
-                            self.currentNum.innerHTML = self.nextQuestionNum.innerHTML;
-                            self.questionStatus.removeChild( self.nextQuestionNum );
-                            // force the focus on the next input
-                            nextQuestion.querySelector( 'input, textarea, select' ).focus();
-                        }
-                    };
 
-                if( support.transitions ) {
-                    this.progress.addEventListener( transEndEventName, onEndTransitionFn );
-                }
-                else {
-                    onEndTransitionFn();
-                }
+                // after animation ends, remove class "show-next" from form element and change current step placeholder
+                var onEndTransitionFn = function (ev) {
+                    //removeEventListener(transEndEventName, onEndTransitionFn);
+
+                    if (isCompleted) {
+                        submit();
+                    }
+                    else {
+                        contactForm.classList.remove('show-next');
+                        currentNum.innerHTML = nextstepNum.innerHTML;
+                        //stepStatus.removeChild(nextstepNum);
+                        // force the focus on the next input
+                        nextstep.querySelector('input, textarea, select').focus();
+                    }
+                };
+
+                contactForm.addEventListener('transitionend', onEndTransitionFn );
+
+                progress.addEventListener('transitionend', onEndTransitionFn);
+
             }
+
+
 
             // updates the progress bar by setting its width
-            stepsForm.prototype._progress = function() {
-                var currentProgress = this.current * ( 100 / this.questionsCount );
-                this.progress.style.width = currentProgress + '%';
+            var updateProgress = function () {
+                var currentProgress = current * ( 100 / stepsCount );
+                progress.style.width = currentProgress + '%';
                 // update the progressbar's aria-valuenow attribute
-                this.progress.setAttribute('aria-valuenow', currentProgress);
+                progress.setAttribute('aria-valuenow', currentProgress);
             }
 
-            // changes the current question number
-            stepsForm.prototype._updateQuestionNumber = function() {
-                // first, create next question number placeholder
-                this.nextQuestionNum = document.createElement( 'span' );
-                this.nextQuestionNum.className = 'number-next';
-                this.nextQuestionNum.innerHTML = Number( this.current + 1 );
+            // changes the current step number
+            var updatestepNumber = function () {
+                // first, create next step number placeholder
+                nextstepNum = document.createElement('span');
+                nextstepNum.className = 'number-next';
+                nextstepNum.innerHTML = Number(current + 1);
                 // insert it in the DOM
-                this.questionStatus.appendChild( this.nextQuestionNum );
+                stepStatus.appendChild(nextstepNum);
             }
 
             // submits the form
-            stepsForm.prototype._submit = function() {
-                this.options.onSubmit( this.el );
+            var submit = function () {
+
             }
 
-            // TODO (next version..)
-            // the validation function
-            stepsForm.prototype._validate = function() {
-                // current question´s input
-                var input = this.questions[ this.current ].querySelector( 'input, textarea, select' ).value;
-                if( input === '' ) {
-                    this._showError( 'EMPTYSTR' );
+            var validate = function () {
+                // current step´s input
+                var input = steps[ current ].querySelector('input, textarea, select').value;
+                if (input === '') {
+                    showError('EMPTYSTR');
                     return false;
                 }
 
                 return true;
             }
 
-            // TODO (next version..)
-            stepsForm.prototype._showError = function( err ) {
+            var showError = function (err) {
                 var message = '';
-                switch( err ) {
+                switch (err) {
                     case 'EMPTYSTR' :
                         message = 'Please fill the field before continuing';
                         break;
@@ -258,22 +222,18 @@ angular.module('evtrs-site').directive('contactForm', function () {
                     // ...
                     default :
                         message = err;
-                };
-                this.error.innerHTML = message;
-                classie.addClass( this.error, 'show' );
+                }
+                ;
+                error.innerHTML = message;
+                error.classList.add('show');
             }
 
             // clears/hides the current error message
-            stepsForm.prototype._clearError = function() {
-                classie.removeClass( this.error, 'show' );
+            var clearError = function () {
+                error.classList.remove('show');
             }
 
-            // add to global namespace
-            window.stepsForm = stepsForm;
 
-
-        },
-        controller: function ($scope) {
 
         }
     };

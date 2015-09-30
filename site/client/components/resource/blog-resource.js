@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('evtrs-site').factory('BlogResource', function ($http, conf, $log, $q, $location) {
-    var baseUrl = conf.WP_URL.concat('/posts');
+angular.module('evtrs-site').factory('BlogResource', function ($http, CONF, $log, $q, $location) {
+    var baseUrl = CONF.WP_URL.concat('/posts');
 
     var postsPreviewUrl = baseUrl.concat('?fields=ID,title,featured_image');
     var currentPost = {};
