@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 
 angular.module('evtrs-site').directive('contactForm', function () {
@@ -19,7 +19,7 @@ angular.module('evtrs-site').directive('contactForm', function () {
                 return id;
             }
 
-           var contactForm = element.querySelector('.contact-form');
+            var contactForm = element.querySelector('.contact-form');
             // current step
             var current = 0;
             // steps
@@ -71,11 +71,11 @@ angular.module('evtrs-site').directive('contactForm', function () {
             firstElInput.focus();
             var controls = element.querySelector('.controls');
 
-            var inputEventHandler =  function(event){
+            var inputEventHandler = function (event) {
                 firstElInput.removeEventListener('input', inputEventHandler);
                 controls.style.opacity = 1;
                 ctrlNext.classList.add('show');
-            }
+            };
 
             firstElInput.addEventListener('input', inputEventHandler);
 
@@ -92,7 +92,8 @@ angular.module('evtrs-site').directive('contactForm', function () {
                 if (keyCode === 13) {
                     event.preventDefault();
                     nextstep();
-                };
+                }
+
             });
 
 
@@ -112,7 +113,7 @@ angular.module('evtrs-site').directive('contactForm', function () {
                     if (!input.checkValidity()) {
                         // Optionally, set a custom HTML5 valiation message
                         // comment or remove this line to use the browser default message
-                        input.setCustomValidity('Whoops, that\'s not an email address!');
+                        input.setCustomValidity('This doesn\'t look like an email address');
                         // display the HTML5 error message
                         showError(input.validationMessage);
                         // prevent the step from changing
@@ -152,28 +153,25 @@ angular.module('evtrs-site').directive('contactForm', function () {
                 }
 
 
-                // after animation ends, remove class "show-next" from form element and change current step placeholder
                 var onEndTransitionFn = function (ev) {
-                    //removeEventListener(transEndEventName, onEndTransitionFn);
-
+                    contactForm.removeEventListener('transitionend', onEndTransitionFn);
                     if (isCompleted) {
                         submit();
                     }
                     else {
                         contactForm.classList.remove('show-next');
                         currentNum.innerHTML = nextstepNum.innerHTML;
-                        //stepStatus.removeChild(nextstepNum);
-                        // force the focus on the next input
+                        var nextNbr = stepStatus.querySelector('.number-next');
+                        if(nextNbr){
+                        stepStatus.removeChild(nextNbr);
+                        }
                         nextstep.querySelector('input, textarea, select').focus();
                     }
                 };
 
-                contactForm.addEventListener('transitionend', onEndTransitionFn );
+                contactForm.addEventListener('transitionend', onEndTransitionFn);
 
-                progress.addEventListener('transitionend', onEndTransitionFn);
-
-            }
-
+            };
 
 
             // updates the progress bar by setting its width
@@ -182,7 +180,7 @@ angular.module('evtrs-site').directive('contactForm', function () {
                 progress.style.width = currentProgress + '%';
                 // update the progressbar's aria-valuenow attribute
                 progress.setAttribute('aria-valuenow', currentProgress);
-            }
+            };
 
             // changes the current step number
             var updatestepNumber = function () {
@@ -192,12 +190,12 @@ angular.module('evtrs-site').directive('contactForm', function () {
                 nextstepNum.innerHTML = Number(current + 1);
                 // insert it in the DOM
                 stepStatus.appendChild(nextstepNum);
-            }
+            };
 
             // submits the form
             var submit = function () {
 
-            }
+            };
 
             var validate = function () {
                 // current step´s input
@@ -208,7 +206,7 @@ angular.module('evtrs-site').directive('contactForm', function () {
                 }
 
                 return true;
-            }
+            };
 
             var showError = function (err) {
                 var message = '';
@@ -217,22 +215,21 @@ angular.module('evtrs-site').directive('contactForm', function () {
                         message = 'Please fill the field before continuing';
                         break;
                     case 'INVALIDEMAIL' :
-                        message = 'Please fill a valid email address';
+                        message = 'Please provide a valid email address';
                         break;
                     // ...
                     default :
                         message = err;
                 }
-                ;
+
                 error.innerHTML = message;
                 error.classList.add('show');
-            }
+            };
 
             // clears/hides the current error message
             var clearError = function () {
                 error.classList.remove('show');
-            }
-
+            };
 
 
         }

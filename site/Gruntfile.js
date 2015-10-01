@@ -568,7 +568,7 @@ module.exports = function (grunt) {
             },
             development: {
                 constants: {
-                    conf: {
+                    CONF: {
                         name: 'development',
                         WP_URL: 'http://localhost/wp-json'
                     }
@@ -576,7 +576,7 @@ module.exports = function (grunt) {
             },
             production: {
                 constants: {
-                    conf: {
+                    CONF: {
                         name: 'production',
                         WP_URL: 'http://ec2-52-17-227-41.eu-west-1.compute.amazonaws.com/wp-json'
                     }
