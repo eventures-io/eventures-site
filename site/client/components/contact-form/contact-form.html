@@ -1,25 +1,21 @@
-<form class="contact-form">
+<form enctype="multipart/form-data" class="contact-form">
     <div class="form-inner">
         <ol class="steps">
             <li>
-                <input id="step1" name="step1" type="text" />
+                <input  id="step1" name="name" type="text"/>
                 <span><label for="step1">What's your name?</label></span>
             </li>
             <li>
-                <input id="step4" name="step1" type="text" />
-                <span><label for="step1">What's your name?</label></span>
-            </li>
-            <li>
-                <input id="step5" name="step1" type="text" />
-                <span><label for="step1">What's your name?</label></span>
-            </li>
-            <li>
-                <input id="step2" name="step2" type="email"/>
+                <input id="step2" name="email" type="email"/>
                 <span><label for="step2">What's your email adress?</label></span>
             </li>
             <li>
-                <input id="step3" name="step3" type="text"/>
-                <span><label for="step3">Your message?</label></span>
+                <input id="step4" name="subject" type="text"/>
+                <span><label for="step4">This is about...</label></span>
+            </li>
+            <li>
+                <input id="step5" name="message" type="text"/>
+                <span><label for="step5">Your message here</label></span>
             </li>
         </ol>
         <button class="submit" type="submit">Send</button>
@@ -33,5 +29,10 @@
             <span class="error-message"></span>
         </div>
     </div>
-    <span class="final-message"></span>
+    <div class="spinner">
+        <img class="spinner-gif" src="assets/images/spinner.gif"/>
+    </div>
+    <span class="final-message">
+
+    </span>
 </form>

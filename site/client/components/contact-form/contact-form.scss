@@ -1,5 +1,4 @@
 
-
 .contact-form {
   position: relative;
   margin: 0 auto;
@@ -95,7 +94,7 @@ input {
 }
 
 .show-next .steps li.current > span label {
-   animation: moveUp .4s both;
+  animation: moveUp .4s both;
 }
 
 @keyframes moveUp {
@@ -108,15 +107,15 @@ input {
 
   }
 }
+
 .controls {
   position: relative;
   opacity: 0;
   transition: opacity .3s;
 }
 
-
 /* Next step button */
-.next{
+.next {
   position: absolute;
   right: 0;
   bottom: 2.15em; /* padding-bottom of form plus progress bar height */
@@ -223,10 +222,11 @@ input {
 .contact-form .error-message {
   padding: 0.4em 3.5em 0 0;
   width: 100%;
-  color: rgba(185, 0, 0, 1);
+  color: $error-color;
   font-style: italic;
   font-weight: bold;
   font-size: 0.4em;
+  letter-spacing: 3px;
 }
 
 .final-message {
@@ -234,14 +234,48 @@ input {
   left: 0;
   padding: 0.5em;
   width: 100%;
+  font-size: 0.6em;
+  letter-spacing: 3px;
   text-align: center;
   transform: translateY(-50%);
+
 }
 
 .error-message.show,
 .final-message.show {
   visibility: visible;
   opacity: 1;
+}
+
+.final-message.error {
+  color: $error-color;
+  border: 1px solid $error-color;
+}
+
+.spinner {
+  display: none;
+  opacity: 0;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  transform: translateY(-110px);
+  .spinner-gif {
+    opacity: 0.4;
+  }
+}
+
+.spinner.show {
+  display: block;
+  opacity: 1;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 .final-message.show {

@@ -13,7 +13,7 @@
 $menu-overlay: rgba(29, 29, 29, 0.9);
 $menu-color: #F5F5F5;
 $body-color: #666666;
-
+$error-color: #B90000;
 $main-bg-color: #efefef;
 
 .browsehappy {
@@ -57,6 +57,7 @@ h4 {
 @import 'animations.scss';
 @import 'contact/contact.scss';
 @import 'home/home.scss';
+@import 'icon-animation.scss';
 @import 'post/post.scss';
 @import 'work/action-buttons.scss';
 @import 'work/projects/projects.scss';
