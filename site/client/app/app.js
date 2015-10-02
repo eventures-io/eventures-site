@@ -35,7 +35,6 @@ angular
             .state('contact', {
                 url: '/contact',
                 templateUrl: 'app/contact/contact.html',
-                //controller: 'ContactController',
                 data: {
                     title: 'Eventures: Contact'
                 }

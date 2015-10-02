@@ -22,8 +22,8 @@
   opacity: 0;
   color: #313131;
   transition: opacity 0.8s ease;
-
 }
+
 .action-button:hover::after {
   opacity: 1;
 }
