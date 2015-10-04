@@ -1,6 +1,7 @@
 /* Header ------*/
 .post-header {
   @extend .container-fluid;
+  background-color: #ffffff;
   padding: 0;
 
   .post-title {
@@ -37,7 +38,7 @@
 
   .post-summary {
     min-height: 25vh;
-    color: $menu-color;
+    color: $notes-menu-color;
     background-color: #3a3a3a;
     background-image: radial-gradient(circle farthest-side, #3c3c3c, #1b1b1b);
 
@@ -140,8 +141,13 @@ footer {
 
 /* Comments ------*/
 .comments {
+  display: none;
   @extend .container;
   padding:  40px 15% 40px 15%;
+}
+
+.comments-visible {
+  display: block;
 
 }
 

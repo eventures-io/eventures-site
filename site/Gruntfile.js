@@ -563,7 +563,7 @@ module.exports = function (grunt) {
             options: {
                 space: '  ',
                 wrap: '"use strict";\n\n {%= __ngModule %}',
-                name: 'config',
+                name: 'evtrs-config',
                 dest: '<%= yeoman.client %>/app/config.js'
             },
             development: {

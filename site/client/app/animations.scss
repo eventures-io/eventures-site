@@ -10,11 +10,11 @@
 }
 
 .animate-main.ng-leave-active {
-  z-index: 98;
+  z-index: 0;
 }
 
 .animate-main.ng-leave {
-   animation: fadeOut 3s;
+   animation: fadeOut 0s 3s;
 }
 
 /* KEYFRAMES -------*/
@@ -56,10 +56,12 @@
   }
 }
 
+//
 @keyframes fadeOut {
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }

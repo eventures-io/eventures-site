@@ -18,14 +18,28 @@
       r: 80;
       fill: #ececec;
       fill-opacity: 0.7;
-      stroke: #FF9F1E;
+      stroke: #00ce00;
       stroke-width: 4px;
       stroke-dashoffset: 615;
-      transition: r 0.1s ease-out, stroke-dashoffset 1s linear;
+      transition: r 0.1s ease-out;
+    }
+
+
+    .circle-animate {
+       animation: animate-stroke 1s linear;
+    }
+
+    @keyframes animate-stroke {
+      from {
+        stroke-dashoffset: 615;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
     }
 
     .progress-active {
-      stroke: #FF9F1E;
+      stroke: #00ce00;
     }
 
   }

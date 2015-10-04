@@ -8,7 +8,8 @@ angular
         'ngAnimate',
         'ngSanitize',
         'ui.router',
-        'config',
+        'evtrs-config',
+        'evtrs-notes',
         'angularUtils.directives.dirDisqus',
         'ngCookies',
         '720kb.socialshare'
@@ -20,18 +21,13 @@ angular
         $locationProvider.html5Mode(true);
 
         $urlRouterProvider
-            .otherwise('/work/home');
+            .otherwise('/');
 
         $stateProvider
-//            .state('home', {
-//                url: '/home',
-//                templateUrl: 'app/home/home.html',
-//                controller: 'HomeController',
-//                data: {
-//                    title: 'Eventures'
-//                }
-//
-//            })
+            .state('home', {
+                url: '/',
+                redirectTo: 'work.home'
+            })
             .state('contact', {
                 url: '/contact',
                 templateUrl: 'app/contact/contact.html',
@@ -39,15 +35,19 @@ angular
                     title: 'Eventures: Contact'
                 }
             })
-          .state('blog', {
-                url: '/blog',
-                template: '',
-                controller: 'PostController',
+            .state('notes', {
+                url: '/notes',
+                templateUrl: 'app/notes/notes.html',
+                controller: 'NotesController',
                 data: {title: 'Notes'}
-            }).state('post', {
-                url: '/blog/:postId/:postTitle',
-                templateUrl: 'app/post/post.html',
-                controller: 'PostController'
+            }).state('notes.post', {
+                url: '/:postId/:postTitle',
+                views: {
+                    post: {
+                        templateUrl: 'app/notes/post.html',
+                        controller: 'PostController'
+                    }
+                }
             })
             .state('work', {
                 url: '/work',
@@ -87,30 +87,28 @@ angular
                 }
             })
     }).
-    run(function ($http, PROJECT_CONSTANTS, $rootScope) {
-        //Ping heroku apps to wake up the dynos
-//        _.forIn(PROJECT_CONSTANTS, function(project, key) {
-//            //console.log(key, project);
-//            if(project.hasOwnProperty('siteUrl')){
-//                $http.get(project.siteUrl);
-//            }
-//        });
+    run(function ($http, PROJECT_CONSTANTS, $rootScope, $state) {
+
+       $rootScope.$on('$stateChangeStart', function(evt, to, params) {
+            if (to.redirectTo) {
+                evt.preventDefault();
+                $state.go(to.redirectTo, params)
+            }
+        });
 
         $rootScope.$on('$stateChangeSuccess', function (event, current, previous) {
             if (current.data) {
                 window.document.title = current.data.title;
             }
+        });
 
-
-    });
-
-}).
-filter('HtmlFilter', ['$sce', function ($sce) {
-    return function (text) {
-        return $sce.trustAsHtml(text);
-    };
-}
-]).filter('URLFilter', ['$sce', function ($sce) {
+    }).
+    filter('HtmlFilter', ['$sce', function ($sce) {
+        return function (text) {
+            return $sce.trustAsHtml(text);
+        };
+    }
+    ]).filter('URLFilter', ['$sce', function ($sce) {
         return function (url) {
             return $sce.trustAsResourceUrl(url);
         };

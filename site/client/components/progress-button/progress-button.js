@@ -11,38 +11,19 @@ angular.module('evtrs-site').directive('progressButton', function ($timeout) {
             var circleInner = progressButton.querySelector('.circle-inner');
 
             $scope.loadProject = function() {
-                circleProgress.addEventListener("transitionend", loadButtonEventListener, true);
-                $scope.updateProgress(100);
+                circleProgress.addEventListener("animationend", loadButtonEventListener, true);
+                $scope.updateProgress();
             }
 
-            $scope.updateProgress = function (progress) {
+            $scope.updateProgress = function () {
                 progressButton.style.visibility = 'visible';
                 progressButton.style.opacity = '1';
-
-                var val = progress;
-                if (isNaN(val)) {
-                    val = 100;
-                }
-
-                var rValue = window.getComputedStyle(circleProgress, null).getPropertyValue('r');
-                var r = parseInt(rValue, 10);
-                var c = 615 //Math.PI * (r * 2);
-
-                if (val < 0) {
-                    val = 0;
-                }
-                else if (val > 100) {
-                    val = 100;
-                }
-
-                var pct = ((100 - val) / 100) * c;
-
-                circleProgress.style.strokeDashoffset = pct;
-
-            }
+                circleProgress.classList.add('circle-animate');
+            };
 
             var loadButtonEventListener = function(event) {
-                circleProgress.removeEventListener("transitionend", loadButtonEventListener, true);
+                circleProgress.removeEventListener("animationend", loadButtonEventListener, true);
+                circleProgress.classList.remove('circle-animate');
                 circleProgress.style.r = 75;
                 circleInner.style.r= 45;
                 $timeout(function(){
@@ -51,7 +32,7 @@ angular.module('evtrs-site').directive('progressButton', function ($timeout) {
                     progressButton.style.opacity = '0';
                     circleProgress.style.strokeDashoffset = 615;
                 }, 200);
-            }
+            };
         }
     };
 

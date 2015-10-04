@@ -37,7 +37,7 @@ angular.module('evtrs-site').directive('socialButtons', function (BlogResource, 
                 if (bookmarks.indexOf(url) === -1) {
                     bookmarks.unshift({url : url, title : BlogResource.getCurrentPost().title});
                     $cookies.putObject('bookmarks', bookmarks);
-                    $scope.$broadcast('BOOKMARKED');
+                    $scope.$emit('BOOKMARKED');
                 }
                 if(tooltip){
                     tooltip.setAttribute('data-hint', 'Bookmarked');

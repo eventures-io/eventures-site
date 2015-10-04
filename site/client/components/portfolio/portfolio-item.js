@@ -18,7 +18,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
             var element = $element[0];
             var subOuter = element.querySelector('.sub-outer');
-            var progressButton = element.querySelector('div[data-progress-button]');
+            var progressButton = element.querySelector('div[progress-button]');
             var projectView = document.querySelector('.project-view');
             var projectImg;
             var previewImg = element.querySelector('.preview-img');

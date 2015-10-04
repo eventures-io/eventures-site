@@ -1,6 +1,7 @@
 .contact-section {
   width: 100vw;
   height: 100vh;
+  position: relative;
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 3em;
   letter-spacing: 8px;
@@ -63,7 +64,6 @@
       font-size: 15px;
       border-radius: 3px;
       background-color: $main-bg-color;
-      //border: 1px solid #313131;
       opacity: 0;
       color: #313131;
       transition: opacity .3s ease;

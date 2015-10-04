@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('evtrs-site').directive('navbar', function ($rootScope, BlogResource, $state, $timeout, $cookies) {
+angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, BlogResource, $state, $timeout, $cookies) {
     return {
         restrict: 'E',
-        templateUrl: 'components/blog-nav/blog-nav.html',
+        templateUrl: 'components/notes-menu/notes-menu.html',
         controller: function ($element, $scope) {
-
-            var menuElement = $element[0].querySelector('.menu');
+            var menuIcon = $element[0].querySelector('.menu-icon');
+            var menuElement = $element[0].querySelector('.notes-menu');
 
             var loadBookmarks = function () {
                 var bookmarks = $cookies.getObject('bookmarks') || [];
@@ -20,7 +20,7 @@ angular.module('evtrs-site').directive('navbar', function ($rootScope, BlogResou
                 $scope.closeMenu();
                 $timeout(function () {
                     $rootScope.$broadcast('SHOW_MENU_BTN');
-                    return $state.go('work.home');
+                    return $state.go('home');
                 }, 700);
             };
 
@@ -33,23 +33,14 @@ angular.module('evtrs-site').directive('navbar', function ($rootScope, BlogResou
                 loadBookmarks();
             };
 
-            var init = function () {
-                BlogResource.getPosts().then(function (posts) {
-                    //TODO load only once, move to service
-                    $scope.posts = posts;
-                    //TODO preload images if not on mobile, move to service, not resource
-                    // $scope.postImages = BlogResource.preloadImages(posts);
-                });
-                loadBookmarks();
+
+            var openMenu = function () {
+                menuElement.classList.add('open');
             };
 
-
-            $scope.openMenu = function () {
-                menuElement.classList.add('menu-open');
-            };
 
             $scope.closeMenu = function () {
-                menuElement.classList.remove('menu-open');
+                menuElement.classList.remove('open');
                 menuElement.style.backgroundImage = '';
             };
 
@@ -57,7 +48,7 @@ angular.module('evtrs-site').directive('navbar', function ($rootScope, BlogResou
                 $scope.closeMenu();
                 //TODO listen for animation end event
                 $timeout(function () {
-                    return $state.go('post', {postId: post.ID, postTitle: post.titleUrl});
+                    return $state.go('notes.post', {postId: post.ID, postTitle: post.titleUrl});
                 }, 700);
             };
 
@@ -73,6 +64,18 @@ angular.module('evtrs-site').directive('navbar', function ($rootScope, BlogResou
             $scope.$on('BOOKMARKED', function(){
                 loadBookmarks();
             });
+
+            var init = function () {
+                menuIcon.addEventListener("click", openMenu, false);
+                BlogResource.getPosts().then(function (posts) {
+                    //TODO load only once, move to service
+                    $scope.posts = posts;
+                    //TODO preload images if not on mobile, move to service, not resource
+                    // $scope.postImages = BlogResource.preloadImages(posts);
+                });
+                loadBookmarks();
+            };
+
 
             init();
 

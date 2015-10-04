@@ -13,7 +13,7 @@ $transition-pf-lg: 0.7s;
 
 }
 
-[data-progress-button] {
+div[progress-button] {
   position: absolute;
   top: 0;
   left: 0;
@@ -52,17 +52,21 @@ $transition-pf-lg: 0.7s;
     height: 100%;
     width: 100px;
     transform: skewX(-16deg);
-    transition: width .5s linear;
+    transition: width .4s ease-out;
 
     .sub-outer {
       height: 100%;
-      width: 100%;
+      //width: 100%;
       overflow: hidden;
       position: relative;
       .sub-inner {
         height: 100%;
-        width: 100%;
+        margin: 0 auto;
+        min-width: 30px;
+        transition: translateX .4s;
         .preview-img {
+          display: block;
+          margin: 0 auto;
           width: auto;
           height: 100%;
         }
@@ -77,15 +81,20 @@ $transition-pf-lg: 0.7s;
   .flex-sub:hover {
     width: 400px;
     .sub-inner {
-      transform: skewX(0deg) translateX(50px);
+      transform: skewX(0deg);
+      .preview-img {
+
+      }
     }
     .progress-button {
       visibility: visible !important;
       opacity: 1 !important;
     }
   }
-
 }
+
+
+
 
 /* Mobile view ------*/
 @media (max-width: $screen-sm) {
@@ -130,7 +139,7 @@ $transition-pf-lg: 0.7s;
 
   .flex-sub:hover {
     height: 30%;
-    [data-progress-button] {
+    div[progress-button] {
       display: block;
     }
 

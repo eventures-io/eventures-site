@@ -2,7 +2,7 @@
 
 angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
     return {
-        restrict: 'A',
+        restrict: 'E',
         scope: {},
         templateUrl: 'components/nav-menu/nav-menu.html',
         controller: function ($scope, $rootScope, $element) {
@@ -16,18 +16,16 @@ angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
                 element.addEventListener("transitionend", menuTransitionEnd, true);
                 menu.classList.toggle('nav-menu-open');
                 menu.classList.toggle('nav-menu-close');
-                //TODO scale/unscale content
-
             };
 
             ul.onclick = function (event) {
                 $rootScope.$broadcast('CLOSE_ACTIVE_PROJECT');
                 var target = event.target || event.srcElement;
-                if (target == 'blog') {
-                    hideMenuButton();
-                } else {
-                    showMenuButton();
-                }
+//                if (target.id === 'blog') {
+//                    hideMenuButton();
+//                } else {
+//                    showMenuButton();
+//                }
                 $scope.state = target.id;
                 $scope.toggleMenu();
                 $timeout(function () {
@@ -36,7 +34,6 @@ angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
             };
 
             $scope.$on('HIDE_MENU_BTN', function () {
-
                 hideMenuButton();
             });
 
@@ -54,7 +51,6 @@ angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
 
             var menuTransitionEnd = function (event) {
                 element.removeEventListener("transitionend", menuTransitionEnd, true);
-
             }
 
         }
