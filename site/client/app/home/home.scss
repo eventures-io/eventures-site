@@ -1,0 +1,51 @@
+
+.home-section {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(black, 0.8);
+  color: whitesmoke;
+  z-index: 99;
+  .home-header {
+    margin-top: 15%;
+    width: 50%;
+    font-size: 36px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    text-align: right;
+    h1 {
+       font-family: 'PT Sans Narrow', sans-serif;
+       letter-spacing: 8px;
+    }
+  }
+
+  .welcome-button {
+    margin-left: 4px;
+    background-color: red;
+    border-radius: 8px;
+    padding: 1px 6px;
+    cursor: pointer;
+    transition: all .3s;
+  }
+
+  .welcome-button:hover {
+    padding: 2px 6px;
+  }
+
+  @media (max-width: $screen-md) {
+    .home-header {
+      width: 70%;
+    }
+  }
+
+  @media (max-width: $screen-sm) {
+    .home-header {
+      margin-top: 35%;
+      width: 85%;
+      h1 {
+        font-size: 40px;
+      }
+    }
+  }
+
+}

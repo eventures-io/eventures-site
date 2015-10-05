@@ -1,0 +1,171 @@
+/* Header ------*/
+.post-header {
+  @extend .container-fluid;
+  background-color: #ffffff;
+  padding: 0;
+
+  .post-title {
+    padding-top: 30px;
+    min-height: 15vh;
+    text-align: center;
+    padding-bottom: 20px;
+    h2 {
+      font-family: 'Metrophobic', sans-serif;
+      font-weight: bolder;
+    }
+  }
+
+  .title-line {
+    font-weight: bolder;
+  }
+
+  .post-image {
+    width: 100%;
+    min-height: 55vh;
+    background-size: cover;
+    background-color: #333333;
+    background-position: center;
+    transition: all 7s;
+    filter: contrast(100%);
+    z-index: 0;
+  }
+
+  .post-image:hover {
+    transform: scale(1.029);
+    filter: contrast(80%);
+
+  }
+
+  .post-summary {
+    min-height: 25vh;
+    color: $notes-menu-color;
+    background-color: #3a3a3a;
+    background-image: radial-gradient(circle farthest-side, #3c3c3c, #1b1b1b);
+
+  }
+
+  .excerpt {
+    @extend .container;
+    padding: 0.5em 1em 0.5em 1em;
+    font-size: x-large;
+    font-family: 'Share', cursive;
+    text-align: center;
+  }
+}
+
+/* Content ------*/
+
+.post-content {
+  @extend .container;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-left: 15%;
+  padding-right: 15%;
+
+  header {
+    font-size: larger;
+  }
+
+  blockquote {
+    font-size: 16px;
+    font-style: italic;
+    margin-left: 40px;
+    padding-left: 15px;
+    border-left: 3px gray solid;
+  }
+
+  ul {
+    list-style-image: url('../assets/images/hash.svg');
+  }
+
+  li {
+   // padding-left: 2px;
+    margin-bottom: 15px;
+  }
+  a {
+    color: #3d3d3d;
+    font-style: italic;
+  }
+  pre {
+    background-color: #d6d6d6;
+    margin: 10px 0 10px 0;
+    padding-left: 20px;
+    width: 100%;
+    border-radius: 3px;
+    overflow-x: scroll;
+    code {
+      margin: 0;
+      padding: 10px;
+    }
+  }
+
+}
+
+
+/* Date -------*/
+
+.date-horizontal {
+  display: block;
+  float: right;
+  padding-right: 5%;
+  margin-bottom: 20px;
+
+}
+
+.pipe {
+  font-size: 160%;
+}
+
+.date-day {
+  color: #3d3d3d;
+  font-size: 95%;
+}
+
+.date-year {
+  font-size: 95%;
+  color: #a8a8a8;
+}
+
+.date-month {
+  font-size: 100%;
+  color: gray;
+}
+
+
+/* Footer ------*/
+
+footer {
+  border-top: 1px solid #808080;
+}
+
+
+/* Comments ------*/
+.comments {
+  display: none;
+  @extend .container;
+  padding:  40px 15% 40px 15%;
+}
+
+.comments-visible {
+  display: block;
+
+}
+
+/* Media queries ------*/
+
+@media (max-width: $screen-sm) {
+  .post-content {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .post-header {
+    .excerpt {
+      text-align: left;
+      padding: 13%;
+    }
+  }
+}
+
+
+
+

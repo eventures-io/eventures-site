@@ -1,6 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300|Raleway|Share|Metrophobic);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300|Raleway|Share|Metrophobic|Allerta+Stencil|Sarina|Aldrich|PT+Sans+Narrow|Ubuntu+Condensed);
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import "hint.css/src/hint";
+//TODO investigate
 @import "prism/themes/prism-coy";
 
 /**
@@ -8,9 +9,13 @@
  */
 
 /* Variables ----*/
-$menu-overlay: rgba(29, 29, 29, 0.9);
-$menu-color: #F5F5F5;
 $body-color: #666666;
+$error-color: #B90000;
+$stroke-color: #009600;
+$main-bg-color: #efefef;
+
+$notes-menu-overlay: rgba(29, 29, 29, 0.9);
+$notes-menu-color: #F5F5F5;
 
 .browsehappy {
   margin: 0.2em 0;
@@ -19,6 +24,7 @@ $body-color: #666666;
   padding: 0.2em 0;
 }
 
+//TODO these font settings should move to blog section
 body {
   margin: 0;
   font-family: "Roboto", serif;
@@ -26,6 +32,7 @@ body {
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7em;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -35,6 +42,13 @@ h4 {
   font-family: 'Raleway', sans-serif;
 }
 
+.animate-main {
+  height: 100vh;
+  width: 100vw;
+  background-color: $main-bg-color;
+}
+
+//TODO remove
 .full-size {
   height: 100%;
   width: 100%;
@@ -43,7 +57,18 @@ h4 {
 // Component styles are injected through grunt
 // injector
 @import 'animations.scss';
-@import 'post/post.scss';
-@import 'navbar/navbar.scss';
+@import 'contact/contact.scss';
+@import 'home/home.scss';
+@import 'notes/post.scss';
+@import 'work/action-buttons.scss';
+@import 'work/projects/projects.scss';
+@import 'work/site-view/site.scss';
+@import 'work/work.scss';
+@import 'contact-form/contact-form.scss';
+@import 'init/init.scss';
+@import 'nav-menu/nav-menu.scss';
+@import 'notes-menu/notes-menu.scss';
+@import 'portfolio/portfolio-item.scss';
+@import 'progress-button/progress-button.scss';
 @import 'social/social.scss';
 // endinjector

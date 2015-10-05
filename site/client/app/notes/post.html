@@ -1,0 +1,34 @@
+<article>
+    <header class="post-header">
+        <div class="post-title">
+            <h2 ng-bind-html="post.title | HtmlFilter"></h2>
+
+            <p class="title-line">_____________&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;_____________</p>
+        </div>
+
+        <div class="post-image" ng-style="getBackgroundStyle(post)">
+        </div>
+        <div class="post-summary">
+            <div class="excerpt" ng-bind-html="post.excerpt | HtmlFilter">
+            </div>
+        </div>
+    </header>
+
+    <section class="post-content">
+        <div class="row">
+            <div class="date-horizontal">
+                <span class="pipe"> | </span>
+                <span class="date-day" >{{post.publDate | date:'dd'}}</span>
+                <span class="date-month" >{{post.publDate | date:'MMM'}}</span>
+                <span class="date-year" >{{post.publDate | date:'yyyy'}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-bind-html="post.content | HtmlFilter"></div>
+        </div>
+    </section>
+
+    <footer>
+        <social-buttons></social-buttons>
+    </footer>
+</article>

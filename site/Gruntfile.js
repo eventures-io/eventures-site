@@ -174,7 +174,7 @@ module.exports = function (grunt) {
         // Add vendor prefixed styles
         autoprefixer: {
             options: {
-                browsers: ['last 1 version']
+                browsers: ['last 2 versions']
             },
             dist: {
                 files: [
@@ -227,7 +227,7 @@ module.exports = function (grunt) {
             target: {
                 src: '<%= yeoman.client %>/index.html',
                 ignorePath: '<%= yeoman.client %>/',
-                exclude: [/jquery/,/bootstrap-sass-official/, /bootstrap/, /json3/, /es5-shim/, /font-awesome/ ]
+                exclude: [/jquery/,/bootstrap-sass-official/, /bootstrap/, /json3/, /es5-shim/, /font-awesome/, /gsap/ ]
             }
         },
 
@@ -563,12 +563,12 @@ module.exports = function (grunt) {
             options: {
                 space: '  ',
                 wrap: '"use strict";\n\n {%= __ngModule %}',
-                name: 'config',
-                dest: '<%= yeoman.client %>/app/main/config.js'
+                name: 'evtrs-config',
+                dest: '<%= yeoman.client %>/app/config.js'
             },
             development: {
                 constants: {
-                    conf: {
+                    CONF: {
                         name: 'development',
                         WP_URL: 'http://localhost/wp-json'
                     }
@@ -576,7 +576,7 @@ module.exports = function (grunt) {
             },
             production: {
                 constants: {
-                    conf: {
+                    CONF: {
                         name: 'production',
                         WP_URL: 'http://ec2-52-17-227-41.eu-west-1.compute.amazonaws.com/wp-json'
                     }
@@ -622,7 +622,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'env:all',
-            'ngconstant:production',
+            'ngconstant:development',
             'injector:sass',
             'concurrent:server',
             'injector',

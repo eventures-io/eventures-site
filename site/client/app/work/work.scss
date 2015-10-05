@@ -1,0 +1,124 @@
+/* Project view -----------*/
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container > div {
+  flex: 1 1 auto;
+  //height: 70vh;
+}
+
+.project-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  //overflow: hidden;
+  z-index: 0;
+
+  section {
+    background-color: inherit;
+    height: 100vh;
+    overflow: scroll;
+  }
+}
+
+.project-img {
+  position: absolute;
+  max-height: 100%;
+  max-width: 100%;
+  z-index: 4;
+}
+
+.project-view-header,
+.project-description {
+  @extend .flex-container;
+}
+
+.project-close {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  height: 50px;
+  font-size: large;
+  cursor: pointer;
+  padding: 15px;
+  z-index: 9998;
+}
+
+@media (min-width: $screen-sm) {
+  .project-view-header {
+    flex-direction: row;
+    min-height: 100vh;
+    background-color: inherit;
+    overflow: scroll;
+
+    .project-visual {
+      width: 40%;
+      min-width: 480px;
+      overflow: hidden;
+      //    border: 1px solid;
+    }
+  }
+
+  .project-description {
+    padding: 0 5%;
+    text-align: center;
+    .project-visual {
+        img {
+          max-width: 90vw;
+          max-height: 80vh;
+        }
+    }
+  }
+
+  .project-summary {
+    width: 60%;
+    padding: 0 15px;
+    margin: 30px;
+    height: 100vh;
+    background-color: inherit;
+    overflow-y: scroll;
+    p {
+      font-size: larger;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5em;
+    }
+    .summary-text {
+      max-width: 600px;
+      background-color: inherit;
+      overflow-y: scroll;
+    }
+  }
+
+}
+
+@media (max-width: $screen-sm) {
+  .project-view {
+    overflow-y: visible;
+  }
+  .project-view-header,
+  .project-description {
+    flex-direction: column;
+    overflow: visible;
+
+    .project-visual {
+      //TODO take height from child
+      height: 90vh;
+    }
+
+    .project-summary {
+      padding: 0 15px;
+    }
+
+    .scroll-button {
+      display: none;
+    }
+  }
+
+}
+

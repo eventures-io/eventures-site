@@ -1,35 +1,77 @@
-/*MAIN-VIEW -----------*/
-.animate-main.ng-enter, .animate-main.ng-leave {
-  transition: all 1.3s ease-in-out;
+/*MAIN-VIEW ---------*/
+.animate-main.ng-enter-active {
+  z-index: 99;
+  position: absolute;
+  top: 100vh;
 }
 
 .animate-main.ng-enter {
-  opacity: 0;
-}
-
-.animate-main.ng-enter-active {
-  opacity: 1;
-}
-
-.animate-main.ng-leave {
-  opacity: 0;
+  animation: slideUp .3s ease-in;
 }
 
 .animate-main.ng-leave-active {
-  opacity: 1;
+  z-index: 0;
 }
 
-/*ARTICLE-VIEW --------*/
-
-.animate-article.ng-enter {
-  animation : article-slide-in 0.9s ease-out;
+.animate-main.ng-leave {
+   animation: fadeOut 0s 3s;
 }
 
-@keyframes article-slide-in {
+/* POST -------*/
+.animate-post.ng-enter {
+  animation: fadeIn .4s linear;
+}
+
+.animate-post.ng-leave {
+  //animation: fadeOut .2s linear;
+}
+
+/* KEYFRAMES -------*/
+@keyframes slideUp {
   from {
-     transform : translateX(-90px);
   }
   to {
-    transform : translateX(0px);
+    transform: translateY(-100%);
+  }
+}
+
+
+@keyframes slideOutUp {
+  from {
+    top: 0;
+  }
+  to {
+    top: -100%;
+  }
+}
+
+
+
+@keyframes scaleDown {
+  from {
+  }
+  to {
+    transform: scale(0.99);
+  }
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+//
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }

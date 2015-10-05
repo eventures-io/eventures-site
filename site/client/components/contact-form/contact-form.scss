@@ -1,0 +1,295 @@
+
+.contact-form {
+  position: relative;
+  margin: 0 auto;
+  padding: 20px 0;
+  width: 100%;
+  text-align: left;
+
+  .submit {
+    display: none;
+  }
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    transition: height 0.4s;
+  }
+
+  .ol:before {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+.steps {
+
+  li {
+    z-index: 100;
+    position: relative;
+    visibility: hidden;
+    overflow: hidden;
+    height: 0;
+    transition: visibility 0s 0.4s, height 0s 0.4s;
+
+    /* Labels */
+    > span {
+      display: block;
+      overflow: hidden;
+    }
+
+    > span label {
+      display: block;
+      font-size: 20px;
+      transition: transform 0.4s;
+    }
+  }
+
+  .current {
+    visibility: visible;
+    height: auto;
+    -webkit-transition: none;
+    transition: none;
+  }
+
+  .current > span label {
+    transition: none;
+    transform: translateY(0);
+  }
+
+  .current input {
+    display: block;
+    margin: 0.3em 0 0 0;
+    padding: 0.2em 0.4em;
+    width: calc(100% - 2em);
+    border: none;
+    width: 100%;
+    background-color: rgba(gray, 0.6);
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 1em;
+    line-height: 1;
+    opacity: 1;
+    transition: opacity 0.3s;
+    height: 2.1em;
+  }
+
+  .current input:focus {
+    outline: none;
+  }
+
+}
+
+input {
+  display: none;
+}
+
+.contact-form button:focus {
+  outline: none;
+}
+
+.show-next .steps li.current > span label {
+  animation: moveUp .4s both;
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+
+  }
+  to {
+    transform: translateY(-100%);
+
+  }
+}
+
+.controls {
+  position: relative;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+/* Next step button */
+.next {
+  position: absolute;
+  right: 0;
+  bottom: 2.15em; /* padding-bottom of form plus progress bar height */
+  display: block;
+  padding: 0;
+  width: 1em;
+  height: 1em;
+  border: none;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  opacity: 0;
+  z-index: 900;
+  cursor: pointer;
+  background-image: url(../assets/images/arrow-right.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s, opacity 0.3s;
+  transform: translateX(-20%);
+  pointer-events: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.next:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.next.show {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* Progress bar */
+.contact-form .progress {
+  width: 0%;
+  height: 0.15em;
+  background: rgba(0, 0, 0, 0.3);
+  transition: width 0.4s ease-in-out;
+}
+
+.contact-form .progress::before {
+  position: absolute;
+  top: auto;
+  width: 100%;
+  height: inherit;
+  background: rgba(0, 0, 0, 0.05);
+  content: '';
+}
+
+/* Number indicator */
+.contact-form .number {
+  position: absolute;
+  right: 0;
+  overflow: hidden;
+  margin: 0.4em 0;
+  width: 3em;
+  font-weight: 700;
+  font-size: 0.4em;
+}
+
+.contact-form .number:after {
+  position: absolute;
+  left: 50%;
+  content: '/';
+  opacity: 0.4;
+  transform: translateX(-50%);
+}
+
+.contact-form .number span {
+  float: right;
+  width: 40%;
+  text-align: center;
+}
+
+.contact-form .number .number-current {
+  float: left;
+}
+
+.contact-form .number-next {
+  position: absolute;
+  left: 0;
+}
+
+.contact-form.show-next .number-current {
+  transition: transform 0.4s;
+  transform: translateY(-100%);
+}
+
+.contact-form.show-next .number-next {
+  animation: moveUp 0.4s both;
+}
+
+/* Error and final message */
+.contact-form .error-message,
+.contact-form .final-message {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+
+.contact-form .error-message {
+  padding: 0.4em 3.5em 0 0;
+  width: 100%;
+  color: $error-color;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 0.4em;
+  letter-spacing: 3px;
+}
+
+.final-message {
+  top: 50%;
+  left: 0;
+  padding: 0.5em;
+  width: 100%;
+  font-size: 0.6em;
+  letter-spacing: 3px;
+  text-align: center;
+  transform: translateY(-50%);
+
+}
+
+.error-message.show,
+.final-message.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.final-message.error {
+  color: $error-color;
+  border: 1px solid $error-color;
+}
+
+.spinner {
+  display: none;
+  opacity: 0;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  transform: translateY(-110px);
+  .spinner-gif {
+    opacity: 0.4;
+  }
+}
+
+.spinner.show {
+  display: block;
+  opacity: 1;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.final-message.show {
+  transition-delay: 0.5s;
+}
+
+/* Final hiding of form / showing message */
+.form-inner.hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0s 0.3s;
+}
+
+/* Remove IE clear cross */
+input[type=text]::-ms-clear {
+  display: none;
+}

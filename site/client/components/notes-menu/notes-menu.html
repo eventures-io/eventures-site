@@ -1,0 +1,36 @@
+<nav class="bookmarks-bar" ng-class="{'bookmarks-show' : bookmarks.length > 0}">
+    <ul>
+        <li ng-repeat="bookmark in bookmarks">Bookmarked: <a href="{{bookmark.url}}">{{bookmark.title}}</a>
+
+            <div ng-click="removeBookmark(bookmark)" class="remove-icon">
+                <i class="font-icon icon-cancel"></i>
+            </div>
+        </li>
+    </ul>
+</nav>
+<nav class="notes-nav">
+    <nav class="menu-icon">
+        <i class="font-icon icon-hamburger"></i>
+    </nav>
+    <aside class="notes-menu">
+        <nav class="menu-nav">
+             <span ng-click="goHome()" class="blog-menu-icon home-icon">
+                <i class="font-icon icon-home-2"></i>
+            </span>
+            <span ng-click="closeMenu()" class="blog-menu-icon">
+                <i class="font-icon icon-close"></i>
+            </span>
+        </nav>
+        <ul class="menu-link-container">
+            <li ng-repeat="post in posts" ng-click="showPost(post)"
+                ng-style="{'backgroundImage': 'url(' + post.featured_image.source + ')'}">
+                <span class="bg-mask">
+                    <span class="post-title">{{post.title}}</span>
+                </span>
+            </li>
+        </ul>
+        <div class="menu-bottom-mask">
+
+        </div>
+    </aside>
+</nav>

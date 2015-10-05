@@ -1,0 +1,81 @@
+.action-button {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  transition: color 0.5s;
+}
+
+.action-button:hover {
+  //color: white;
+  //transform: scale(1.1);
+}
+
+.action-button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  white-space: nowrap;
+  margin-left: 30px;
+  padding: 0px 10px;
+  font-size: small;
+  border-radius: 15px;
+  border: 1px solid #313131;
+  opacity: 0;
+  color: #313131;
+  transition: opacity 0.8s ease;
+}
+
+.action-button:hover::after {
+  opacity: 1;
+}
+
+.solo-next-button {
+  @extend .action-button;
+  position: relative;
+  padding-top: 60px;
+  left: calc(50% - 20px);
+}
+.solo-next-button::after {
+  left: 15px;
+}
+
+.action-buttons {
+  position: relative;
+  margin: 80px auto;
+  height: 120px;
+  width: 100px;
+  color: inherit;
+
+  .view-button {
+    @extend .action-button;
+    font-size: xx-large;
+  }
+
+  .view-button::after {
+    left: -110px;
+    top: -3px;
+  }
+
+  .next-button {
+    @extend .action-button;
+    margin-left: 50px;
+  }
+
+  .next-button::after {
+    left: 60px;
+    top: 40px;
+  }
+
+}
+
+.action-buttons::before {
+  content: "";
+  position: absolute;
+  width: 0px;
+  margin-right: 90px;
+  border-left: 1px solid;
+  height: 70px;
+  top: 3px;
+  left: 45px;
+  z-index: -1;
+  transform: rotate(45deg);
+}

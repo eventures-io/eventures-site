@@ -1,63 +1,96 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/">
-    <title></title>
-    <meta name="description" content="">
+    <title>Eventures</title>
+    <meta name="description" content="Eventures website">
+    <meta name="fragment" content="!">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
-      <!-- injector:css -->
-      <link rel="stylesheet" href="app/fontello.css">
-      <!-- endinjector -->
+    <!-- injector:css -->
+    <link rel="stylesheet" href="app/fontello.css">
+    <!-- endinjector -->
     <!-- endbuild -->
-  </head>
-  <body ng-app="evtrs-site">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+</head>
+<body ng-app="evtrs-site" init>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<!--<div class="loading-pane">-->
+    <!--<div class="preloader">-->
+        <!--<div class="loader-svg">-->
+           <!--<img src="assets/images/logo.svg" class="logo">-->
+        <!--</div>-->
+        <!--<span class="loader-text">Eventures</span><span class="loader-period">.</span>-->
+    <!--</div>-->
+<!--</div>-->
+<nav-menu></nav-menu>
+<div ui-view class="animate-main"></div>
 
-    <div ui-view="" class="animate-main"></div>
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+<!-- build:js({client,node_modules}) app/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-utils-disqus/dirDisqus.js"></script>
+<script src="bower_components/lodash/lodash.js"></script>
+<script src="bower_components/prism/prism.js"></script>
+<script src="bower_components/ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/waypoints/lib/noframework.waypoints.js"></script>
+<!-- endbower -->
+<script src="bower_components/gsap/src/uncompressed/TweenLite.js"></script>
+<script src="bower_components/gsap/src/uncompressed/easing/EasePack.js"></script>
+<script src="bower_components/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
+<script src="bower_components/gsap/src/uncompressed/plugins/ScrollToPlugin.js"></script>
+<!-- endbuild -->
 
-
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
-    <!-- build:js({client,node_modules}) app/vendor.js -->
-      <!-- bower:js -->
-      <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-animate/angular-animate.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/angular-aria/angular-aria.js"></script>
-      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-      <script src="bower_components/ui-router/release/angular-ui-router.js"></script>
-      <script src="bower_components/lodash/lodash.js"></script>
-      <script src="bower_components/angular-utils-disqus/dirDisqus.js"></script>
-      <script src="bower_components/prism/prism.js"></script>
-      <!-- endbower -->
-    <!-- endbuild -->
-
-        <!-- build:js({.tmp,client}) app/app.js -->
-        <script src="app/app.js"></script>
-          <!-- injector:js -->
-          <script src="app/main/angular-socialshare.js"></script>
-          <script src="app/main/config.js"></script>
-          <script src="app/main/home.js"></script>
-          <script src="app/post/post-controller.js"></script>
-          <script src="app/resource/blog-resource.js"></script>
-          <script src="components/navbar/navbar.js"></script>
-          <script src="components/service/detect-mobile.js"></script>
-          <script src="components/social/social-buttons.js"></script>
-          <!-- endinjector -->
-        <!-- endbuild -->
+<!-- build:js({.tmp,client}) app/app.js -->
+<script src="app/app.js"></script>
+<!-- injector:js -->
+<script src="app/animate-main.js"></script>
+<script src="app/config.js"></script>
+<script src="app/home/angular-socialshare.js"></script>
+<script src="app/home/animate-home.js"></script>
+<script src="app/notes/notes-controller.js"></script>
+<script src="app/notes/post-controller.js"></script>
+<script src="app/work/project-constants.js"></script>
+<script src="app/work/projects/project.js"></script>
+<script src="app/work/site-view/animate-site.js"></script>
+<script src="app/work/work.js"></script>
+<script src="components/clip/clip.js"></script>
+<script src="components/contact-form/contact-form.js"></script>
+<script src="components/init/init.js"></script>
+<script src="components/interceptor/http-interceptor.js"></script>
+<script src="components/nav-menu/nav-menu.js"></script>
+<script src="components/notes-menu/notes-menu.js"></script>
+<script src="components/portfolio/portfolio-item.js"></script>
+<script src="components/progress-button/progress-button.js"></script>
+<script src="components/resource/blog-resource.js"></script>
+<script src="components/scroll-button/scroll-button.js"></script>
+<script src="components/service/detect-mobile.js"></script>
+<script src="components/service/mail-service.js"></script>
+<script src="components/social/social-bar.js"></script>
+<!-- endinjector -->
+<!-- endbuild -->
 </body>
 </html>

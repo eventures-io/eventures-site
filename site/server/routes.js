@@ -9,7 +9,8 @@ var errors = require('./components/errors');
 module.exports = function(app) {
 
   // Insert routes below
-
+   // app.use('/api/wp', require('./api/wp'));
+    app.use('/api/contact', require('./api/contact'));
   
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

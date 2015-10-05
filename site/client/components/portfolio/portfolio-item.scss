@@ -1,0 +1,156 @@
+$transition-pf-lg: 0.7s;
+
+/* Portfolio flex container ---------*/
+.portfolio-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  z-index: 1;
+  background-color: #efefef;
+  transition: opacity 0.7s;
+
+}
+
+div[progress-button] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.progress-button {
+  position: relative;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-out 0.5s;
+}
+
+/* Desktop view -----*/
+@media (min-width: $screen-sm) {
+
+  .portfolio-section{
+    flex-direction: row;
+
+  }
+
+  .portfolio-section> div:first-child {
+    border-left: 1px solid gray;
+  }
+
+  .portfolio-section> div {
+    border-right: 1px solid gray;
+  }
+
+  .flex-sub {
+    flex: 1 1 auto;
+    padding-top: 50px;
+    height: 100%;
+    width: 100px;
+    transform: skewX(-16deg);
+    transition: width .4s ease-out;
+
+    .sub-outer {
+      height: 100%;
+      //width: 100%;
+      overflow: hidden;
+      position: relative;
+      .sub-inner {
+        height: 100%;
+        margin: 0 auto;
+        min-width: 30px;
+        transition: translateX .4s;
+        .preview-img {
+          display: block;
+          margin: 0 auto;
+          width: auto;
+          height: 100%;
+        }
+      }
+    }
+    .progress-button {
+      transform: skewX(16deg);
+
+    }
+  }
+
+  .flex-sub:hover {
+    width: 400px;
+    .sub-inner {
+      transform: skewX(0deg);
+      .preview-img {
+
+      }
+    }
+    .progress-button {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+  }
+}
+
+
+
+
+/* Mobile view ------*/
+@media (max-width: $screen-sm) {
+
+  .portfolio-section {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    padding-top: 50px;
+    overflow: hidden;
+  }
+
+  .flex-sub {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 20vh;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-top: 1px solid gray;
+    transition: height 0.5s ease-in;
+
+    .sub-outer {
+      height: 100%;
+      width: 100%;
+      padding-top: 15px;
+      margin-bottom: 3px;
+      position: relative;
+      overflow: hidden;
+      .sub-inner {
+        height: 100%;
+        width: 100%;
+        .preview-img {
+          width: 100%;
+          height: auto;
+          min-height: 80px;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+
+  .flex-sub:hover {
+    height: 30%;
+    div[progress-button] {
+      display: block;
+    }
+
+    .progress-button {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+  }
+
+}
+
+
+
