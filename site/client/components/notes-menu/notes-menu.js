@@ -45,12 +45,25 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, BlogR
             };
 
             $scope.showPost = function (post) {
+                menuElement.addEventListener('transitionend', function () {
+                    $state.go('notes.post', {postId: post.ID, postTitle: post.titleUrl});
+                    menuElement.removeEventListener('transitionend');
+                    setActivePost(post);
+                });
                 $scope.closeMenu();
-                //TODO listen for animation end event
-                $timeout(function () {
-                    return $state.go('notes.post', {postId: post.ID, postTitle: post.titleUrl});
-                }, 700);
             };
+
+            var setActivePost = function(post) {
+                var elements = menuElement.querySelectorAll('li');
+                _(elements).forEach(function(el){
+                    var mask = el.querySelector('.bg-mask');
+                    mask.classList.remove('active');
+                    if(el.innerText === post.title){
+                        mask.classList.add('active');
+                    }
+                }).value();
+
+            }
 
             $scope.getBackgroundStyle = function (post) {
                 if (post) {
@@ -70,13 +83,9 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, BlogR
                 BlogResource.getPosts().then(function (posts) {
                     //TODO load only once, move to service
                     $scope.posts = posts;
-                    //TODO preload images if not on mobile, move to service, not resource
-                    // $scope.postImages = BlogResource.preloadImages(posts);
                 });
                 loadBookmarks();
             };
-
-
             init();
 
         }
