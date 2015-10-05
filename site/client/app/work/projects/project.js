@@ -8,7 +8,7 @@ angular.module('evtrs-site')
             $scope.$on('APP_LOADED', function () {
                 $timeout(function () {
                     var broadcast = function () {
-                        $rootScope.$broadcast('LOAD_PROJECT', $state.params.project);
+                        $rootScope.$broadcast('LOAD_PROJECT', {name: $state.params.project, next: false});
                     }
                     return broadcast();
                     //TODO is it possible to listen to an event intead of using this timer?

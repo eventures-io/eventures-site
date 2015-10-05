@@ -87,7 +87,7 @@ angular
                 }
             })
     }).
-    run(function ($http, PROJECT_CONSTANTS, $rootScope, $state) {
+    run(function ($http, PROJECT_CONSTANTS, $rootScope, $state, $window) {
 
        $rootScope.$on('$stateChangeStart', function(evt, to, params) {
             if (to.redirectTo) {
@@ -98,7 +98,7 @@ angular
 
         $rootScope.$on('$stateChangeSuccess', function (event, current) {
             if (current.data) {
-                window.document.title = current.data.title;
+                $window.document.title = current.data.title;
             }
 
         });

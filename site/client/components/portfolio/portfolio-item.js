@@ -24,9 +24,9 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             var previewImg = element.querySelector('.preview-img');
             var portfolio = document.querySelector('.portfolio-section');
 
-            $scope.$on('LOAD_PROJECT', function (event, projectName) {
+            $scope.$on('LOAD_PROJECT', function (event, project) {
                 var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction');
-                if (projectName === $scope.project.name) {
+                if (project.name === $scope.project.name) {
 
                     //TODO center sub-inner div
                     element.style.zIndex = '2';
@@ -50,9 +50,16 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     };
 
                     if (flexDirection === 'row') {
+                        var positionLeft;
+                        if(!project.next){
                         projectImg.style.transform = 'skewX(-16deg)';
-                        projectImg.style.left = bounding.left + 100 + 'px';
+                                positionLeft = bounding.left + 100;
+                        } else {
+                            positionLeft = previewImg.width;
+                        }
+                        projectImg.style.left = positionLeft + 'px';
                         document.body.appendChild(projectImg);
+
                         //TODO use class-based styling
                         var resetRowView = function () {
                             portfolio.style.opacity = '0';

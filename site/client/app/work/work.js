@@ -5,9 +5,9 @@ angular.module('evtrs-site')
 
         $scope.displaySite = false;
 
-        $scope.$on('LOAD_PROJECT', function (event, projectName) {
-            $scope.activeProject = projectName;
-            $state.go('work.project', {project: projectName});
+        $scope.$on('LOAD_PROJECT', function (event, project) {
+            $scope.activeProject = project.name;
+            $state.go('work.project', {project: project.name});
         });
 
         $scope.$on('CLOSE_ACTIVE_PROJECT', function() {
@@ -37,10 +37,8 @@ angular.module('evtrs-site')
                 if (key === $scope.activeProject) {
                     next = true;
                 } else if (next) {
-                    $rootScope.$broadcast('LOAD_PROJECT', key);
+                    $rootScope.$broadcast('LOAD_PROJECT', {name: key, next: true});
                     return false;
-                    //next = false;
-
                 };
             });
         };
