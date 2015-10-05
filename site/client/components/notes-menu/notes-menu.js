@@ -34,7 +34,7 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, BlogR
             };
 
 
-            var openMenu = function () {
+             menuIcon.onclick = function () {
                 menuElement.classList.add('open');
             };
 
@@ -79,7 +79,7 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, BlogR
             });
 
             var init = function () {
-                menuIcon.addEventListener("click", openMenu, false);
+
                 BlogResource.getPosts().then(function (posts) {
                     //TODO load only once, move to service
                     $scope.posts = posts;

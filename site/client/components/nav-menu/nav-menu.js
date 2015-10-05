@@ -27,11 +27,27 @@ angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
 //                    showMenuButton();
 //                }
                 $scope.state = target.id;
+                //setActiveState(target);
                 $scope.toggleMenu();
                 $timeout(function () {
                     return $state.go($scope.state);
                 }, 400);
             };
+
+            $rootScope.$on('$stateChangeSuccess', function (event, current) {
+                var state = current.name === 'work.home' ? 'home' : current.name.split('.')[0];
+                var target = element.querySelector('#' + state);
+                setActiveState(target);
+
+            });
+
+            var setActiveState = function(target){
+                var menuElements = menu.querySelectorAll('li');
+                _(menuElements).forEach(function(el){
+                    el.classList.remove('active');
+                }).value();
+                target.classList.add('active');
+            }
 
             $scope.$on('HIDE_MENU_BTN', function () {
                 hideMenuButton();

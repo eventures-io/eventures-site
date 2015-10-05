@@ -62,19 +62,6 @@
   list-style: none;
   backface-visibility: hidden;
 
-  a {
-    color: whitesmoke;
-  }
-  a:hover {
-    color: whitesmoke;
-    text-decoration: none;
-  }
-
-  .state-active {
-    a {
-      color: yellowgreen;
-    }
-  }
 }
 
 .nav-menu ul li {
@@ -86,6 +73,10 @@
   cursor: pointer;
   visibility: hidden;
   transition: transform .3s, opacity .2s, visibility 0s 0.3s;
+}
+
+.nav-menu ul .active {
+  color: #7cfc00;
 }
 
 .nav-menu ul li:hover {
@@ -118,4 +109,6 @@
   transition: transform 0.3s, opacity 0.3s;
   transform: translate3d(0, 0, 0);
 }
+
+
 

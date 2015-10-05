@@ -96,10 +96,11 @@ angular
             }
         });
 
-        $rootScope.$on('$stateChangeSuccess', function (event, current, previous) {
+        $rootScope.$on('$stateChangeSuccess', function (event, current) {
             if (current.data) {
                 window.document.title = current.data.title;
             }
+
         });
 
     }).
