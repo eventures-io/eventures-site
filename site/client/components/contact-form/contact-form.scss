@@ -65,18 +65,18 @@
 
   .current input {
     display: block;
-    margin: 0.3em 0 0 0;
-    padding: 0.2em 0.4em;
-    width: calc(100% - 2em);
-    border: none;
     width: 100%;
+    height: 2.1em;
+    margin: 0.3em 0 0 0;
+    padding: 0.2em 1em 0.2em 0.2em;
+    border: none;
     background-color: rgba(gray, 0.6);
     color: rgba(0, 0, 0, 0.8);
     font-size: 1em;
     line-height: 1;
     opacity: 1;
     transition: opacity 0.3s;
-    height: 2.1em;
+
   }
 
   .current input:focus {

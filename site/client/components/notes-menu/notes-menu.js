@@ -17,7 +17,7 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
                 }
             };
 
-            $scope.goHome = function() {
+            $scope.goHome = function () {
                 $scope.closeMenu();
                 $timeout(function () {
                     $rootScope.$broadcast('SHOW_MENU_BTN');
@@ -25,9 +25,9 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
                 }, 700);
             };
 
-            $scope.removeBookmark = function(bookmark) {
+            $scope.removeBookmark = function (bookmark) {
                 var bookmarks = $cookies.getObject('bookmarks');
-                _.remove(bookmarks, function(bm) {
+                _.remove(bookmarks, function (bm) {
                     return bm.url === bookmark.url;
                 });
                 $cookies.putObject('bookmarks', bookmarks);
@@ -35,7 +35,7 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
             };
 
 
-             menuIcon.onclick = function () {
+            menuIcon.onclick = function () {
                 menuElement.classList.add('open');
             };
 
@@ -54,12 +54,12 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
                 $scope.closeMenu();
             };
 
-            var setActivePost = function(post) {
+            var setActivePost = function (post) {
                 var elements = menuElement.querySelectorAll('li');
-                _(elements).forEach(function(el){
+                _(elements).forEach(function (el) {
                     var mask = el.querySelector('.bg-mask');
                     mask.classList.remove('active');
-                    if(el.innerText === post.title){
+                    if (el.innerText === post.title) {
                         mask.classList.add('active');
                     }
                 }).value();
@@ -75,17 +75,26 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
                 return null;
             };
 
-            $scope.$on('BOOKMARKED', function(){
+            $scope.$on('BOOKMARKED', function () {
                 loadBookmarks();
             });
 
+            function handleLoadError() {
+                $rootScope.$broadcast('SHOW_MENU_BTN');
+                menuIcon.style.visible = 'hidden';
+                document.querySelector('.notes-load-error').style.visibility = 'visible';
+            }
+
             var init = function () {
                 NotesResource.getPosts().then(function (posts) {
-                    $scope.posts = posts;
-                }, function(error){
-                    $rootScope.$broadcast('SHOW_MENU_BTN');
-                    menuIcon.style.visible = 'hidden';
-                    document.querySelector('.notes-load-error').style.visibility = 'visible';
+                    if (posts.length > 0) {
+                        $scope.posts = posts;
+                    } else {
+                        handleLoadError();
+                    }
+
+                }, function (error) {
+                    handleLoadError();
 
                 });
                 loadBookmarks();

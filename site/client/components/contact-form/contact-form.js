@@ -155,7 +155,6 @@ angular.module('evtrs-site').directive('contactForm', function (MailService) {
                 var formData = {
                     name: contactForm.elements['name'].value,
                     email: contactForm.elements['email'].value,
-                    subject: contactForm.elements['subject'].value,
                     message: contactForm.elements['message'].value
                 };
                 contactForm.querySelector('.form-inner').classList.add('hide');

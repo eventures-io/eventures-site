@@ -6,7 +6,7 @@
 }
 
 .animate-main.ng-enter {
-  animation: slideUp .3s ease-in;
+  animation: slideUp .5s ease-out;
 }
 
 .animate-main.ng-leave-active {
@@ -14,7 +14,7 @@
 }
 
 .animate-main.ng-leave {
-   animation: fadeOut 0s 3s;
+   //animation: fadeOut 3s;
 }
 
 /* POST -------*/

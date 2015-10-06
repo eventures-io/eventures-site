@@ -5,24 +5,24 @@ angular.module('evtrs-site').factory('NotesResource', function ($http, CONF, $lo
 
     var postsPreviewUrl = baseUrl.concat('?fields=ID,title,featured_image');
     var currentPost = {};
-    var postList;
+    var posts;
 
     var getPostList = function () {
         var deferred = $q.defer();
-        if (!postList) {
+        if (!posts) {
             $http.get(postsPreviewUrl).then(function (response) {
-                postList = response.data;
+                posts = response.data;
                 _(posts).forEach(function (post) {
                     var title = post.title;
                     post.titleUrl = title.replace(/ /g, '-');
                 }).value();
-                deferred.resolve(postList);
+                deferred.resolve(posts);
             }, function (error) {
                 deferred.reject(error);
             });
 
         } else {
-            deferred.resolve(postList);
+            deferred.resolve(posts);
         }
         return deferred.promise;
     };

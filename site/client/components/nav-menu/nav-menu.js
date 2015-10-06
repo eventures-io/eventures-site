@@ -21,11 +21,9 @@ angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
             ul.onclick = function (event) {
                 $rootScope.$broadcast('CLOSE_ACTIVE_PROJECT');
                 var target = event.target || event.srcElement;
-//                if (target.id === 'blog') {
-//                    hideMenuButton();
-//                } else {
-//                    showMenuButton();
-//                }
+                if (target.id !== 'home') {
+                   // hideHomeScreen();
+                }
                 $scope.state = target.id;
                 //setActiveState(target);
                 $scope.toggleMenu();
@@ -40,6 +38,7 @@ angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
                 setActiveState(target);
 
             });
+
 
             var setActiveState = function(target){
                 var menuElements = menu.querySelectorAll('li');

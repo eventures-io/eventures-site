@@ -18,8 +18,8 @@ exports.sendMessage = function (req, res) {
     var mailOptions = {
         from: messageData.email,
         to: 'info@eventures.io',
-        subject: messageData.subject,
-        text: messageData.name + 'says: ' + messageData.message
+        subject: 'Message from: '.concat(messageData.name),
+        text: messageData.message
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
