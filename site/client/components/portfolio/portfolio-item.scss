@@ -35,15 +35,21 @@ div[progress-button] {
 
   .portfolio-section{
     flex-direction: row;
-
   }
 
   .portfolio-section> div:first-child {
-    border-left: 1px solid gray;
+    //border-left: 1px solid gray;
   }
 
   .portfolio-section> div {
     border-right: 1px solid gray;
+  }
+
+  .portfolio-section> div:last-child {
+    border-right: none;
+    .sub-outer {
+    overflow: visible;
+    }
   }
 
   .flex-sub {

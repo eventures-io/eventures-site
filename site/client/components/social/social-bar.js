@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('evtrs-site').directive('socialButtons', function (BlogResource, $cookies, $timeout, $rootScope, $window) {
+angular.module('evtrs-site').directive('socialButtons', function (NotesResource, $cookies, $timeout, $rootScope, $window) {
 
     return {
         restrict: 'E',
@@ -15,15 +15,15 @@ angular.module('evtrs-site').directive('socialButtons', function (BlogResource, 
                     return socialIcons.style.opacity = '0';
                 }, 8000);
                 $scope.social.twitterVia = 'eventures-io';
-                $scope.social.shortUrl = BlogResource.getCurrentPost().shortUrl;
-                $scope.social.shareText = BlogResource.getCurrentPost().title;
+                $scope.social.shortUrl = NotesResource.getCurrentPost().shortUrl;
+                $scope.social.shareText = NotesResource.getCurrentPost().title;
             };
 
             $scope.recommend = function () {
                 var likes = $cookies.get('blog-likes') || [];
-                var title = BlogResource.getCurrentPost().title;
+                var title = NotesResource.getCurrentPost().title;
                 if (likes.indexOf(title)== -1) {
-                     BlogResource.incrementLikes(BlogResource.getCurrentPost().ID).then(function () {
+                     NotesResource.incrementLikes(NotesResource.getCurrentPost().ID).then(function () {
                         likes.push(title);
                         $cookies.setObject('blog-likes', likes);
                     });
@@ -35,7 +35,7 @@ angular.module('evtrs-site').directive('socialButtons', function (BlogResource, 
                 var url = $window.location.href;
                 var bookmarks = $cookies.getObject('bookmarks') || [];
                 if (bookmarks.indexOf(url) === -1) {
-                    bookmarks.unshift({url : url, title : BlogResource.getCurrentPost().title});
+                    bookmarks.unshift({url : url, title : NotesResource.getCurrentPost().title});
                     $cookies.putObject('bookmarks', bookmarks);
                     $scope.$emit('BOOKMARKED');
                 }

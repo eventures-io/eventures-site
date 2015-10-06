@@ -171,7 +171,7 @@ angular.module('evtrs-site').directive('contactForm', function (MailService) {
                     messageEl.classList.add('show');
                 }, function (error) {
                     spinner.classList.remove('show');
-                    messageEl.innerHTML = 'Something went wrong. So sorry! Please try some other way';
+                    messageEl.innerHTML = 'Something went wrong. So sorry! <br/> Please use some other way';
                     messageEl.classList.add('error');
                     messageEl.classList.add('show');
                 });

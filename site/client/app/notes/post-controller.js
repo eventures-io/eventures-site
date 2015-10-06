@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('evtrs-notes')
-    .controller('PostController', function ($scope, $stateParams, BlogResource) {
+    .controller('PostController', function ($scope, $stateParams, NotesResource) {
 
-        BlogResource.getPost($stateParams.postId).then(function (response) {
+        NotesResource.getPost($stateParams.postId).then(function (response) {
             $scope.post = response;
             $scope.contentLoaded = true;
             window.document.title = $scope.post.title;

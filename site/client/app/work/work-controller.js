@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('evtrs-site')
-    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state) {
+    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state, $timeout) {
 
         $scope.displaySite = false;
 
@@ -12,7 +12,7 @@ angular.module('evtrs-site')
 
         $scope.$on('CLOSE_ACTIVE_PROJECT', function() {
             $rootScope.$broadcast('CLOSE_PROJECT', $scope.activeProject);
-        })
+        });
 
         $scope.closeProject = function () {
             $rootScope.$broadcast('CLOSE_PROJECT', $scope.activeProject);

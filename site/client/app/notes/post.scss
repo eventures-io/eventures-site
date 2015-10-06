@@ -54,7 +54,6 @@
 }
 
 /* Content ------*/
-
 .post-content {
   @extend .container;
   margin-top: 30px;
@@ -79,7 +78,7 @@
   }
 
   li {
-   // padding-left: 2px;
+    // padding-left: 2px;
     margin-bottom: 15px;
   }
   a {
@@ -101,9 +100,7 @@
 
 }
 
-
 /* Date -------*/
-
 .date-horizontal {
   display: block;
   float: right;
@@ -131,11 +128,27 @@
   color: gray;
 }
 
-
 /* Footer ------*/
-
 footer {
   border-top: 1px solid #808080;
+}
+
+/* Notes page -----*/
+.notes-bg {
+  width: 350px;
+  margin: 0 auto;
+  padding-top: 1em;
+  font-size: 180px;
+  i {
+  opacity: 0.2;
+  }
+  .notes-load-error {
+    visibility: hidden;
+    font-size: 20px;
+    padding: 20px;
+    color: $error-color;
+  }
+
 }
 
 
@@ -143,7 +156,7 @@ footer {
 .comments {
   display: none;
   @extend .container;
-  padding:  40px 15% 40px 15%;
+  padding: 40px 15% 40px 15%;
 }
 
 .comments-visible {

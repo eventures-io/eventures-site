@@ -1,6 +1,7 @@
 'use strict';
-
-
+/**
+ * copy to clipboard directive
+ */
 angular.module('evtrs-site').directive('clip', function () {
 
     return {

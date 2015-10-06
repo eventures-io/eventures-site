@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, BlogResource, $state, $timeout, $cookies) {
+angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, NotesResource, $state, $timeout, $cookies) {
     return {
         restrict: 'E',
         templateUrl: 'components/notes-menu/notes-menu.html',
         controller: function ($element, $scope) {
+
             var menuIcon = $element[0].querySelector('.menu-icon');
             var menuElement = $element[0].querySelector('.notes-menu');
 
@@ -79,15 +80,17 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, BlogR
             });
 
             var init = function () {
-
-                BlogResource.getPosts().then(function (posts) {
-                    //TODO load only once, move to service
+                NotesResource.getPosts().then(function (posts) {
                     $scope.posts = posts;
+                }, function(error){
+                    $rootScope.$broadcast('SHOW_MENU_BTN');
+                    menuIcon.style.visible = 'hidden';
+                    document.querySelector('.notes-load-error').style.visibility = 'visible';
+
                 });
                 loadBookmarks();
             };
             init();
-
         }
     }
 

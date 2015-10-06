@@ -89,9 +89,9 @@ angular
     }).
     run(function ($http, PROJECT_CONSTANTS, $rootScope, $state, $window) {
 
-       $rootScope.$on('$stateChangeStart', function(evt, to, params) {
+       $rootScope.$on('$stateChangeStart', function(event, to, params) {
             if (to.redirectTo) {
-                evt.preventDefault();
+                event.preventDefault();
                 $state.go(to.redirectTo, params)
             }
         });

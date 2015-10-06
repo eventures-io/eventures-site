@@ -30,7 +30,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
                     //TODO center sub-inner div
                     element.style.zIndex = '2';
-                    // element.addEventListener("transitionend", openProjectEventListener, true);
                     projectView.style.backgroundColor = element.style.backgroundColor;
                     var bounding = previewImg.getBoundingClientRect();
                     projectImg = new Image();
@@ -39,6 +38,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     projectImg.style.top = bounding.top + 'px';
                     projectImg.width = previewImg.width;
                     projectImg.height = previewImg.height;
+
+
                     //TODO used class based styling
                     subOuter.style.opacity = '0';
                     progressButton.display = 'none';
@@ -51,11 +52,12 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
                     if (flexDirection === 'row') {
                         var positionLeft;
-                        if(!project.next){
-                        projectImg.style.transform = 'skewX(-16deg)';
-                                positionLeft = bounding.left + 100;
+                        if (!project.next) {
+                            projectImg.style.transform = 'skewX(-16deg)';
+                            positionLeft = bounding.left + 100;
                         } else {
-                            positionLeft = previewImg.width;
+                            projectImg.style.transform = 'scale(0.5)';
+                            positionLeft = 120;//previewImg.width;
                         }
                         projectImg.style.left = positionLeft + 'px';
                         document.body.appendChild(projectImg);
