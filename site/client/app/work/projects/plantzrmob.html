@@ -4,17 +4,18 @@
         </div>
         <div class="project-summary">
             <div class="summary-text">
-                <div><h1>Plantzr</h1>
-                     <h3>Mobile</h3>
-                </div>
+                <h1>Plantzr</h1>
+
                 <p>
                     An accompanying mobile app for the Plantzr web application.
                 </p>
+
                 <p>
                     Plant descriptive cards can be created with a picture inserted from the device’s camera.
                     </br>
                     The cards are automatically tagged with the GPS coordinates of the shooting location.
                 </p>
+
                 <p>
                     Created with the Ionic framework, it has both an Android and IOS version.
                 </p>
@@ -29,10 +30,12 @@
         <div class="project-summary">
             <div class="summary-text">
                 <h2>Authentication</h2>
+
                 <p>
                     In order to be able to post or edit a card,
                     the user must be authenticated.
                 </p>
+
                 <p>
                     If authentication was successfull, the
                     oauth token is stored in local storage.
@@ -40,9 +43,9 @@
                     the user needs to authenticate only once
                     after installing the app.
                 </p>
-                <div class="solo-next-button" ng-click="openNext()" data-tooltip="Next project">
-                    <i class="font-icon icon-next"></i>
-                </div>
+
+                <ng-include src="'app/work/action-buttons.html'"></ng-include>
+
             </div>
         </div>
         <div class="project-visual">

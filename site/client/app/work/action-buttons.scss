@@ -31,8 +31,8 @@
 .solo-next-button {
   @extend .action-button;
   position: relative;
-  padding-top: 60px;
   left: calc(50% - 20px);
+  margin-top: 60px;
 }
 .solo-next-button::after {
   left: 15px;
@@ -51,8 +51,8 @@
   }
 
   .view-button::after {
-    left: -110px;
-    top: -3px;
+    left: -140px;
+    top: 1px;
   }
 
   .next-button {

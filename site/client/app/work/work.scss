@@ -6,7 +6,6 @@
 
 .flex-container > div {
   flex: 1 1 auto;
-  //height: 70vh;
 }
 
 .project-view {
@@ -21,7 +20,7 @@
   section {
     background-color: inherit;
     height: 100vh;
-    overflow: scroll;
+    overflow-y: scroll;
   }
 }
 
@@ -48,6 +47,17 @@
   z-index: 9998;
 }
 
+.project-visual {
+  img {
+    display: block;
+    position: relative;
+    max-width: 90vw;
+    max-height: 80vh;
+    cursor: pointer;
+  }
+}
+
+
 @media (min-width: $screen-sm) {
   .project-view-header {
     flex-direction: row;
@@ -59,19 +69,12 @@
       width: 40%;
       min-width: 480px;
       overflow: hidden;
-      //    border: 1px solid;
     }
   }
 
   .project-description {
     padding: 0 5%;
     text-align: center;
-    .project-visual {
-        img {
-          max-width: 90vw;
-          max-height: 80vh;
-        }
-    }
   }
 
   .project-summary {
@@ -104,10 +107,9 @@
   .project-view-header,
   .project-description {
     flex-direction: column;
-    overflow: visible;
+    overflow-y: visible;
 
     .project-visual {
-      //TODO take height from child
       height: 90vh;
     }
 

@@ -22,21 +22,22 @@
 
 .plantzr-mobile {
   h1 {
-    margin-bottom: 0 !important;
-  }
-  h3 {
     position: relative;
+    text-align: center;
+  }
+  h1::after {
+    content: 'mobile';
+    position: absolute;
     left: 55%;
+    top: 30px;
     font-family: 'Aldrich', sans-serif;
     font-size: 20px;
     font-weight: normal;
     color: #000000;
-    margin-top: 0;
-    margin-bottom: 60px;
   }
   .project-summary,
   .summary-text{
-    overflow: visible !important;
+    overflow-y: visible !important;
   }
 
 }

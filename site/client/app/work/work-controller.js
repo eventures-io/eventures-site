@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('evtrs-site')
-    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state, $timeout) {
+    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state) {
 
         $scope.displaySite = false;
 
@@ -18,6 +18,12 @@ angular.module('evtrs-site')
             $rootScope.$broadcast('CLOSE_PROJECT', $scope.activeProject);
             $state.go('work');
         };
+
+       $scope.openGithub =  function() {
+           var githubUrl = "https://github.com/eventures-io/".concat(PROJECT_CONSTANTS[$scope.activeProject].githubUrl)
+           window.open(githubUrl);
+
+       }
 
         $scope.openSite = function () {
             $rootScope.$broadcast('HIDE_MENU_BTN');
