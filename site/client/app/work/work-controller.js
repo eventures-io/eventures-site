@@ -19,10 +19,9 @@ angular.module('evtrs-site')
             $state.go('work');
         };
 
-       $scope.openGithub =  function() {
+       $scope.viewOnGithub =  function() {
            var githubUrl = "https://github.com/eventures-io/".concat(PROJECT_CONSTANTS[$scope.activeProject].githubUrl)
            window.open(githubUrl);
-
        }
 
         $scope.openSite = function () {

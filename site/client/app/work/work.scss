@@ -14,7 +14,6 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  //overflow: hidden;
   z-index: 0;
 
   section {
@@ -47,29 +46,47 @@
   z-index: 9998;
 }
 
-.project-visual {
-  img {
-    display: block;
-    position: relative;
-    max-width: 90vw;
-    max-height: 80vh;
-    cursor: pointer;
-  }
-}
+.project-view-header {
+  min-height: 100vh;
+  background-color: inherit;
 
+  .visual-container {
+    position: relative;
+    cursor: pointer;
+
+  }
+
+  .visual-container::after {
+    content: 'view site';
+    position: absolute;
+    top: 190px;
+    left: 10px;
+    background-color: #ffffff;
+    border-radius: 7px;
+    border: 1px solid gray;
+    padding: 7px 30Px;
+    font-size: x-large;
+    opacity: 0;
+    z-index: 9999;
+    transition: opacity .3 linear;
+  }
+
+  .visual-container:hover::after{
+    opacity: 0.8;
+ }
+
+}
 
 @media (min-width: $screen-sm) {
   .project-view-header {
     flex-direction: row;
-    min-height: 100vh;
-    background-color: inherit;
-    overflow: scroll;
+    overflow-y: visible;
 
     .project-visual {
       width: 40%;
-      min-width: 480px;
-      overflow: hidden;
+      min-width: 450px;
     }
+
   }
 
   .project-description {
@@ -83,7 +100,7 @@
     margin: 30px;
     height: 100vh;
     background-color: inherit;
-    overflow-y: scroll;
+    overflow-y: visible;
     p {
       font-size: larger;
     }
@@ -94,10 +111,10 @@
     .summary-text {
       max-width: 600px;
       background-color: inherit;
-      overflow-y: scroll;
+      overflow-y: visible;
     }
-  }
 
+  }
 }
 
 @media (max-width: $screen-sm) {

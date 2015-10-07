@@ -28,7 +28,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                 var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction');
                 if (project.name === $scope.project.name) {
 
-                    //TODO center sub-inner div
                     element.style.zIndex = '2';
                     projectView.style.backgroundColor = element.style.backgroundColor;
                     var bounding = previewImg.getBoundingClientRect();
@@ -45,8 +44,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     progressButton.display = 'none';
 
                     var repositionImage = function () {
-                        var projectVisual = document.querySelector('.project-visual');
-                        projectVisual.appendChild(projectImg);
+                        var visualContainer = document.querySelector('.visual-container');
+                        visualContainer.appendChild(projectImg);
                         projectImg.style.position = 'relative';
                     };
 
@@ -72,6 +71,13 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             subOuter.style.opacity = '1';
                         }
 
+                        var calculateLeftOutPosition = function() {
+                            var containerWidth = (window.innerWidth * 40)/ 100;
+                            var margin =  (containerWidth - projectImg.width)/ 2;
+                            margin = margin < 0 ? 20 : margin;
+                            return margin;
+                        }
+
                         //TODO improve transition, use timeline
                         TweenLite.to(element, 0.9, {css: {transform: 'scale(5,1) skewX(-1deg)'}, ease: Power1.easeIn, onComplete: resetRowView });
                         TweenLite.to(projectImg, 0.4, {css: {
@@ -81,8 +87,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         TweenLite.to(projectImg, 0.5, {css: {
                             transform: 'scale(1)',
                             top: 45,
-                            //TODO center in div. Calulate percentage
-                            left: '120',
+                            left: calculateLeftOutPosition(),
                             maxHeight: '90vh',
                             width: 'auto'
                         },
