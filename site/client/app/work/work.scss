@@ -1,5 +1,4 @@
 /* Project view -----------*/
-
 .flex-container {
   display: flex;
 }
@@ -53,7 +52,6 @@
   .visual-container {
     position: relative;
     cursor: pointer;
-
   }
 
   .visual-container::after {
@@ -74,6 +72,14 @@
   .visual-container:hover::after{
     opacity: 0.8;
  }
+
+  .visual-container.no-link{
+    cursor: inherit;
+  }
+
+  .visual-container.no-link::after {
+    visibility: hidden;
+  }
 
 }
 
