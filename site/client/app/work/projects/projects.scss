@@ -35,14 +35,11 @@
     font-weight: normal;
     color: #000000;
   }
-  .project-summary,
-  .summary-text{
-    overflow-y: visible !important;
-  }
 
 }
 
 .scroll-button {
+  display: inline-block;
   position: relative;
   transform: rotate(90deg);
   text-align: center;

@@ -1,12 +1,4 @@
 /* Project view -----------*/
-.flex-container {
-  display: flex;
-}
-
-.flex-container > div {
-  flex: 1 1 auto;
-}
-
 .project-view {
   position: absolute;
   top: 0;
@@ -16,133 +8,157 @@
   z-index: 0;
 
   section {
-    background-color: inherit;
-    height: 100vh;
-    overflow-y: scroll;
+    background-color: $main-bg-color;
+    div{
+      background-color: inherit;
+    }
   }
+
+  .project-nav-close {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    height: 50px;
+    font-size: large;
+    cursor: pointer;
+    padding: 15px;
+    z-index: 9998;
+  }
+
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .project-img {
   position: absolute;
-  max-height: 100%;
-  max-width: 100%;
   z-index: 4;
 }
 
-.project-view-header,
+.project-header,
 .project-description {
   @extend .flex-container;
+  p {
+    font-size: larger;
+  }
 }
 
-.project-close {
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  height: 50px;
-  font-size: large;
-  cursor: pointer;
-  padding: 15px;
-  z-index: 9998;
-}
+.project-header {
 
-.project-view-header {
-  min-height: 100vh;
-  background-color: inherit;
+  .project-visual {
+    height: 100vh;
+    width: 40%;
+    min-width: 400px;
 
-  .visual-container {
-    position: relative;
-    cursor: pointer;
-  }
-
-  .visual-container::after {
-    content: 'view site';
-    position: absolute;
-    top: 190px;
-    left: 10px;
-    background-color: #ffffff;
-    border-radius: 7px;
-    border: 1px solid gray;
-    padding: 7px 30Px;
-    font-size: x-large;
-    opacity: 0;
-    z-index: 9999;
-    transition: opacity .3 linear;
-  }
-
-  .visual-container:hover::after{
-    opacity: 0.8;
- }
-
-  .visual-container.no-link{
-    cursor: inherit;
-  }
-
-  .visual-container.no-link::after {
-    visibility: hidden;
-  }
-
-}
-
-@media (min-width: $screen-sm) {
-  .project-view-header {
-    flex-direction: row;
-    overflow-y: visible;
-
-    .project-visual {
-      width: 40%;
-      min-width: 450px;
+    .visual-container {
+      position: relative;
+      cursor: pointer;
     }
 
-  }
+    .visual-container::after {
+      content: 'view site';
+      position: absolute;
+      top: 190px;
+      left: 10px;
+      background-color: #ffffff;
+      border-radius: 7px;
+      border: 1px solid gray;
+      padding: 7px 30Px;
+      font-size: x-large;
+      opacity: 0;
+      z-index: 9999;
+      transition: opacity .3s linear;
+    }
 
-  .project-description {
-    padding: 0 5%;
-    text-align: center;
+    .visual-container:hover::after {
+      opacity: 0.8;
+    }
+
+    .visual-container.no-link {
+      cursor: inherit;
+    }
+
+    .visual-container.no-link::after {
+      visibility: hidden;
+    }
   }
 
   .project-summary {
-    width: 60%;
-    padding: 0 15px;
-    margin: 30px;
-    height: 100vh;
-    background-color: inherit;
+    width: 368px;
+    flex-grow: 2;
     overflow-y: visible;
-    p {
-      font-size: larger;
-    }
+
     h1 {
       text-align: center;
+      margin-top: 85px;
       margin-bottom: 1.5em;
     }
     .summary-text {
+      padding: 0 25px;
       max-width: 600px;
-      background-color: inherit;
       overflow-y: visible;
     }
-
   }
-}
 
-@media (max-width: $screen-sm) {
-  .project-view {
-    overflow-y: visible;
-  }
-  .project-view-header,
-  .project-description {
-    flex-direction: column;
-    overflow-y: visible;
 
-    .project-visual {
-      height: 90vh;
-    }
+  @media (max-width: $screen-md) {
 
-    .project-summary {
-      padding: 0 15px;
+    .summary-text {
+      h1 {
+        margin-top: 0;
+      }
     }
 
     .scroll-button {
       display: none;
     }
+  }
+
+}
+
+
+.project-description {
+  .description-text {
+    min-width: 368px;
+    flex-grow: 2;
+    .description {
+      padding: 0 25px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      margin: 50px;
+      text-align: center;
+    }
+  }
+
+  .description-visual {
+    height: 100vh;
+    width: 40%;
+    min-width: 400px;
+    padding: 25px 0;
+    img {
+      max-height: 90%;
+    }
+  }
+
+  @media (max-width: $screen-md) {
+    .description-text {
+      order:2;
+    }
+
+    .description-visual {
+      width: 100%;
+      img{
+        display: block;
+        min-width: 300px;
+        margin: 0 auto;
+      }
+    }
+
   }
 
 }

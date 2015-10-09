@@ -72,10 +72,9 @@
   position: absolute;
   width: 0px;
   margin-right: 90px;
-  border-left: 1px solid;
+  border-left: 1px solid $body-color;
   height: 70px;
   top: 3px;
   left: 45px;
-  z-index: -1;
   transform: rotate(45deg);
 }

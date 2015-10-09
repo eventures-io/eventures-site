@@ -1,5 +1,5 @@
 <section class="plantzr-mobile">
-    <header class="project-view-header">
+    <header class="project-header">
         <div class="project-visual">
             <div class="visual-container no-link">
 
@@ -23,15 +23,15 @@
                     Created with the Ionic framework, it has both an Android and IOS version.
                 </p>
 
-                <div scroll-button class="scroll-button" ng-click="scrollTo('project-description')">
+                <span scroll-button class="scroll-button" ng-click="scrollTo('project-description')">
                     <i class="font-icon icon-next"></i>
-                </div>
+                </span>
             </div>
         </div>
     </header>
     <div id="project-description" class="project-description">
-        <div class="project-summary">
-            <div class="summary-text">
+        <div class="description-text">
+            <div class="description">
                 <h2>Authentication</h2>
 
                 <p>
@@ -48,10 +48,9 @@
                 </p>
 
                 <ng-include src="'app/work/action-buttons.html'"></ng-include>
-
             </div>
         </div>
-        <div class="project-visual">
+        <div class="description-visual">
             <img src="../assets/images/plantzr-nexus.png">
         </div>
     </div>
