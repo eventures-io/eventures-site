@@ -9,7 +9,7 @@
 
   section {
     background-color: $main-bg-color;
-    div{
+    div {
       background-color: inherit;
     }
   }
@@ -55,6 +55,9 @@
     .visual-container {
       position: relative;
       cursor: pointer;
+      img {
+        max-width: 100%;
+      }
     }
 
     .visual-container::after {
@@ -102,8 +105,7 @@
     }
   }
 
-
-  @media (max-width: $screen-md) {
+  @media (max-width: $screen-sm) {
 
     .summary-text {
       h1 {
@@ -117,7 +119,6 @@
   }
 
 }
-
 
 .project-description {
   .description-text {
@@ -147,12 +148,12 @@
 
   @media (max-width: $screen-md) {
     .description-text {
-      order:2;
+      order: 2;
     }
 
     .description-visual {
       width: 100%;
-      img{
+      img {
         display: block;
         min-width: 300px;
         margin: 0 auto;
