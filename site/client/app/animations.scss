@@ -26,6 +26,17 @@
   //animation: fadeOut .2s linear;
 }
 
+/* PROJECT ---------*/
+
+.animate-project.ng-enter {
+  animation: fadeIn .4s linear;
+}
+
+.animate-project.ng-leave {
+  animation: fadeOut .4s linear;
+}
+
+
 /* KEYFRAMES -------*/
 @keyframes slideUp {
   from {

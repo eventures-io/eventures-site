@@ -38,8 +38,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     projectImg.width = previewImg.width;
                     projectImg.height = previewImg.height;
 
-
-                    //TODO used class based styling
                     subOuter.style.opacity = '0';
                     progressButton.display = 'none';
 
@@ -56,12 +54,12 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             positionLeft = bounding.left + 100;
                         } else {
                             projectImg.style.transform = 'scale(0.5)';
+                            projectImg.style.top = '45px';
                             positionLeft = 120;//previewImg.width;
                         }
                         projectImg.style.left = positionLeft + 'px';
                         document.body.appendChild(projectImg);
 
-                        //TODO use class-based styling
                         var resetRowView = function () {
                             portfolio.style.opacity = '0';
                             projectView.style.opacity = '1';
@@ -121,17 +119,21 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
             $scope.$on('CLOSE_PROJECT', function (event, project) {
                 if (project === $scope.project.name) {
-                    projectView.style.transition = 'opacity .4s';
-                    TweenLite.to(projectView, 0.4, {css: {
-                        opacity: '0'
-                    },
-                        ease: Power4.easeOut,
-                        onComplete: function () {
-                            projectView.style.zIndex = '0';
-                        }
-                    });
-                    projectView.style.transition = '';
+
+                    projectView.style.zIndex = '0';
                     portfolio.style.opacity = '1';
+
+//                   projectView.style.transition = 'opacity .6s';
+//                    TweenLite.to(projectView, 0.6, {css: {
+//                        opacity: '0'
+//                    },
+//                        ease: Power4.easeOut,
+//                        onComplete: function () {
+//                            projectView.style.zIndex = '0';
+//                            //projectView.style.transition = '';
+//                            portfolio.style.opacity = '1';
+//                        }
+//                    });
 
                 }
             });
