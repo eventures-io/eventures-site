@@ -1,5 +1,4 @@
 $transition-pf-lg: 0.7s;
-
 /* Portfolio flex container ---------*/
 .portfolio-section {
   position: relative;
@@ -13,42 +12,70 @@ $transition-pf-lg: 0.7s;
 
 }
 
-div[progress-button] {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
+.flex-sub {
 
-.progress-button {
-  position: relative;
-  top: calc(50% - 100px);
-  left: calc(50% - 100px);
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease-out 0.5s;
+  div[progress-button] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .progress-button {
+    position: relative;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-out 0.5s;
+  }
+
+  .project-title {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    padding: 0 40px;
+    visibility: hidden;
+    opacity: 0;
+    transform: skew(16deg);
+    transition: opacity 0.3s ease-out 0.5s;
+    h1 {
+      color: #ffffff;
+      text-align: center;
+      line-height: 1em;
+      font-size: 68px;
+      font-family: 'Aldrich', sans-serif;
+      text-shadow:
+        -1px -1px 0 #8b8b8b,
+        1px -1px 0 #8b8b8b,
+        -1px 1px 0 #8b8b8b,
+        1px 1px 0 #8b8b8b;
+    }
+
+  }
 }
 
 /* Desktop view -----*/
 @media (min-width: $screen-sm) {
 
-  .portfolio-section{
+  .portfolio-section {
     flex-direction: row;
   }
 
-  .portfolio-section> div:first-child {
+  .portfolio-section > div:first-child {
     //border-left: 1px solid gray;
   }
 
-  .portfolio-section> div {
+  .portfolio-section > div {
     border-right: 1px solid gray;
   }
 
-  .portfolio-section> div:last-child {
+  .portfolio-section > div:last-child {
     border-right: none;
     .sub-outer {
-    overflow: visible;
+      overflow: visible;
     }
   }
 
@@ -86,21 +113,19 @@ div[progress-button] {
 
   .flex-sub:hover {
     width: 400px;
-    .sub-inner {
-      transform: skewX(0deg);
-      .preview-img {
 
-      }
-    }
     .progress-button {
       visibility: visible !important;
       opacity: 1 !important;
     }
+
+    .project-title {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
   }
 }
-
-
-
 
 /* Mobile view ------*/
 @media (max-width: $screen-sm) {
@@ -121,7 +146,7 @@ div[progress-button] {
     padding-left: 5%;
     padding-right: 5%;
     border-top: 1px solid gray;
-    transition: height 0.5s ease-in;
+    //transition: height 0.5s ease-in;
 
     .sub-outer {
       height: 100%;
@@ -144,7 +169,6 @@ div[progress-button] {
   }
 
   .flex-sub:hover {
-    height: 30%;
     div[progress-button] {
       display: block;
     }
