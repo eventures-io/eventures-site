@@ -79,7 +79,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         //TODO improve transition, use timeline
                         TweenLite.to(element, 0.9, {css: {transform: 'scale(5,1) skewX(-1deg)'}, ease: Power1.easeIn, onComplete: resetRowView });
                         TweenLite.to(projectImg, 0.4, {css: {
-                            transform: 'scale(1.2) skewX(0deg)'
+                            transform: 'scale(1.1) skewX(0deg)'
                         }, delay: 0.2});
 
                         TweenLite.to(projectImg, 0.5, {css: {
