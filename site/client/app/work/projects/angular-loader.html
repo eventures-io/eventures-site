@@ -1,0 +1,32 @@
+<section class="angular-loader">
+    <header class="project-header">
+        <div class="project-visual">
+            <div class="visual-container" ng-click="openSite()">
+
+            </div>
+        </div>
+        <div class="project-summary">
+
+            <div class="summary-text">
+                <h1>Angular loader directive</h1>
+
+                <p>
+                    The Angular loader directive inserts a css loading animation into the dom when a $http request is started,
+                    and removes it again when the response has been received.
+                </p>
+
+                <p>
+                    The directive is has no dependencies, and it's default values can easily be overidden in a run block.
+                    Essential css layout parameters are declared as Sass variables, and can also easily be overridden.
+                </p>
+                <p>
+                   The directive can be installed through Bower, or manually downloaded from Github.
+                </p>
+
+                <ng-include src="'app/work/action-buttons.html'"></ng-include>
+
+            </div>
+        </div>
+    </header>
+</section>
+<div ui-view="site" class="animate-site"></div>

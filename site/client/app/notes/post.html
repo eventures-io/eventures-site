@@ -17,10 +17,13 @@
     <section class="post-content">
         <div class="row">
             <div class="date-horizontal">
-                <span class="pipe"> | </span>
-                <span class="date-day" >{{post.publDate | date:'dd'}}</span>
-                <span class="date-month" >{{post.publDate | date:'MMM'}}</span>
-                <span class="date-year" >{{post.publDate | date:'yyyy'}}</span>
+                <i class="icon icon-calendar"></i>
+                <span class="date-day">{{post.publDate | date:'dd'}}</span>
+                <span class="date-month">{{post.publDate | date:'MMM'}}</span>
+                <span class="date-year">{{post.publDate | date:'yyyy'}}</span>
+            </div>
+            <div class="author">
+                <span> by {{post.author.first_name}}&nbsp{{post.author.last_name}}</span>
             </div>
         </div>
         <div class="row">

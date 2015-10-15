@@ -50,6 +50,10 @@
       animation: pulse 2s ease-in infinite;
     }
   }
+
+  .dyno-loader.hidden {
+    visibility: hidden;
+  }
 }
 
 @keyframes pulse {

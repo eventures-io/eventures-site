@@ -42,16 +42,16 @@ $transition-pf-lg: 0.7s;
     transform: skew(16deg);
     transition: opacity 0.3s ease-out 0.5s;
     h1 {
-      color: #ffffff;
+      color: #f9f9f9;
       text-align: center;
       line-height: 1em;
       font-size: 68px;
       font-family: 'Aldrich', sans-serif;
       text-shadow:
-        -1px -1px 0 #8b8b8b,
-        1px -1px 0 #8b8b8b,
-        -1px 1px 0 #8b8b8b,
-        1px 1px 0 #8b8b8b;
+        -1px -1px 0 #ababab,
+        1px -1px 0 #ababab,
+        -1px 1px 0 #ababab,
+        1px 1px 0 #ababab;
     }
 
   }
@@ -101,6 +101,7 @@ $transition-pf-lg: 0.7s;
           display: block;
           margin: 0 auto;
           width: auto;
+          max-width: 400px;
           height: 100%;
         }
       }

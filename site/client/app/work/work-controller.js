@@ -36,16 +36,10 @@ angular.module('evtrs-site')
         };
 
         $scope.openNext = function () {
-            var next = false;
-            _.forIn(PROJECT_CONSTANTS, function (project, key) {
-
-                if (key === $scope.activeProject) {
-                    next = true;
-                } else if (next) {
-                    $rootScope.$broadcast('LOAD_PROJECT', {name: key, next: true});
-                    return false;
-                };
-            });
+            var projects = Object.keys(PROJECT_CONSTANTS);
+            var index = projects.indexOf($scope.activeProject);
+            index = index === projects.length -1 ? 0 : ++index;
+            $rootScope.$broadcast('LOAD_PROJECT', {name: projects[index], next: true});
         };
 
     });

@@ -15,7 +15,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
         },
         controller: function ($scope, $element) {
-
             var element = $element[0];
             var subOuter = element.querySelector('.sub-outer');
             var progressButton = element.querySelector('div[progress-button]');
@@ -53,10 +52,10 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             projectImg.style.transform = 'skewX(-16deg)';
                             positionLeft = bounding.left + 100;
                         } else {
-                            TweenLite.to(window, .4, {scrollTo:{y:0}, ease:Power2.easeOut});
                             projectImg.style.transform = 'scale(0.7)';
                             projectImg.style.top = '45px';
-                            positionLeft = 120;//previewImg.width;
+                            positionLeft = 120;
+                            TweenLite.to(window, .6, {scrollTo: {y: 0}, ease: Power2.easeOut});
                         }
                         projectImg.style.left = positionLeft + 'px';
                         document.body.appendChild(projectImg);
@@ -70,9 +69,9 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             subOuter.style.opacity = '1';
                         }
 
-                        var calculateLeftOutPosition = function() {
-                            var containerWidth = (window.innerWidth * 40)/ 100;
-                            var margin =  (containerWidth - projectImg.width)/ 2;
+                        var calculateLeftOutPosition = function () {
+                            var containerWidth = (window.innerWidth * 40) / 100;
+                            var margin = (containerWidth - projectImg.width) / 2;
                             margin = margin < 0 ? 20 : margin;
                             return margin;
                         }

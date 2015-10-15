@@ -100,32 +100,35 @@
 
 }
 
+.author {
+  float: right;
+  margin-bottom: 20px;
+  font-size: 18px;
+  margin-right: 50px;
+}
+
 /* Date -------*/
 .date-horizontal {
   display: block;
   float: right;
-  padding-right: 5%;
   margin-bottom: 20px;
+  font-size: 18px;
 
-}
+  .icon.icon-calendar {
+    font-size: x-large;
+  }
 
-.pipe {
-  font-size: 160%;
-}
+  .date-day {
+    //color: #3d3d3d;
+  }
 
-.date-day {
-  color: #3d3d3d;
-  font-size: 95%;
-}
+  .date-year {
+    //color: #979797;
+  }
 
-.date-year {
-  font-size: 95%;
-  color: #a8a8a8;
-}
-
-.date-month {
-  font-size: 100%;
-  color: gray;
+  .date-month {
+    //color: gray;
+  }
 }
 
 /* Footer ------*/
@@ -140,7 +143,7 @@ footer {
   padding-top: 1em;
   font-size: 180px;
   i {
-  opacity: 0.2;
+    opacity: 0.2;
   }
   .notes-load-error {
     visibility: hidden;
@@ -149,7 +152,6 @@ footer {
     color: $error-color;
   }
 }
-
 
 /* Comments ------*/
 .comments {
