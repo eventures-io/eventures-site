@@ -4,7 +4,6 @@
 @import "hint.css/src/hint";
 //code highligther
 @import "prism/themes/prism-coy";
-@import "fontello.css";
 
 /**
  * App-wide Styles
@@ -60,6 +59,7 @@ h4 {
 // injector
 @import 'animations.scss';
 @import 'contact/contact.scss';
+@import 'fontello.scss';
 @import 'home/home.scss';
 @import 'notes/post.scss';
 @import 'work/action-buttons.scss';
