@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('evtrs-site')
-    .directive('init', ['$rootScope', function ($rootScope) {
+    .directive('preloader', ['$rootScope', function ($rootScope) {
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -18,18 +18,24 @@ angular.module('evtrs-site')
                             $rootScope.$broadcast('APP_LOADED');
                         }
                         return throttle();
-                    }, 1000);
+                    }, 400);
                 }
 
                 if (loaderSvg) {
                     loaderSvg.addEventListener('animationend', function (event) {
-
-                        timedOut = true;
-                        if (loaded) {
-                            loaderPeriod.style.opacity = '1';
-                            broadCast();
-                        }
+                        onAnimationEnd();
                     }, true);
+                    loaderSvg.addEventListener('webkitAnimationEnd', function (event) {
+                        onAnimationEnd();
+                    }, true);
+                }
+
+                var onAnimationEnd = function() {
+                    timedOut = true;
+                    if (loaded) {
+                        loaderPeriod.style.opacity = '1';
+                        broadCast();
+                    }
                 }
 
                 var listener = scope.$watch(function () {

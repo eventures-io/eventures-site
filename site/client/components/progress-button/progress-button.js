@@ -12,7 +12,7 @@ angular.module('evtrs-site').directive('progressButton', function ($timeout) {
 
             $scope.loadProject = function() {
                 circleProgress.addEventListener("animationend" , loadButtonEventListener, true);
-                //circleProgress.addEventListener("webkitAnimationEnd" , loadButtonEventListener, true);
+                circleProgress.addEventListener("webkitAnimationEnd" , loadButtonEventListener, true);
                 $scope.updateProgress();
             }
 

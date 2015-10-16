@@ -1,4 +1,4 @@
-$loader-color: #c33125;
+
 
 .loading-pane {
   position: absolute;
@@ -12,13 +12,16 @@ $loader-color: #c33125;
 
 .preloader {
   position: relative;
-  top: calc(50vh - 150px);
-  left: calc(50vw - 90px);
+  width: 100px;
+  height: 100px;
+  margin: 200px auto;
 
   .loader-svg {
     width: 80px;
     overflow: hidden;
     animation: slideOpen 2s .1s linear;
+    -webkit-animation: slideOpen 2s .1s linear;
+
     .logo {
       width: 5em;
       height: auto;

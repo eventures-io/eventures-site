@@ -24,7 +24,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             var portfolio = document.querySelector('.portfolio-section');
 
             $scope.$on('LOAD_PROJECT', function (event, project) {
-                var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction');
+                var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction') ||
+                    window.getComputedStyle(portfolio, null).getPropertyValue('-webkit-flex-direction');
                 if (project.name === $scope.project.name) {
 
                     element.style.zIndex = '2';

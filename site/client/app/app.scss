@@ -1,8 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300|Raleway|Share|Metrophobic|Allerta+Stencil|Sarina|Aldrich|PT+Sans+Narrow|Ubuntu+Condensed);
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+//tooltip
 @import "hint.css/src/hint";
-//TODO investigate
+//code highligther
 @import "prism/themes/prism-coy";
+@import "fontello.css";
 
 /**
  * App-wide Styles
@@ -16,6 +18,7 @@ $main-bg-color: #efefef;
 
 $notes-menu-overlay: rgba(29, 29, 29, 0.9);
 $notes-menu-color: #F5F5F5;
+$loader-color: $body-color;
 
 .browsehappy {
   margin: 0.2em 0;
