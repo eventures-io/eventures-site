@@ -87,9 +87,9 @@ angular
                 }
             })
     }).
-    run(function ($http, PROJECT_CONSTANTS, $rootScope, $state, $window) {
+    run(function ($http, PROJECT_CONSTANTS, $rootScope, $state, $window, $location) {
 
-       $rootScope.$on('$stateChangeStart', function(event, to, params) {
+        $rootScope.$on('$stateChangeStart', function (event, to, params) {
             if (to.redirectTo) {
                 event.preventDefault();
                 $state.go(to.redirectTo, params)
@@ -100,7 +100,20 @@ angular
             if (current.data) {
                 $window.document.title = current.data.title;
             }
+        });
 
+        $rootScope.$on('$locationChangeSuccess', function () {
+            $rootScope.actualLocation = $location.path();
+        });
+
+        $rootScope.$watch(function () {
+            return $location.path()
+        }, function (newLocation, oldLocation) {
+            if ($rootScope.actualLocation === newLocation) {
+                if ($rootScope.actualLocation === newLocation) {
+                    window.location.href = newLocation;
+                }
+            }
         });
 
     }).

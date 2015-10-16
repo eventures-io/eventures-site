@@ -32,7 +32,7 @@ angular.module('evtrs-site').factory('NotesResource', function ($http, CONF, $lo
         $http.get(baseUrl.concat('/').concat(postId)).then(function (response) {
             var post = response.data;
             post.publDate = new Date(post.date);
-            post.shortUrl = 'http//wwww.' + $location.host() + '/blog/' + post.ID;
+            post.shortUrl = 'http://' + $location.host() + '/blog/' + post.ID;
             currentPost = post;
             deferred.resolve(post);
         });

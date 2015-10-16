@@ -15,7 +15,7 @@ angular.module('evtrs-site').directive('socialButtons', function (NotesResource,
                     return socialIcons.style.opacity = '0';
                 }, 8000);
                 $scope.social.twitterVia = 'eventures-io';
-                $scope.social.shortUrl = NotesResource.getCurrentPost().shortUrl;
+                $scope.social.url = NotesResource.getCurrentPost().shortUrl;
                 $scope.social.shareText = NotesResource.getCurrentPost().title;
             };
 

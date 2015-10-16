@@ -11,7 +11,8 @@ angular.module('evtrs-site').directive('progressButton', function ($timeout) {
             var circleInner = progressButton.querySelector('.circle-inner');
 
             $scope.loadProject = function() {
-                circleProgress.addEventListener("animationend", loadButtonEventListener, true);
+                circleProgress.addEventListener("animationend" , loadButtonEventListener, true);
+                //circleProgress.addEventListener("webkitAnimationEnd" , loadButtonEventListener, true);
                 $scope.updateProgress();
             }
 
@@ -22,7 +23,7 @@ angular.module('evtrs-site').directive('progressButton', function ($timeout) {
             };
 
             var loadButtonEventListener = function(event) {
-                circleProgress.removeEventListener("animationend", loadButtonEventListener, true);
+                circleProgress.removeEventListener("animationend webkitAnimationEnd", loadButtonEventListener, true);
                 circleProgress.classList.remove('circle-animate');
                 circleProgress.style.r = 75;
                 circleInner.style.r= 45;
