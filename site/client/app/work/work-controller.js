@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('evtrs-site')
-    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state) {
+    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state, $window ) {
 
         $scope.displaySite = false;
 
@@ -20,14 +20,18 @@ angular.module('evtrs-site')
         };
 
        $scope.viewOnGithub =  function() {
-           var githubUrl = "https://github.com/eventures-io/".concat(PROJECT_CONSTANTS[$scope.activeProject].githubUrl)
-           window.open(githubUrl);
+           var githubUrl = "https://github.com/eventures-io/".concat(PROJECT_CONSTANTS[$scope.activeProject].githubUrl);
+           $window.open(githubUrl);
        }
 
-        $scope.openSite = function () {
+        $scope.openSite = function (blank) {
+            if(!blank){
             $rootScope.$broadcast('HIDE_MENU_BTN');
             $scope.siteUrl = PROJECT_CONSTANTS[$scope.activeProject].siteUrl;
             $state.go('work.project.site', {project: $scope.activeProject});
+            } else {
+                $window.open(PROJECT_CONSTANTS[$scope.activeProject].siteUrl);
+            }
         };
 
         $scope.closeSite = function () {

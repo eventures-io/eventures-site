@@ -42,16 +42,54 @@ $transition-pf-lg: 0.7s;
     transform: skew(16deg);
     transition: opacity 0.3s ease-out 0.5s;
     h1 {
-      color: #f9f9f9;
       text-align: center;
       line-height: 1em;
-      font-size: 68px;
+      font-size: 78px;
       font-family: 'Aldrich', sans-serif;
+      letter-spacing: -4px;
+      padding: 0 20px;
+
+    }
+    h1.polaroiz {
+       color: #f5f5f5;
       text-shadow:
         -1px -1px 0 #ababab,
         1px -1px 0 #ababab,
         -1px 1px 0 #ababab,
         1px 1px 0 #ababab;
+    }
+    h1.plantzr {
+      color: #f5f5f5;
+      text-shadow:
+        -1px -1px 0 #ababab,
+        1px -1px 0 #ababab,
+        -1px 1px 0 #ababab,
+        1px 1px 0 #ababab;
+    }
+    h1.ocean-feedr{
+      color: #303030;
+      text-shadow:
+        -1px -1px 0#232323,
+        1px -1px 0 #232323,
+        -1px 1px 0 #232323,
+        1px 1px 0 #232323;
+    }
+    h1.plantzr-mobile{
+      color: #303030;
+      text-shadow:
+        -1px -1px 0#232323,
+        1px -1px 0 #232323,
+        -1px 1px 0 #232323,
+        1px 1px 0 #232323;
+    }
+    h1.angular-loader {
+      color: #232323;
+      text-shadow:
+        -1px -1px 0#232323,
+        1px -1px 0 #232323,
+        -1px 1px 0 #232323,
+        1px 1px 0 #232323;
+
     }
 
   }
@@ -91,6 +129,7 @@ $transition-pf-lg: 0.7s;
       height: 100%;
       //width: 100%;
       overflow: hidden;
+      padding-bottom: 40px;
       position: relative;
       .sub-inner {
         height: 100%;

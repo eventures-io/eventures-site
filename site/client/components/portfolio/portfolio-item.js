@@ -95,6 +95,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             delay: 0.5
                         });
                     } else {
+                        TweenLite.to(window, .6, {scrollTo: {y: 0}, ease: Power2.easeOut});
                         var resetColumnView = function () {
                             repositionImage();
                             projectView.style.opacity = '1';
@@ -108,7 +109,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         TweenLite.to(projectImg, 0.5, {css: {
                             top: '60px',
                             width: 'auto',
-                            maxHeight: '90vh'
+                            height: '90vh'
                         },
                             ease: Power0.easeIn,
                             onComplete: resetColumnView

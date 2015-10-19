@@ -367,6 +367,7 @@ module.exports = function (grunt) {
                             //'assets/images/{,*/}*.{webp}',
                             'assets/images/**/*',
                             'assets/fonts/**/*',
+                            'google05176910c8c39725.html',
                             'index.html'
                         ]
                     },
