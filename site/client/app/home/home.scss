@@ -13,6 +13,7 @@
     font-size: 36px;
     font-family: 'Ubuntu Condensed', sans-serif;
     letter-spacing: 2px;
+    line-height: 1.3em;
     text-align: right;
     h1 {
        font-family: 'PT Sans Narrow', sans-serif;
@@ -41,8 +42,12 @@
 
   @media (max-width: $screen-sm) {
     .home-header {
-      margin-top: 35%;
-      width: 85%;
+      margin-top: 30%;
+      width: 100%;
+      padding: 0 25px;
+      text-align: center;
+      font-size: 30px;
+
       h1 {
         font-size: 40px;
       }

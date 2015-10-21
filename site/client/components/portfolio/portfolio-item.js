@@ -107,9 +107,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         projectImg.style.left = bounding.left + 'px';
                         document.body.appendChild(projectImg);
                         TweenLite.to(projectImg, 0.5, {css: {
-                            top: '60px',
-                            width: 'auto',
-                            height: '90vh'
+                            top: '50px'
                         },
                             ease: Power0.easeIn,
                             onComplete: resetColumnView
