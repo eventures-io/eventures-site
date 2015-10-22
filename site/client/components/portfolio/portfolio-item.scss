@@ -116,7 +116,6 @@ $transition-pf-lg: 0.7s;
 
     .sub-outer {
       height: 100%;
-      //width: 100%;
       overflow: hidden;
       padding-bottom: 40px;
       position: relative;
@@ -186,10 +185,9 @@ $transition-pf-lg: 0.7s;
         .preview-img {
           display: block;
           width: 100%;
-          max-width: 500px;
+          max-width: 400px;
           margin: 0 auto;
           height: auto;
-          //min-height: 80px;
           border-radius: 3px;
           overflow: hidden;
           visibility: hidden;
@@ -206,7 +204,6 @@ $transition-pf-lg: 0.7s;
         z-index: 9999;
         h1 {
           margin: 0;
-          // font-family: 'Raleway', sans-serif;
           color: #ababab !important;
           text-align: center;
           line-height: 1em;

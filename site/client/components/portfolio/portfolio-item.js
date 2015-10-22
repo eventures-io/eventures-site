@@ -105,7 +105,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         portfolio.style.opacity = '0';
                         projectView.style.zIndex = '3';
                         projectImg.style.left = bounding.left + 'px';
-                        projectImg.style.maxHeight= '90vh';
+                        projectImg.style.maxHeight= '100vh';
                         document.body.appendChild(projectImg);
                         TweenLite.to(projectImg, 0.5, {css: {
                             top: '50px'
