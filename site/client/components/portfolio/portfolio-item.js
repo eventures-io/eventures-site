@@ -32,7 +32,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     projectView.style.backgroundColor = element.style.backgroundColor;
                     var bounding = previewImg.getBoundingClientRect();
                     projectImg = new Image();
-                    projectImg.classList.add('project-img');
                     projectImg.src = previewImg.src;
                     projectImg.style.top = bounding.top + 'px';
                     projectImg.width = previewImg.width;
@@ -41,17 +40,18 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     subOuter.style.opacity = '0';
                     progressButton.display = 'none';
 
-                    var repositionImage = function () {
+                    var positionImage = function () {
                         var visualContainer = document.querySelector('.visual-container');
                         visualContainer.appendChild(projectImg);
                         projectImg.style.position = 'relative';
                     };
 
                     if (flexDirection === 'row') {
+                        projectImg.classList.add('project-img');
                         var positionLeft;
                         if (!project.next) {
-                            projectImg.style.transform = 'skewX(-16deg)';
-                            positionLeft = bounding.left + 100;
+                            projectImg.style.transform = 'skewX(-6deg)';
+                            positionLeft = bounding.left + 35;
                         } else {
                             projectImg.style.transform = 'scale(0.7)';
                             projectImg.style.top = '45px';
@@ -65,7 +65,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             portfolio.style.opacity = '0';
                             projectView.style.opacity = '1';
                             projectView.style.zIndex = '3';
-                            TweenLite.to(element, 0, {css: {transform: 'scale(1) skewX(-16deg)'}});
+                            TweenLite.to(element, 0, {css: {transform: 'scale(1) skewX(-6deg)'}});
                             element.style.zIndex = '1';
                             subOuter.style.opacity = '1';
                         }
@@ -91,13 +91,13 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             width: 'auto'
                         },
                             ease: Power0.easeIn,
-                            onComplete: repositionImage,
+                            onComplete: positionImage,
                             delay: 0.5
                         });
                     } else {
                         TweenLite.to(window, .6, {scrollTo: {y: 0}, ease: Power2.easeOut});
                         var resetColumnView = function () {
-                            repositionImage();
+                            positionImage();
                             projectView.style.opacity = '1';
                             element.style.zIndex = '1';
                             subOuter.style.opacity = '1';
@@ -105,6 +105,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         portfolio.style.opacity = '0';
                         projectView.style.zIndex = '3';
                         projectImg.style.left = bounding.left + 'px';
+                        projectImg.style.maxHeight= '90vh';
                         document.body.appendChild(projectImg);
                         TweenLite.to(projectImg, 0.5, {css: {
                             top: '50px'
