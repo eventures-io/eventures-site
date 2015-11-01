@@ -46,9 +46,11 @@
 
     > span label {
       display: block;
+      opacity: 0;
       font-size: 20px;
-      transition: transform 0.4s;
+      transition: all 0.4;
     }
+
   }
 
   .current {

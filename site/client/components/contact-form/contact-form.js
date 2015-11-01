@@ -43,6 +43,10 @@ angular.module('evtrs-site').directive('contactForm', function (MailService) {
             for (var i = steps.length - 1; i >= 0; i--) {
                 var formElement = steps[i].querySelector('input, textarea, select');
                 formElement.setAttribute('aria-describedby', stepStatus.id);
+                formElement.addEventListener('input', function(event) {
+                    var label = steps[current].querySelector('label');
+                    label.style.opacity = 1;
+                });
             }
             ;
             var currentNum = stepStatus.querySelector('span.number-current');
@@ -59,6 +63,7 @@ angular.module('evtrs-site').directive('contactForm', function (MailService) {
             var controls = element.querySelector('.controls');
 
             var inputEventHandler = function (event) {
+                var label = steps[current].querySelector('label');
                 firstElInput.removeEventListener('input', inputEventHandler);
                 controls.style.opacity = 1;
                 ctrlNext.classList.add('show');
@@ -84,10 +89,13 @@ angular.module('evtrs-site').directive('contactForm', function (MailService) {
                 if (!validate()) {
                     return false;
                 }
-
                 var isCompleted = false;
+                var input = steps[current].querySelector('input, textarea, select');
+                input.addEventListener('input', function(event) {
+                    var label = steps[current].querySelector('label');
+                    label.style.opacity = 1;
+                });
                 if (supportsHTML5Forms) {
-                    var input = steps[current ].querySelector('input, textarea, select');
                     // clear any previous error messages
                     input.setCustomValidity('');
                     if (!input.checkValidity()) {
