@@ -39,7 +39,6 @@ $transition-pf-lg: 0.7s;
     padding: 0 40px;
     visibility: hidden;
     opacity: 0;
-    transform: skew(6deg);
     transition: opacity 0.3s ease-out 0.5s;
     h1 {
       text-align: center;
@@ -111,7 +110,6 @@ $transition-pf-lg: 0.7s;
     padding-top: 50px;
     height: 100%;
     width: 100px;
-    transform: skewX(-6deg);
     transition: width .4s ease-out;
 
     .sub-outer {
@@ -132,9 +130,6 @@ $transition-pf-lg: 0.7s;
           height: 100%;
         }
       }
-    }
-    .progress-button {
-      transform: skewX(6deg);
     }
   }
 

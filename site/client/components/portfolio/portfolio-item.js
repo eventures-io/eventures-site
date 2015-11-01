@@ -50,8 +50,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         projectImg.classList.add('project-img');
                         var positionLeft;
                         if (!project.next) {
-                            projectImg.style.transform = 'skewX(-6deg)';
-                            positionLeft = bounding.left + 35;
+                            positionLeft = bounding.left;
                         } else {
                             projectImg.style.transform = 'scale(0.7)';
                             projectImg.style.top = '45px';
@@ -65,7 +64,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             portfolio.style.opacity = '0';
                             projectView.style.opacity = '1';
                             projectView.style.zIndex = '3';
-                            TweenLite.to(element, 0, {css: {transform: 'scale(1) skewX(-6deg)'}});
+                            TweenLite.to(element, 0, {css: {transform: 'scale(1)'}});
                             element.style.zIndex = '1';
                             subOuter.style.opacity = '1';
                         }
@@ -78,9 +77,10 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         }
 
                         //TODO improve transition, use timeline
-                        TweenLite.to(element, 0.9, {css: {transform: 'scale(5,1) skewX(-1deg)'}, ease: Power1.easeIn, onComplete: resetRowView });
+                        element.style.borderLeft = '1px solid gray';
+                        TweenLite.to(element, 0.9, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });
                         TweenLite.to(projectImg, 0.4, {css: {
-                            transform: 'scale(1.1) skewX(0deg)'
+                            transform: 'scale(1.1)'
                         }, delay: 0.2});
 
                         TweenLite.to(projectImg, 0.5, {css: {
@@ -106,6 +106,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         projectView.style.zIndex = '3';
                         projectImg.style.left = bounding.left + 'px';
                         projectImg.style.maxHeight= '100vh';
+                        projectImg.style.opacity = 0;
                         document.body.appendChild(projectImg);
                         TweenLite.to(projectImg, 0.5, {css: {
                             top: '50px'
