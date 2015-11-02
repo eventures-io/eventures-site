@@ -10,6 +10,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             scope.project.name = attrs.portfolioItem;
             element[0].style.backgroundColor = PROJECT_CONSTANTS[attrs.portfolioItem].bgColor;
             scope.project.image = PROJECT_CONSTANTS[attrs.portfolioItem].image.src;
+            var subOuter = element[0].querySelector('.sub-outer');
+            subOuter.style.backgroundColor = PROJECT_CONSTANTS[attrs.portfolioItem].bgColor;
             var subInner = element[0].querySelector('.sub-inner');
             subInner.style.paddingTop = PROJECT_CONSTANTS[attrs.portfolioItem].image.paddingTop;
 
@@ -17,11 +19,10 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
         controller: function ($scope, $element) {
             var element = $element[0];
             var subOuter = element.querySelector('.sub-outer');
-            var progressButton = element.querySelector('div[progress-button]');
             var projectView = document.querySelector('.project-view');
-            var projectImg;
             var previewImg = element.querySelector('.preview-img');
             var portfolio = document.querySelector('.portfolio-section');
+            var projectImg;
 
             $scope.$on('LOAD_PROJECT', function (event, project) {
                 var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction') ||
@@ -29,7 +30,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                 if (project.name === $scope.project.name) {
 
                     element.style.zIndex = '2';
-                    projectView.style.backgroundColor = element.style.backgroundColor;
+                    projectView.style.backgroundColor = 'blue';
                     var bounding = previewImg.getBoundingClientRect();
                     projectImg = new Image();
                     projectImg.src = previewImg.src;
@@ -38,7 +39,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     projectImg.height = previewImg.height;
 
                     subOuter.style.opacity = '0';
-                    progressButton.display = 'none';
 
                     var positionImage = function () {
                         var visualContainer = document.querySelector('.visual-container');
@@ -65,8 +65,11 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             projectView.style.opacity = '1';
                             projectView.style.zIndex = '3';
                             TweenLite.to(element, 0, {css: {transform: 'scale(1)'}});
+                            element.style.borderLeft = 'none';
                             element.style.zIndex = '1';
                             subOuter.style.opacity = '1';
+                            var progressButton = element.querySelector('.progress-button');
+                            progressButton.style.visibility = 'visible';
                         }
 
                         var calculateLeftOutPosition = function () {
@@ -107,6 +110,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         projectImg.style.left = bounding.left + 'px';
                         projectImg.style.maxHeight= '100vh';
                         projectImg.style.opacity = 0;
+                        element.querySelector('.progress-button').style.visibility = 'visible';
+
                         document.body.appendChild(projectImg);
                         TweenLite.to(projectImg, 0.5, {css: {
                             top: '50px'
@@ -124,7 +129,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
                     projectView.style.zIndex = '0';
                     portfolio.style.opacity = '1';
-
 //                   projectView.style.transition = 'opacity .6s';
 //                    TweenLite.to(projectView, 0.6, {css: {
 //                        opacity: '0'
