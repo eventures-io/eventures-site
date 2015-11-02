@@ -55,6 +55,7 @@ h4 {
   width: 100%;
 }
 
+
 // Component styles are injected through grunt
 // injector
 @import 'animations.scss';
@@ -72,5 +73,6 @@ h4 {
 @import 'portfolio/portfolio-item.scss';
 @import 'preloader/preloader.scss';
 @import 'progress-button/progress-button.scss';
+@import 'scroll-button/scroll-button.scss';
 @import 'social/social.scss';
 // endinjector

@@ -1,10 +1,14 @@
-.polaroiz {
-  h1 {
-    font-family: 'Allerta Stencil', sans-serif;
-    font-size: 42px;
-  }
+/* Polaroiz ----*/
+.polaroiz h1 {
+  font-family: 'Allerta Stencil', sans-serif;
+  font-size: 42px;
 }
 
+.polaroiz .project-header {
+  height: 76vh;
+}
+
+/* Plantzr -------*/
 .plantzr, .plantzr-mobile {
   h1 {
     font-family: 'Sarina', sans-serif;
@@ -13,43 +17,47 @@
   }
 }
 
-.ocean-feedr {
-  h1 {
-    font-family: 'Aldrich', sans-serif;
-    font-size: 42px;
-  }
+.plantzr .project-header {
+  height: 80vh;
 }
 
-.plantzr-mobile {
-  h1 {
-    position: relative;
-    text-align: center;
-  }
-  h1::after {
-    content: 'mobile';
-    position: absolute;
-    left: 55%;
-    top: 30px;
-    font-family: 'Aldrich', sans-serif;
-    font-size: 20px;
-    font-weight: normal;
-    color: #000000;
-  }
-
-}
-
-.scroll-button {
-  display: inline-block;
+/* Plantzr mobile  ------*/
+.plantzr-mobile h1 {
   position: relative;
-  transform: rotate(90deg);
   text-align: center;
-  width: 100%;
-  height: 50px;
-  margin-top: 40px;
-  cursor: pointer;
-  transition: all .3s;
 }
 
-.scroll-button:hover {
-  transform: rotate(90deg) translateX(5px);
+.plantzr-mobile h1::after {
+  content: 'mobile';
+  position: absolute;
+  left: 55%;
+  top: 30px;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  color: #000000;
+}
+
+.plantzr-mobile .project-header {
+  height: 73vh;
+}
+
+/* Ocean feedr -------*/
+.ocean-feedr h1 {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 42px;
+}
+
+.ocean-feedr .project-header {
+  height: 70vh;
+}
+
+/* Angular loader -----*/
+.angular-loader .project-header {
+  height: 74vh;
+}
+
+/* Plantzr framer  ----*/
+.plantzr-framer .project-header {
+  height: 74vh;
 }

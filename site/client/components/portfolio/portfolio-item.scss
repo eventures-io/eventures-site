@@ -1,32 +1,31 @@
 $transition-pf-lg: 0.7s;
 /* Portfolio flex container ---------*/
 .portfolio-section {
+  display: flex;
   position: relative;
   width: 100vw;
   height: 100vh;
-  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #efefef;
   overflow: hidden;
   z-index: 1;
-  background-color: #efefef;
   transition: opacity 0.7s;
 }
 
-.flex-sub {
-  div[progress-button] {
-    position: absolute;
-    top: -40px;
-    left: 5px;
-  }
+.flex-sub div[progress-button] {
+  position: absolute;
+  top: -40px;
+  left: 5px;
+}
 
-  .project-title {
-    padding: 0 40px;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease-out 0.5s;
-    h1 {
-      text-align: center;
-    }
-  }
+.portfolio-title {
+  padding: 40px;
+  visibility: hidden;
+}
+
+.portfolio-title h1 {
+  text-align: center;
 }
 
 /* Desktop view -----*/
@@ -53,47 +52,44 @@ $transition-pf-lg: 0.7s;
 
   .flex-sub {
     flex: 1 1 auto;
-    padding-top: 50px;
     height: 100%;
     width: 100px;
     max-width: 300px;
     transition: width .4s ease-out;
-    .sub-outer {
-      height: 66vh;
-      overflow: hidden;
-      position: relative;
-      .sub-inner {
-        height: 70%;
-        margin: 0 auto;
-        min-width: 30px;
-        transition: translateX .4s;
-        .preview-img {
-          display: block;
-          margin: 0 auto;
-          width: auto;
-          max-width: 400px;
-          height: 100%;
-        }
-      }
-      .footer {
-         height: 30%;
-      }
-    }
-    .padding {
-      position: relative;
-      height: 100%;
-      background-color: white;
-    }
+  }
+  .sub-outer {
+    position: relative;
+    padding-top: 50px;
+    overflow: hidden;
+  }
+  .sub-inner {
+    height: 55vh;
+    margin: 0 auto;
+    min-width: 30px;
+    transition: translateX .4s;
+  }
+  .preview-img {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    max-width: 300px;
+    height: 100%;
   }
 
-  .flex-sub:hover {
-    width: 300px;
-    .project-title {
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-
+  .sub-padding {
+    position: relative;
+    height: 100%;
+    background-color: white;
   }
+
+}
+
+.flex-sub:hover {
+  width: 300px;
+  .portfolio-title {
+    visibility: visible;
+  }
+
 }
 
 /* Mobile view ------*/

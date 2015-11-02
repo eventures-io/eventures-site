@@ -11,6 +11,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             element[0].style.backgroundColor = PROJECT_CONSTANTS[attrs.portfolioItem].bgColor;
             scope.project.image = PROJECT_CONSTANTS[attrs.portfolioItem].image.src;
             var subOuter = element[0].querySelector('.sub-outer');
+            subOuter.style.height = PROJECT_CONSTANTS[attrs.portfolioItem].outerHeight;
             subOuter.style.backgroundColor = PROJECT_CONSTANTS[attrs.portfolioItem].bgColor;
             var subInner = element[0].querySelector('.sub-inner');
             subInner.style.paddingTop = PROJECT_CONSTANTS[attrs.portfolioItem].image.paddingTop;
@@ -22,15 +23,16 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             var projectView = document.querySelector('.project-view');
             var previewImg = element.querySelector('.preview-img');
             var portfolio = document.querySelector('.portfolio-section');
+            var title = element.querySelector('.portfolio-title');
             var projectImg;
 
             $scope.$on('LOAD_PROJECT', function (event, project) {
                 var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction') ||
                     window.getComputedStyle(portfolio, null).getPropertyValue('-webkit-flex-direction');
                 if (project.name === $scope.project.name) {
-
+                    title.style.visibility = 'hidden';
                     element.style.zIndex = '2';
-                    projectView.style.backgroundColor = 'blue';
+                    projectView.style.backgroundColor = 'transparent';
                     var bounding = previewImg.getBoundingClientRect();
                     projectImg = new Image();
                     projectImg.src = previewImg.src;
