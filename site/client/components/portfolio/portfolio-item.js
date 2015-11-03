@@ -47,6 +47,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     };
 
                     if (flexDirection === 'row') {
+                        element.style.borderLeft = '1px solid gray';
                         projectImg.classList.add('project-img');
                         var positionLeft;
                         if (!project.next) {
@@ -69,6 +70,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             TweenLite.to(element, 0, {css: {transform: 'scale(1) skewX(-6deg)'}});
                             element.style.zIndex = '1';
                             subOuter.style.opacity = '1';
+                            element.style.borderLeft =  "none";
                         }
 
                         var calculateLeftOutPosition = function () {
