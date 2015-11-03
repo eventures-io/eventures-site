@@ -53,6 +53,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             projectImg.style.transform = 'skewX(-6deg)';
                             positionLeft = bounding.left + 35;
                         } else {
+                            projectImg.style.opacity = 0;
                             projectImg.style.transform = 'scale(0.7)';
                             projectImg.style.top = '45px';
                             positionLeft = 120;
@@ -80,8 +81,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         //TODO improve transition, use timeline
                         TweenLite.to(element, 0.9, {css: {transform: 'scale(5,1) skewX(-1deg)'}, ease: Power1.easeIn, onComplete: resetRowView });
                         TweenLite.to(projectImg, 0.4, {css: {
-                            transform: 'scale(1.1) skewX(0deg)'
-                        }, delay: 0.2});
+                            transform: 'scale(1.1) skewX(0deg)', opacity: 1
+                        }, delay: 0.3});
 
                         TweenLite.to(projectImg, 0.5, {css: {
                             transform: 'scale(1)',
