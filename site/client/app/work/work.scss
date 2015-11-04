@@ -52,10 +52,8 @@
     width: 40%;
     min-width: 400px;
     max-width: 100%;
-    // background-color: red;
 
     .visual-container {
-      // background-color: blue;
       position: relative;
       cursor: pointer;
       height: 100%;
@@ -108,6 +106,8 @@
       overflow-y: visible;
     }
   }
+
+
 
   @media (max-width: $screen-sm) {
 
@@ -176,3 +176,8 @@
 
 }
 
+//.project-header.position-right {
+//  .project-visual {
+//    order:2;
+//  }
+//}

@@ -12,6 +12,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             scope.project.image = PROJECT_CONSTANTS[attrs.portfolioItem].image.src;
             var subInner = element[0].querySelector('.sub-inner');
             subInner.style.paddingTop = PROJECT_CONSTANTS[attrs.portfolioItem].image.paddingTop;
+            scope.imgPosition = PROJECT_CONSTANTS[attrs.portfolioItem].position;
 
         },
         controller: function ($scope, $element) {
@@ -77,11 +78,14 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             var containerWidth = (window.innerWidth * 40) / 100;
                             var margin = (containerWidth - projectImg.width) / 2;
                             margin = margin < 0 ? 20 : margin;
+//                            if($scope.imgPosition === 'right'){
+//                                margin = window.innerWidth - 400;
+//                            }
                             return margin;
                         }
 
                         //TODO improve transition, use timeline
-                        TweenLite.to(element, 0.9, {css: {transform: 'scale(5,1) skewX(-1deg)'}, ease: Power1.easeIn, onComplete: resetRowView });
+                        TweenLite.to(element, 0.7, {css: {transform: 'scale(5,1) skewX(-1deg)'}, ease: Power1.easeIn, onComplete: resetRowView });
                         TweenLite.to(projectImg, 0.4, {css: {
                             transform: 'scale(1.1) skewX(0deg)', opacity: 1
                         }, delay: 0.3});
