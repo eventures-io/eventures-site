@@ -5,11 +5,12 @@
   }
 }
 
-.plantzr, .plantzr-mobile {
+.plantzr, .plantzr-mobile, .plantzr-proto {
   h1 {
     font-family: 'Sarina', sans-serif;
     font-size: 42px;
     color: #000000;
+    line-height: 1em;
   }
 }
 
@@ -36,6 +37,14 @@
     color: #000000;
   }
 
+}
+.plantzr-proto h1 {
+   max-width: 400px;
+}
+
+.plantzr-proto .redesign-title {
+    font-family: 'Aldrich', sans-serif;
+    font-size: 30px;
 }
 
 .plantzr-proto .project-description.proto {
