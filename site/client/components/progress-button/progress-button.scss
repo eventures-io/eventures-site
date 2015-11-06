@@ -24,18 +24,8 @@
       transition: r 0.1s ease-out;
     }
 
-
     .circle-animate {
        animation: animate-stroke 1s linear;
-    }
-
-    @keyframes animate-stroke {
-      from {
-        stroke-dashoffset: 615;
-      }
-      to {
-        stroke-dashoffset: 0;
-      }
     }
 
     .progress-active {
@@ -54,4 +44,13 @@
     }
   }
 
+}
+
+@keyframes animate-stroke {
+  from {
+    stroke-dashoffset: 615;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }

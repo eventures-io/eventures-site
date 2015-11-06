@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('evtrs-site').directive('progressButton', function ($timeout) {
+angular.module('evtrs-site').directive('progressButton', function ($timeout, UAService) {
 
     return {
         templateUrl: 'components/progress-button/progress-button.html',
@@ -11,8 +11,8 @@ angular.module('evtrs-site').directive('progressButton', function ($timeout) {
             var circleInner = progressButton.querySelector('.circle-inner');
 
             $scope.loadProject = function() {
-                circleProgress.addEventListener("animationend" , loadButtonEventListener, true);
-                circleProgress.addEventListener("webkitAnimationEnd" , loadButtonEventListener, true);
+                circleProgress.addEventListener('animationend' , loadButtonEventListener, true);
+                circleProgress.addEventListener('webkitAnimationEnd' , loadButtonEventListener, true);
                 $scope.updateProgress();
             }
 
@@ -20,10 +20,17 @@ angular.module('evtrs-site').directive('progressButton', function ($timeout) {
                 progressButton.style.visibility = 'visible';
                 progressButton.style.opacity = '1';
                 circleProgress.classList.add('circle-animate');
+                if(UAService.detectIE()) {
+                    fireLoadEvent();
+                }
             };
 
             var loadButtonEventListener = function(event) {
-                circleProgress.removeEventListener("animationend webkitAnimationEnd", loadButtonEventListener, true);
+                fireLoadEvent();
+            };
+
+            var fireLoadEvent = function() {
+                circleProgress.removeEventListener('animationend webkitAnimationEnd', loadButtonEventListener, true);
                 circleProgress.classList.remove('circle-animate');
                 circleProgress.style.r = 75;
                 circleInner.style.r= 45;
@@ -33,7 +40,8 @@ angular.module('evtrs-site').directive('progressButton', function ($timeout) {
                     progressButton.style.opacity = '0';
                     circleProgress.style.strokeDashoffset = 615;
                 }, 200);
-            };
+            }
+
         }
     };
 

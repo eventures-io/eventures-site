@@ -43,8 +43,11 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
                     var positionImage = function () {
                         var visualContainer = document.querySelector('.visual-container');
+                        //IE misery
+                        document.body.removeChild(document.querySelector('.project-img'));
                         visualContainer.appendChild(projectImg);
                         projectImg.style.position = 'relative';
+
                     };
 
                     if (flexDirection === 'row') {
