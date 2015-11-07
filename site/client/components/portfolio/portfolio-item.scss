@@ -1,12 +1,11 @@
 $transition-pf-lg: 0.7s;
 /* Portfolio flex container ---------*/
 .portfolio-section {
+  @extend .content-container;
   display: flex;
   position: relative;
   width: 100vw;
   height: 100vh;
-  max-width: 1200px;
-  margin: 0 auto;
   background-color: #efefef;
   overflow: hidden;
   z-index: 1;

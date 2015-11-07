@@ -24,35 +24,67 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             var previewImg = element.querySelector('.preview-img');
             var portfolio = document.querySelector('.portfolio-section');
             var title = element.querySelector('.portfolio-title');
+            var paddingTop = '60px';
             var projectImg;
 
+            function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
+                var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+                return { width: srcWidth * ratio, height: srcHeight * ratio };
+            }
+
+
+            var calculateImagePositioning = function (projectImg) {
+                var bounding = document.querySelector('.bounding-element').getBoundingClientRect();
+                var maxWidth = (bounding.width * 40) / 100;
+                var aspectRatios = calculateAspectRatioFit(
+                    projectImg.width,
+                    projectImg.height,
+                    maxWidth - 30,
+                    element.clientHeight - 100
+                );
+                var paddingLeft = (maxWidth - aspectRatios.width) / 2;
+
+                var positioning = {
+                    top: paddingTop,
+                    left: bounding.left + paddingLeft,
+                    maxHeight: (element.clientHeight - 10) + 'px',
+                    width: aspectRatios.width + 'px',
+                    padding: paddingLeft + 'px'
+                };
+                return positioning;
+            };
+
+            var positionImage = function (imgPositioning, projectImg) {
+                var visualContainer = document.querySelector('.visual-container');
+                visualContainer.style.paddingLeft = imgPositioning.padding;
+                visualContainer.style.paddingTop = imgPositioning.top;
+                visualContainer.appendChild(projectImg);
+                projectImg.style.position = 'static';
+            };
+
+
             $scope.$on('LOAD_PROJECT', function (event, project) {
-                var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction') ||
-                    window.getComputedStyle(portfolio, null).getPropertyValue('-webkit-flex-direction');
                 if (project.name === $scope.project.name) {
+                    var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction') ||
+                        window.getComputedStyle(portfolio, null).getPropertyValue('-webkit-flex-direction');
+                    var imgBounding = previewImg.getBoundingClientRect();
+
                     title.style.visibility = 'hidden';
                     element.style.zIndex = '2';
                     projectView.style.backgroundColor = 'transparent';
-                    var bounding = previewImg.getBoundingClientRect();
                     projectImg = new Image();
                     projectImg.src = previewImg.src;
-                    projectImg.style.top = bounding.top + 'px';
+                    projectImg.style.top = imgBounding.top + 'px';
                     projectImg.width = previewImg.width;
                     projectImg.height = previewImg.height;
-
                     subOuter.style.opacity = '0';
 
-                    var positionImage = function () {
-                        var visualContainer = document.querySelector('.visual-container');
-                        visualContainer.appendChild(projectImg);
-                        projectImg.style.position = 'relative';
-                    };
-
                     if (flexDirection === 'row') {
+                        var imgPositioning = calculateImagePositioning(projectImg);
                         projectImg.classList.add('project-img');
                         var positionLeft;
                         if (!project.next) {
-                            positionLeft = bounding.left;
+                            positionLeft = imgBounding.left;
                         } else {
                             projectImg.style.transform = 'scale(0.7)';
                             projectImg.style.top = '45px';
@@ -74,31 +106,29 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             progressButton.style.visibility = 'visible';
                         }
 
-                        var calculateLeftOutPosition = function () {
-                            var containerWidth = (window.innerWidth * 40) / 100;
-                            var margin = (containerWidth - projectImg.width) / 2;
-                            margin = margin < 0 ? 20 : margin;
-                            return margin;
-                        }
 
                         //TODO improve transition, use timeline
                         element.style.borderLeft = '1px solid gray';
-                        TweenLite.to(element, 0.9, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });
-                        TweenLite.to(projectImg, 0.4, {css: {
-                            transform: 'scale(1.1)'
-                        }, delay: 0.2});
 
-                        TweenLite.to(projectImg, 0.5, {css: {
-                            transform: 'scale(1)',
-                            top: 45,
-                            left: calculateLeftOutPosition(),
-                            maxHeight: '90vh',
-                            width: 'auto'
-                        },
-                            ease: Power0.easeIn,
-                            onComplete: positionImage,
-                            delay: 0.5
-                        });
+                        var tll = new TimelineLite({onComplete: positionImage, onCompleteParams: [imgPositioning, projectImg], delay: 0.3});
+                        TweenLite.to(element, 0.9, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });
+                        tll.to(projectImg, .4, {css: {
+                                height: imgPositioning.maxHeight,
+                                width: 'auto',
+                                top: '10px',
+                                left: imgPositioning.left + 100 + 'px'
+                            }})
+                            .to(projectImg, .3, {css: {
+                                height: 'auto',
+                                width: imgPositioning.width,
+                                top: paddingTop,
+                                left: imgPositioning.left + 'px'
+                            },
+                                ease: Power0.easeIn
+                            }
+                        );
+
+
                     } else {
                         TweenLite.to(window, .6, {scrollTo: {y: 0}, ease: Power2.easeOut});
                         var resetColumnView = function () {
@@ -109,8 +139,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         }
                         portfolio.style.opacity = '0';
                         projectView.style.zIndex = '3';
-                        projectImg.style.left = bounding.left + 'px';
-                        projectImg.style.maxHeight= '100vh';
+                        projectImg.style.left = imgBounding.left + 'px';
+                        projectImg.style.maxHeight = '100vh';
                         projectImg.style.opacity = 0;
                         element.querySelector('.progress-button').style.visibility = 'visible';
 
@@ -122,8 +152,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             onComplete: resetColumnView
                         });
                     }
-
                 }
+
             });
 
             $scope.$on('CLOSE_PROJECT', function (event, project) {
