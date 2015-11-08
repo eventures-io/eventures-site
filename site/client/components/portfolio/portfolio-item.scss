@@ -42,11 +42,15 @@ $transition-pf-lg: 0.7s;
     border-right: 1px solid gray;
   }
 
+  .portfolio-section > div:first-child {
+    border-left:1px solid gray;
+  }
+
   .portfolio-section > div:last-child {
-    border-right: none;
-    .sub-outer {
-      overflow: visible;
-    }
+//    border-right: none;
+//    .sub-outer {
+//      overflow: visible;
+//    }
   }
 
   .flex-sub {

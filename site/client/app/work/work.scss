@@ -8,8 +8,6 @@
   z-index: 0;
 }
 
-
-
 .project-view section {
   min-height: 100vh;
   background-color: white;
@@ -33,7 +31,6 @@
 
 .project-img {
   position: absolute;
-  width: auto;
   z-index: 4;
 }
 .header-container {
@@ -60,7 +57,6 @@
 .project-header {
    width: 100vw;
   height: 100vh;
-  outline: 1px solid green;
 
   .project-visual {
     min-height: 100vh;
@@ -72,7 +68,6 @@
       position: relative;
       cursor: pointer;
       min-height: 100vh;
-      outline: 1px solid red;
     }
 
     .visual-container::after {
@@ -106,6 +101,8 @@
   .project-summary {
     width: 368px;
     flex-grow: 2;
+
+
     overflow-y: visible;
 
     h1 {
@@ -114,8 +111,7 @@
       margin-bottom: 1.5em;
     }
     .summary-text {
-      padding: 0 25px;
-      max-width: 600px;
+      padding: 0 15%;
       overflow-y: visible;
     }
   }

@@ -4,10 +4,21 @@
   font-size: 42px;
 }
 
-.polaroiz .project-header {
+.polaroiz .project-background {
   height: 76vh;
 }
 
+/* Ocean-feedr -----*/
+.ocean-feedr .project-background {
+  height: 70vh;
+}
+
+.ocean-feedr h1 {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 42px;
+}
+
+/* Plantzr ----*/
 .plantzr, .plantzr-mobile, .plantzr-proto {
   h1 {
     font-family: 'Sarina', sans-serif;
@@ -17,8 +28,12 @@
   }
 }
 
-.plantzr .project-header {
+.plantzr .project-background {
   height: 80vh;
+}
+
+.plantzr .project-visual {
+  order: 2;
 }
 
 /* Plantzr mobile  ------*/
@@ -42,8 +57,21 @@
   height: 73vh;
 }
 
+.plantzr-mobile .scroll-btn {
+   position: relative;
+   top: 1000;
+}
+
+/* Plantzr proto  ----*/
+.plantzr-proto .project-header {
+  height: 74vh;
+}
+
 .plantzr-proto h1 {
   max-width: 400px;
+}
+.plantzr-proto .project-visual {
+  order: 2;
 }
 
 .plantzr-proto .redesign-title {
@@ -79,18 +107,22 @@
   .plantzr-proto .proto-description {
     order: 2;
   }
-
-  .ocean-feedr .project-header {
-    height: 70vh;
-  }
-
-  /* Angular loader -----*/
-  .angular-loader .project-header {
-    height: 74vh;
-  }
-
-  /* Plantzr framer  ----*/
-  .plantzr-framer .project-header {
-    height: 74vh;
-  }
 }
+
+/* Angular loader -----*/
+.angular-loader .project-background {
+  height: 74vh;
+}
+.angular-loader h1 {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 42px;
+  max-width: 400px;
+  line-height: 1em;
+  text-align: center !important;
+}
+
+.angular-loader .project-visual {
+  order: 2;
+}
+
+
