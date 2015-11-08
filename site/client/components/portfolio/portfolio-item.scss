@@ -1,76 +1,30 @@
 $transition-pf-lg: 0.7s;
 /* Portfolio flex container ---------*/
 .portfolio-section {
+  @extend .content-container;
+  display: flex;
   position: relative;
   width: 100vw;
   height: 100vh;
-  display: flex;
+  background-color: #efefef;
   overflow: hidden;
   z-index: 1;
-  background-color: #efefef;
   transition: opacity 0.7s;
-
 }
 
-.flex-sub {
+.flex-sub div[progress-button] {
+  position: absolute;
+  top: -40px;
+  left: 5px;
+}
 
-  div[progress-button] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-  }
+.portfolio-title {
+  padding: 40px;
+  visibility: hidden;
+}
 
-  .progress-button {
-    position: relative;
-    top: calc(50% - 100px);
-    left: calc(50% - 100px);
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease-out 0.5s;
-  }
-
-  .project-title {
-    position: absolute;
-    top: 10%;
-    left: 0;
-    width: 100%;
-    padding: 0 40px;
-    visibility: hidden;
-    opacity: 0;
-    transform: skew(6deg);
-    transition: opacity 0.3s ease-out 0.5s;
-    h1 {
-      text-align: center;
-      line-height: 1em;
-      font-size: 48px;
-      font-family: 'Aldrich', sans-serif;
-      padding: 0 30px;
-
-
-    }
-
-    h1.plantzr,
-    h1.polaroiz,
-    h1.plantzr-mobile,
-    h1.plantzr-proto {
-      color: #f5f5f5;
-      text-shadow: -1px -1px 0 #ababab;
-      //background: rgba(black, 0.3);
-      //1px -1px 0 #ababab,
-      //-1px 1px 0 #ababab, 1px 1px 0 #ababab;
-    }
-
-    h1.ocean-feedr,
-    h1.angular-loader {
-      color: #303030;
-      text-shadow: -1px -1px 0 #232323;
-      background: rgba(white, 0.4);
-    //  1px -1px 0 #232323,
-    //  -1px 1px 0 #232323, 1px 1px 0 #232323;
-    }
-  }
+.portfolio-title h1 {
+  text-align: center;
 }
 
 /* Desktop view -----*/
@@ -97,49 +51,44 @@ $transition-pf-lg: 0.7s;
 
   .flex-sub {
     flex: 1 1 auto;
-    padding-top: 50px;
     height: 100%;
     width: 100px;
-    transform: skewX(-6deg);
+    max-width: 300px;
     transition: width .4s ease-out;
-
-    .sub-outer {
-      height: 100%;
-      overflow: hidden;
-      padding-bottom: 40px;
-      position: relative;
-      .sub-inner {
-        height: 100%;
-        margin: 0 auto;
-        min-width: 30px;
-        transition: translateX .4s;
-        .preview-img {
-          display: block;
-          margin: 0 auto;
-          width: auto;
-          max-width: 400px;
-          height: 100%;
-        }
-      }
-    }
-    .progress-button {
-      transform: skewX(6deg);
-    }
+  }
+  .sub-outer {
+    position: relative;
+    padding-top: 50px;
+    overflow: hidden;
+  }
+  .sub-inner {
+    height: 55vh;
+    margin: 0 auto;
+    min-width: 30px;
+    transition: translateX .4s;
+  }
+  .preview-img {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    max-width: 300px;
+    height: 100%;
   }
 
-  .flex-sub:hover {
-    width: 400px;
-    .progress-button {
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-
-    .project-title {
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-
+  .sub-padding {
+    position: relative;
+    height: 100%;
+    background-color: white;
   }
+
+}
+
+.flex-sub:hover {
+  width: 300px;
+  .portfolio-title {
+    visibility: visible;
+  }
+
 }
 
 /* Mobile view ------*/
