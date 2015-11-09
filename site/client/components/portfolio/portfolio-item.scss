@@ -12,19 +12,15 @@ $transition-pf-lg: 0.7s;
   transition: opacity 0.7s;
 }
 
-.flex-sub div[progress-button] {
-  position: absolute;
-  top: -40px;
-  left: 5px;
-}
-
 .portfolio-title {
   padding: 40px;
   visibility: hidden;
 }
 
 .portfolio-title h1 {
+  font-family: 'Aldrich', sans-serif;
   text-align: center;
+  font-size: 2em;
 }
 
 /* Desktop view -----*/
@@ -43,14 +39,20 @@ $transition-pf-lg: 0.7s;
   }
 
   .portfolio-section > div:first-child {
-    border-left:1px solid gray;
+    border-left: 1px solid gray;
   }
 
   .portfolio-section > div:last-child {
-//    border-right: none;
-//    .sub-outer {
-//      overflow: visible;
-//    }
+    //    border-right: none;
+    //    .sub-outer {
+    //      overflow: visible;
+    //    }
+  }
+
+  .flex-sub div[progress-button] {
+    position: absolute;
+    top: -40px;
+    left: 5px;
   }
 
   .flex-sub {
@@ -107,81 +109,85 @@ $transition-pf-lg: 0.7s;
     overflow: hidden;
   }
 
+  .flex-sub div[progress-button] {
+    position: absolute;
+    top: -40px;
+    right: 30px;
+    z-index: 999;
+    pointer-events: all;
+  }
+
   .flex-sub {
+    position: relative;
     flex: 1 1 auto;
-    width: 100%;
+    width: 100vw;
     height: 15vh;
     padding: 0 5%;
     border-top: 1px solid gray;
     transition: height 0.5s ease-in;
-    overflow: hidden;
+    //overflow: hidden;
 
     .sub-outer {
       width: 100%;
       padding-top: 5px;
       position: relative;
-
-      .sub-inner {
-        height: 100%;
-        width: 100%;
-        .preview-img {
-          display: block;
-          width: 100%;
-          max-width: 400px;
-          margin: 0 auto;
-          height: auto;
-          border-radius: 3px;
-          overflow: hidden;
-          visibility: hidden;
-        }
-      }
-
-      .project-title {
-        width: 100%;
-        top: 20px;
-        visibility: visible;
-        opacity: 1 !important;
-        transform: skewX(0deg);
-        padding: 0;
-        z-index: 9999;
-        h1 {
-          margin: 0;
-          color: #ababab !important;
-          text-align: center;
-          line-height: 1em;
-          font-size: 38px;
-          letter-spacing: 3px;
-          padding: 0;
-          text-shadow: none !important;
-        }
-      }
     }
-    .progress-button {
-      top: 50px;
+
+    .sub-inner {
+      height: 100%;
+      width: 100%;
     }
+
+    .preview-img {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      height: auto;
+      border-radius: 3px;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .6s;
+    }
+
+    .sub-padding {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      //remove
+      height: 100%;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .portfolio-title {
+      padding: 20px;
+      visibility: visible;
+      opacity: 1;
+      background: transparent;
+    }
+
   }
 
   .flex-sub:hover {
-    height: 100vh;
-    .sub-outer {
-      .sub-inner {
-        .preview-img {
-          visibility: visible;
-        }
-      }
+    height: 30vh;
+    width: 100vw;
+
+    .preview-img {
+      visibility: visible;
+      opacity: 1;
     }
 
-    .progress-button {
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-
-    .project-title {
-      visibility: hidden !important;
+    .portfolio-title {
+      visibility: hidden;
     }
   }
 
 }
+
+
 
 
 

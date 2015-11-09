@@ -56,10 +56,10 @@
 
 .project-header {
    width: 100vw;
-  height: 100vh;
+   height: 100vh;
 
   .project-visual {
-    min-height: 100vh;
+    height: 100vh;
     width: 40%;
     min-width: 400px;
     max-width: 100%;
@@ -67,7 +67,7 @@
     .visual-container {
       position: relative;
       cursor: pointer;
-      min-height: 100vh;
+      height: 100%;
     }
 
     .visual-container::after {
