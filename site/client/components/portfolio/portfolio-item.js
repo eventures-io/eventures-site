@@ -24,9 +24,9 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             var projectView = document.querySelector('.project-view');
             var previewImg = element.querySelector('.preview-img');
             var portfolio = document.querySelector('.portfolio-section');
-            var title = element.querySelector('.portfolio-title');
+            var portfolioTitle = element.querySelector('.portfolio-title');
             var paddingTop = 60;
-            var projectImg;
+
 
             /**
              * get img width and height to fit into the img container,
@@ -37,26 +37,42 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                 return { width: srcWidth * ratio, height: srcHeight * ratio };
             }
 
-            var calculateImagePositioning = function (projectImg) {
+            var calculateImagePositioning = function (projectImg, mobileView) {
                 var bounding = document.querySelector('.bounding-element').getBoundingClientRect();
-                var maxWidth = Math.round((bounding.width * 40) / 100);
-                if (maxWidth < 400) {
-                    maxWidth = 400;
+                var maxWidth;
+                if (mobileView) {
+                    maxWidth = bounding.width;
+                } else {
+                    maxWidth = Math.round((bounding.width * 40) / 100);
+                    if (maxWidth < 400) {
+                        maxWidth = 400;
+                    }
                 }
                 var aspectRatio = calculateAspectRatio(
                     projectImg.width,
                     projectImg.height,
                     maxWidth - 30,
-                    element.clientHeight - 100
+                    window.innerHeight - 120
                 );
-                var padding = Math.round((maxWidth - aspectRatio.width) / 2);
+                var padding;
+                if (mobileView) {
+                    padding = 0;
+                } else {
+                    padding = Math.round((maxWidth - aspectRatio.width) / 2);
+                }
 
                 var getLeftPosition = function () {
                     var leftPosition;
-                    if ($scope.project.imagePosition === 'left') {
-                        leftPosition = Math.round(bounding.left + padding);
+                    if (mobileView) {
+                        leftPosition = padding;
+
                     } else {
-                        leftPosition = Math.round(bounding.right - aspectRatio.width - padding);
+
+                        if ($scope.project.imagePosition === 'left') {
+                            leftPosition = Math.round(bounding.left + padding);
+                        } else {
+                            leftPosition = Math.round(bounding.right - aspectRatio.width - padding);
+                        }
                     }
                     return leftPosition;
                 };
@@ -89,19 +105,17 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
             $scope.$on('LOAD_PROJECT', function (event, project) {
                 if (project.name === $scope.project.name) {
+
                     var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction') ||
                         window.getComputedStyle(portfolio, null).getPropertyValue('-webkit-flex-direction');
                     var imgBounding = previewImg.getBoundingClientRect();
 
-                    title.style.visibility = 'hidden';
-                    element.style.zIndex = '2';
                     projectView.style.backgroundColor = 'transparent';
-                    projectImg = new Image();
+                    var projectImg = new Image();
                     projectImg.src = previewImg.src;
-                    projectImg.style.top = imgBounding.top + 'px';
                     projectImg.width = previewImg.width;
                     projectImg.height = previewImg.height;
-                    subOuter.style.opacity = '0';
+                    projectImg.classList.add('project-img');
 
                     var resetRowView = function () {
                         portfolio.style.opacity = '0';
@@ -113,19 +127,25 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         subOuter.style.opacity = '1';
                         var progressButton = element.querySelector('.progress-button');
                         progressButton.style.visibility = 'visible';
+                        portfolioTitle.style.visibility = 'visible';
                     }
 
                     var resetColumnView = function () {
-                      //  positionImage();
                         projectView.style.opacity = '1';
-                        element.style.zIndex = '1';
-                        subOuter.style.opacity = '1';
+                        var circleProgress = element.querySelector('.circle-progress');
+                        circleProgress.classList.remove('circle-animate');
+                        circleProgress.style.strokeDashoffset = 615;
                     }
 
                     if (flexDirection === 'row') {
-                        var imgPositioning = calculateImagePositioning(projectImg);
+                        var progressButton = element.querySelector('.progress-button');
+                        progressButton.style.visibility = 'hidden';
+                        portfolioTitle.style.visibility = 'hidden';
+                        subOuter.style.opacity = '0';
+                        element.style.zIndex = '2';
+                        var imgPositioning = calculateImagePositioning(projectImg, false);
                         element.style.borderLeft = '1px solid gray';
-                        projectImg.classList.add('project-img');
+                        projectImg.style.top = imgBounding.top + 'px';
                         var positionLeft;
                         if (!project.next) {
                             positionLeft = imgBounding.left;
@@ -163,22 +183,19 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         );
                     } else {
 
-                        var animateProjectTransition = function () {
+                        var imgPositioning = calculateImagePositioning(projectImg, true);
+
+
+                        var transitionProject = function () {
                             portfolio.style.opacity = 0;
                             projectView.style.zIndex = 3;
-                            projectImg.style.left = imgBounding.left + 'px';
-                            projectImg.style.maxHeight = '90vh';
-
-                            document.body.appendChild(projectImg);
-                            TweenLite.to(projectImg, 0.5, {css: {
-                                top: '50px'
-                            },
-                                ease: Power0.easeIn,
-                                onComplete: resetColumnView
-                            });
+                            //document.body.appendChild(projectImg);
+                            //TweenLite.to(element, 0.9, {css: {transform: 'scale(1,5)'}, ease: Power1.easeIn, onComplete: resetColumnView });
+                            positionImage(imgPositioning, projectImg);
+                            resetColumnView();
                         }
 
-                        scrollToTop(animateProjectTransition);
+                        scrollToTop(transitionProject);
                     }
                 }
 

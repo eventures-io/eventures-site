@@ -32,7 +32,6 @@ angular.module('evtrs-site').directive('progressButton', function ($timeout, UAS
                 circleProgress.classList.remove('circle-animate');
                 $timeout(function(){
                     $scope.$emit('LOAD_PROJECT', {name:$scope.project.name, next: false});
-                    progressButton.style.visibility = 'hidden';
                     circleProgress.style.strokeDashoffset = 615;
                 }, 200);
             }
