@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PROJECT_CONSTANTS) {
+angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PROJECT_CONSTANTS, UAService) {
 
     return {
         templateUrl: 'components/portfolio/portfolio-item.html',
@@ -37,6 +37,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     projectImg.style.top = bounding.top + 'px';
                     projectImg.width = previewImg.width;
                     projectImg.height = previewImg.height;
+                    projectImg.classList.add('project-img');
 
                     subOuter.style.opacity = '0';
                     progressButton.display = 'none';
@@ -44,7 +45,9 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     var positionImage = function () {
                         var visualContainer = document.querySelector('.visual-container');
                         //IE misery
-                        document.body.removeChild(document.querySelector('.project-img'));
+                        if (UAService.detectIE()) {
+                            document.body.removeChild(document.querySelector('.project-img'));
+                        }
                         visualContainer.appendChild(projectImg);
                         projectImg.style.position = 'relative';
 
@@ -52,7 +55,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
                     if (flexDirection === 'row') {
                         element.style.borderLeft = '1px solid gray';
-                        projectImg.classList.add('project-img');
+
                         var positionLeft;
                         if (!project.next) {
                             projectImg.style.transform = 'skewX(-6deg)';
@@ -74,7 +77,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             TweenLite.to(element, 0, {css: {transform: 'scale(1) skewX(-6deg)'}});
                             element.style.zIndex = '1';
                             subOuter.style.opacity = '1';
-                            element.style.borderLeft =  "none";
+                            element.style.borderLeft = "none";
                         }
 
                         var calculateLeftOutPosition = function () {
@@ -115,7 +118,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         portfolio.style.opacity = '0';
                         projectView.style.zIndex = '3';
                         projectImg.style.left = bounding.left + 'px';
-                        projectImg.style.maxHeight= '90vh';
+                        projectImg.style.maxHeight = '90vh';
                         document.body.appendChild(projectImg);
                         TweenLite.to(projectImg, 0.5, {css: {
                             top: '50px'
