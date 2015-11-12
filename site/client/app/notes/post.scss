@@ -53,6 +53,11 @@
   }
 }
 
+[ui-view="post"] {
+  background-color: $main-bg-color;
+  height: 100%;
+}
+
 /* Content ------*/
 .post-content {
   @extend .container;

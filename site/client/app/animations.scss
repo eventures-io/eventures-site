@@ -15,6 +15,7 @@
 
 .animate-main.ng-leave {
    //animation: fadeOut 3s;
+  animation: slowUp .5s ease-out;
 }
 
 /* POST -------*/
@@ -23,7 +24,7 @@
 }
 
 .animate-post.ng-leave {
-  //animation: fadeOut .2s linear;
+  animation: slowUp .5s ease-out;
 }
 
 /* PROJECT ---------*/
@@ -46,15 +47,21 @@
   }
 }
 
-
-@keyframes slideOutUp {
+@keyframes slowUp {
   from {
-    top: 0;
   }
   to {
-    top: -100%;
+    transform: translateY(-5%);
   }
 }
+
+//@keyframes slideUp {
+//  from {
+//  }
+//  to {
+//    transform: translateY(-10%);
+//  }
+//}
 
 
 
