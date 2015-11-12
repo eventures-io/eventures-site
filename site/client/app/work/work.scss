@@ -21,7 +21,7 @@
   font-size: large;
   cursor: pointer;
   padding: 15px;
-  z-index: 9998;
+
 }
 
 .project-img {
@@ -100,6 +100,8 @@
     }
   }
 
+
+
   .project-summary {
     width: 368px;
     flex-grow: 2;
@@ -112,8 +114,9 @@
       margin-bottom: 1.5em;
     }
     .summary-text {
+      height: 0px;
       padding: 0 15%;
-      overflow-y: visible;
+      overflow-y: hidden;
     }
   }
 

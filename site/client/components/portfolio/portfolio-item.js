@@ -88,6 +88,13 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             };
 
             var positionImage = function (imgPositioning, projectImg, mobileView) {
+
+                var headerBackground = document.querySelector('.header-background');
+                TweenLite.to(headerBackground,.8, {css: {height: '93vh'}, ease: Power4.easeOut});
+                var summaryText = document.querySelector('.summary-text');
+                TweenLite.to(summaryText, .8, {css: {height: '90vh'}, ease: Power4.easeOut, onComplete: function() {
+                    document.querySelector('.project-background').style.borderBottom = '1px solid gray';
+                }});
                 var visualContainer = document.querySelector('.visual-container');
                 visualContainer.style.paddingLeft = imgPositioning.padding + 'px';
                 visualContainer.style.paddingTop = imgPositioning.top + 'px';

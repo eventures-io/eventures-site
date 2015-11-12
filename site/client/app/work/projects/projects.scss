@@ -59,7 +59,13 @@
 
 .plantzr-mobile .project-background {
   height: 73vh;
-  background-color: #808080;
+  background-color: #dcdcdc;
+}
+
+.plantzr-mobile .header-background {
+  @extend .content-container;
+  height: 0px;
+  background-color: rgba(#b0b0b0, 0.8);
 }
 
 .plantzr-mobile .scroll-btn {

@@ -1,10 +1,17 @@
 $transition-pf-lg: 0.7s;
 /* Portfolio flex container ---------*/
+
+.portfolio-container {
+  background-color: $main-bg-color;
+  background-image: linear-gradient(
+      to right,
+      white, #BDBDBD);
+}
+
 .portfolio-section {
-  @extend .content-container;
   display: flex;
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: #efefef;
   overflow: hidden;
