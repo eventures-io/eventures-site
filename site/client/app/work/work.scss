@@ -43,6 +43,7 @@
   @extend .content-container;
   height: 0px;
   background-color: rgba(#bebebe, 0.8);
+
 }
 
 @media (max-width: 1270px) {
@@ -56,9 +57,6 @@
 
 }
 
-.project-header {
-  background-color: transparent;
-}
 
 .project-header,
 .project-description {
@@ -70,6 +68,7 @@
 
 .project-header {
   height: 100vh;
+  background-color: transparent;
 
   .project-visual {
     height: 100vh;
@@ -123,8 +122,8 @@
       margin-bottom: 1.5em;
     }
     .summary-text {
-      height: 0px;
-      padding: 0 15%;
+      padding: 10% 25px;
+
     }
   }
 
@@ -201,14 +200,28 @@
   }
 }
 
-.description-visual.framer {
-  padding: 0;
+.portfolio {
+  background-color: $main-bg-color;
 }
 
-.framer-visual iframe {
-  height: 100%;
+.portfolio-container {
+  //max-width: 1000px;
+  //margin: 0 auto;
+}
+
+.portfolio-section {
+  display: flex;
+  position: relative;
   width: 100%;
-  background-color: gray;
+  height: 100vh;
+  background-color: #efefef;
+  overflow: hidden;
+  z-index: 1;
+  transition: opacity 0.3s;
+}
+
+.description-visual.framer {
+  padding: 0;
 }
 
 .bounding-element {

@@ -27,12 +27,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             var portfolioTitle = element.querySelector('.portfolio-title');
             var paddingTop = 30;
 
-            $scope.$on('PROJECT_VIEW_LOADED', function (event, originEvent) {
-                //TODO handle
-                //alert('todo: debug');
-            })
-
-
             /**
              * get img width and height to fit into the img container,
              * respecting the aspect ratio
@@ -94,10 +88,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
             var positionImage = function (imgPositioning, projectImg, mobileView) {
 
-                var headerBackground = document.querySelector('.header-background');
-                TweenLite.to(headerBackground, .4, {css: {height: '93vh'}, ease: Power4.easeOut});
-                var summaryText = document.querySelector('.summary-text');
-                TweenLite.to(summaryText, .9, {css: {height: '90vh'}, ease: Power4.easeOut});
+
                 var visualContainer = document.querySelector('.visual-container');
                 visualContainer.style.paddingLeft = imgPositioning.padding + 'px';
                 visualContainer.style.paddingTop = imgPositioning.top + 'px';
@@ -105,11 +96,12 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                 if (UAService.detectIE()) {
                     document.body.removeChild(document.querySelector('.project-img'));
                 }
-                visualContainer.appendChild(projectImg);
-                projectImg.style.position = 'static';
+
                 if (mobileView) {
                     TweenLite.to(projectImg, .7, {css: {opacity: 1}});
                 }
+                visualContainer.appendChild(projectImg);
+                projectImg.style.position = 'static';
             };
 
             var scrollToTop = function (onCompleteFunction) {
@@ -133,6 +125,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
                     var resetRowView = function () {
                         portfolio.style.opacity = '0';
+                        portfolio.style.visibility = 'hidden';
                         projectView.style.opacity = '1';
                         projectView.style.zIndex = '3';
                         TweenLite.to(element, 0, {css: {transform: 'scale(1)'}});
@@ -148,6 +141,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         projectView.style.opacity = '1';
                         var circleProgress = element.querySelector('.circle-progress');
                         circleProgress.classList.remove('circle-animate');
+                        //TODO recalulate strokeDashoffset
                         circleProgress.style.strokeDashoffset = 615;
                     }
 
@@ -177,16 +171,17 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         }
                         projectImg.style.left = positionLeft + 'px';
                         document.body.appendChild(projectImg);
+                        $scope.$on('PROJECT_VIEW_LOADED', function (event) {
+                            var summaryText = document.querySelector('.summary-text');
+                            summaryText.style.transform = 'translateY(-800px)';
+                            var headerBackground = document.querySelector('.header-background');
+                            TweenLite.to(headerBackground, .4, {delay: .6, css: {height: '93vh'}, ease: Power4.easeOut});
+                            TweenLite.to(summaryText, .4, {delay:.6, css: {transform: 'translateY(0)'}, ease: Power4.easeOut});
+                        });
                         var tll = new TimelineLite({onComplete: positionImage, onCompleteParams: [imgPositioning, projectImg], delay: 0.2});
                         TweenLite.to(element, .6, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });
                         tll
-//                           .to(projectImg, .3, {css: {
-//                            opacity: 1,
-//                            top: -200,
-//                            left: imgPositioning.left + 100+  'px',
-//                            height: imgPositioning.maxHeight + 400 + 'px',
-//                            width: 'auto'
-//                            }})
+
                             .to(projectImg, .6, {css: {
                                 opacity: 1,
                                 height: 'auto',
@@ -220,6 +215,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             $scope.$on('CLOSE_PROJECT', function (event, project) {
                 if (project === $scope.project.name) {
                     projectView.style.zIndex = '0';
+                    portfolio.style.visibility = 'visible';
                     portfolio.style.opacity = '1';
                 }
             });

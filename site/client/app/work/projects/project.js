@@ -5,8 +5,7 @@ angular.module('evtrs-site')
 
         $scope.$on('$viewContentLoaded',
             function(event){
-               $rootScope.$broadcast('PROJECT_VIEW_LOADED', event);
-
+               $rootScope.$broadcast('PROJECT_VIEW_LOADED', $scope.$parent.activeProject);
             });
 
         if (!$scope.activeProject) {
