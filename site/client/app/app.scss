@@ -14,10 +14,13 @@ $body-color: #666666;
 $error-color: #B90000;
 $stroke-color: #009600;
 $main-bg-color: #efefef;
+$project-bg-color: #dcdcdc;
 
 $notes-menu-overlay: rgba(29, 29, 29, 0.9);
 $notes-menu-color: #F5F5F5;
 $loader-color: $body-color;
+
+$container-width: 1170px;
 
 .browsehappy {
   margin: 0.2em 0;
@@ -45,8 +48,14 @@ h4 {
 }
 
 .content-container {
-  max-width: 1170px;
+  max-width: $container-width;
   margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .animate-main {

@@ -18,7 +18,7 @@
   top: 0px;
   right: 0px;
   height: 50px;
-  font-size: large;
+  font-size: x-large;
   cursor: pointer;
   padding: 15px;
 
@@ -29,22 +29,34 @@
   z-index: 4;
 }
 
-.flex-container {
-  display: flex;
-  flex-flow: row wrap;
-}
 
 .header-container {
   height: 100vh;
 }
 
 .project-background {
-  background-color: $main-bg-color;
+  background-color: $project-bg-color;
   overflow-y: visible;
 }
 
-.project-header {
+.header-background {
   @extend .content-container;
+  height: 0px;
+  background-color: rgba(#bebebe, 0.8);
+}
+
+@media (max-width: 1270px) {
+  .header-background {
+    margin: 0 50px;
+  }
+
+  .summary-text {
+    padding: 0 10% 0 20px !important;
+  }
+
+}
+
+.project-header {
   background-color: transparent;
 }
 
@@ -57,7 +69,6 @@
 }
 
 .project-header {
-  width: 100vw;
   height: 100vh;
 
   .project-visual {
@@ -106,8 +117,6 @@
     width: 368px;
     flex-grow: 2;
 
-    overflow-y: visible;
-
     h1 {
       text-align: center;
       margin-top: 85px;
@@ -116,7 +125,6 @@
     .summary-text {
       height: 0px;
       padding: 0 15%;
-      overflow-y: hidden;
     }
   }
 

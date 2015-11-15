@@ -1,11 +1,13 @@
 $transition-pf-lg: 0.7s;
 /* Portfolio flex container ---------*/
 
-.portfolio-container {
+.portfolio {
   background-color: $main-bg-color;
-  background-image: linear-gradient(
-      to right,
-      white, #BDBDBD);
+}
+
+.portfolio-container {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .portfolio-section {
@@ -28,6 +30,7 @@ $transition-pf-lg: 0.7s;
   font-family: 'Aldrich', sans-serif;
   text-align: center;
   font-size: 2em;
+  color: #a2a2a2;
 }
 
 
@@ -38,16 +41,12 @@ $transition-pf-lg: 0.7s;
     flex-direction: row;
   }
 
-  .portfolio-section > div:first-child {
-    //border-left: 1px solid gray;
-  }
-
   .portfolio-section > div {
-    border-right: 1px solid gray;
+    border-right: 1px solid #a2a2a2;
   }
 
   .portfolio-section > div:first-child {
-    border-left: 1px solid gray;
+    border-left: 1px solid #a3a3a3;
   }
 
   .portfolio-section > div:last-child {

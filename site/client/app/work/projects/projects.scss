@@ -11,6 +11,7 @@
 /* Ocean-feedr -----*/
 .ocean-feedr .project-background {
   height: 70vh;
+  background-color: #b3b3b3;
 }
 
 .ocean-feedr h1 {
@@ -23,7 +24,7 @@
   h1 {
     font-family: 'Sarina', sans-serif;
     font-size: 42px;
-    color: #000000;
+    color: #303030;
     line-height: 1em;
   }
 }
@@ -63,8 +64,6 @@
 }
 
 .plantzr-mobile .header-background {
-  @extend .content-container;
-  height: 0px;
   background-color: rgba(#b0b0b0, 0.8);
 }
 

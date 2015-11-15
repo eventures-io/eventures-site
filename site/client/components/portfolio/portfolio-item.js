@@ -25,7 +25,12 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             var previewImg = element.querySelector('.preview-img');
             var portfolio = document.querySelector('.portfolio-section');
             var portfolioTitle = element.querySelector('.portfolio-title');
-            var paddingTop = 60;
+            var paddingTop = 30;
+
+            $scope.$on('PROJECT_VIEW_LOADED', function (event, originEvent) {
+                //TODO handle
+                //alert('todo: debug');
+            })
 
 
             /**
@@ -90,11 +95,9 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             var positionImage = function (imgPositioning, projectImg, mobileView) {
 
                 var headerBackground = document.querySelector('.header-background');
-                TweenLite.to(headerBackground,.8, {css: {height: '93vh'}, ease: Power4.easeOut});
+                TweenLite.to(headerBackground, .4, {css: {height: '93vh'}, ease: Power4.easeOut});
                 var summaryText = document.querySelector('.summary-text');
-                TweenLite.to(summaryText, .8, {css: {height: '90vh'}, ease: Power4.easeOut, onComplete: function() {
-                    document.querySelector('.project-background').style.borderBottom = '1px solid gray';
-                }});
+                TweenLite.to(summaryText, .9, {css: {height: '90vh'}, ease: Power4.easeOut});
                 var visualContainer = document.querySelector('.visual-container');
                 visualContainer.style.paddingLeft = imgPositioning.padding + 'px';
                 visualContainer.style.paddingTop = imgPositioning.top + 'px';
@@ -104,7 +107,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                 }
                 visualContainer.appendChild(projectImg);
                 projectImg.style.position = 'static';
-                if(mobileView){
+                if (mobileView) {
                     TweenLite.to(projectImg, .7, {css: {opacity: 1}});
                 }
             };
@@ -112,6 +115,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             var scrollToTop = function (onCompleteFunction) {
                 TweenLite.to(window, .6, {scrollTo: {y: 0}, ease: Power2.easeOut, onComplete: onCompleteFunction});
             };
+
 
             $scope.$on('LOAD_PROJECT', function (event, project) {
                 if (project.name === $scope.project.name) {
@@ -148,6 +152,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     }
 
                     if (flexDirection === 'row') {
+
                         var progressButton = element.querySelector('.progress-button');
                         progressButton.style.visibility = 'hidden';
                         portfolioTitle.style.opacity = 0;
@@ -165,14 +170,13 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             if ($scope.project.imagePosition === 'left') {
                                 positionLeft = imgPositioning.left + 80;
                             } else {
-                                positionLeft = imgPositioning.left - 60 + imgPositioning.padding ;
+                                positionLeft = imgPositioning.left - 60 + imgPositioning.padding;
                             }
                             //scroll to top first
                             scrollToTop();
                         }
                         projectImg.style.left = positionLeft + 'px';
                         document.body.appendChild(projectImg);
-
                         var tll = new TimelineLite({onComplete: positionImage, onCompleteParams: [imgPositioning, projectImg], delay: 0.2});
                         TweenLite.to(element, .6, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });
                         tll
