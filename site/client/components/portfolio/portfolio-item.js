@@ -173,15 +173,14 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         document.body.appendChild(projectImg);
                         $scope.$on('PROJECT_VIEW_LOADED', function (event) {
                             var summaryText = document.querySelector('.summary-text');
-                            summaryText.style.transform = 'translateY(-800px)';
+                            summaryText.style.transform = 'translateY(-100%)';
                             var headerBackground = document.querySelector('.header-background');
-                            TweenLite.to(headerBackground, .4, {delay: .6, css: {height: '93vh'}, ease: Power4.easeOut});
-                            TweenLite.to(summaryText, .4, {delay:.6, css: {transform: 'translateY(0)'}, ease: Power4.easeOut});
+                            TweenLite.to(headerBackground, .6, {delay: .4, css: {height: '93vh'}, ease: Power4.easeInOut});
+                            TweenLite.to(summaryText, 1, {delay:.4, css: {transform: 'translateY(0)'}, ease: Expo.easeOut});
                         });
                         var tll = new TimelineLite({onComplete: positionImage, onCompleteParams: [imgPositioning, projectImg], delay: 0.2});
                         TweenLite.to(element, .6, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });
                         tll
-
                             .to(projectImg, .6, {css: {
                                 opacity: 1,
                                 height: 'auto',
