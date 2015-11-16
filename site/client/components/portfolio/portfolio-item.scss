@@ -1,8 +1,6 @@
 $transition-pf-lg: 0.7s;
 /* Portfolio flex container ---------*/
 
-
-
 .portfolio-title {
   padding: 40px;
   visibility: hidden;
@@ -18,25 +16,6 @@ $transition-pf-lg: 0.7s;
 
 /* Desktop view -----*/
 @media (min-width: $screen-sm) {
-
-  .portfolio-section {
-    flex-direction: row;
-  }
-
-  .portfolio-section > div {
-    border-right: 1px solid #a2a2a2;
-  }
-
-  .portfolio-section > div:first-child {
-    border-left: 1px solid #a3a3a3;
-  }
-
-  .portfolio-section > div:last-child {
-    //    border-right: none;
-    //    .sub-outer {
-    //      overflow: visible;
-    //    }
-  }
 
   .flex-sub div[progress-button] {
     position: absolute;

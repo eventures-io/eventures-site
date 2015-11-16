@@ -38,6 +38,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
             var calculateImagePositioning = function (projectImg, mobileView) {
                 var bounding = document.querySelector('.bounding-element').getBoundingClientRect();
+                var margin = 0;
+
                 var maxWidth;
                 if (mobileView) {
                     maxWidth = bounding.width;
@@ -66,9 +68,12 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         leftPosition = padding;
 
                     } else {
-
+                        var margin =  0;
+                        if(window.innerWidth < 1270) {
+                            margin = 50;
+                        }
                         if ($scope.project.imagePosition === 'left') {
-                            leftPosition = Math.round(bounding.left + padding);
+                            leftPosition = Math.round(bounding.left + padding + margin);
                         } else {
                             leftPosition = Math.round(bounding.right - aspectRatio.width - padding);
                         }
@@ -87,8 +92,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             };
 
             var positionImage = function (imgPositioning, projectImg, mobileView) {
-
-
                 var visualContainer = document.querySelector('.visual-container');
                 visualContainer.style.paddingLeft = imgPositioning.padding + 'px';
                 visualContainer.style.paddingTop = imgPositioning.top + 'px';
@@ -98,7 +101,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                 }
 
                 if (mobileView) {
-                    TweenLite.to(projectImg, .7, {css: {opacity: 1}});
+                    TweenLite.to(projectImg, .9, {css: {opacity: 1}});
                 }
                 visualContainer.appendChild(projectImg);
                 projectImg.style.position = 'static';
@@ -172,11 +175,13 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         projectImg.style.left = positionLeft + 'px';
                         document.body.appendChild(projectImg);
                         $scope.$on('PROJECT_VIEW_LOADED', function (event) {
+                            document.querySelector('.portfolio-container').style.visibility = 'hidden';
+
                             var summaryText = document.querySelector('.summary-text');
                             summaryText.style.transform = 'translateY(-100%)';
                             var headerBackground = document.querySelector('.header-background');
                             TweenLite.to(headerBackground, .6, {delay: .4, css: {height: '93vh'}, ease: Power4.easeInOut});
-                            TweenLite.to(summaryText, 1, {delay:.4, css: {transform: 'translateY(0)'}, ease: Expo.easeOut});
+                            TweenLite.to(summaryText, 1, {delay:.4, css: {transform: 'translateY(-40px)'}, ease: Expo.easeOut});
                         });
                         var tll = new TimelineLite({onComplete: positionImage, onCompleteParams: [imgPositioning, projectImg], delay: 0.2});
                         TweenLite.to(element, .6, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });
