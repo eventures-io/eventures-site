@@ -9,6 +9,7 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
             var menuIcon = $element[0].querySelector('.menu-icon');
             var menuElement = $element[0].querySelector('.notes-menu');
 
+
             var loadBookmarks = function () {
                 var bookmarks = $cookies.getObject('bookmarks') || [];
                 $scope.bookmarks = [];
@@ -81,7 +82,8 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
 
             function handleLoadError() {
                 $rootScope.$broadcast('SHOW_MENU_BTN');
-                menuIcon.style.visible = 'hidden';
+                menuIcon.style.display = 'none';
+                document.querySelector('.notes-spinner').style.display = 'none';
                 document.querySelector('.notes-load-error').style.visibility = 'visible';
             }
 
@@ -89,6 +91,7 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
                 NotesResource.getPosts().then(function (posts) {
                     if (posts.length > 0) {
                         $scope.posts = posts;
+
                     } else {
                         handleLoadError();
                     }
