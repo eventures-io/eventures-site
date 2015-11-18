@@ -1,0 +1,15 @@
+<div class="fb-form-field">
+    <div class="form-group">
+        <label for="{{formName+index}}" class="col-sm-3 control-label">{{labels.name}}</label>
+
+        <div class="col-sm-6">
+            <input type="text" ng-model="inputText" validator-required="{{required}}" validator-group="{{formName}}"
+                   id="{{formName+index}}" class="form-control" placeholder="{{placeholder}}"/>
+
+            <p class='help-block'>{{labels.tooltip}}</p>
+        </div>
+        <div class="col-sm-3">
+            <input type='button' class='btn btn-default' value='Browse' disabled='true'/>
+        </div>
+    </div>
+</div>

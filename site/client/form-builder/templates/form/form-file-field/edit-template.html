@@ -1,0 +1,31 @@
+<form name="form" ng-controller="ModelEditController">
+    <h4>Form File Field</h4>
+
+    <div class="form-group">
+        <label class='control-label'>Multiple</label>
+        <input type='checkbox' ng-model="model.multiple"/>
+    </div>
+
+    <accordion close-others="true">
+        <accordion-group is-open='status.nameRequired'>
+            <accordion-heading>
+                Title
+            </accordion-heading>
+            <ng-include src="'templates/form/name-controls.html'"></ng-include>
+        </accordion-group>
+        <accordion-group>
+            <accordion-heading>
+                Tooltip
+            </accordion-heading>
+            <ng-include src="'templates/form/tooltip-controls.html'"></ng-include>
+        </accordion-group>
+    </accordion>
+
+    <ng-include src="'templates/form/check-controls.html'"></ng-include>
+
+    <ng-include src="'templates/form/button-group.html'"></ng-include>
+</form>
+
+
+
+

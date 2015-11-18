@@ -1,0 +1,11 @@
+<div class="fb-tab-container">
+    <div id="empty"></div>
+    <ul ng-if="formFieldTabs.length > 0" class="nav nav-tabs nav-justified">
+        <li ng-repeat="tab in formFieldTabs" ng-class="{active:activeTab==tab}">
+            <a href='#' ng-click="selectTab($event, tab)">{{tab.labels.name}}</a>
+        </li>
+    </ul>
+
+    <div form-field-tab="activeTab"  class="fb-tab">
+    </div>
+</div>

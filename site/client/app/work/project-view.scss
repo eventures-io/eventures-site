@@ -17,6 +17,7 @@
   margin-bottom: 150px;
 }
 
+/* Navigation ------*/
 .project-nav-close {
   position: absolute;
   top: 0px;
@@ -37,10 +38,11 @@
 }
 
 .project-nav-close:hover {
-   color: #008000;
-   background-color: white;
+  color: #008000;
+  background-color: white;
 }
 
+/* Common styles ------*/
 .project-img {
   position: absolute;
   z-index: 4;
@@ -58,11 +60,16 @@
 }
 
 .project-header,
-.project-description {
+.project-description-full {
   @extend .flex-container;
   p {
     font-size: larger;
   }
+}
+
+.project-description {
+  @extend .project-description-full;
+  @extend .content-container;
 }
 
 .project-header {
@@ -153,9 +160,12 @@
 /* Mobile ------*/
 @media (max-width: $screen-sm) {
   .header-container {
-    height: 180vh;
+    height: 160vh;
   }
 
+  scroll-button {
+    display: none;
+  }
   .project-img {
     position: static;
     display: block;
@@ -167,6 +177,10 @@
     width: 100vw;
   }
 
+  .project-visual {
+    order: inherit !important;
+  }
+
   .project-header {
     overflow: auto;
   }
@@ -176,7 +190,7 @@
   }
 }
 
-.project-description {
+.project-description-full {
   min-height: 100vh;
 
   .description-text {
@@ -232,24 +246,55 @@
 
 .screenshot-container-end {
   width: 100vw;
-  height: 70vh;
+  max-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+}
+
+@media (max-width: $container-width) {
+  .screenshot-wrapper {
+    margin: 0 5%;
+  }
+}
+
+@media (max-width: $screen-sm) {
+  .screenshot-container-end {
+    flex-direction: column;
+  }
+  .flex-spacer {
+    display: none;
+  }
+
+  .screenshot-container-end .flex-image {
+    max-width: 100% !important;
+    border: none !important;
+  }
+
+  .polaroiz-font {
+    height: 30vh !important;
+    width: 70% !important;
+    align-self: flex-end;
+
+  }
 }
 
 .screenshot-container-full {
-  width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  margin: 0;
+  width: calc(100vw - 6%);
+  margin: 0 3%;
+
 }
 
 .screenshot {
   display: flex;
   height: 60vh;
   min-width: 100%;
-  background-color: #243060;
+  background-color: #808080;
+}
+
+.flex-spacer {
+  flex: 1 1 1em;
 }
 
 .flex-image {
@@ -264,18 +309,20 @@
   width: auto;
 }
 
+.flex-image-70 {
+  @extend .flex-image;
+  height: 70vh;
+}
+
 .flex-image-50 {
   position: relative;
   width: 50%;
-  cursor: crosshair;
+  cursor: url(../assets/icons/plus-cursor.png), auto;
   border: solid $primary-color;
   overflow: visible;
   transition: all 0.3s linear;
 }
 
-.flex-image-50:hover {
-  border: transparent;
-}
 .flex-image-50 img {
   width: 100%;
   height: auto;
@@ -297,38 +344,33 @@
   border-width: 3px 6px 6px 3px;
 }
 
-.flex-image-50.left-up:hover {
-  position: absolute;
-  z-index: 9;
-    transform: translateX(25%) translateY(25%) scale(1.5);
-}
-
-.flex-image-50.right-up:hover {
-  position: absolute;
-  z-index: 9;
-    transform: translateX(-25%) translateY(25%) scale(1.5);
-}
-
-.flex-image-50.left-down:hover {
-  position: absolute;
-  z-index: 9;
-    transform: translateX(25%) translateY(-24%) scale(1.5);
-}
-
-.flex-image-50.right-down:hover {
-  position: absolute;
-  z-index: 9;
-    transform: translateX(-25%) translateY(-24%) scale(1.5);
-}
-
 .flex-image-zoom {
   position: absolute;
+  border: transparent;
   z-index: 9;
 }
 
+.flex-image-50.left-up-zoom {
+  @extend .flex-image-zoom;
+  transform: translateX(25%) translateY(25%) scale(1.5);
+}
+
+.flex-image-50.right-up-zoom {
+  @extend .flex-image-zoom;
+  transform: translateX(-25%) translateY(25%) scale(1.5);
+}
+
+.flex-image-50.left-down-zoom {
+  @extend .flex-image-zoom;
+  transform: translateX(25%) translateY(-24%) scale(1.5);
+}
+
+.flex-image-50.right-down-zoom {
+  @extend .flex-image-zoom;
+  transform: translateX(-25%) translateY(-24%) scale(1.5);
+}
 
 .screenshot-container-end .flex-image {
-  height: 70vh;
   max-width: 50%;
   border-left: 8px solid white;
 }
@@ -405,9 +447,7 @@
 
 .view-source-nav {
   width: 70%;
-  background:
-    linear-gradient(rgba(black, 0.50), rgba(black, 0.50)),
-    url(../../assets/images/code-view.png);
+  background: linear-gradient(rgba(black, 0.50), rgba(black, 0.50)), url(../../assets/images/code-view.png);
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;

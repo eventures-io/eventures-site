@@ -1,0 +1,58 @@
+<form name="form" ng-controller="ModelEditController">
+
+    <h4>Media Data Field</h4>
+
+    <div class="form-group">
+        <label class='control-label'>Type</label>
+        <select ng-model="model.mediaMetadata.type" ng-options="type.type for type in mediaDataTypes"
+                ng-change="mediaTypeSelect()" validator="[required]"
+                class='form-control'/>
+    </div>
+    <div class="form-group">
+        <label class='control-label'>Identifier</label>
+        <select ng-model="model.mediaMetadata.type.identifier"
+                ng-options="identifier.value as identifier.name for identifier in mediaDataIdentifiers"
+                validator="{{required}}" class='form-control'/>
+    </div>
+
+    <accordion close-others="true">
+        <accordion-group  is-open='status.nameRequired'>
+            <accordion-heading>
+                Title
+            </accordion-heading>
+            <ng-include src="'templates/form/name-controls.html'"></ng-include>
+        </accordion-group>
+        <accordion-group>
+            <accordion-heading>
+                Tooltip
+            </accordion-heading>
+            <ng-include src="'templates/form/tooltip-controls.html'"></ng-include>
+        </accordion-group>
+        <accordion-group>
+            <accordion-heading>
+                Empty Text
+            </accordion-heading>
+            <div class="form-group">
+                <label class='control-label'>Empty Text EN</label>
+                <input type='text' ng-model="model.emptyText.values.en"
+                       class='form-control'/>
+            </div>
+            <div class="form-group">
+                <label class='control-label'>Empty Text FR</label>
+                <input type='text' ng-model="model.emptyText.values.fr" class='form-control'/>
+            </div>
+            <div class="form-group">
+                <label class='control-label'>Empty Text NL</label>
+                <input type='text' ng-model="model.emptyText.values.nl" class='form-control'/>
+            </div>
+        </accordion-group>
+    </accordion>
+
+    <ng-include src="'templates/form/check-controls.html'"></ng-include>
+
+    <ng-include src="'templates/form/button-group.html'"></ng-include>
+</form>
+
+
+
+
