@@ -1,0 +1,19 @@
+<div class="fb-model-container">
+    <div ng-show="validationError" class="fb-validation-error">
+        Please make sure:
+        <ul>
+            <li>All elements have at least an english name</li>
+            <li>All group elements contain form fields</li>
+        </ul>
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox" ng-model="showJson" ng-init="showJson=false"/>
+            Show JSON
+        </label>
+    </div>
+    <pre ng-if="showJson">{{jsonForm}}</pre>
+
+    <div class='form-group'>
+        <input type='submit' ng-click="postForm()" class='btn btn-success pull-right' value='Post form'/>
+    </div>
+</div>

@@ -66,8 +66,8 @@
 }
 .plantzr-proto .proto-buttons {
   margin-top: 0;
-  background-color: $main-bg-color;
   padding-top: 20px;
+  background-color: $main-bg-color;
 }
 
 @media (max-width: $screen-sm) {
@@ -75,4 +75,16 @@
     order: 2;
   }
 
+}
+
+
+.form-builder-frame {
+    width: 80vw;
+    height: 60vw;
+    margin: 0 auto;
+
+   iframe {
+     height: 100%;
+     width: 100%;
+   }
 }

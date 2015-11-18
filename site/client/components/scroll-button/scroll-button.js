@@ -10,7 +10,7 @@ angular.module('evtrs-site').directive('scrollTo', function () {
 
             element[0].onclick = function () {
                 var anchor = document.querySelector('#' + scope.scrollTo);
-                TweenLite.to(window, .7, {scrollTo:{y:anchor.offsetTop}, ease:Power4.easeInOut});
+                TweenLite.to(window, .9, {scrollTo:{y:anchor.offsetTop}, ease:Power4.easeInOut});
             }
         }
     }
