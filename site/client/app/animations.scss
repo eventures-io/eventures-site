@@ -24,7 +24,7 @@
 }
 
 .animate-post.ng-leave {
-  animation: slowUp .5s ease-out;
+  animation: shiftUp .5s ease-out;
 }
 
 /* PROJECT ---------*/
@@ -34,7 +34,7 @@
 }
 
 .animate-project.ng-leave {
-  animation: fadeOut .4s linear;
+  animation: shiftLeft .4s linear;
 }
 
 
@@ -47,11 +47,19 @@
   }
 }
 
-@keyframes slowUp {
+@keyframes shiftUp {
   from {
   }
   to {
     transform: translateY(-5%);
+  }
+}
+
+@keyframes shiftLeft {
+  from {
+  }
+  to {
+    transform: translateX(-5%);
   }
 }
 

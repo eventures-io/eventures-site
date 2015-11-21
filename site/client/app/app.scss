@@ -2,18 +2,12 @@
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 //tooltip
 @import "hint.css/src/hint";
-//code highligther
-//@import "prism/themes/prism-coy";
-
-/**
- * App-wide Styles
- */
 
 /* Variables ----*/
 $body-color: #666666;
 $error-color: #B90000;
-$stroke-color: #009600;
-$main-bg-color: #efefef;
+$primary-color: #efefef;
+$secondary-color: #00ce00;
 $project-bg-color: #dcdcdc;
 
 $notes-menu-overlay: rgba(29, 29, 29, 0.9);
@@ -28,6 +22,10 @@ $container-width: 1170px;
   color: #000;
   padding: 0.2em 0;
 }
+
+/**
+ * App-wide Styles
+ */
 
 //TODO move font style to blog section
 body {
@@ -62,8 +60,6 @@ h4 {
   width: 100vw;
 }
 
-
-// Component styles are injected through grunt
 // injector
 @import 'animations.scss';
 @import 'contact/contact.scss';

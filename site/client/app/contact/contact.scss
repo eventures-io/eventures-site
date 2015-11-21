@@ -6,7 +6,7 @@
   font-size: 3em;
   letter-spacing: 8px;
   line-height: 1.5em;
-  background-color: $main-bg-color;
+  background-color: $primary-color;
   background-image: url(../assets/icons/flyer.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -62,7 +62,7 @@
       letter-spacing: 5px;
       font-size: 15px;
       border-radius: 3px;
-      background-color: $main-bg-color;
+      background-color: $primary-color;
       opacity: 0;
       color: #313131;
       transition: opacity .3s ease;

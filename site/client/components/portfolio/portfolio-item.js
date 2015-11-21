@@ -75,7 +75,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         if ($scope.project.imagePosition === 'left') {
                             leftPosition = Math.round(bounding.left + padding + margin);
                         } else {
-                            leftPosition = Math.round(bounding.right - aspectRatio.width - padding);
+                            leftPosition = Math.round(bounding.right - aspectRatio.width - padding - margin);
                         }
                     }
                     return leftPosition;

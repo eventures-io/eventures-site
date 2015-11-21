@@ -24,7 +24,6 @@
   padding: 15px 8px;
 }
 
-
 .header-container {
   height: 100vh;
 }
@@ -49,11 +48,6 @@
   .header-background {
     margin: 0 50px;
   }
-
-  .summary-text {
-    padding: 0 10% 0 20px !important;
-  }
-
 }
 
 .project-header,
@@ -121,6 +115,18 @@
       padding: 10% 25px;
       overflow-y: scroll;
     }
+
+    .summary-text.left {
+      padding: 10%;
+    }
+
+    @media (max-width: 1270px) {
+      .summary-text {
+        padding: 0 10% 0 20px !important;
+      }
+
+    }
+
   }
 
   /* Desktop view ------*/
@@ -203,40 +209,40 @@
   }
 }
 
-.project-footer{
+.project-footer {
   position: fixed;
   display: flex;
   bottom: 0px;
   width: 100vw;
   min-height: 150px;
-  border: 1px solid #808080;
   z-index: -1;
 }
 
 .project-nav {
-   width:15%;
-  background-color: #6f6f6f;
+  width: 15%;
+  background-color: $secondary-color;
   cursor: pointer;
+  transition: background-color .4s;
+  img {
+    display: block;
+    margin: 50px auto;
+    height: 50px;
+    width: 50px;
+   }
 }
- .project-nav img {
-   display: block;
-   margin: 50px auto;
-   height: 50px;
-   width: 50px;
- }
 
-.project-nav img:hover {
-  height: 52px;
-  width: 52px;
-  margin: 49px auto;
+.project-nav:hover {
+  background-color: rgba($secondary-color, .9);
+  img {
+    height: 52px;
+    width: 52px;
+    margin: 49px auto;
+  }
 }
 
 .view-source-nav {
   width: 70%;
-  background:   linear-gradient(
-      rgba(black, 0.50),
-      rgba(black, 0.50)
-  ), url(../../assets/images/code-view.png);
+  background: linear-gradient(rgba(black, 0.50), rgba(black, 0.50)), url(../../assets/images/code-view.png);
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
@@ -244,19 +250,21 @@
   padding-top: 65px;
   font-size: 25px;
 }
+
 .view-source-nav span {
-    cursor: pointer;
-    border-radius: 8px;
-    padding: 1px 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 1px 8px;
 }
 
 .view-source-nav span:hover {
   border: 2px solid white;
 
 }
+
 /* Portfolio view ------*/
 .portfolio {
-  background-color: $main-bg-color;
+  background-color: $primary-color;
 }
 
 .portfolio-container {
@@ -298,7 +306,6 @@
   }
 }
 
-
 /* Mobile view ------*/
 @media (max-width: $screen-sm) {
 
@@ -314,7 +321,6 @@
     border-bottom: 1px solid gray;
   }
 }
-
 
 .bounding-element {
   @extend .content-container;
