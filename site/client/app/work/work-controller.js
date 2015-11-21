@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('evtrs-site')
-    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state, $window) {
+    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state, $window, ScrollService) {
 
         $scope.displaySite = false;
 
@@ -19,8 +19,8 @@ angular.module('evtrs-site')
             $state.go('work');
         };
 
-        $scope.viewOnGithub = function () {
-            var githubUrl = "https://github.com/eventures-io/".concat(PROJECT_CONSTANTS[$scope.activeProject].githubUrl);
+        $scope.viewSource = function () {
+            var githubUrl = "https://github.com/eventures-io/".concat(PROJECT_CONSTANTS[$scope.activeProject].sourceUrl);
             $window.open(githubUrl);
         }
 
@@ -40,6 +40,7 @@ angular.module('evtrs-site')
         };
 
         $scope.iterateProjects = function (iterator) {
+
             var projects = Object.keys(PROJECT_CONSTANTS);
             var index = projects.indexOf($scope.activeProject);
             if (iterator === 'next') {
@@ -47,7 +48,10 @@ angular.module('evtrs-site')
             } else {
                 index = index === 0 ? projects.length -1 : --index;
             }
-            $rootScope.$broadcast('LOAD_PROJECT', {name: projects[index], next: true});
+
+            ScrollService.scrollToTop(function(){
+                $rootScope.$broadcast('LOAD_PROJECT', {name: projects[index], next: true});
+            })
         };
 
     });

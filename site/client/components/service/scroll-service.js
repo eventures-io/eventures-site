@@ -2,17 +2,17 @@
 angular.module('evtrs-site').factory('ScrollService', function () {
     //taken from http://jsfiddle.net/W75mP/
 
-    var getScrollXY =  function () {
+    var getScrollXY = function () {
         var scrOfX = 0, scrOfY = 0;
-        if( typeof( window.pageYOffset ) == 'number' ) {
+        if (typeof( window.pageYOffset ) == 'number') {
             //Netscape compliant
             scrOfY = window.pageYOffset;
             scrOfX = window.pageXOffset;
-        } else if( document.body && ( document.body.scrollLeft || document.body.scrollTop ) ) {
+        } else if (document.body && ( document.body.scrollLeft || document.body.scrollTop )) {
             //DOM compliant
             scrOfY = document.body.scrollTop;
             scrOfX = document.body.scrollLeft;
-        } else if( document.documentElement && ( document.documentElement.scrollLeft || document.documentElement.scrollTop ) ) {
+        } else if (document.documentElement && ( document.documentElement.scrollLeft || document.documentElement.scrollTop )) {
             //IE6 standards compliant mode
             scrOfY = document.documentElement.scrollTop;
             scrOfX = document.documentElement.scrollLeft;
@@ -20,7 +20,7 @@ angular.module('evtrs-site').factory('ScrollService', function () {
         return [ scrOfX, scrOfY ];
     }
 
-    var getDocHeight = function() {
+    var getDocHeight = function () {
         var D = document;
         return Math.max(
             D.body.scrollHeight, D.documentElement.scrollHeight,
@@ -29,15 +29,20 @@ angular.module('evtrs-site').factory('ScrollService', function () {
         );
     }
 
-    var scrolledToBottom =  function() {
+    var scrolledToBottom = function () {
         if (getDocHeight() == getScrollXY()[1] + window.innerHeight) {
             return true;
         }
         return false;
     }
 
+    var scrollToTop = function (onCompleteFunction) {
+        TweenLite.to(window, .6, {scrollTo: {y: 0}, ease: Power2.easeOut, onComplete: onCompleteFunction});
+    };
+
     return {
-        scrolledToBottom: scrolledToBottom
+        scrolledToBottom: scrolledToBottom,
+        scrollToTop: scrollToTop
     };
 
 

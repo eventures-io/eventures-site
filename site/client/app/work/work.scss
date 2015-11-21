@@ -9,8 +9,9 @@
 }
 
 .project-view section {
-  height: 100vh;
   background-color: white;
+  margin-bottom: 150px;
+
 }
 
 .project-nav-close {
@@ -124,8 +125,6 @@
 
   /* Desktop view ------*/
   @media (min-width: $screen-sm) {
-
-
     .project-img {
       position: absolute;
       z-index: 4;
@@ -204,7 +203,57 @@
   }
 }
 
+.project-footer{
+  position: fixed;
+  display: flex;
+  bottom: 0px;
+  width: 100vw;
+  min-height: 150px;
+  border: 1px solid #808080;
+  z-index: -1;
+}
 
+.project-nav {
+   width:15%;
+  background-color: #6f6f6f;
+  cursor: pointer;
+}
+ .project-nav img {
+   display: block;
+   margin: 50px auto;
+   height: 50px;
+   width: 50px;
+ }
+
+.project-nav img:hover {
+  height: 52px;
+  width: 52px;
+  margin: 49px auto;
+}
+
+.view-source-nav {
+  width: 70%;
+  background:   linear-gradient(
+      rgba(black, 0.50),
+      rgba(black, 0.50)
+  ), url(../../assets/images/code-view.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  color: white;
+  padding-top: 65px;
+  font-size: 25px;
+}
+.view-source-nav span {
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 1px 8px;
+}
+
+.view-source-nav span:hover {
+  border: 2px solid white;
+
+}
 /* Portfolio view ------*/
 .portfolio {
   background-color: $main-bg-color;

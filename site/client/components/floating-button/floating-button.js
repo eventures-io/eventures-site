@@ -11,10 +11,10 @@ angular.module('evtrs-site').directive('floatingButton', function ($timeout) {
 
             var element = element[0];
             if (attrs.direction === 'next') {
-                element.querySelector('img').src = 'assets/images/forward-btn-round.svg';
+                element.querySelector('img').src = 'assets/icons/forward-btn-round.svg';
                 element.classList.add('right');
             } else {
-                element.querySelector('img').src = 'assets/images/back-btn-round.svg';
+                element.querySelector('img').src = 'assets/icons/back-btn-round.svg';
                 element.classList.add('left');
             }
             var running = false;

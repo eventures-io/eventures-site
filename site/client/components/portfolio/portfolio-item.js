@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PROJECT_CONSTANTS, UAService) {
+angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PROJECT_CONSTANTS, UAService, ScrollService) {
 
     return {
         templateUrl: 'components/portfolio/portfolio-item.html',
@@ -107,9 +107,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                 projectImg.style.position = 'static';
             };
 
-            var scrollToTop = function (onCompleteFunction) {
-                TweenLite.to(window, .6, {scrollTo: {y: 0}, ease: Power2.easeOut, onComplete: onCompleteFunction});
-            };
 
 
             $scope.$on('LOAD_PROJECT', function (event, project) {
@@ -170,7 +167,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                                 positionLeft = imgPositioning.left - 60 + imgPositioning.padding;
                             }
                             //scroll to top first
-                            scrollToTop();
+                            ScrollService.scrollToTop();
                         }
                         projectImg.style.left = positionLeft + 'px';
                         document.body.appendChild(projectImg);
@@ -210,7 +207,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             resetColumnView();
                         }
 
-                        scrollToTop(transitionProject);
+                        ScrollService.scrollToTop(transitionProject);
                     }
                 }
 
