@@ -1,12 +1,2 @@
-<div class="action-buttons">
-
-    <div class="view-button" ng-click="viewOnGithub()" data-tooltip="View on Github">
-        <i class="font-icon icon-github-outline"></i>
-    </div>
-
-    <div class="next-button" ng-click="openNext()" data-tooltip="Next project">
-        <i class="font-icon icon-next"></i>
-    </div>
-
-
-</div>
+<floating-button direction="next"  ng-click="iterateProjects('next')" ></floating-button>
+<floating-button direction="previous" ng-click="iterateProjects('previous')"></floating-button>

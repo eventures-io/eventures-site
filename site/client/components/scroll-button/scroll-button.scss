@@ -3,11 +3,14 @@
   position: relative;
   text-align: center;
   width: 100%;
-  height: 50px;
+  height: 70px;
   margin-top: 40px;
-  cursor: pointer;
   font-size: 50px;
   transition: all .3s;
+}
+
+.scroll-button .font-icon {
+  cursor: pointer;
 }
 
 .scroll-button:hover {

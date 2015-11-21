@@ -96,7 +96,7 @@ angular
                 })
         }
     }).
-    run(function ($http, PROJECT_CONSTANTS, $rootScope, $state, $window, $location) {
+    run(function ($http, PROJECT_CONSTANTS, $rootScope, $state, $window, $location, ScrollService) {
 
         $rootScope.$on('$stateChangeStart', function (event, to, params) {
             if (to.redirectTo) {
@@ -123,6 +123,14 @@ angular
                     window.location.href = newLocation;
                 }
             }
+        });
+
+
+
+        document.addEventListener('scroll', function (event) {
+           if(ScrollService.scrolledToBottom()){
+                $rootScope.$broadcast('SCROLLED_TO_BOTTOM');
+           }
         });
 
     }).

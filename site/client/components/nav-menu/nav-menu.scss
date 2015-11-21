@@ -9,6 +9,7 @@
   border-style: solid;
   border-color: #333;
   background-color: rgba(0, 0, 0, 0);
+  font-size: 24px;
   z-index: 999;
   //TODO add bounce effect
   transition: border-width 0.3s, background-color 0.3s, height 0s 0.3s;
@@ -16,13 +17,17 @@
 
 .nav-menu-open {
   height: 100%;
-  border-width: 20px 20px 20px 110px;
+  border-width: 20px 20px 20px 180px;
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.3);
   transition: border-width 0.3s, background-color 0.3s;
   .font-icon {
     padding-right: 10px;
   }
+}
+
+.nav-menu-open ul {
+  width: 180px !important;
 }
 
 .nav-menu-open.nav-overlay {
@@ -38,12 +43,13 @@
 .menu-btn {
   position: fixed;
   top: 15px;
-  left: 20px;
+  left: 15px;
   display: block;
-  width: 50px;
-  height: 50px;
-  font-size: large;
+  width: 40px;
+  height: 30px;
+  font-size: 24px;
   cursor: pointer;
+  text-align: left;
   transition: all 1s;
   z-index: 9999;
 }
@@ -58,7 +64,7 @@
   left: 0;
   margin: 0;
   padding: 0;
-  width: 110px;
+  width: 0px;
   list-style: none;
   backface-visibility: hidden;
 

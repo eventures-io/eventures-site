@@ -4,6 +4,8 @@ $transition-pf-lg: 0.7s;
 .portfolio-title {
   padding: 40px;
   visibility: hidden;
+  opacity: 0;
+  transition: opacity .4 .4;
 }
 
 .portfolio-title h1 {
@@ -61,6 +63,7 @@ $transition-pf-lg: 0.7s;
   width: 300px;
   .portfolio-title {
     visibility: visible;
+    opacity: 1;
   }
 
 }
@@ -156,6 +159,7 @@ $transition-pf-lg: 0.7s;
 
     .portfolio-title {
       visibility: hidden;
+      opacity: 0;
     }
   }
 
