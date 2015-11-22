@@ -68,8 +68,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         leftPosition = padding;
 
                     } else {
-                        var margin =  0;
-                        if(window.innerWidth < 1270) {
+                        var margin = 0;
+                        if (window.innerWidth < 1270) {
                             margin = 50;
                         }
                         if ($scope.project.imagePosition === 'left') {
@@ -106,7 +106,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                 visualContainer.appendChild(projectImg);
                 projectImg.style.position = 'static';
             };
-
 
 
             $scope.$on('LOAD_PROJECT', function (event, project) {
@@ -173,12 +172,11 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         document.body.appendChild(projectImg);
                         $scope.$on('PROJECT_VIEW_LOADED', function (event) {
                             document.querySelector('.portfolio-container').style.visibility = 'hidden';
-
                             var summaryText = document.querySelector('.summary-text');
                             summaryText.style.transform = 'translateY(-100%)';
                             var headerBackground = document.querySelector('.header-background');
                             TweenLite.to(headerBackground, .4, {delay: .4, css: {height: '93vh'}, ease: Power3.easeInOut});
-                            TweenLite.to(summaryText, .7, {delay:.4, css: {transform: 'translateY(-40px)'}, ease: Expo.easeOut});
+                            TweenLite.to(summaryText, .7, {delay: .4, css: {transform: 'translateY(-40px)'}, ease: Expo.easeOut});
                         });
                         var tll = new TimelineLite({onComplete: positionImage, onCompleteParams: [imgPositioning, projectImg]});
                         TweenLite.to(element, .6, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });

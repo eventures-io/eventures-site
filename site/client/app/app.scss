@@ -67,7 +67,10 @@ h4 {
 @import 'home/home.scss';
 @import 'notes/post.scss';
 @import 'work/action-buttons.scss';
+@import 'work/portfolio-view.scss';
+@import 'work/project-view.scss';
 @import 'work/projects/projects.scss';
+@import 'work/scroll-button.scss';
 @import 'work/site-view/site.scss';
 @import 'work/work.scss';
 @import 'contact-form/contact-form.scss';
@@ -77,6 +80,5 @@ h4 {
 @import 'portfolio/portfolio-item.scss';
 @import 'preloader/preloader.scss';
 @import 'progress-button/progress-button.scss';
-@import 'scroll-button/scroll-button.scss';
 @import 'social/social.scss';
 // endinjector

@@ -34,7 +34,7 @@
 }
 
 .animate-project.ng-leave {
-  animation: shiftLeft .4s linear;
+  animation: shiftLeft .2s linear;
 }
 
 
@@ -59,19 +59,10 @@
   from {
   }
   to {
-    transform: translateX(-5%);
+    transform: translateX(-5%) scale(0.99);
+    opacity: 0;
   }
 }
-
-//@keyframes slideUp {
-//  from {
-//  }
-//  to {
-//    transform: translateY(-10%);
-//  }
-//}
-
-
 
 @keyframes scaleDown {
   from {
@@ -85,9 +76,11 @@
 @keyframes fadeIn {
   0% {
     opacity: 0;
+    transform: scale(0.99);
   }
   100% {
     opacity: 1;
+    transform: scale(1);
   }
 }
 

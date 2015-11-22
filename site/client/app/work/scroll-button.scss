@@ -7,6 +7,10 @@
   margin-top: 40px;
   font-size: 50px;
   transition: all .3s;
+
+  @media (max-width: 1270px) {
+    margin-top: 0px;
+  }
 }
 
 .scroll-button .font-icon {
@@ -16,3 +20,5 @@
 .scroll-button:hover {
   transform: translateY(5px);
 }
+
+
