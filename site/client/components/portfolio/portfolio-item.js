@@ -171,13 +171,13 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             var summaryText = document.querySelector('.summary-text');
                             summaryText.style.transform = 'translateY(-100%)';
                             var headerBackground = document.querySelector('.header-background');
-                            TweenLite.to(headerBackground, .4, {delay: .4, css: {height: '93vh'}, ease: Power3.easeInOut});
-                            TweenLite.to(summaryText, .7, {delay: .4, css: {transform: 'translateY(-40px)'}, ease: Expo.easeOut});
+                            TweenLite.to(headerBackground, .4, {delay: .2, css: {height: '93vh'}, ease: Power3.easeInOut});
+                            TweenLite.to(summaryText, .5, {delay: .4, css: {transform: 'translateY(-40px)'}, ease: Expo.easeOut});
                         });
                         var tll = new TimelineLite({onComplete: positionImage, onCompleteParams: [imgPositioning, projectImg]});
                         TweenLite.to(element, .6, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });
                         tll
-                            .to(projectImg, .8, {css: {
+                            .to(projectImg, .6, {css: {
                                 opacity: 1,
                                 height: 'auto',
                                 width: imgPositioning.width + 'px',
@@ -209,7 +209,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
             $scope.$on('CLOSE_PROJECT', function (event, project) {
                 if (project === $scope.project.name) {
-                    projectView.style.zIndex = '0';
                     portfolio.style.visibility = 'visible';
                     portfolio.style.opacity = '1';
                 }
