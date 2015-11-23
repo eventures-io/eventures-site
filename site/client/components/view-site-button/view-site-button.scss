@@ -1,0 +1,28 @@
+.view-site-btn {
+  position: relative;
+  border: 3px solid green;
+  color: black;
+  text-transform: uppercase;
+  margin-left: 45vw;
+  background: transparent;
+}
+
+.view-site-btn::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: green;
+  z-index: 1;
+}
+
+.view-site-btn:hover,
+.view-site-btn:active {
+  color: #0e83cd;
+}
+
+.view-site-btn:hover::after,
+.view-site-btn:active::after {
+  width: 100%;
+}

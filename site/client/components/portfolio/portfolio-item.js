@@ -68,14 +68,10 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         leftPosition = padding;
 
                     } else {
-                        var margin = 0;
-                        if (window.innerWidth < 1270) {
-                            margin = 50;
-                        }
                         if ($scope.project.imagePosition === 'left') {
-                            leftPosition = Math.round(bounding.left + padding + margin);
+                            leftPosition = Math.round(bounding.left + padding);
                         } else {
-                            leftPosition = Math.round(bounding.right - aspectRatio.width - padding - margin);
+                            leftPosition = Math.round(bounding.right - aspectRatio.width - padding);
                         }
                     }
                     return leftPosition;

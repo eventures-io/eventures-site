@@ -21,7 +21,7 @@ angular
 
         $urlRouterProvider
             .otherwise('/');
-        if (Modernizr.cssvwunit) {
+        if (Modernizr.cssvwunit) { // jshint ignore:line
             $stateProvider
                 .state('home', {
                     url: '/',
@@ -84,7 +84,7 @@ angular
                             templateUrl: 'app/work/site-view/site-view.html'
                         }
                     }
-                })
+                });
         } else {
             $stateProvider
                 .state('browsehappy', {
@@ -93,7 +93,7 @@ angular
                     controller: function($rootScope) {
                         $rootScope.$broadcast('HIDE_MENU_BTN');
                     }
-                })
+                });
         }
     }).
     run(function ($http, PROJECT_CONSTANTS, $rootScope, $state, $window, $location, ScrollService) {
@@ -101,7 +101,7 @@ angular
         $rootScope.$on('$stateChangeStart', function (event, to, params) {
             if (to.redirectTo) {
                 event.preventDefault();
-                $state.go(to.redirectTo, params)
+                $state.go(to.redirectTo, params);
             }
         });
 
@@ -116,8 +116,8 @@ angular
         });
 
         $rootScope.$watch(function () {
-            return $location.path()
-        }, function (newLocation, oldLocation) {
+            return $location.path();
+        }, function (newLocation) {
             if ($rootScope.actualLocation === newLocation) {
                 if ($rootScope.actualLocation === newLocation) {
                     window.location.href = newLocation;
@@ -125,9 +125,7 @@ angular
             }
         });
 
-
-
-        document.addEventListener('scroll', function (event) {
+        document.addEventListener('scroll', function() {
            if(ScrollService.scrolledToBottom()){
                 $rootScope.$broadcast('SCROLLED_TO_BOTTOM');
            }
