@@ -15,8 +15,10 @@ angular.module('evtrs-site')
         });
 
         $scope.closeProject = function () {
-            $rootScope.$broadcast('CLOSE_PROJECT', $scope.activeProject);
-            $state.go('work');
+           // ScrollService.scrollToTop(function() {
+                $rootScope.$broadcast('CLOSE_PROJECT', $scope.activeProject);
+                $state.go('work');
+            //})
         };
 
         $scope.viewSource = function () {
