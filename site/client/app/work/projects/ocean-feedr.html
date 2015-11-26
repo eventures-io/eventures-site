@@ -4,7 +4,7 @@
             <div class="header-background">
                 <header class="project-header">
                     <div class="project-visual">
-                        <div class="visual-container" ng-click="openSite()">
+                        <div class="visual-container" ng-click="openSite('iframe')">
 
                         </div>
                     </div>
@@ -33,31 +33,31 @@
                                 It allows visitors to take immediate action on a number of issues that need public
                                 support.
                             </p>
-                            <ng-include src="'app/work/scroll-button.html'"></ng-include>
+                            <scroll-button to="project-description"></scroll-button>
                         </div>
                     </div>
                 </header>
             </div>
         </div>
+        <!--project-background-->
     </div>
+    <!--header-container-->
     <div id="project-description" class="project-description">
         <div class="screenshot-container">
             <div class="screenshot-left">
                 <div class="flex-image left">
-                    <img src="../assets/images/ocean-feedr-1.png">
+                    <img src="../assets/images/ocean-feedr/ocean-feedr-1.png">
                 </div>
             </div>
             <div class="screenshot-right">
                 <div class="flex-image right">
-                    <img src="../assets/images/ocean-feedr-2.png">
+                    <img src="../assets/images/ocean-feedr/ocean-feedr-2.png">
                 </div>
             </div>
         </div>
     </div>
-    <div>
-        <button class="view-site-btn">view site</button>
-    </div>
-
+    <!--project-description-->
+    <view-site-button window="iframe"></view-site-button>
 </section>
 <ng-include src="'app/work/project-footer.html'"></ng-include>
 <div ui-view="site" class="animate-site"></div>

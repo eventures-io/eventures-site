@@ -28,7 +28,7 @@
                             <p>
                                 This is an AngularJS version of the Zoomooz picture gallery
                             </p>
-                            <ng-include src="'app/work/scroll-button.html'"></ng-include>
+                            <scroll-button to="screenshot-container"></scroll-button>
                         </div>
 
                     </div>
@@ -36,6 +36,21 @@
             </div>
         </div>
     </div>
+    <div id="screenshot-container"  class="screenshot-container-full">
+        <div class="polaroiz-font">
+              <span class="primary">
+                 Primary Font
+              </span>
+              <span class="wire-one">
+                 Wire One
+              </span>
+        </div>
+        <div class="flex-image"><img src="assets/images/polaroiz/polaroiz-2.png"></div>
+        <div class="flex-image"><img src="assets/images/polaroiz/polaroiz-1.png"></div>
+    </div>
+    <view-site-button window="iframe"></view-site-button>
+
+
 </section>
 <ng-include src="'app/work/project-footer.html'"></ng-include>
 <div ui-view="site" class="animate-site"></div>

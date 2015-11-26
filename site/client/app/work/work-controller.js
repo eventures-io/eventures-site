@@ -15,9 +15,9 @@ angular.module('evtrs-site')
         });
 
         $scope.closeProject = function () {
-           // ScrollService.scrollToTop(function() {
-                $rootScope.$broadcast('CLOSE_PROJECT', $scope.activeProject);
-                $state.go('work');
+            // ScrollService.scrollToTop(function() {
+            $rootScope.$broadcast('CLOSE_PROJECT', $scope.activeProject);
+            $state.go('work');
             //})
         };
 
@@ -26,15 +26,20 @@ angular.module('evtrs-site')
             $window.open(githubUrl);
         }
 
-        $scope.openSite = function (blank) {
-            if (!blank) {
+
+        $scope.$on('OPEN_SITE', function (event, window) {
+            $scope.openSite(window);
+        });
+
+        $scope.openSite = function (window) {
+            if (window === 'iframe') {
                 $rootScope.$broadcast('HIDE_MENU_BTN');
                 $scope.siteUrl = PROJECT_CONSTANTS[$scope.activeProject].siteUrl;
                 $state.go('work.project.site', {project: $scope.activeProject});
             } else {
                 $window.open(PROJECT_CONSTANTS[$scope.activeProject].siteUrl);
             }
-        };
+        }
 
         $scope.closeSite = function () {
             $rootScope.$broadcast('SHOW_MENU_BTN');
@@ -48,10 +53,10 @@ angular.module('evtrs-site')
             if (iterator === 'next') {
                 index = index === projects.length - 1 ? 0 : ++index;
             } else {
-                index = index === 0 ? projects.length -1 : --index;
+                index = index === 0 ? projects.length - 1 : --index;
             }
 
-            ScrollService.scrollToTop(function(){
+            ScrollService.scrollToTop(function () {
                 $rootScope.$broadcast('LOAD_PROJECT', {name: projects[index], next: true});
             })
         };

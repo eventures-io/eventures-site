@@ -1,25 +1,31 @@
 .view-site-btn {
+  display: block;
   position: relative;
-  border: 3px solid green;
-  color: black;
+  margin: 30px auto;
+  border: 5px solid rgba(gray, 0.5);
+  border-radius: 2px;
+  padding: 8px 18px;
+  color: #393939;
   text-transform: uppercase;
-  margin-left: 45vw;
   background: transparent;
+  cursor: pointer;
 }
 
 .view-site-btn::after {
   position: absolute;
+  display: inline-block;
+  content: '';
   top: 0;
   left: 0;
   width: 50%;
   height: 100%;
-  background: green;
-  z-index: 1;
+  background-color: green;
+  z-index: -1;
 }
 
 .view-site-btn:hover,
 .view-site-btn:active {
-  color: #0e83cd;
+
 }
 
 .view-site-btn:hover::after,

@@ -9,7 +9,7 @@ angular.module('evtrs-site').animation('.animate-site', function () {
         enter: function ($element, done) {
             $element[0].style.visibility = 'visible';
             $element[0].style.position = 'absolute';
-            TweenLite.fromTo($element[0], 0.4, {css: {
+            TweenLite.fromTo($element[0], 5.4, {css: {
                 top: '100vh'
             }}, {css: {
                 top: '0'

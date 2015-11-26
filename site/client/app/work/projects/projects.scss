@@ -1,11 +1,35 @@
 /* Polaroiz ----*/
 .polaroiz h1 {
   font-family: 'Allerta Stencil', sans-serif;
-  font-size: 42px;
+  font-size: 48px;
 }
 
 .polaroiz .project-background {
   height: 76vh;
+}
+
+.polaroiz-font {
+  width: 150px;
+  height: 100%;
+  padding: 40px 0 0 10px;
+  color: $matte-black;
+  background-color: #d31104;
+}
+
+.polaroiz-font .primary {
+  display: block;
+  font-size: large;
+  font-family: 'Share', sans-serif;
+  font-weight: bold;
+  padding: 10px 0px;
+}
+
+.polaroiz-font .wire-one {
+  display: block;
+  font-family: 'Wire One', sans-serif;
+  font-size: xx-large;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 /* Ocean-feedr -----*/
@@ -23,7 +47,7 @@
   h1 {
     font-family: 'Sarina', sans-serif;
     font-size: 42px;
-    color: #303030;
+    color: $matte-black;
     line-height: 1em;
   }
 }
@@ -38,7 +62,7 @@
 
 /* Plantzr mobile  ------*/
 .plantzr-mobile {
-   color: #000000;
+  color: $matte-black;
 }
 
 .plantzr-mobile h1 {
@@ -54,7 +78,7 @@
   font-family: 'Aldrich', sans-serif;
   font-size: 20px;
   font-weight: normal;
-  color: #000000;
+  color: $matte-black;
 }
 
 .plantzr-mobile .project-background {
@@ -66,7 +90,6 @@
   background-color: rgba(#b0b0b0, 0.8);
 }
 
-
 /* Plantzr proto  ----*/
 .plantzr-proto .project-background {
   height: 74vh;
@@ -75,6 +98,7 @@
 .plantzr-proto h1 {
   max-width: 400px;
 }
+
 .plantzr-proto .project-visual {
   order: 2;
 }
@@ -118,6 +142,7 @@
 .angular-loader .project-background {
   height: 74vh;
 }
+
 .angular-loader h1 {
   font-family: 'Aldrich', sans-serif;
   font-size: 42px;

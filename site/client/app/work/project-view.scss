@@ -7,6 +7,10 @@
   z-index: 0;
 }
 
+.project-view h1 {
+  color: $matte-black;
+}
+
 .project-view section {
   background-color: white;
   //reveal footer
@@ -18,10 +22,17 @@
   top: 0px;
   right: 0px;
   height: 50px;
+  width: 50px;
   font-size: 20px;
-  cursor: pointer;
-  padding: 15px 8px;
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
   z-index: 9;
+
+  .font-icon {
+    cursor: pointer;
+  }
 }
 
 .project-img {
@@ -67,12 +78,14 @@
       content: 'view site';
       position: absolute;
       top: 190px;
-      left: 10px;
-      background-color: #ffffff;
+      right: 10px;
+      background-color: white;
       border-radius: 7px;
-      border: 1px solid gray;
+      color: #000000;
+      border: 3px solid #000000;
       padding: 7px 30Px;
-      font-size: x-large;
+      font-size: xx-large;
+      font-family: 'Ubuntu Condensed', sans-serif;
       opacity: 0;
       z-index: 9999;
       transition: opacity .3s linear;
@@ -158,6 +171,8 @@
 }
 
 .project-description {
+  min-height: 100vh;
+
   .description-text {
     width: 368px;
     flex-grow: 2;
@@ -203,14 +218,21 @@
 .screenshot-container {
   @extend .content-container;
   width: 100%;
-  padding-bottom: 10%;
+}
+
+.screenshot-container-full {
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .screenshot {
   display: flex;
   height: 60vh;
   min-width: 100%;
-  background-color: gray;
+  background-color: #4052c9;
 }
 
 .flex-image {
@@ -223,6 +245,11 @@
 .flex-image img {
   height: 100%;
   width: auto;
+}
+
+.screenshot-container-full .flex-image {
+  height: 70vh;
+  border-left: 8px solid white;
 }
 
 .screenshot-left {
@@ -258,6 +285,10 @@
   }
 }
 
+/* View site btn----*/
+.btn-container {
+  padding-bottom: 30px;
+}
 
 /* Footer --------*/
 .project-footer {
@@ -265,29 +296,29 @@
   display: flex;
   bottom: 0px;
   width: 100vw;
-  min-height: 150px;
+  min-height: 100px;
   z-index: -1;
 }
 
 .project-nav {
   width: 15%;
-  background-color: $secondary-color;
+  background-color: #494949;
   cursor: pointer;
-  transition: background-color .4s;
+  transition: all .4s;
   img {
     display: block;
-    margin: 50px auto;
+    margin: 25px auto;
     height: 50px;
     width: 50px;
   }
 }
 
 .project-nav:hover {
-  background-color: rgba($secondary-color, .9);
+  box-shadow: inset 0 0 12px #000000;
   img {
-    height: 52px;
-    width: 52px;
-    margin: 49px auto;
+    height: 48px;
+    width: 48px;
+    margin: 25px auto;
   }
 }
 
@@ -298,7 +329,7 @@
   background-size: cover;
   text-align: center;
   color: white;
-  padding-top: 65px;
+  padding-top: 35px;
   font-size: 20px;
 }
 
@@ -313,6 +344,4 @@
   border: 2px solid #ffffff;
   border-radius: 8px;
 }
-
-
 

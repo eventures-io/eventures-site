@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300|Raleway|Share|Metrophobic|Allerta+Stencil|Sarina|Aldrich|PT+Sans+Narrow|Ubuntu+Condensed);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300|Raleway|Share|Metrophobic|Allerta+Stencil|Sarina|Aldrich|PT+Sans+Narrow|Ubuntu+Condensed|Wire+One);
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 //tooltip
 @import "hint.css/src/hint";
@@ -9,6 +9,7 @@ $error-color: #B90000;
 $primary-color: #efefef;
 $secondary-color: #00ce00;
 $project-bg-color: #dcdcdc;
+$matte-black: #232323;
 
 $notes-menu-overlay: rgba(29, 29, 29, 0.9);
 $notes-menu-color: #F5F5F5;
@@ -70,7 +71,6 @@ h4 {
 @import 'work/portfolio-view.scss';
 @import 'work/project-view.scss';
 @import 'work/projects/projects.scss';
-@import 'work/scroll-button.scss';
 @import 'work/site-view/site.scss';
 @import 'contact-form/contact-form.scss';
 @import 'floating-button/floating-button.scss';
@@ -79,6 +79,7 @@ h4 {
 @import 'portfolio/portfolio-item.scss';
 @import 'preloader/preloader.scss';
 @import 'progress-button/progress-button.scss';
+@import 'scroll-button/scroll-button.scss';
 @import 'social/social.scss';
 @import 'view-site-button/view-site-button.scss';
 // endinjector
