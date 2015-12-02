@@ -137,18 +137,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     projectView.style.zIndex = '0';
                     portfolio.style.opacity = '1';
 
-//                   projectView.style.transition = 'opacity .6s';
-//                    TweenLite.to(projectView, 0.6, {css: {
-//                        opacity: '0'
-//                    },
-//                        ease: Power4.easeOut,
-//                        onComplete: function () {
-//                            projectView.style.zIndex = '0';
-//                            //projectView.style.transition = '';
-//                            portfolio.style.opacity = '1';
-//                        }
-//                    });
-
                 }
             });
 

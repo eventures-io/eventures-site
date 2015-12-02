@@ -86,5 +86,27 @@
    iframe {
      height: 100%;
      width: 100%;
+     overflow: scroll;
    }
+}
+
+.form-builder .project-screenshot {
+  max-width: 90vw;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.project-next-button {
+   height: 90px;
+   background-color: $main-bg-color;
+   .next-button {
+     @extend .action-button;
+     width: 100px;
+     margin: 40px auto;
+     cursor: pointer;
+   }
+
 }

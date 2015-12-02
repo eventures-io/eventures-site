@@ -15,7 +15,7 @@
   }
 
   .project-nav-close {
-    position: fixed;
+    position: absolute;
     top: 0px;
     right: 0px;
     height: 50px;
@@ -66,19 +66,21 @@
       content: 'view site';
       position: absolute;
       top: 190px;
-      left: 10px;
-      background-color: #ffffff;
+      right: 10px;
+      background-color: white;
       border-radius: 7px;
-      border: 1px solid gray;
+      color: #000000;
+      border: 3px solid #000000;
       padding: 7px 30Px;
-      font-size: x-large;
+      font-size: xx-large;
+      font-family: 'Ubuntu Condensed', sans-serif;
       opacity: 0;
       z-index: 9999;
       transition: opacity .3s linear;
     }
 
     .visual-container:hover::after {
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .visual-container.no-link {
