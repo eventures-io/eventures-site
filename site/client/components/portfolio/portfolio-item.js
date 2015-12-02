@@ -25,6 +25,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             var previewImg = element.querySelector('.preview-img');
             var portfolio = document.querySelector('.portfolio-section');
             var portfolioTitle = element.querySelector('.portfolio-title');
+            var navClose = document.querySelector('.project-nav-close');
             var paddingTop = 30;
 
             /**
@@ -105,8 +106,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
 
             $scope.$on('LOAD_PROJECT', function (event, project) {
+                navClose.style.visibility = 'visible';
                 if (project.name === $scope.project.name) {
-
                     var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction') ||
                         window.getComputedStyle(portfolio, null).getPropertyValue('-webkit-flex-direction');
                     var imgBounding = previewImg.getBoundingClientRect();
@@ -168,6 +169,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         document.body.appendChild(projectImg);
                         $scope.$on('PROJECT_VIEW_LOADED', function (event) {
                             document.querySelector('.portfolio-container').style.visibility = 'hidden';
+
                             var summaryText = document.querySelector('.summary-text');
                             summaryText.style.transform = 'translateY(-100%)';
                             var headerBackground = document.querySelector('.header-background');
@@ -211,6 +213,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                 if (project === $scope.project.name) {
                     portfolio.style.visibility = 'visible';
                     portfolio.style.opacity = '1';
+                    navClose.style.visibility = 'hidden';
                 }
             });
 

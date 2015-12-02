@@ -1,56 +1,68 @@
 .home-section {
-  position: absolute;
-  top: 0;
-  width: 100vw;
   height: 100vh;
-  background: rgba(black, 0.7);
-  color: whitesmoke;
-  z-index: 99;
-  .home-header {
-    margin-top: 15%;
-    width: 50%;
-    font-size: 36px;
-    font-family: 'Ubuntu Condensed', sans-serif;
-    letter-spacing: 2px;
-    line-height: 1.3em;
-    text-align: right;
-    h1 {
-       font-family: 'PT Sans Narrow', sans-serif;
-       letter-spacing: 8px;
-    }
+  width: 100vw;
+  overflow: hidden;
+}
+
+.home-bg-img {
+  height: 100%;
+  background: linear-gradient(
+      rgba(black, 0.3),
+      rgba(black, 0.3)),
+  url(../assets/images/home.jpeg) no-repeat;
+  background-size: cover;
+  background-position: -50px 0;
+  filter: grayscale(80%);
+  transform: scale(1.08);
+  transition: 0.3s linear;
+  transition-property: background-position;
+}
+
+.down-arrow {
+  position: absolute;
+  top: calc(50vh - 75px);
+  height: 150px;
+  width: 20px;
+  background-image: url(../assets/icons/arrow-down.svg);
+  background-repeat: no-repeat;
+}
+
+.home-section .down-arrow-left {
+  @extend .down-arrow;
+  left: 15px;
+}
+
+.home-section .down-arrow-right {
+  @extend .down-arrow;
+  right: 15px;
+}
+
+.home-header {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  color: white;
+  z-index: 1;
+  img {
+    height: 150px;
+    width: 150px;
   }
+}
 
-  .welcome-button {
-    margin-left: 4px;
-    background-color: #00ce00;
-    border-radius: 8px;
-    padding: 3px 10px;
-    cursor: pointer;
-    transition: all .7s;
+.home-scroll-btn {
+  position: absolute;
+  bottom: 30px;
+  left: calc(50vw - 25px);
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(black, 0.5);
+  padding: 15px;
+  cursor: pointer;
+  opacity: 0.7;
+  img {
+    width: 20px;
+    height: auto;
   }
-
-  .welcome-button:hover {
-    padding: 4px 10px;
-  }
-
-  @media (max-width: $screen-md) {
-    .home-header {
-      width: 70%;
-    }
-  }
-
-  @media (max-width: $screen-sm) {
-    .home-header {
-      margin-top: 30%;
-      width: 100%;
-      padding: 0 25px;
-      text-align: center;
-      font-size: 30px;
-
-      h1 {
-        font-size: 40px;
-      }
-    }
-  }
-
 }

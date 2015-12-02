@@ -36,8 +36,11 @@ angular.module('evtrs-site').directive('navMenu', function ($state, $timeout) {
                 var state = current.name === 'work.home' ? 'home' : current.name.split('.')[0];
                 var target = element.querySelector('#' + state);
                 setActiveState(target);
-
             });
+
+            $scope.$on('GO_TO_WORK', function() {
+                $state.go('work');
+            })
 
 
             var setActiveState = function(target){

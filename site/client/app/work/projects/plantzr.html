@@ -36,22 +36,48 @@
                                 progressively.
                             </p>
 
-                            <p>
-                                Plantzr is a web application, based on the MEAN-stack, that allows to create (and edit)
-                                a
-                                descriptive card for each plant species I want to document.
 
-                                To be able to upload photo’s directly from the field, I also added a native mobile
-                                application.
-                                <!--See <a ui-sref="work({project:'plantzr-mobile'})">plantzr-mobile</a>-->
-                            </p>
-                            <scroll-button to="project-description"></scroll-button>
+                            <scroll-button to="screenshot-container"></scroll-button>
                         </div>
                     </div>
                 </header>
             </div>
         </div>
     </div>
+    <div id="screenshot-container" >
+        <div class="screenshot-container-full">
+            <div class="flex-image-50 left-up">
+                <img src="assets/images/plantzr/plantzr-1.png">
+
+                <div class="plantzr-description">
+                    <p>
+                        Plantzr is a web application, based on the MEAN-stack, that allows to create (and edit)
+                        a
+                        descriptive card for each plant species I want to document.
+                    </p>
+
+                    <p>
+                        To be able to upload photo’s directly from the field, I also added a native mobile
+                        application. <br/>
+                        See <a ui-sref="work({project:'plantzr-mobile'})">plantzr-mobile</a>
+                    </p>
+                </div>
+
+            </div>
+            <div class="flex-image-50 right-up">
+                <img src="assets/images/plantzr/plantzr-4.png">
+            </div>
+        </div>
+        <div class="screenshot-container-full">
+            <div class="flex-image-50 left-down">
+                <img src="assets/images/plantzr/plantzr-2.png">
+            </div>
+            <div class="flex-image-50 right-down">
+                <img src="assets/images/plantzr/plantzr-3.png">
+            </div>
+        </div>
+    </div>
+    <view-site-button window="iframe"></view-site-button>
 </section>
 <ng-include src="'app/work/project-footer.html'"></ng-include>
 <div ui-view="site" class="animate-site"></div>

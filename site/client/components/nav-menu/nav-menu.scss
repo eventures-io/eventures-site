@@ -54,6 +54,16 @@
   z-index: 9999;
 }
 
+.menu-btn:hover {
+  height: 30px;
+  img {
+    height: 30px;
+    width: 40px;
+  }
+
+}
+
+
 .menu-btn-hidden {
   left: -100px
 }

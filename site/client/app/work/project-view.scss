@@ -28,11 +28,17 @@
   text-align: center;
   border-bottom: 1px solid gray;
   border-left: 1px solid gray;
+  visibility: hidden;
   z-index: 9;
-
+  transition: background-color .3s;
   .font-icon {
     cursor: pointer;
   }
+}
+
+.project-nav-close:hover {
+   color: #008000;
+   background-color: white;
 }
 
 .project-img {
@@ -215,12 +221,16 @@
 }
 
 /* screenshots ------*/
+#screenshot-container {
+  padding: 40px 0;
+}
+
 .screenshot-container {
   @extend .content-container;
   width: 100%;
 }
 
-.screenshot-container-full {
+.screenshot-container-end {
   width: 100vw;
   height: 70vh;
   display: flex;
@@ -228,11 +238,18 @@
   justify-content: flex-end;
 }
 
+.screenshot-container-full {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
 .screenshot {
   display: flex;
   height: 60vh;
   min-width: 100%;
-  background-color: #4052c9;
+  background-color: #243060;
 }
 
 .flex-image {
@@ -247,8 +264,72 @@
   width: auto;
 }
 
-.screenshot-container-full .flex-image {
+.flex-image-50 {
+  position: relative;
+  width: 50%;
+  cursor: crosshair;
+  border: solid $primary-color;
+  overflow: visible;
+  transition: all 0.3s linear;
+}
+
+.flex-image-50:hover {
+  border: transparent;
+}
+.flex-image-50 img {
+  width: 100%;
+  height: auto;
+}
+
+.flex-image-50.left-up {
+  border-width: 6px 3px 3px 6px;
+}
+
+.flex-image-50.right-up {
+  border-width: 6px 6px 3px 3px;
+}
+
+.flex-image-50.left-down {
+  border-width: 3px 3px 6px 6px;
+}
+
+.flex-image-50.right-down {
+  border-width: 3px 6px 6px 3px;
+}
+
+.flex-image-50.left-up:hover {
+  position: absolute;
+  z-index: 9;
+    transform: translateX(25%) translateY(25%) scale(1.5);
+}
+
+.flex-image-50.right-up:hover {
+  position: absolute;
+  z-index: 9;
+    transform: translateX(-25%) translateY(25%) scale(1.5);
+}
+
+.flex-image-50.left-down:hover {
+  position: absolute;
+  z-index: 9;
+    transform: translateX(25%) translateY(-24%) scale(1.5);
+}
+
+.flex-image-50.right-down:hover {
+  position: absolute;
+  z-index: 9;
+    transform: translateX(-25%) translateY(-24%) scale(1.5);
+}
+
+.flex-image-zoom {
+  position: absolute;
+  z-index: 9;
+}
+
+
+.screenshot-container-end .flex-image {
   height: 70vh;
+  max-width: 50%;
   border-left: 8px solid white;
 }
 
@@ -324,7 +405,9 @@
 
 .view-source-nav {
   width: 70%;
-  background: linear-gradient(rgba(black, 0.50), rgba(black, 0.50)), url(../../assets/images/code-view.png);
+  background:
+    linear-gradient(rgba(black, 0.50), rgba(black, 0.50)),
+    url(../../assets/images/code-view.png);
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;

@@ -20,12 +20,13 @@ angular
         $locationProvider.html5Mode(true);
 
         $urlRouterProvider
-            .otherwise('/');
+            .otherwise('/error');
         if (Modernizr.cssvwunit) { // jshint ignore:line
             $stateProvider
                 .state('home', {
                     url: '/',
-                    redirectTo: 'work.home'
+                    templateUrl: 'app/home/home.html'
+                    //redirectTo: 'work.home'
                 })
                 .state('contact', {
                     url: '/contact',
@@ -38,7 +39,7 @@ angular
                     url: '/notes',
                     templateUrl: 'app/notes/notes.html',
                     controller: 'NotesController',
-                    data: {title: 'Notes'}
+                    data: {title: 'Eventures: Notes'}
                 }).state('notes.post', {
                     url: '/:postId/:postTitle',
                     views: {
@@ -115,6 +116,7 @@ angular
             $rootScope.actualLocation = $location.path();
         });
 
+        //browser back and forward button behaviour
         $rootScope.$watch(function () {
             return $location.path();
         }, function (newLocation) {
