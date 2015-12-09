@@ -81,7 +81,8 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
 
             function handleLoadError() {
                 $rootScope.$broadcast('SHOW_MENU_BTN');
-                menuIcon.style.visibility = 'hidden';
+                menuIcon.style.display = 'none';
+                document.querySelector('.notes-spinner').style.display = 'none';
                 document.querySelector('.notes-load-error').style.visibility = 'visible';
             }
 

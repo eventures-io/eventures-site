@@ -11,19 +11,20 @@ angular.module('evtrs-notes', [])
 
 
         function loadLatestPost(event) {
-            mainView.removeEventListener('animationend');
-            if (!param) {
+            if (event.animationName === 'slideUp') {
+                mainView.removeEventListener('animationend');
+                if (!param) {
                     NotesResource.getPosts().then(function (posts) {
                         var post = posts[0];
                         if (post) {
-                           $timeout(function(){
-                            $state.go('notes.post', {postId: post.ID, postTitle: post.titleUrl});
-                           }, 1000);
+                            $timeout(function () {
+                                $state.go('notes.post', {postId: post.ID, postTitle: post.titleUrl});
+                            }, 1000);
                         }
                     }), function (error) {
                         $log.error(error);
                     };
                 }
+            }
         }
-
     });
