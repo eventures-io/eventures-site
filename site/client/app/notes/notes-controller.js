@@ -11,6 +11,7 @@ angular.module('evtrs-notes', [])
 
 
         function loadLatestPost(event) {
+            mainView.removeEventListener('animationend');
             if (!param) {
                     NotesResource.getPosts().then(function (posts) {
                         var post = posts[0];

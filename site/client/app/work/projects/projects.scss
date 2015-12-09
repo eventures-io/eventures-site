@@ -8,7 +8,6 @@
   height: 76vh;
 }
 
-
 .polaroiz-font {
   width: 150px;
   height: 70vh;
@@ -54,7 +53,7 @@
 }
 
 .plantzr .project-background {
-  height: 80vh;
+  height: 73vh;
 }
 
 .plantzr .project-visual {
@@ -75,13 +74,19 @@
 }
 
 .plantzr-description p {
-  float: right;
   max-width: 400px;
-  font-size: 1.3em;
+  font-size: 1.1em;
 }
 
-.plantzr-description:hover {
-  opacity: 0;
+.plantzr-mobile-ref {
+   color: white;
+   text-decoration: underline;
+
+}
+
+.plantzr-mobile-ref:hover {
+  color: white;
+  text-decoration: none;
 }
 
 /* Plantzr mobile  ------*/
@@ -106,7 +111,7 @@
 }
 
 .plantzr-mobile .project-background {
-  height: 73vh;
+  height: 80vh;
   background-color: #dcdcdc;
 }
 

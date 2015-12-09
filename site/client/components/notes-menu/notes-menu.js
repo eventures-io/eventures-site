@@ -21,7 +21,7 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
                 $scope.closeMenu();
                 $timeout(function () {
                     $rootScope.$broadcast('SHOW_MENU_BTN');
-                    return $state.go('home');
+                    $state.go('work.home');
                 }, 700);
             };
 
@@ -47,8 +47,8 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
 
             $scope.showPost = function (post) {
                 menuElement.addEventListener('transitionend', function () {
-                    $state.go('notes.post', {postId: post.ID, postTitle: post.titleUrl});
                     menuElement.removeEventListener('transitionend');
+                    $state.go('notes.post', {postId: post.ID, postTitle: post.titleUrl});
                     setActivePost(post);
                 });
                 $scope.closeMenu();
@@ -81,7 +81,7 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
 
             function handleLoadError() {
                 $rootScope.$broadcast('SHOW_MENU_BTN');
-                menuIcon.style.visible = 'hidden';
+                menuIcon.style.visibility = 'hidden';
                 document.querySelector('.notes-load-error').style.visibility = 'visible';
             }
 

@@ -25,8 +25,8 @@ angular
             $stateProvider
                 .state('home', {
                     url: '/',
-                    templateUrl: 'app/home/home.html'
-                    //redirectTo: 'work.home'
+                   // templateUrl: 'app/home/home.html'
+                   redirectTo: 'work.home'
                 })
                 .state('contact', {
                     url: '/contact',

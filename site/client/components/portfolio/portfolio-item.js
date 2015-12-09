@@ -167,7 +167,9 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         }
                         projectImg.style.left = positionLeft + 'px';
                         document.body.appendChild(projectImg);
+                        var loading = true;
                         $scope.$on('PROJECT_VIEW_LOADED', function (event) {
+                            if(loading){
                             document.querySelector('.portfolio-container').style.visibility = 'hidden';
 
                             var summaryText = document.querySelector('.summary-text');
@@ -175,6 +177,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             var headerBackground = document.querySelector('.header-background');
                             TweenLite.to(headerBackground, .4, {delay: .2, css: {height: '93vh'}, ease: Power3.easeInOut});
                             TweenLite.to(summaryText, .5, {delay: .4, css: {transform: 'translateY(-40px)'}, ease: Expo.easeOut});
+                            loading =  false;
+                            }
                         });
                         var tll = new TimelineLite({onComplete: positionImage, onCompleteParams: [imgPositioning, projectImg]});
                         TweenLite.to(element, .6, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });

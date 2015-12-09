@@ -4,7 +4,7 @@
             <div class="header-background">
                 <header class="project-header">
                     <div class="project-visual">
-                        <div class="visual-container" ng-click="openSite()">
+                        <div class="visual-container" ng-click="openSite('iframe')">
 
                         </div>
                     </div>
@@ -44,7 +44,8 @@
         <div class="screenshot-container-full">
             <div zoom="left-up-zoom" class="flex-image-50 left-up">
                 <img src="assets/images/plantzr/plantzr-1.png">
-
+            </div>
+            <div class="flex-image-50 right-up">
                 <div class="plantzr-description">
                     <p>
                         Plantzr is a web application, based on the MEAN-stack, that allows to create (and edit)
@@ -55,13 +56,9 @@
                     <p>
                         To be able to upload photo’s directly from the field, I also added a native mobile
                         application. <br/>
-                        See <a ui-sref="work({project:'plantzr-mobile'})">plantzr-mobile</a>
+                        See <a class="plantzr-mobile-ref" href="#" ng-click="iterateProjects('next')">plantzr-mobile</a>
                     </p>
                 </div>
-
-            </div>
-            <div zoom="right-up-zoom" class="flex-image-50 right-up">
-                <img src="assets/images/plantzr/plantzr-4.png">
             </div>
         </div>
         <div class="screenshot-container-full">

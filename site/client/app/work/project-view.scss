@@ -94,8 +94,8 @@
       right: 10px;
       background-color: white;
       border-radius: 7px;
-      color: #000000;
-      border: 3px solid #000000;
+      color: $matte-black;
+      border: 3px solid $matte-black;
       padding: 7px 30Px;
       font-size: xx-large;
       font-family: 'Ubuntu Condensed', sans-serif;
@@ -105,7 +105,7 @@
     }
 
     .visual-container:hover::after {
-      opacity: 0.8;
+      opacity: 0.7;
     }
 
     .visual-container.no-link {
@@ -160,7 +160,7 @@
 /* Mobile ------*/
 @media (max-width: $screen-sm) {
   .header-container {
-    height: 160vh;
+    height: 200vh;
   }
 
   scroll-button {
@@ -175,6 +175,9 @@
 
   .visual-container {
     width: 100vw;
+    img {
+      max-height: 100vh;
+    }
   }
 
   .project-visual {
@@ -258,17 +261,28 @@
 }
 
 @media (max-width: $screen-sm) {
-  .screenshot-container-end {
+  .screenshot-container-end,
+  .screenshot-container-full  {
     flex-direction: column;
   }
   .flex-spacer {
     display: none;
   }
 
+  //TODO rewrite selectors
   .screenshot-container-end .flex-image {
     max-width: 100% !important;
     border: none !important;
   }
+
+  .screenshot-container-full{
+    .flex-image-50 {
+    width: 100% !important;
+    border: none !important;
+    cursor: auto;
+    }
+  }
+
 
   .polaroiz-font {
     height: 30vh !important;
@@ -317,7 +331,8 @@
 .flex-image-50 {
   position: relative;
   width: 50%;
-  cursor: url(../assets/icons/plus-cursor.png), auto;
+  //cursor: url(../assets/icons/plus-cursor.png), auto;
+  cursor: crosshair;
   border: solid $primary-color;
   overflow: visible;
   transition: all 0.3s linear;
@@ -334,6 +349,7 @@
 
 .flex-image-50.right-up {
   border-width: 6px 6px 3px 3px;
+  cursor: inherit;
 }
 
 .flex-image-50.left-down {
@@ -346,7 +362,7 @@
 
 .flex-image-zoom {
   position: absolute;
-  border: transparent;
+  border: 1px solid $matte-black;
   z-index: 9;
 }
 
@@ -456,15 +472,18 @@
   font-size: 20px;
 }
 
-.view-source-nav span {
+.view-source-nav .source-link {
   cursor: pointer;
   border-bottom: 2px solid #ffffff;
   transition: border .2s;
 }
 
-.view-source-nav:hover span {
+.view-source-nav:hover .source-link {
   padding: 1px 8px;
   border: 2px solid #ffffff;
   border-radius: 8px;
 }
 
+.source-link-hide .source-link {
+  display: none;
+}
