@@ -106,7 +106,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
 
             $scope.$on('LOAD_PROJECT', function (event, project) {
-                navClose.style.visibility = 'visible';
                 if (project.name === $scope.project.name) {
                     var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction') ||
                         window.getComputedStyle(portfolio, null).getPropertyValue('-webkit-flex-direction');
@@ -120,8 +119,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     projectImg.classList.add('project-img');
 
                     var resetRowView = function () {
-                        portfolio.style.opacity = '0';
-                        portfolio.style.visibility = 'hidden';
+                        portfolio.classList.add('hide');
                         projectView.style.opacity = '1';
                         projectView.style.zIndex = '3';
                         TweenLite.to(element, 0, {css: {transform: 'scale(1)'}});
@@ -142,7 +140,6 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     }
 
                     if (flexDirection === 'row') {
-
                         var progressButton = element.querySelector('.progress-button');
                         progressButton.style.visibility = 'hidden';
                         portfolioTitle.style.opacity = 0;
@@ -179,6 +176,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             TweenLite.to(summaryText, .5, {delay: .4, css: {transform: 'translateY(-40px)'}, ease: Expo.easeOut});
                             loading =  false;
                             }
+                            navClose.classList.remove('hide');
                         });
                         var tll = new TimelineLite({onComplete: positionImage, onCompleteParams: [imgPositioning, projectImg]});
                         TweenLite.to(element, .6, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });
@@ -194,15 +192,10 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             }
                         );
                     } else {
-
                         var imgPositioning = calculateImagePositioning(projectImg, true);
-
-
                         var transitionProject = function () {
                             portfolio.style.opacity = 0;
                             projectView.style.zIndex = 3;
-                            //document.body.appendChild(projectImg);
-                            //TweenLite.to(element, 0.9, {css: {transform: 'scale(1,5)'}, ease: Power1.easeIn, onComplete: resetColumnView });
                             positionImage(imgPositioning, projectImg, true);
                             resetColumnView();
                         }
@@ -215,10 +208,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
             $scope.$on('CLOSE_PROJECT', function (event, project) {
                 if (project === $scope.project.name) {
-                    portfolio.style.visibility = 'visible';
-                    portfolio.style.opacity = '1';
-                    navClose.style.visibility = 'hidden';
-                }
+                    portfolio.classList.add('show');
+                    navClose.classList.add('hide');                }
             });
 
         }

@@ -19,14 +19,24 @@ angular
         $locationProvider.hashPrefix('!');
         $locationProvider.html5Mode(true);
 
+        var hasBrowserSupport = function () {
+            var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+                navigator.userAgent && !navigator.userAgent.match('CriOS');
+
+            if (isSafari || !Modernizr.cssvwunit) {
+                return false;
+            }
+            return true;
+        };
+
         $urlRouterProvider
-            .otherwise('/error');
-        if (Modernizr.cssvwunit) { // jshint ignore:line
+            .otherwise('/');
+        if (hasBrowserSupport()) { // jshint ignore:line
             $stateProvider
                 .state('home', {
                     url: '/',
-                   // templateUrl: 'app/home/home.html'
-                   redirectTo: 'work.home'
+                    // templateUrl: 'app/home/home.html'
+                    redirectTo: 'work.home'
                 })
                 .state('contact', {
                     url: '/contact',
@@ -91,11 +101,13 @@ angular
                 .state('browsehappy', {
                     url: '/',
                     templateUrl: 'app/home/browsehappy.html',
-                    controller: function($rootScope) {
+                    controller: function ($rootScope) {
                         $rootScope.$broadcast('HIDE_MENU_BTN');
                     }
                 });
         }
+
+
     }).
     run(function ($http, PROJECT_CONSTANTS, $rootScope, $state, $window, $location, ScrollService) {
 
@@ -127,10 +139,10 @@ angular
             }
         });
 
-        document.addEventListener('scroll', function() {
-           if(ScrollService.scrolledToBottom()){
+        document.addEventListener('scroll', function () {
+            if (ScrollService.scrolledToBottom()) {
                 $rootScope.$broadcast('SCROLLED_TO_BOTTOM');
-           }
+            }
         });
 
     }).

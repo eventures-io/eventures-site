@@ -46,10 +46,10 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
             };
 
             $scope.showPost = function (post) {
-                menuElement.addEventListener('transitionend', function () {
-                    menuElement.removeEventListener('transitionend');
+                menuElement.addEventListener('transitionend', function showPost(){
                     $state.go('notes.post', {postId: post.ID, postTitle: post.titleUrl});
                     setActivePost(post);
+                    menuElement.removeEventListener('transitionend', showPost);
                 });
                 $scope.closeMenu();
             };

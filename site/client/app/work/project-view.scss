@@ -17,30 +17,6 @@
   margin-bottom: 150px;
 }
 
-/* Navigation ------*/
-.project-nav-close {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  height: 50px;
-  width: 50px;
-  font-size: 20px;
-  padding: 12px;
-  text-align: center;
-  border-bottom: 1px solid gray;
-  border-left: 1px solid gray;
-  visibility: hidden;
-  z-index: 9;
-  transition: background-color .3s;
-  .font-icon {
-    cursor: pointer;
-  }
-}
-
-.project-nav-close:hover {
-  color: #008000;
-  background-color: white;
-}
 
 /* Common styles ------*/
 .project-img {
@@ -262,7 +238,7 @@
 
 @media (max-width: $screen-sm) {
   .screenshot-container-end,
-  .screenshot-container-full  {
+  .screenshot-container-full {
     flex-direction: column;
   }
   .flex-spacer {
@@ -275,14 +251,13 @@
     border: none !important;
   }
 
-  .screenshot-container-full{
+  .screenshot-container-full {
     .flex-image-50 {
-    width: 100% !important;
-    border: none !important;
-    cursor: auto;
+      width: 100% !important;
+      border: none !important;
+      cursor: auto;
     }
   }
-
 
   .polaroiz-font {
     height: 30vh !important;

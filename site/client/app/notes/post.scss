@@ -27,6 +27,7 @@
 
   .post-image {
     width: 100%;
+    overflow: hidden;
     min-height: 55vh;
     background-size: cover;
     background-color: #333333;
@@ -37,9 +38,8 @@
   }
 
   .post-image:hover {
-    transform: scale(1.029);
+    //transform: scale(1.029);
     filter: contrast(80%);
-
   }
 
   .post-summary {

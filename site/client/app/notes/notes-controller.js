@@ -11,8 +11,6 @@ angular.module('evtrs-notes', [])
 
 
         function loadLatestPost(event) {
-            if (event.animationName === 'slideUp') {
-                mainView.removeEventListener('animationend');
                 if (!param) {
                     NotesResource.getPosts().then(function (posts) {
                         var post = posts[0];
@@ -24,7 +22,7 @@ angular.module('evtrs-notes', [])
                     }), function (error) {
                         $log.error(error);
                     };
-                }
+                mainView.removeEventListener('animationend', loadLatestPost);
             }
         }
     });
