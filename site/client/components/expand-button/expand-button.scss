@@ -19,7 +19,7 @@
 .project-nav-close:hover {
   .font-icon {
     animation: roll 1s;
-    transform: rotate(30deg);
+    //transform: rotate(30deg);
   }
 }
 
@@ -32,7 +32,6 @@
   right: 0;
   z-index: 9999;
   background-color: $project-bg-color;
-  border: none;
 }
 
 .btn-expand-fwd {
@@ -43,6 +42,7 @@
 
 .btn-expand-bkwd {
   @extend .btn-expand;
+  //border: none;
   animation: contract .5s;
   animation-fill-mode: forwards;
 }

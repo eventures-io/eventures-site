@@ -48,7 +48,7 @@ angular.module('evtrs-site').directive('contactForm', function (MailService) {
                     label.style.opacity = 1;
                 });
             }
-            ;
+
             var currentNum = stepStatus.querySelector('span.number-current');
             currentNum.innerHTML = Number(current + 1);
             var totalstepNum = stepStatus.querySelector('span.number-total');

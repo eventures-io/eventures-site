@@ -23,7 +23,7 @@ angular
             var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
                 navigator.userAgent && !navigator.userAgent.match('CriOS');
 
-            if (isSafari || !Modernizr.cssvwunit) {
+            if (isSafari || !Modernizr.cssvwunit) { // jshint ignore:line
                 return false;
             }
             return true;
@@ -31,7 +31,7 @@ angular
 
         $urlRouterProvider
             .otherwise('/');
-        if (hasBrowserSupport()) { // jshint ignore:line
+        if (hasBrowserSupport()) {
             $stateProvider
                 .state('home', {
                     url: '/',

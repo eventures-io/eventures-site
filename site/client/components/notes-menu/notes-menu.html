@@ -1,9 +1,8 @@
 <nav class="bookmarks-bar" ng-class="{'bookmarks-show' : bookmarks.length > 0}">
     <ul>
-        <li ng-repeat="bookmark in bookmarks"><i class="icon icon-flag"></i>&nbsp;Bookmarked:&nbsp;<a href="{{bookmark.url}}">{{bookmark.title}}</a>
-
+        <li ng-repeat="bookmark in bookmarks"><i class="font-icon icon-flag"></i>&nbsp;Bookmarked:&nbsp;<a href="{{bookmark.url}}">{{bookmark.title}}</a>
             <div ng-click="removeBookmark(bookmark)" class="remove-icon">
-                <i class="font-icon icon-cancel"></i>
+                <i class="font-icon icon-close"></i>
             </div>
         </li>
     </ul>

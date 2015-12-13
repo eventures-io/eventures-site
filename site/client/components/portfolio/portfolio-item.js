@@ -192,6 +192,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             }
                         );
                     } else {
+                        navClose.classList.remove('hide');
                         var imgPositioning = calculateImagePositioning(projectImg, true);
                         var transitionProject = function () {
                             portfolio.style.opacity = 0;
