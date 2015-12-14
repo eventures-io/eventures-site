@@ -210,7 +210,8 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             $scope.$on('CLOSE_PROJECT', function (event, project) {
                 if (project === $scope.project.name) {
                     portfolio.classList.add('show');
-                    navClose.classList.add('hide');                }
+                    navClose.classList.add('hide');
+                }
             });
 
         }

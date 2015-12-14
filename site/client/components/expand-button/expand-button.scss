@@ -12,14 +12,47 @@
   border-left: 1px solid gray;
   cursor: pointer;
   opacity: 1;
+  overflow: hidden;
   z-index: 9;
 }
 
-
 .project-nav-close:hover {
   .font-icon {
-    animation: roll 1s;
-    //transform: rotate(30deg);
+    animation: roll .7s;
+  }
+}
+
+.project-transition {
+  position: absolute;
+  display: inline-block;
+  top: 49vh;
+  left: calc(50vw - 100px);
+  width: 200px;
+  height: 1px;
+  background-color: gray;
+  visibility: hidden;
+}
+
+.project-transition-fill {
+  display: inline-block;
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: $matte-black;
+}
+
+.project-transition-draw {
+  animation: draw .3s forwards;
+}
+
+@keyframes draw {
+  0% {
+
+  }
+  100% {
+    width: 200px;
   }
 }
 
@@ -37,16 +70,15 @@
 .btn-expand-fwd {
   @extend .btn-expand;
   animation: expand .3s;
-  animation-fill-mode:forwards;
+  animation-fill-mode: forwards;
 }
 
 .btn-expand-bkwd {
   @extend .btn-expand;
   //border: none;
-  animation: contract .5s;
+  animation: contract .4s;
   animation-fill-mode: forwards;
 }
-
 
 @keyframes roll {
   0% {
@@ -66,7 +98,6 @@
     height: 100vh;
   }
 }
-
 
 @keyframes contract {
   0% {
