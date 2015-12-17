@@ -34,7 +34,7 @@
 }
 
 .animate-project.ng-leave {
-  animation: scaleOutLeft .4s linear;
+  //animation: scaleOutLeft .4s linear;
 }
 
 
@@ -60,7 +60,7 @@
   from {
   }
   to {
-    transform: translateX(-100%) scale(0,1);
+    transform: translateX(20%) scale(0.6, 1);
   }
 }
 

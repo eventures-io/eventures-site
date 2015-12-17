@@ -4,7 +4,7 @@ angular.module('evtrs-site').
 
         return {
             request: function (config) {
-                config.timeout = 60000;
+                config.timeout = 6000;
                 return config || $q.when(config)
             },
             responseError: function (response) {

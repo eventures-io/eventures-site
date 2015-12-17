@@ -54,7 +54,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                     };
 
                     if (flexDirection === 'row') {
-                        element.style.borderLeft = '1px solid gray';
+                        element.style.borderLeft = '6px solid white';
 
                         var positionLeft;
                         if (!project.next) {

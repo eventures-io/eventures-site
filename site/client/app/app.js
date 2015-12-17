@@ -125,8 +125,7 @@ angular
             }
         });
 
-    }).
-    filter('HtmlFilter', ['$sce', function ($sce) {
+    }).filter('HtmlFilter', ['$sce', function ($sce) {
         return function (text) {
             return $sce.trustAsHtml(text);
         };
