@@ -8,6 +8,21 @@
   height: 76vh;
 }
 
+.polaroiz .screenshot-wrapper {
+  perspective: 1000px;
+}
+
+.polaroiz .screenshot-container-end {
+  transform: rotate(0);
+  cursor: crosshair;
+  transition: .8s;
+}
+
+.polaroiz .screenshot-container-end:hover {
+  transform: rotateY(10deg)
+}
+
+
 .polaroiz-font {
   width: 150px;
   height: 70vh;
@@ -79,8 +94,8 @@
 }
 
 .plantzr-mobile-ref {
-   color: white;
-   text-decoration: underline;
+  color: white;
+  text-decoration: underline;
 
 }
 
@@ -143,7 +158,6 @@
     margin: 0 auto;
   }
 }
-
 
 .plantzr-proto .proto-video {
   max-width: 500px;

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('evtrs-site')
-    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state, $window, ScrollService) {
+    .controller('WorkController', function ($scope, $rootScope, PROJECT_CONSTANTS, $state, $window) {
 
         $scope.displaySite = false;
 
@@ -46,19 +46,17 @@ angular.module('evtrs-site')
             $state.go('work.project', {project: $scope.activeProject});
         };
 
-        $scope.iterateProjects = function (iterator) {
+
+        $scope.getIterator = function () {
 
             var projects = Object.keys(PROJECT_CONSTANTS);
             var index = projects.indexOf($scope.activeProject);
-            if (iterator === 'next') {
-                index = index === projects.length - 1 ? 0 : ++index;
-            } else {
-                index = index === 0 ? projects.length - 1 : --index;
-            }
 
-            ScrollService.scrollToTop(function () {
-                $rootScope.$broadcast('LOAD_PROJECT', {name: projects[index], next: true});
-            })
+            var fwdIndex = index === projects.length - 1 ? 0 : index + 1;
+            var bkwdIndex = index === 0 ? projects.length - 1 : index -1;
+
+            return {next: projects[fwdIndex], previous: projects[bkwdIndex]};
+
         };
 
     });

@@ -1,34 +1,35 @@
 .view-site-btn {
-  display: block;
-  position: relative;
-  margin: 30px auto;
-  border: 5px solid rgba(gray, 0.5);
-  border-radius: 2px;
-  padding: 8px 18px;
-  color: #393939;
-  text-transform: uppercase;
+  border: 3px $matte-black solid;
+  color: $matte-black;
   background: transparent;
-  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  font-family: 'trebuchet ms';
+  font-size: 2rem;
+  letter-spacing: .1rem;
+  padding: 1rem;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+
 }
 
-.view-site-btn::after {
+.view-site-btn::before {
+  content: "";
+  background-color: $primary-color;
+  box-shadow: -10px 10px 0 darken(gray, 10%);
   position: absolute;
-  display: inline-block;
-  content: '';
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background-color: green;
+  left: -.75rem;
+  top: .5rem;
+  height: 4.25rem;
+  width: 102%;
   z-index: -1;
+  transition: all 0.2s ease;
 }
 
-.view-site-btn:hover,
-.view-site-btn:active {
-
-}
-
-.view-site-btn:hover::after,
-.view-site-btn:active::after {
-  width: 100%;
+.view-site-btn:hover::before {
+  box-shadow: none;
+  left: 0;
+  top: 0;
 }

@@ -1,0 +1,70 @@
+$btn-height: 50px;
+
+.project-navigation {
+  position: fixed;
+  right: 0px;
+  top: calc(50vh - 17px);
+  visibility: hidden;
+  opacity: 0;
+  transition: all .7s;
+}
+
+.project-navigation.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.floating-button {
+  position: relative;
+  right: -150px;
+  display: block;
+  height: $btn-height;
+  margin-bottom: 12px;
+  cursor: pointer;
+  background-color: $matte-black;
+  color: #ffffff;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all .4s;
+
+}
+
+.floating-button::before {
+ position: absolute;
+ top: 0;
+ left: -25px;
+ content: " ";
+ width: $btn-height;
+ height: $btn-height;
+ border-radius: 50%;
+ background-color: $matte-black;
+ z-index: -1;
+}
+
+.floating-button:hover {
+  right: 0;
+}
+
+.floating-button .project-link {
+  height: $btn-height;
+  margin-right: 8px;
+  line-height: $btn-height;
+  font-family: Aldrich, sans-serif;
+  //word-break: keep-all;
+  font-size: 19px;
+}
+
+.floating-button img {
+  position: relative;
+  top: -1px;
+}
+
+.chevron-fwd {
+  left: -8px;
+}
+.chevron-bkwd {
+  left: -10px;
+}
+
+

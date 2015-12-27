@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="33px" viewBox="0 0 18 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>chevron-fwd</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Project-navigation" sketch:type="MSArtboardGroup" transform="translate(-327.000000, -68.000000)" fill="#FFFFFF">
+            <g id="Forward-btn" sketch:type="MSLayerGroup" transform="translate(203.000000, 56.000000)">
+                <g id="chevron-fwd" transform="translate(125.528698, 28.646447) rotate(-225.000000) translate(-125.528698, -28.646447) translate(113.528698, 16.146447)" sketch:type="MSShapeGroup">
+                    <path d="M1.51917364,2.35466205 L23.1980036,2.26446351 C23.5615796,2.26295079 23.8550789,1.9696008 23.8535527,1.60924797 C23.8520264,1.24889514 23.5560525,0.957997752 23.1924765,0.959510473 L1.51364659,1.04970901 C1.15007057,1.05122173 0.856571236,1.34457173 0.858097487,1.70492456 C0.859623739,2.06527739 1.15559761,2.35617477 1.51917364,2.35466205 L1.51917364,2.35466205 Z" id="Shape"></path>
+                    <path d="M2.22623413,23.5649118 L2.13522881,2.07827009 C2.13370255,1.71791726 1.83772868,1.42701987 1.47415266,1.42853259 C1.11057663,1.43004531 0.817077303,1.7233953 0.818603555,2.08374814 L0.909608878,23.5703899 C0.91113513,23.9307427 1.207109,24.2216401 1.57068503,24.2201274 C1.93426105,24.2186146 2.22776038,23.9252646 2.22623413,23.5649118 L2.22623413,23.5649118 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

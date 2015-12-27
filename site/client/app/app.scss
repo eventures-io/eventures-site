@@ -66,7 +66,7 @@ h4 {
 }
 
 .show {
-  visibility: visible !important;
+  visibility: visible;
   opacity: 1;
 }
 
@@ -83,12 +83,12 @@ h4 {
 @import 'work/site-view/site.scss';
 @import 'contact-form/contact-form.scss';
 @import 'expand-button/expand-button.scss';
-@import 'floating-button/floating-button.scss';
 @import 'nav-menu/nav-menu.scss';
 @import 'notes-menu/notes-menu.scss';
 @import 'portfolio/portfolio-item.scss';
 @import 'preloader/preloader.scss';
 @import 'progress-button/progress-button.scss';
+@import 'project-navigation/project-navigation.scss';
 @import 'scroll-button/scroll-button.scss';
 @import 'social/social.scss';
 @import 'view-site-button/view-site-button.scss';

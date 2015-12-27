@@ -17,9 +17,11 @@
 }
 
 .project-nav-close:hover {
-  .font-icon {
-    animation: roll .7s;
-  }
+//  .font-icon {
+//    animation: roll .7s;
+//  }
+  background-color: $secondary-color;
+
 }
 
 .refresh-icon {
