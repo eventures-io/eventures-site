@@ -222,8 +222,8 @@ input {
 }
 
 .contact-form .error-message {
-  padding: 0.4em 3.5em 0 0;
   width: 100%;
+  padding: 0.4em 3.5em 0 0;
   color: $error-color;
   font-style: italic;
   font-weight: bold;
@@ -232,14 +232,11 @@ input {
 }
 
 .final-message {
-  top: 50%;
-  left: 0;
   padding: 0.5em;
   width: 100%;
   font-size: 0.6em;
   letter-spacing: 3px;
   text-align: center;
-  transform: translateY(-50%);
 
 }
 
@@ -259,8 +256,8 @@ input {
   opacity: 0;
   width: 60px;
   height: 60px;
-  margin: 0 auto;
-  transform: translateY(-110px);
+  margin: 30px auto 0 auto;
+
   .spinner-gif {
     opacity: 0.4;
   }

@@ -366,6 +366,7 @@ module.exports = function (grunt) {
                             'bower_components/**/*',
                             //'assets/images/{,*/}*.{webp}',
                             'assets/images/**/*',
+                            'assets/video/**/*',
                             'assets/fonts/**/*',
                             'form-builder/**/*',
                             'google05176910c8c39725.html',
@@ -580,7 +581,7 @@ module.exports = function (grunt) {
                 constants: {
                     CONF: {
                         name: 'production',
-                        WP_URL: 'http://ec2-52-17-227-41.eu-west-1.compute.amazonaws.com/wp-json'
+                        WP_URL: 'http://178.62.6.16/wp-json'
                     }
                 }
             }
