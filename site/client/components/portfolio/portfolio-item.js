@@ -179,7 +179,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                             navClose.classList.remove('hide');
                         });
                         var tll = new TimelineLite({onComplete: positionImage, onCompleteParams: [imgPositioning, projectImg]});
-                        TweenLite.to(element, .6, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });
+                        TweenLite.to(element, .8, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });
                         tll
                             .to(projectImg, .6, {css: {
                                 opacity: 1,

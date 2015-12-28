@@ -1,9 +1,9 @@
 <nav class="project-navigation">
-    <span class="floating-button" ng-click="goToProject(nextProject)">
+    <span class="floating-button" ng-click="goToProject(nextProject, $event)">
         <img class="chevron-fwd"src="assets/icons/chevron-fwd.svg">
         <span class="project-link">{{nextProject}}</span>
     </span>
-    <span class="floating-button" ng-click="goToProject(previousProject)">
+    <span class="floating-button" ng-click="goToProject(previousProject, $event)">
         <img class="chevron-bkwd" src="assets/icons/chevron-bkwd.svg">
         <span class="project-link">{{previousProject}}</span>
     </span>

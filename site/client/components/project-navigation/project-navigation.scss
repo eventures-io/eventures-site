@@ -2,14 +2,15 @@ $btn-height: 50px;
 
 .project-navigation {
   position: fixed;
-  right: 0px;
-  top: calc(50vh - 17px);
+  right: -50px;
+  top: calc(35vh);
   visibility: hidden;
   opacity: 0;
-  transition: all .7s;
+  transition: all .5s;
 }
 
 .project-navigation.visible {
+  right: 0;
   visibility: visible;
   opacity: 1;
 }
@@ -17,16 +18,17 @@ $btn-height: 50px;
 
 .floating-button {
   position: relative;
-  right: -150px;
+  right: -180px;
   display: block;
   height: $btn-height;
+  width: 200px;
   margin-bottom: 12px;
   cursor: pointer;
   background-color: $matte-black;
   color: #ffffff;
   opacity: 0.8;
   cursor: pointer;
-  transition: all .4s;
+  transition: all .5s;
 
 }
 
