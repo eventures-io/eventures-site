@@ -23,6 +23,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
             var subOuter = element.querySelector('.sub-outer');
             var projectView = document.querySelector('.project-view');
             var previewImg = element.querySelector('.preview-img');
+            var portfolioContainer = document.querySelector('.portfolio-container');
             var portfolio = document.querySelector('.portfolio-section');
             var portfolioTitle = element.querySelector('.portfolio-title');
             var navClose = document.querySelector('.project-nav-close');
@@ -151,9 +152,11 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         var positionLeft;
                         if (!project.next) {
                             positionLeft = imgBounding.left;
+
                         } else {
                             projectImg.style.opacity = 0;
                             projectImg.style.top = '60px';
+                            portfolioContainer.style.visibility = 'hidden';
                             if ($scope.project.imagePosition === 'left') {
                                 positionLeft = imgPositioning.left + 80;
                             } else {
@@ -199,7 +202,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         navClose.classList.remove('hide');
                         var imgPositioning = calculateImagePositioning(projectImg, true);
                         var transitionProject = function () {
-                            portfolio.style.opacity = 0;
+                            portfolio.classList.add('hide');
                             projectView.style.zIndex = 3;
                             positionImage(imgPositioning, projectImg, true);
                             resetColumnView();

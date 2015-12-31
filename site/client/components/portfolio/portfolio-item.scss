@@ -3,7 +3,6 @@ $transition-pf-lg: 0.7s;
 
 .portfolio-title {
   position: absolute;
-  top: 50vh;
   left: 0;
   width: 100%;
   max-height: 50px;
@@ -26,6 +25,10 @@ $transition-pf-lg: 0.7s;
 
 /* Desktop view -----*/
 @media (min-width: $screen-sm) {
+
+  .portfolio-title {
+    top: 50vh;
+  }
 
   .flex-sub div[progress-button] {
     position: absolute;
@@ -89,6 +92,10 @@ $transition-pf-lg: 0.7s;
   }
   .portfolio-section:last-child {
     border-bottom: 1px solid gray;
+  }
+
+  .portfolio-title {
+    top: 20px;
   }
 
   .flex-sub div[progress-button] {
