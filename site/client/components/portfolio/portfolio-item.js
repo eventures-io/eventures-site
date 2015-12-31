@@ -166,22 +166,24 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         document.body.appendChild(projectImg);
                         var loading = true;
                         $scope.$on('PROJECT_VIEW_LOADED', function (event) {
-                            if(loading){
-                            document.querySelector('.portfolio-container').style.visibility = 'hidden';
-
-                            var summaryText = document.querySelector('.summary-text');
-                            summaryText.style.transform = 'translateY(-100%)';
-                            var headerBackground = document.querySelector('.header-background');
-                            TweenLite.to(headerBackground, .4, {delay: .2, css: {height: '93vh'}, ease: Power3.easeInOut});
-                            TweenLite.to(summaryText, .5, {delay: .4, css: {transform: 'translateY(-40px)'}, ease: Expo.easeOut});
-                            loading =  false;
+                            //TODO run after tll is finished. This evenlistner only sets variables if ttl is not finished and tll oncomplete handler then triggers animation
+                            if (loading) {
+                                document.querySelector('.portfolio-container').style.visibility = 'hidden';
+                                var summaryText = document.querySelector('.summary-text');
+                                summaryText.style.transform = 'translateY(-100%)';
+                                var headerBackground = document.querySelector('.header-background');
+                                TweenLite.to(headerBackground, .4, {delay: .2, css: {height: '93vh'}, ease: Power3.easeInOut});
+                                TweenLite.to(summaryText, .5, {delay: .4, css: {transform: 'translateY(-40px)'}, ease: Expo.easeOut});
+                                loading = false;
                             }
                             navClose.classList.remove('hide');
                         });
+
                         var tll = new TimelineLite({onComplete: positionImage, onCompleteParams: [imgPositioning, projectImg]});
-                        //TODO move to timeline
-                        TweenLite.to(element, .6, {css: {transform: 'scale(5,1)'}, ease: Power1.easeIn, onComplete: resetRowView });
-                        tll
+                        tll.to(element, .6, {css: {
+                            transform: 'scale(5,1)'},
+                            ease: Power1.easeIn,
+                            onComplete: resetRowView })
                             .to(projectImg, .6, {css: {
                                 opacity: 1,
                                 height: 'auto',
@@ -190,8 +192,9 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                                 left: imgPositioning.left + 'px'
                             },
                                 ease: Power4.easeInOut
-                            }
-                        );
+                            },
+                            "-=.5");
+
                     } else {
                         navClose.classList.remove('hide');
                         var imgPositioning = calculateImagePositioning(projectImg, true);
