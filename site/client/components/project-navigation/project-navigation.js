@@ -7,13 +7,17 @@ angular.module('evtrs-site').directive('projectNavigation', function ($timeout, 
         templateUrl: 'components/project-navigation/project-navigation.html',
         link: function (scope, element) {
             var el = element[0];
-            var iterator = scope.getIterator();
-            scope.nextProject = iterator.next;
-            scope.previousProject = iterator.previous;
+            var iterator = scope.getProjectIterator();
 
-            scope.$on('SCROLLED_TO_BOTTOM', function () {
-                el.classList.add('visible');
-            });
+            //check if iterating or direct url access
+            if(iterator.next) {
+                scope.nextProject = iterator.next;
+                scope.previousProject = iterator.previous;
+
+                scope.$on('SCROLLED_TO_BOTTOM', function () {
+                    el.classList.add('visible');
+                });
+            }
         },
         controller: function ($scope, $element) {
             $scope.goToProject = function (projectName, $event) {

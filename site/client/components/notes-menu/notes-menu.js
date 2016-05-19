@@ -46,7 +46,7 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
             };
 
             $scope.showPost = function (post) {
-                menuElement.addEventListener('transitionend', function showPost(){
+                menuElement.addEventListener('transitionend', function showPost() {
                     $state.go('notes.post', {postId: post.ID, postTitle: post.titleUrl});
                     setActivePost(post);
                     menuElement.removeEventListener('transitionend', showPost);
@@ -66,14 +66,6 @@ angular.module('evtrs-notes').directive('notesMenu', function ($rootScope, Notes
 
             }
 
-            $scope.getBackgroundStyle = function (post) {
-                if (post) {
-                    return {
-                        'background-image': 'url(' + post.featured_image.source + ')'
-                    };
-                }
-                return null;
-            };
 
             $scope.$on('BOOKMARKED', function () {
                 loadBookmarks();

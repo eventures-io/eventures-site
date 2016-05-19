@@ -22,7 +22,6 @@
   transform: rotateY(10deg)
 }
 
-
 .polaroiz-font {
   width: 150px;
   height: 70vh;
@@ -152,25 +151,6 @@
   font-size: 30px;
 }
 
-.plantzr-proto .description-visual {
-  img {
-    display: block;
-    margin: 0 auto;
-  }
-}
-
-.plantzr-proto .proto-video {
-  max-width: 500px;
-  overflow: hidden;
-  margin: 0 auto;
-  video {
-    position: relative;
-    left: -320px;
-    width: 1100px;
-    height: 640px;
-  }
-}
-
 @media (max-width: $screen-sm) {
   .plantzr-proto .proto-description {
     order: 2;
@@ -210,13 +190,6 @@
   order: 2;
 }
 
-.form-builder .description-visual {
-  img {
-    display: block;
-    margin: 0 auto;
-  }
-}
-
 .form-builder-frame {
   width: 80vw;
   height: 60vw;
@@ -231,7 +204,7 @@
 
 .form-builder .project-screenshot {
   max-width: 90vw;
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
 
   img {
     width: 100%;

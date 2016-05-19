@@ -11,15 +11,14 @@
   border-bottom: 1px solid gray;
   border-left: 1px solid gray;
   cursor: pointer;
-  opacity: 1;
   overflow: hidden;
   z-index: 9;
 }
 
 .project-nav-close:hover {
-//  .font-icon {
-//    animation: roll .7s;
-//  }
+  //  .font-icon {
+  //    animation: roll .7s;
+  //  }
   background-color: $secondary-color;
 
 }

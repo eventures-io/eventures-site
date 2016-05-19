@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PROJECT_CONSTANTS, UAService, ScrollService) {
+angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, $timeout, PROJECT_CONSTANTS, UAService, ScrollService) {
 
     return {
         templateUrl: 'components/portfolio/portfolio-item.html',
@@ -35,7 +35,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
              */
             function calculateAspectRatio(srcWidth, srcHeight, maxWidth, maxHeight) {
                 var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
-                return { width: srcWidth * ratio, height: srcHeight * ratio };
+                return {width: srcWidth * ratio, height: srcHeight * ratio};
             }
 
             var calculateImagePositioning = function (projectImg, mobileView) {
@@ -107,6 +107,9 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
 
 
             $scope.$on('LOAD_PROJECT', function (event, project) {
+                $timeout(function () {
+                    navClose.classList.remove('hide');
+                }, 400);
                 if (project.name === $scope.project.name) {
                     var flexDirection = window.getComputedStyle(portfolio, null).getPropertyValue('flex-direction') ||
                         window.getComputedStyle(portfolio, null).getPropertyValue('-webkit-flex-direction');
@@ -137,7 +140,7 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                         var circleProgress = element.querySelector('.circle-progress');
                         circleProgress.classList.remove('circle-animate');
                         //TODO recalulate strokeDashoffset
-                        circleProgress.style.strokeDashoffset = 615;
+                        circleProgress.style.strokeDashoffset = 300;
                     }
 
                     if (flexDirection === 'row') {
@@ -175,31 +178,44 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, PR
                                 var summaryText = document.querySelector('.summary-text');
                                 summaryText.style.transform = 'translateY(-100%)';
                                 var headerBackground = document.querySelector('.header-background');
-                                TweenLite.to(headerBackground, .4, {delay: .2, css: {height: '93vh'}, ease: Power3.easeInOut});
-                                TweenLite.to(summaryText, .5, {delay: .4, css: {transform: 'translateY(-40px)'}, ease: Expo.easeOut});
+                                TweenLite.to(headerBackground, .4, {
+                                    delay: .2,
+                                    css: {height: '93vh'},
+                                    ease: Power3.easeInOut
+                                });
+                                TweenLite.to(summaryText, .5, {
+                                    delay: .4,
+                                    css: {transform: 'translateY(-40px)'},
+                                    ease: Expo.easeOut
+                                });
                                 loading = false;
                             }
-                            navClose.classList.remove('hide');
                         });
 
-                        var tll = new TimelineLite({onComplete: positionImage, onCompleteParams: [imgPositioning, projectImg]});
-                        tll.to(element, .6, {css: {
-                            transform: 'scale(5,1)'},
-                            ease: Power1.easeIn,
-                            onComplete: resetRowView })
-                            .to(projectImg, .6, {css: {
-                                opacity: 1,
-                                height: 'auto',
-                                width: imgPositioning.width + 'px',
-                                top: paddingTop + 'px',
-                                left: imgPositioning.left + 'px'
-                            },
-                                ease: Power4.easeInOut
-                            },
-                            "-=.5");
+                        var tll = new TimelineLite({
+                            onComplete: positionImage,
+                            onCompleteParams: [imgPositioning, projectImg]
+                        });
+                        tll.to(element, .6, {
+                                css: {
+                                    transform: 'scale(5,1)'
+                                },
+                                ease: Power1.easeIn,
+                                onComplete: resetRowView
+                            })
+                            .to(projectImg, .6, {
+                                    css: {
+                                        opacity: 1,
+                                        height: 'auto',
+                                        width: imgPositioning.width + 'px',
+                                        top: paddingTop + 'px',
+                                        left: imgPositioning.left + 'px'
+                                    },
+                                    ease: Power4.easeInOut
+                                },
+                                "-=.5");
 
                     } else {
-                        navClose.classList.remove('hide');
                         var imgPositioning = calculateImagePositioning(projectImg, true);
                         var transitionProject = function () {
                             portfolio.classList.add('hide');

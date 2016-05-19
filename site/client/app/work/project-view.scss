@@ -15,7 +15,6 @@
   background-color: white;
 }
 
-
 /* Common styles ------*/
 .project-img {
   position: absolute;
@@ -169,44 +168,44 @@
 
 .project-description-full {
   min-height: 100vh;
+}
 
+.description-text {
+  width: 368px;
+  flex-grow: 2;
+  .description {
+    padding: 0 25px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    margin: 50px;
+    text-align: center;
+  }
+}
+
+.description-visual {
+  height: 100vh;
+  width: 40%;
+  min-width: 400px;
+  padding: 25px 0;
+  img {
+    max-height: 90%;
+  }
+}
+
+@media (max-width: $screen-sm) {
   .description-text {
-    width: 368px;
-    flex-grow: 2;
-    .description {
-      padding: 0 25px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    h2 {
-      margin: 50px;
-      text-align: center;
-    }
+    order: 2;
   }
 
   .description-visual {
-    height: 100vh;
-    width: 40%;
-    min-width: 400px;
-    padding: 25px 0;
+    width: 100%;
     img {
-      max-height: 90%;
-    }
-  }
-
-  @media (max-width: $screen-sm) {
-    .description-text {
-      order: 2;
-    }
-
-    .description-visual {
-      width: 100%;
-      img {
-        display: block;
-        min-width: 300px;
-        margin: 0 auto;
-      }
+      display: block;
+      min-width: 300px;
+      margin: 0 auto;
     }
   }
 }

@@ -1,3 +1,8 @@
+
+.view-site-btn-container {
+  margin: 30px;
+}
+
 .view-site-btn {
   border: 3px $matte-black solid;
   color: $matte-black;
@@ -12,24 +17,25 @@
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
+  cursor: pointer;
 
 }
 
-.view-site-btn::before {
-  content: "";
-  background-color: $primary-color;
-  box-shadow: -10px 10px 0 darken(gray, 10%);
-  position: absolute;
-  left: -.75rem;
-  top: .5rem;
-  height: 4.25rem;
-  width: 102%;
-  z-index: -1;
-  transition: all 0.2s ease;
-}
-
-.view-site-btn:hover::before {
-  box-shadow: none;
-  left: 0;
-  top: 0;
-}
+//.view-site-btn::before {
+//  content: "";
+//  background-color: $primary-color;
+//  box-shadow: -10px 10px 0 darken(gray, 10%);
+//  position: absolute;
+//  left: -.75rem;
+//  top: .5rem;
+//  height: 4.25rem;
+//  width: 102%;
+//  z-index: -1;
+//  transition: all 0.2s ease;
+//}
+//
+//.view-site-btn:hover::before {
+//  box-shadow: none;
+//  left: 0;
+//  top: 0;
+//}

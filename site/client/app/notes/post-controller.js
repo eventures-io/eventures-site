@@ -10,4 +10,13 @@ angular.module('evtrs-notes')
             $scope.post.url = window.location.href;
         });
 
+        $scope.getBackgroundStyle = function (post) {
+            if (post) {
+                return {
+                    'background-image': 'url(' + post.featured_image.source + ')'
+                };
+            }
+            return null;
+        };
+
     });

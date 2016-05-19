@@ -47,15 +47,19 @@ angular.module('evtrs-site')
         };
 
 
-        $scope.getIterator = function () {
+        $scope.getProjectIterator = function () {
 
             var projects = Object.keys(PROJECT_CONSTANTS);
-            var index = projects.indexOf($scope.activeProject);
+            if($scope.activeProject) {
+                var index = projects.indexOf($scope.activeProject);
 
-            var fwdIndex = index === projects.length - 1 ? 0 : index + 1;
-            var bkwdIndex = index === 0 ? projects.length - 1 : index -1;
+                var fwdIndex = index === projects.length - 1 ? 0 : index + 1;
+                var bkwdIndex = index === 0 ? projects.length - 1 : index - 1;
 
-            return {next: projects[fwdIndex], previous: projects[bkwdIndex]};
+                return {next: projects[fwdIndex], previous: projects[bkwdIndex]};
+            }  else {
+                return {};
+            }
 
         };
 

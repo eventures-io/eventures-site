@@ -11,10 +11,7 @@ angular.module('evtrs-site')
         if (!$scope.activeProject) {
             //project is accessed from url.
                 $timeout(function () {
-                    var broadcast = function () {
-                        $rootScope.$broadcast('LOAD_PROJECT', {name: $state.params.project, next: false});
-                    }
-                    return broadcast();
+                    $rootScope.$broadcast('LOAD_PROJECT', {name: $state.params.project, next: false});
                     //TODO listen to an event intead of using this timer?
                 }, 1000);
         }
