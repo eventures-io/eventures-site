@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300|Raleway|Share|Metrophobic|Allerta+Stencil|Sarina|Aldrich|PT+Sans+Narrow|Ubuntu+Condensed|Wire+One);
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
-//tooltip
-@import "hint.css/src/hint";
+
 
 /* Variables ----*/
 $body-color: #666666;
@@ -74,6 +73,7 @@ h4 {
 @import 'animations.scss';
 @import 'contact/contact.scss';
 @import 'fontello.scss';
+@import 'hint.scss';
 @import 'home/home.scss';
 @import 'notes/post.scss';
 @import 'work/action-buttons.scss';

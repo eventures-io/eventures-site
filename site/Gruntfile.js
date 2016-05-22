@@ -367,6 +367,7 @@ module.exports = function (grunt) {
                             'lib/**/*',
                             //'assets/images/{,*/}*.{webp}',
                             'assets/images/**/*',
+                            'assets/icons/**/*',
                             'assets/fonts/**/*',
                             'google05176910c8c39725.html',
                             'index.html'
@@ -580,7 +581,7 @@ module.exports = function (grunt) {
                 constants: {
                     CONF: {
                         name: 'production',
-                        WP_URL: 'http://ec2-52-17-227-41.eu-west-1.compute.amazonaws.com/wp-json'
+                        WP_URL: 'http://178.62.6.16/wp-json'
                     }
                 }
             }

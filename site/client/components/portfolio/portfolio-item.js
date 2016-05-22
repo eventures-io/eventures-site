@@ -122,6 +122,12 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, $t
                     projectImg.height = previewImg.height;
                     projectImg.classList.add('project-img');
 
+                    var resetProgressButton =  function() {
+                        var circleProgress = element.querySelector('.circle-progress');
+                        circleProgress.classList.remove('circle-animate');
+                        circleProgress.style.strokeDashoffset = 615;
+                    }
+
                     var resetRowView = function () {
                         portfolio.classList.add('hide');
                         projectView.style.opacity = '1';
@@ -132,15 +138,13 @@ angular.module('evtrs-site').directive('portfolioItem', function ($rootScope, $t
                         subOuter.style.opacity = '1';
                         var progressButton = element.querySelector('.progress-button');
                         progressButton.style.visibility = 'visible';
+                        resetProgressButton();
                         portfolioTitle.style.opacity = 1;
                     }
 
                     var resetColumnView = function () {
                         projectView.style.opacity = '1';
-                        var circleProgress = element.querySelector('.circle-progress');
-                        circleProgress.classList.remove('circle-animate');
-                        //TODO recalulate strokeDashoffset
-                        circleProgress.style.strokeDashoffset = 300;
+                        resetProgressButton();
                     }
 
                     if (flexDirection === 'row') {

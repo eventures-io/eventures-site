@@ -33,7 +33,7 @@ angular.module('evtrs-site').directive('progressButton', function ($timeout, UAS
                 $timeout(function(){
                     $scope.$emit('LOAD_PROJECT', {name:$scope.project.name, next: false});
                     circleProgress.style.strokeDashoffset = 615;
-                }, 200);
+                }, 100);
             }
 
         }
