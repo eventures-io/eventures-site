@@ -409,7 +409,7 @@ module.exports = function (grunt) {
             },
             heroku: {
                 options: {
-                    remote: 'git@heroku.com:eventures.git',
+                    remote: 'git@heroku.com:evtrs-portfolio.git',
                     branch: 'master'
                 }
             },
